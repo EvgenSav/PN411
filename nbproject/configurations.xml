@@ -25,7 +25,6 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../PK315.X</Elem>
     <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>

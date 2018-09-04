@@ -208,7 +208,10 @@ struct {
 
 const uint16_t Type[] @ 0x7C0 = {
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+};
+
+const uint16_t TxStatus[] @ 0x7D0 = {
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
@@ -233,6 +236,30 @@ uint8_t Init_TypeFromFlash() {
     }
 }
 
+uint8_t Init_TxStatusFromFlash() {
+    for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+        if (TxStatus[cellNum] == 0xFFFF) {
+            if (cellNum > 0) {
+                if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
+                    return (TxStatus[cellNum - 1] & 0x02);
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        } else {
+            if (cellNum == 7) {
+                if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
+                    return (TxStatus[cellNum] & 0x02);
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
+}
+
 void Xz(KeyState* key) {
 
 }
@@ -248,7 +275,9 @@ void main() {
 
     VddLatch = 1;
     DevType = Init_TypeFromFlash();
-
+    tx_status = Init_TxStatusFromFlash();
+//    noo_send_data[0] = tx_status;
+//    noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
     INTCONbits.PEIE = 1; //enable peripheral interrupts
     INTCONbits.GIE = 1; //enable interrupt
     while (1) {
@@ -554,6 +583,19 @@ void main() {
         }
         //переход в Sleep на ~100мс
         if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
+            for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+                if (TxStatus[cellNum] == 0xFFFF) {
+                    FlashWrite((0x7D0 + (cellNum * 2)), tx_status & 0x02);
+                    FlashWrite((0x7D0 + (cellNum * 2 + 1)), 0x5A);
+                    break;
+                } else {
+                    if (cellNum == 7) {
+                        FlashEraseRow(0x7D0);
+                        FlashWrite(0x7D0, tx_status & 0x02);
+                        FlashWrite(0x7D1, 0x5A);
+                    }
+                }
+            }
             VddLatch = 0;
         } else {
             WDTCONbits.WDTPS = 0b00110; //1:2048 (Interval 64 ms nominal)

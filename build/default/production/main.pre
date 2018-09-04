@@ -4000,7 +4000,10 @@ uint8_t FirstCmdSent;
 
 const uint16_t Type[] @ 0x7C0 = {
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+};
+
+const uint16_t TxStatus[] @ 0x7D0 = {
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
@@ -4010,7 +4013,7 @@ uint8_t DevMode = 0;
 
 KeyState Keys[5];
 
-# 226
+# 229
 uint8_t SkipHandling = 0;
 
 uint8_t Init_TypeFromFlash() {
@@ -4018,6 +4021,30 @@ if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
 return (Type[0] & 0xFF);
 } else {
 return 0;
+}
+}
+
+uint8_t Init_TxStatusFromFlash() {
+for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+if (TxStatus[cellNum] == 0xFFFF) {
+if (cellNum > 0) {
+if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
+return (TxStatus[cellNum - 1] & 0x02);
+} else {
+return 0;
+}
+} else {
+return 0;
+}
+} else {
+if (cellNum == 7) {
+if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
+return (TxStatus[cellNum] & 0x02);
+} else {
+return 0;
+}
+}
+}
 }
 }
 
@@ -4036,6 +4063,8 @@ RF_Init();
 
 LATCbits.LATC5 = 1;
 DevType = Init_TypeFromFlash();
+tx_status = Init_TxStatusFromFlash();
+
 
 INTCONbits.PEIE = 1;
 INTCONbits.GIE = 1;
@@ -4321,7 +4350,7 @@ break;
 }
 }
 
-# 546
+# 575
 if (BattLow && !BattLowSent) {
 for (uint8_t chn = 0; chn < 4; chn++) {
 noolite_send(chn, 20, 4, &noo_send_data[0]);
@@ -4333,6 +4362,19 @@ BattLowSent = 1;
 }
 
 if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
+for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+if (TxStatus[cellNum] == 0xFFFF) {
+FlashWrite((0x7D0 + (cellNum * 2)), tx_status & 0x02);
+FlashWrite((0x7D0 + (cellNum * 2 + 1)), 0x5A);
+break;
+} else {
+if (cellNum == 7) {
+FlashEraseRow(0x7D0);
+FlashWrite(0x7D0, tx_status & 0x02);
+FlashWrite(0x7D1, 0x5A);
+}
+}
+}
 LATCbits.LATC5 = 0;
 } else {
 WDTCONbits.WDTPS = 0b00110;
