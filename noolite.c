@@ -172,7 +172,6 @@ volatile unsigned char noo_send_data3; //данные 3 - временная переменная для пор
 #define   databit_0     clearbit(tx_status,0)
 
 void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data) {//отправка команды для передачи-протестировать передачу 32 битного адреса
-    tx_status = (TMR2 & 0x80) >> 7;
     unsigned char noo_send_buffer[12]; //буфер для передачи данных на RF
     unsigned char temp_send; //универсальная переменная для передачи
     unsigned char countsend; //счетчик количества переданных бит

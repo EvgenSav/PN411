@@ -4029,7 +4029,7 @@ for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
 if (TxStatus[cellNum] == 0xFFFF) {
 if (cellNum > 0) {
 if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
-return (TxStatus[cellNum - 1] & 0x02);
+return TxStatus[cellNum - 1];
 } else {
 return 0;
 }
@@ -4039,17 +4039,42 @@ return 0;
 } else {
 if (cellNum == 7) {
 if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
-return (TxStatus[cellNum] & 0x02);
+return TxStatus[cellNum];
 } else {
 return 0;
 }
 }
 }
 }
+return 0;
 }
 
-void Xz(KeyState* key) {
-
+void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
+if (key->State == 0) {
+if (key->Tick100ms < 10) {
+switch (cmd) {
+case 0:
+noolite_send(chn, 0, 0, &noo_send_data[0]);
+break;
+case 2:
+noolite_send(chn, 2, 0, &noo_send_data[0]);
+break;
+case 4:
+noolite_send(chn, 4, 0, &noo_send_data[0]);
+break;
+default:
+noolite_send(chn, 0, 0, &noo_send_data[0]);
+break;
+}
+} else {
+noolite_send(chn, 10, 0, &noo_send_data[0]);
+_delay((unsigned long)((15)*(8000000/4000.0)));
+noolite_send(chn, 10, 0, &noo_send_data[0]);
+_delay((unsigned long)((15)*(8000000/4000.0)));
+noolite_send(chn, 10, 0, &noo_send_data[0]);
+key->FirstCmdSent = 0;
+}
+}
 }
 
 uint16_t battery_value = 0;
@@ -4190,35 +4215,19 @@ for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 switch (DevType) {
 case 0:
-if (Keys[chn].State == 0) {
-if (Keys[chn].Tick100ms < 10) {
-noolite_send(chn, 4, 0, &noo_send_data[0]);
-} else {
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 0;
-}
-}
+KeyOffHandler(&Keys[chn], chn, 4);
+
+# 443
 break;
 case 1:
 if (Keys[chn].State == 0) {
-if (Keys[chn].Tick100ms < 10) {
 if ((chn == 0) || (chn == 2)) {
-noolite_send(chn, 0, 0, &noo_send_data[0]);
+KeyOffHandler(&Keys[chn], chn, 0);
 } else {
-noolite_send(chn, 2, 0, &noo_send_data[0]);
+KeyOffHandler(&Keys[chn], chn, 2);
 }
-} else {
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 0;
-}
+
+# 465
 }
 break;
 case 2:
@@ -4231,18 +4240,9 @@ noolite_send(chn, 7, 0, &noo_send_data[0]);
 }
 }
 } else {
-if (Keys[chn].State == 0) {
-if (Keys[chn].Tick100ms < 10) {
-noolite_send(chn, 4, 0, &noo_send_data[0]);
-} else {
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 0;
-}
-}
+KeyOffHandler(&Keys[chn], chn, 4);
+
+# 490
 }
 break;
 case 3:
@@ -4253,18 +4253,9 @@ noolite_send(chn, 2, 0, &noo_send_data[0]);
 noolite_send(chn, 0, 0, &noo_send_data[0]);
 }
 } else {
-if (Keys[chn].State == 0) {
-if (Keys[chn].Tick100ms < 10) {
-noolite_send(chn, 4, 0, &noo_send_data[0]);
-} else {
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 0;
-}
-}
+KeyOffHandler(&Keys[chn], chn, 4);
+
+# 513
 }
 break;
 }
@@ -4350,7 +4341,7 @@ break;
 }
 }
 
-# 575
+# 608
 if (BattLow && !BattLowSent) {
 for (uint8_t chn = 0; chn < 4; chn++) {
 noolite_send(chn, 20, 4, &noo_send_data[0]);
@@ -4363,9 +4354,12 @@ BattLowSent = 1;
 
 if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
 for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
 if (TxStatus[cellNum] == 0xFFFF) {
-FlashWrite((0x7D0 + (cellNum * 2)), tx_status & 0x02);
-FlashWrite((0x7D0 + (cellNum * 2 + 1)), 0x5A);
+FlashWrite(adrToWrite, tx_status & 0x02);
+FlashWrite((adrToWrite + 1), 0x5A);
+__nop();
+asm("clrwdt");
 break;
 } else {
 if (cellNum == 7) {
@@ -4375,7 +4369,10 @@ FlashWrite(0x7D1, 0x5A);
 }
 }
 }
+
+# 645
 LATCbits.LATC5 = 0;
+_delay((unsigned long)((100)*(8000000/4000.0)));
 } else {
 WDTCONbits.WDTPS = 0b00110;
 __nop();

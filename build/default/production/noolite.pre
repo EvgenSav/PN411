@@ -3877,7 +3877,6 @@ asm("clrwdt");
 
 # 174
 void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data) {
-tx_status = (TMR2 & 0x80) >> 7;
 unsigned char noo_send_buffer[12];
 unsigned char temp_send;
 unsigned char countsend;

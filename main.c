@@ -241,7 +241,7 @@ uint8_t Init_TxStatusFromFlash() {
         if (TxStatus[cellNum] == 0xFFFF) {
             if (cellNum > 0) {
                 if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
-                    return (TxStatus[cellNum - 1] & 0x02);
+                    return TxStatus[cellNum - 1];
                 } else {
                     return 0;
                 }
@@ -251,17 +251,42 @@ uint8_t Init_TxStatusFromFlash() {
         } else {
             if (cellNum == 7) {
                 if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
-                    return (TxStatus[cellNum] & 0x02);
+                    return TxStatus[cellNum];
                 } else {
                     return 0;
                 }
             }
         }
     }
+    return 0;
 }
 
-void Xz(KeyState* key) {
-
+void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
+    if (key->State == 0) {
+        if (key->Tick100ms < 10) { //key pressed SHORT
+            switch (cmd) {
+                case CMD_OFF:
+                    noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
+                    break;
+                case CMD_ON:
+                    noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
+                    break;
+                case CMD_Switch:
+                    noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
+                    break;
+                default:
+                    noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
+                    break;
+            }
+        } else { //key pressed LONG
+            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+            __delay_ms(15);
+            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+            __delay_ms(15);
+            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+            key->FirstCmdSent = 0;
+        }
+    }
 }
 
 uint16_t battery_value = 0;
@@ -276,8 +301,8 @@ void main() {
     VddLatch = 1;
     DevType = Init_TypeFromFlash();
     tx_status = Init_TxStatusFromFlash();
-//    noo_send_data[0] = tx_status;
-//    noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
+
+
     INTCONbits.PEIE = 1; //enable peripheral interrupts
     INTCONbits.GIE = 1; //enable interrupt
     while (1) {
@@ -402,35 +427,41 @@ void main() {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         switch (DevType) {
                             case 0:
-                                if (Keys[chn].State == 0) {
-                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                        noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                    } else { //key pressed LONG
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        __delay_ms(15);
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        __delay_ms(15);
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        Keys[chn].FirstCmdSent = 0;
-                                    }
-                                }
+                                KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                //                                if (Keys[chn].State == 0) {
+                                //                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
+                                //                                        noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
+                                //                                    } else { //key pressed LONG
+                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                //                                        __delay_ms(15);
+                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                //                                        __delay_ms(15);
+                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                //                                        Keys[chn].FirstCmdSent = 0;
+                                //                                    }
+                                //                                }
                                 break;
                             case 1:
                                 if (Keys[chn].State == 0) {
-                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                        if ((chn == 0) || (chn == 2)) {
-                                            noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
+                                    if ((chn == 0) || (chn == 2)) {
+                                            KeyOffHandler(&Keys[chn], chn, CMD_OFF);
                                         } else {
-                                            noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
+                                            KeyOffHandler(&Keys[chn], chn, CMD_ON);
                                         }
-                                    } else { //key pressed LONG
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        __delay_ms(15);
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        __delay_ms(15);
-                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                        Keys[chn].FirstCmdSent = 0;
-                                    }
+//                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
+//                                        if ((chn == 0) || (chn == 2)) {
+//                                            noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
+//                                        } else {
+//                                            noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
+//                                        }
+//                                    } else { //key pressed LONG
+//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+//                                        __delay_ms(15);
+//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+//                                        __delay_ms(15);
+//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+//                                        Keys[chn].FirstCmdSent = 0;
+//                                    }
                                 }
                                 break;
                             case 2:
@@ -443,18 +474,19 @@ void main() {
                                         }
                                     }
                                 } else {
-                                    if (Keys[chn].State == 0) {
-                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                        } else { //key pressed LONG
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            __delay_ms(15);
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            __delay_ms(15);
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            Keys[chn].FirstCmdSent = 0;
-                                        }
-                                    }
+                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                    //                                    if (Keys[chn].State == 0) {
+                                    //                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
+                                    //                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
+                                    //                                        } else { //key pressed LONG
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            __delay_ms(15);
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            __delay_ms(15);
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            Keys[chn].FirstCmdSent = 0;
+                                    //                                        }
+                                    //                                    }
                                 }
                                 break;
                             case 3:
@@ -465,18 +497,19 @@ void main() {
                                         noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
                                     }
                                 } else {
-                                    if (Keys[chn].State == 0) {
-                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                        } else { //key pressed LONG
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            __delay_ms(15);
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            __delay_ms(15);
-                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                            Keys[chn].FirstCmdSent = 0;
-                                        }
-                                    }
+                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                    //                                    if (Keys[chn].State == 0) {
+                                    //                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
+                                    //                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
+                                    //                                        } else { //key pressed LONG
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            __delay_ms(15);
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            __delay_ms(15);
+                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
+                                    //                                            Keys[chn].FirstCmdSent = 0;
+                                    //                                        }
+                                    //                                    }
                                 }
                                 break;
                         }
@@ -584,9 +617,12 @@ void main() {
         //переход в Sleep на ~100мс
         if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
             for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+                uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
                 if (TxStatus[cellNum] == 0xFFFF) {
-                    FlashWrite((0x7D0 + (cellNum * 2)), tx_status & 0x02);
-                    FlashWrite((0x7D0 + (cellNum * 2 + 1)), 0x5A);
+                    FlashWrite(adrToWrite, tx_status & 0x02);
+                    FlashWrite((adrToWrite + 1), 0x5A);
+                    NOP();
+                    CLRWDT();
                     break;
                 } else {
                     if (cellNum == 7) {
@@ -596,7 +632,18 @@ void main() {
                     }
                 }
             }
+            //            noo_send_data[0] = TxStatus[0];
+            //            noo_send_data[1] = TxStatus[1];
+            //            noo_send_data[2] = TxStatus[2];
+            //            noo_send_data[3] = TxStatus[3];
+            //            noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
+            //            noo_send_data[0] = TxStatus[4];
+            //            noo_send_data[1] = TxStatus[5];
+            //            noo_send_data[2] = TxStatus[6];
+            //            noo_send_data[3] = TxStatus[7];
+            //            noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
             VddLatch = 0;
+            __delay_ms(100);
         } else {
             WDTCONbits.WDTPS = 0b00110; //1:2048 (Interval 64 ms nominal)
             NOP();

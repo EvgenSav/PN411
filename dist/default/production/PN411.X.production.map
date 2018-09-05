@@ -5,9 +5,9 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
   -h+dist/default/production\PN411.X.production.sym \
   --cmf=dist/default/production\PN411.X.production.cmf -z -Q16LF1503 \
-  -oC:\Users\Evgen\AppData\Local\Temp\sesk.2 \
+  -oC:\Users\Evgen\AppData\Local\Temp\sbjs.2 \
   -Mdist/default/production/PN411.X.production.map -E1 -ver=XC8 \
-  -ASTACK=0203Fh-0206fh -pstack=STACK -p_system_settings_text=7EEh \
+  -ASTACK=02043h-0206fh -pstack=STACK -p_system_settings_text=7EEh \
   -p_Type_text=7C0h -p_TxStatus_text=7D0h -ACODE=00h-07FFh \
   -ASTRCODE=00h-07FFh -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 \
   -AENTRY=00h-0FFhx8 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0BFh \
@@ -27,7 +27,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=08007h-08008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 \
   -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Evgen\AppData\Local\Temp\sesk.obj \
+  C:\Users\Evgen\AppData\Local\Temp\sbjs.obj \
   dist/default/production\PN411.X.production.obj 
 
 Object code version is 3.11
@@ -37,31 +37,29 @@ Machine type is 16LF1503
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Evgen\AppData\Local\Temp\sesk.obj
+C:\Users\Evgen\AppData\Local\Temp\sbjs.obj
                 end_init                              1        1        1        0       0
                 reset_vec                             0        0        1        0       0
                 idloc                              8000     8000        4    10000       0
                 config                             8007     8007        2    1000E       0
 dist/default/production\PN411.X.production.obj
-                cinit                               7E0      7E0        9      FA0       0
-                text10                               86       86        6      10C       0
-                text9                                9E       9E        D      13C       0
-                text8                                C8       C8       13      190       0
-                text7                                92       92        C      124       0
-                text6                                AB       AB        D      156       0
-                text5                                B8       B8       10      170       0
-                text4                                EF       EF       89      1DE       0
-                text3                                DB       DB       14      1B6       0
-                text2                               178      178       8B      2F0       0
-                text1                               203      203      1A3      406       0
-                swtext2                               6        6        4        4       0
-                swtext1                               2        2        4        4       0
-                maintext                            3A6      3A6      41A      74C       0
-                cstackBANK0                          43       43       1C       20       1
-                cstackCOMMON                         70       70        B       70       1
-                clrtext                              8C       8C        6      118       0
-                bssBANK0                             20       20       23       20       1
-                bssCOMMON                            7B       7B        1       70       1
+                cinit                               7E0      7E0        8      FA0       0
+                text11                               E5       E5        6      1CA       0
+                text10                               F7       F7        D      1EE       0
+                text9                               121      121       13      242       0
+                text8                                EB       EB        C      1D6       0
+                text7                               104      104        D      208       0
+                text6                               111      111       10      222       0
+                text5                               1A7      1A7       87      34E       0
+                text4                               134      134       14      268       0
+                text3                               2B9      2B9      19A      572       0
+                text2                               148      148       5F      290       0
+                text1                               22E      22E       8B      45C       0
+                maintext                            453      453      36D      8A6       0
+                cstackBANK0                          44       44       1F       20       1
+                cstackCOMMON                         70       70        E       70       1
+                clrtext                             7E8      7E8        6      FA0       0
+                bssBANK0                             20       20       24       20       1
                 _Type_text                          7C0      7C0       10      F80       0
                 _TxStatus_text                      7D0      7D0       10      FA0       0
                 _system_settings_text               7EE      7EE       11      FDC       0
@@ -71,20 +69,21 @@ TOTAL           Name                               Link     Load   Length     Sp
 
         CLASS   CODE           
                 end_init                              1        1        1         0
-                cinit                               7E0      7E0        9         0
+                cinit                               7E0      7E0        8         0
                 reset_vec                             0        0        1         0
-                text10                               86       86        6         0
-                text9                                9E       9E        D         0
-                text8                                C8       C8       13         0
-                text7                                92       92        C         0
-                text6                                AB       AB        D         0
-                text5                                B8       B8       10         0
-                text4                                EF       EF       89         0
-                text3                                DB       DB       14         0
-                text2                               178      178       8B         0
-                text1                               203      203      1A3         0
-                maintext                            3A6      3A6      41A         0
-                clrtext                              8C       8C        6         0
+                text11                               E5       E5        6         0
+                text10                               F7       F7        D         0
+                text9                               121      121       13         0
+                text8                                EB       EB        C         0
+                text7                               104      104        D         0
+                text6                               111      111       10         0
+                text5                               1A7      1A7       87         0
+                text4                               134      134       14         0
+                text3                               2B9      2B9      19A         0
+                text2                               148      148       5F         0
+                text1                               22E      22E       8B         0
+                maintext                            453      453      36D         0
+                clrtext                             7E8      7E8        6         0
                 _Type_text                          7C0      7C0       10         0
                 _TxStatus_text                      7D0      7D0       10         0
                 _system_settings_text               7EE      7EE       11         0
@@ -94,18 +93,15 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   STRING         
 
         CLASS   CONST          
-                swtext2                               6        6        4         0
-                swtext1                               2        2        4         0
 
         CLASS   ENTRY          
 
         CLASS   COMMON         
-                cstackCOMMON                         70       70        B         1
-                bssCOMMON                            7B       7B        1         1
+                cstackCOMMON                         70       70        E         1
 
         CLASS   BANK0          
-                cstackBANK0                          43       43       1C         1
-                bssBANK0                             20       20       23         1
+                cstackBANK0                          44       44       1F         1
+                bssBANK0                             20       20       24         1
 
         CLASS   BANK1          
 
@@ -253,23 +249,22 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
-                swtext1                        000002  000008  00000A         4       0  CONST       2
-                bssBANK0                       000020  00003F  00005F        20       1  BANK0       1
-                cstackCOMMON                   000070  00000C  00007C        70       1  COMMON      1
-                text10                         000086  000006  00008C       10C       0  CODE        2
-                clrtext                        00008C  000006  000092       118       0  CODE        2
-                text7                          000092  00000C  00009E       124       0  CODE        2
-                text9                          00009E  00000D  0000AB       13C       0  CODE        2
-                text6                          0000AB  00000D  0000B8       156       0  CODE        2
-                text5                          0000B8  000010  0000C8       170       0  CODE        2
-                text8                          0000C8  000013  0000DB       190       0  CODE        2
-                text3                          0000DB  000014  0000EF       1B6       0  CODE        2
-                text4                          0000EF  000089  000178       1DE       0  CODE        2
-                text2                          000178  00008B  000203       2F0       0  CODE        2
-                text1                          000203  0001A3  0003A6       406       0  CODE        2
-                maintext                       0003A6  00041A  0007C0       74C       0  CODE        2
+                bssBANK0                       000020  000043  000063        20       1  BANK0       1
+                cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
+                text11                         0000E5  000006  0000EB       1CA       0  CODE        2
+                text8                          0000EB  00000C  0000F7       1D6       0  CODE        2
+                text10                         0000F7  00000D  000104       1EE       0  CODE        2
+                text7                          000104  00000D  000111       208       0  CODE        2
+                text6                          000111  000010  000121       222       0  CODE        2
+                text9                          000121  000013  000134       242       0  CODE        2
+                text4                          000134  000014  000148       268       0  CODE        2
+                text2                          000148  00005F  0001A7       290       0  CODE        2
+                text5                          0001A7  000087  00022E       34E       0  CODE        2
+                text1                          00022E  00008B  0002B9       45C       0  CODE        2
+                text3                          0002B9  00019A  000453       572       0  CODE        2
+                maintext                       000453  00036D  0007C0       8A6       0  CODE        2
                 _Type_text                     0007C0  000010  0007D0       F80       0  CODE        2
-                _TxStatus_text                 0007D0  000019  0007E9       FA0       0  CODE        2
+                _TxStatus_text                 0007D0  00001E  0007EE       FA0       0  CODE        2
                 _system_settings_text          0007EE  000011  0007FF       FDC       0  CODE        2
                 idloc                          008000  000004  008004     10000       0  IDLOC       2
                 config                         008007  000002  008009     1000E       0  CONFIG      2
@@ -278,20 +273,16 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            0005F-0006F              11           1
+        BANK0            00063-0006F               D           1
         BANK1            000A0-000BF              20           1
         BIGRAM           02000-0206F              70           1
-        CODE             0000A-00085              7C           2
-                         007E9-007ED               5
+        CODE             00002-000E4              E3           2
                          007FF-007FF               1
-        COMMON           0007C-0007D               2           1
-        CONST            0000A-00085              7C           2
-                         007E9-007ED               5
+        CONST            00002-000E4              E3           2
                          007FF-007FF               1
-        ENTRY            0000A-00085              7C           2
-                         007E9-007ED               5
+        ENTRY            00002-000E4              E3           2
                          007FF-007FF               1
-        RAM              0005F-0006F              11           1
+        RAM              00063-0006F               D           1
                          000A0-000BF              20
         SFR0             00000-0001F              20           1
         SFR1             00080-0009F              20           1
@@ -325,12 +316,10 @@ UNUSED ADDRESS RANGES
         SFR7             00380-003EF              70           1
         SFR8             00400-0046F              70           1
         SFR9             00480-004EF              70           1
-        STACK            0203F-0206F              31           1
-        STRCODE          0000A-00085              7C           2
-                         007E9-007ED               5
+        STACK            02043-0206F              2D           1
+        STRCODE          00002-000E4              E3           2
                          007FF-007FF               1
-        STRING           0000A-00085              7C           2
-                         007E9-007ED               5
+        STRING           00002-000E4              E3           2
                          007FF-007FF               1
 
                                   Symbol Table
@@ -339,29 +328,33 @@ FlashEraseRow@rowAddr            cstackCOMMON          00070
 FlashWrite@addr                  cstackCOMMON          00070
 FlashWrite@flash_data            cstackCOMMON          00072
 Init_TxStatusFromFlash@cellNum   cstackCOMMON          00074
+KeyOffHandler@chn                cstackCOMMON          0007B
+KeyOffHandler@cmd                cstackCOMMON          0007C
+KeyOffHandler@key                cstackBANK0           00056
 _ADCON0bits                      (abs)                 0009D
 _ADCON1bits                      (abs)                 0009E
 _ANSELA                          (abs)                 0018C
 _ANSELC                          (abs)                 0018E
-_BattLowSent                     bssBANK0              0003D
-_DevMode                         bssBANK0              00039
-_DevType                         bssBANK0              0003A
+_BattLowSent                     bssBANK0              0002A
+_DevMode                         bssBANK0              00026
+_DevType                         bssBANK0              00027
 _FVRCON                          (abs)                 00117
-_FlashEraseRow                   text9                 0009E
-_FlashUnlock                     text10                00086
-_FlashWrite                      text8                 000C8
+_FlashEraseRow                   text10                000F7
+_FlashUnlock                     text11                000E5
+_FlashWrite                      text9                 00121
 _INTCONbits                      (abs)                 0000B
-_Init_ADC                        text7                 00092
-_Init_CLK                        text6                 000AB
-_Init_IO                         text5                 000B8
-_Init_TxStatusFromFlash          text4                 000EF
-_Init_TypeFromFlash              text3                 000DB
-_Keys                            bssBANK0              00020
+_Init_ADC                        text8                 000EB
+_Init_CLK                        text7                 00104
+_Init_IO                         text6                 00111
+_Init_TxStatusFromFlash          text5                 001A7
+_Init_TypeFromFlash              text4                 00134
+_KeyOffHandler                   text2                 00148
+_Keys                            bssBANK0              0002C
 _LATA                            (abs)                 0010C
 _LATAbits                        (abs)                 0010C
 _LATC                            (abs)                 0010E
 _LATCbits                        (abs)                 0010E
-_LedPulseTick_100ms              bssBANK0              0003C
+_LedPulseTick_100ms              bssBANK0              00029
 _OPTION_REG                      (abs)                 00095
 _OPTION_REGbits                  (abs)                 00095
 _OSCCONbits                      (abs)                 00099
@@ -373,12 +366,11 @@ _PMCON2                          (abs)                 00196
 _PMDATH                          (abs)                 00194
 _PMDATL                          (abs)                 00193
 _PORTA                           (abs)                 0000C
-_RF_Init                         text2                 00178
-_SkipHandling                    bssBANK0              00038
+_RF_Init                         text1                 0022E
+_SkipHandling                    bssBANK0              00025
 _TMR0                            (abs)                 00015
 _TMR0IE                          (abs)                 0005D
 _TMR0IF                          (abs)                 0005A
-_TMR2                            (abs)                 0001A
 _TRISA                           (abs)                 0008C
 _TRISC                           (abs)                 0008E
 _TxStatus                        _TxStatus_text        007D0
@@ -441,8 +433,7 @@ __Hbank8                         bank8                 10008
 __Hbank9                         bank9                 10008
 __Hbigram                        bigram                10008
 __HbssBANK0                      bssBANK0              10008
-__HbssCOMMON                     bssCOMMON             10008
-__Hcinit                         cinit                 007E9
+__Hcinit                         cinit                 007E8
 __Hclrtext                       clrtext               10008
 __Hcode                          code                  10008
 __Hcommon                        common                10008
@@ -536,7 +527,6 @@ __Lbank8                         bank8                 10008
 __Lbank9                         bank9                 10008
 __Lbigram                        bigram                10008
 __LbssBANK0                      bssBANK0              10008
-__LbssCOMMON                     bssCOMMON             10008
 __Lcinit                         cinit                 007E0
 __Lclrtext                       clrtext               10008
 __Lcode                          code                  10008
@@ -594,47 +584,46 @@ __Lstack                         stack                 00000
 __Lstrings                       strings               10008
 __Ltext                          text                  10008
 __S0                             (abs)                 08009
-__S1                             (abs)                 0007C
+__S1                             (abs)                 0007E
 __S2                             (abs)                 00000
 ___int_sp                        stack                 00000
 ___latbits                       (abs)                 00000
 ___sp                            stack                 00000
-__end_of_FlashEraseRow           text9                 000AB
-__end_of_FlashUnlock             text10                0008C
-__end_of_FlashWrite              text8                 000DB
-__end_of_Init_ADC                text7                 0009E
-__end_of_Init_CLK                text6                 000B8
-__end_of_Init_IO                 text5                 000C8
-__end_of_Init_TxStatusFromFlash  text4                 00178
-__end_of_Init_TypeFromFlash      text3                 000EF
-__end_of_RF_Init                 text2                 00203
+__end_of_FlashEraseRow           text10                00104
+__end_of_FlashUnlock             text11                000EB
+__end_of_FlashWrite              text9                 00134
+__end_of_Init_ADC                text8                 000F7
+__end_of_Init_CLK                text7                 00111
+__end_of_Init_IO                 text6                 00121
+__end_of_Init_TxStatusFromFlash  text5                 0022E
+__end_of_Init_TypeFromFlash      text4                 00148
+__end_of_KeyOffHandler           text2                 001A7
+__end_of_RF_Init                 text1                 002B9
 __end_of_TxStatus                _TxStatus_text        007E0
 __end_of_Type                    _Type_text            007D0
-__end_of__initialization         cinit                 007E7
+__end_of__initialization         cinit                 007E6
 __end_of_main                    maintext              007C0
-__end_of_noolite_send            text1                 003A6
+__end_of_noolite_send            text3                 00453
 __end_of_system_settings         _system_settings_text 007FF
 __initialization                 cinit                 007E0
 __p_TxStatus_text                _TxStatus_text        007D0
 __p_Type_text                    _Type_text            007C0
 __p_system_settings_text         _system_settings_text 007EE
 __pbssBANK0                      bssBANK0              00020
-__pbssCOMMON                     bssCOMMON             0007B
-__pcstackBANK0                   cstackBANK0           00043
+__pcstackBANK0                   cstackBANK0           00044
 __pcstackCOMMON                  cstackCOMMON          00070
-__pmaintext                      maintext              003A6
-__pswtext1                       swtext1               00002
-__pswtext2                       swtext2               00006
-__ptext1                         text1                 00203
-__ptext10                        text10                00086
-__ptext2                         text2                 00178
-__ptext3                         text3                 000DB
-__ptext4                         text4                 000EF
-__ptext5                         text5                 000B8
-__ptext6                         text6                 000AB
-__ptext7                         text7                 00092
-__ptext8                         text8                 000C8
-__ptext9                         text9                 0009E
+__pmaintext                      maintext              00453
+__ptext1                         text1                 0022E
+__ptext10                        text10                000F7
+__ptext11                        text11                000E5
+__ptext2                         text2                 00148
+__ptext3                         text3                 002B9
+__ptext4                         text4                 00134
+__ptext5                         text5                 001A7
+__ptext6                         text6                 00111
+__ptext7                         text7                 00104
+__ptext8                         text8                 000EB
+__ptext9                         text9                 00121
 __size_of_FlashEraseRow          (abs)                 00000
 __size_of_FlashUnlock            (abs)                 00000
 __size_of_FlashWrite             (abs)                 00000
@@ -643,45 +632,47 @@ __size_of_Init_CLK               (abs)                 00000
 __size_of_Init_IO                (abs)                 00000
 __size_of_Init_TxStatusFromFlash (abs)                 00000
 __size_of_Init_TypeFromFlash     (abs)                 00000
+__size_of_KeyOffHandler          (abs)                 00000
 __size_of_RF_Init                (abs)                 00000
 __size_of_main                   (abs)                 00000
 __size_of_noolite_send           (abs)                 00000
-_main                            maintext              003A6
-_noo_address_type                bssCOMMON             0007B
-_noo_send_data                   bssBANK0              0003F
-_noolite_send                    text1                 00203
-_startaddress                    bssBANK0              00034
+_main                            maintext              00453
+_noo_address_type                bssBANK0              00024
+_noo_send_data                   bssBANK0              00040
+_noolite_send                    text3                 002B9
+_startaddress                    bssBANK0              00020
 _system_settings                 _system_settings_text 007EE
 _system_settings_absaddr         (abs)                 007EE
-_tick3_100ms                     bssBANK0              0003B
-_tx_status                       bssBANK0              0003E
+_tick3_100ms                     bssBANK0              00028
+_tx_status                       bssBANK0              0002B
 btemp                            (abs)                 0007E
-clear_ram0                       clrtext               0008C
-end_of_initialization            cinit                 007E7
+clear_ram0                       clrtext               007E8
+end_of_initialization            cinit                 007E6
 intlevel0                        functab               00000
 intlevel1                        functab               00000
 intlevel2                        functab               00000
 intlevel3                        functab               00000
 intlevel4                        functab               00000
 intlevel5                        functab               00000
-main@cellNum                     cstackBANK0           0005A
-main@chn                         cstackBANK0           0005B
-main@chn_421                     cstackBANK0           0005C
-main@chn_422                     cstackBANK0           0005D
-main@chn_423                     cstackBANK0           0005E
-noolite_send@chn                 cstackBANK0           00051
-noolite_send@countbit            cstackBANK0           00050
-noolite_send@countsend           cstackBANK0           00052
+main@adrToWrite                  cstackBANK0           0005B
+main@cellNum                     cstackBANK0           0005E
+main@chn                         cstackBANK0           0005F
+main@chn_427                     cstackBANK0           00060
+main@chn_428                     cstackBANK0           00061
+main@chn_429                     cstackBANK0           00062
+noolite_send@chn                 cstackBANK0           00052
+noolite_send@countbit            cstackBANK0           00051
+noolite_send@countsend           cstackBANK0           00053
 noolite_send@data                cstackCOMMON          00072
-noolite_send@endpos              cstackBANK0           00054
-noolite_send@noo_send_buffer     cstackBANK0           00043
+noolite_send@endpos              cstackBANK0           00055
+noolite_send@noo_send_buffer     cstackBANK0           00044
 noolite_send@noo_send_command    cstackCOMMON          00070
 noolite_send@noo_send_format     cstackCOMMON          00071
-noolite_send@startpos            cstackBANK0           0004F
-noolite_send@temp_send           cstackBANK0           00053
+noolite_send@startpos            cstackBANK0           00050
+noolite_send@temp_send           cstackBANK0           00054
 reset_vec                        reset_vec             00000
 stackhi                          (abs)                 0206F
-stacklo                          (abs)                 0203F
+stacklo                          (abs)                 02043
 start                            init                  00001
 start_initialization             cinit                 007E0
 wtemp0                           (abs)                 0007E
@@ -691,15 +682,16 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 269 in file "main.c"
+		line 294 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
+  adrToWrite      2   23[BANK0 ] unsigned int 
+  chn             1   30[BANK0 ] unsigned char 
+  chn             1   29[BANK0 ] unsigned char 
+  chn             1   28[BANK0 ] unsigned char 
   chn             1   27[BANK0 ] unsigned char 
-  chn             1   26[BANK0 ] unsigned char 
-  chn             1   25[BANK0 ] unsigned char 
-  chn             1   24[BANK0 ] unsigned char 
-  cellNum         1   23[BANK0 ] unsigned char 
+  cellNum         1   26[BANK0 ] unsigned char 
   chn             1    0        unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
@@ -711,10 +703,10 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMMON   BANK0   BANK1
       Params:         0       0       0
-      Locals:         0       6       0
+      Locals:         0       8       0
       Temps:          0       4       0
-      Totals:         0      10       0
-Total ram usage:       10 bytes
+      Totals:         0      12       0
+Total ram usage:       12 bytes
  Hardware stack levels required when called:    2
  This function calls:
 		_FlashEraseRow
@@ -724,10 +716,74 @@ Total ram usage:       10 bytes
 		_Init_IO
 		_Init_TxStatusFromFlash
 		_Init_TypeFromFlash
+		_KeyOffHandler
 		_RF_Init
 		_noolite_send
  This function is called by:
 		Startup code after reset
+ This function uses a non-reentrant model
+
+
+ *************** function _RF_Init *****************
+ Defined at:
+		line 25 in file "noolite.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1
+      Params:         0       0       0
+      Locals:         0       0       0
+      Temps:          7       0       0
+      Totals:         7       0       0
+Total ram usage:        7 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _KeyOffHandler *****************
+ Defined at:
+		line 264 in file "main.c"
+ Parameters:    Size  Location     Type
+  key             1    wreg     PTR struct .
+		 -> Keys(20), 
+  chn             1   11[COMMON] unsigned char 
+  cmd             1   12[COMMON] unsigned char 
+ Auto vars:     Size  Location     Type
+  key             1   18[BANK0 ] PTR struct .
+		 -> Keys(20), 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0   BANK1
+      Params:         2       0       0
+      Locals:         0       1       0
+      Temps:          1       0       0
+      Totals:         3       1       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_noolite_send
+ This function is called by:
+		_main
  This function uses a non-reentrant model
 
 
@@ -766,35 +822,7 @@ Total ram usage:       29 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _RF_Init *****************
- Defined at:
-		line 25 in file "noolite.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, fsr0l, fsr0h, status,2, status,0, pclath
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0   BANK1
-      Params:         0       0       0
-      Locals:         0       0       0
-      Temps:          7       0       0
-      Totals:         7       0       0
-Total ram usage:        7 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
+		_KeyOffHandler
 		_main
  This function uses a non-reentrant model
 
@@ -1040,33 +1068,34 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 FLASH.c
-		_FlashUnlock   		CODE           	0086	0000	7
-		_FlashEraseRow 		CODE           	009E	0000	14
-		_FlashWrite    		CODE           	00C8	0000	20
+		_FlashUnlock   		CODE           	00E5	0000	7
+		_FlashEraseRow 		CODE           	00F7	0000	14
+		_FlashWrite    		CODE           	0121	0000	20
 
 FLASH.c estimated size: 41
 
 noolite.c
-		_noolite_send  		CODE           	0203	0000	420
-		_RF_Init       		CODE           	0178	0000	140
+		_noolite_send  		CODE           	02B9	0000	411
+		_RF_Init       		CODE           	022E	0000	140
 
-noolite.c estimated size: 560
+noolite.c estimated size: 551
 
 shared
 		_Type          		CODE           	07C0	0000	17
 		_TxStatus      		CODE           	07D0	0000	17
-		__initialization		CODE           	07E0	0000	8
+		__initialization		CODE           	07E0	0000	7
 		_system_settings		CODE           	07EE	0000	18
 
-shared estimated size: 60
+shared estimated size: 59
 
 main.c
-		_Init_ADC      		CODE           	0092	0000	13
-		_main          		CODE           	03A6	0000	1051
-		_Init_CLK      		CODE           	00AB	0000	14
-		_Init_IO       		CODE           	00B8	0000	17
-		_Init_TypeFromFlash		CODE           	00DB	0000	21
-		_Init_TxStatusFromFlash		CODE           	00EF	0000	138
+		_Init_ADC      		CODE           	00EB	0000	13
+		_main          		CODE           	0453	0000	878
+		_KeyOffHandler 		CODE           	0148	0000	96
+		_Init_CLK      		CODE           	0104	0000	14
+		_Init_IO       		CODE           	0111	0000	17
+		_Init_TypeFromFlash		CODE           	0134	0000	21
+		_Init_TxStatusFromFlash		CODE           	01A7	0000	136
 
-main.c estimated size: 1254
+main.c estimated size: 1175
 

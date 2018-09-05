@@ -1,7 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"848 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
-[v _TMR2 `Vuc ~T0 @X0 0 e@26 ]
-"1171
+"1171 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@149 ]
 "1742
 [s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -2939,506 +2937,503 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _noo_send_format `uc ~T0 @X0 1 r3 ]
 [v _data `*uc ~T0 @X0 1 r4 ]
 [f ]
-[; ;noolite.c: 175: tx_status = (TMR2 & 0x80) >> 7;
 "175
-[e = _tx_status -> >> & -> _TMR2 `i -> 128 `i -> 7 `i `uc ]
-"176
 [v _noo_send_buffer `uc ~T0 @X0 -> 12 `i a ]
-"177
+"176
 [v _temp_send `uc ~T0 @X0 1 a ]
-"178
+"177
 [v _countsend `uc ~T0 @X0 1 a ]
-"179
+"178
 [v _countbit `uc ~T0 @X0 1 a ]
-"180
+"179
 [v _startpos `uc ~T0 @X0 1 a ]
-"181
+"180
 [v _endpos `uc ~T0 @X0 1 a ]
-[; ;noolite.c: 176: unsigned char noo_send_buffer[12];
-[; ;noolite.c: 177: unsigned char temp_send;
-[; ;noolite.c: 178: unsigned char countsend;
-[; ;noolite.c: 179: unsigned char countbit;
-[; ;noolite.c: 180: unsigned char startpos;
-[; ;noolite.c: 181: unsigned char endpos;
-[; ;noolite.c: 182: asm("clrwdt");
-"182
+[; ;noolite.c: 175: unsigned char noo_send_buffer[12];
+[; ;noolite.c: 176: unsigned char temp_send;
+[; ;noolite.c: 177: unsigned char countsend;
+[; ;noolite.c: 178: unsigned char countbit;
+[; ;noolite.c: 179: unsigned char startpos;
+[; ;noolite.c: 180: unsigned char endpos;
+[; ;noolite.c: 181: asm("clrwdt");
+"181
 [; <" clrwdt ;# ">
-[; ;noolite.c: 186: tx_status ^= (1<<1);
-"186
+[; ;noolite.c: 185: tx_status ^= (1<<1);
+"185
 [e =^ _tx_status -> << -> 1 `i -> 1 `i `uc ]
-[; ;noolite.c: 189: if (noo_send_command < 16) {
-"189
+[; ;noolite.c: 188: if (noo_send_command < 16) {
+"188
 [e $ ! < -> _noo_send_command `i -> 16 `i 338  ]
 {
-[; ;noolite.c: 190: startpos = 10;
-"190
+[; ;noolite.c: 189: startpos = 10;
+"189
 [e = _startpos -> -> 10 `i `uc ]
-[; ;noolite.c: 191: noo_send_buffer[1] = (noo_send_command << 4) | (1 << 2);
-"191
+[; ;noolite.c: 190: noo_send_buffer[1] = (noo_send_command << 4) | (1 << 2);
+"190
 [e = *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> | << -> _noo_send_command `i -> 4 `i << -> 1 `i -> 2 `i `uc ]
-[; ;noolite.c: 192: if (((tx_status & (1<<1)) != 0)) {
-"192
+[; ;noolite.c: 191: if (((tx_status & (1<<1)) != 0)) {
+"191
 [e $ ! != & -> _tx_status `i << -> 1 `i -> 1 `i -> 0 `i 339  ]
 {
-[; ;noolite.c: 193: noo_send_buffer[1] |= (1<<3);
-"193
+[; ;noolite.c: 192: noo_send_buffer[1] |= (1<<3);
+"192
 [e =| *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> << -> 1 `i -> 3 `i `uc ]
-"194
+"193
 }
-[; ;noolite.c: 194: } else {
+[; ;noolite.c: 193: } else {
 [e $U 340  ]
 [e :U 339 ]
 {
-[; ;noolite.c: 195: noo_send_buffer[1] &= (~(1<<3));
-"195
+[; ;noolite.c: 194: noo_send_buffer[1] &= (~(1<<3));
+"194
 [e =& *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> ~ << -> 1 `i -> 3 `i `uc ]
-"196
+"195
 }
 [e :U 340 ]
-"197
+"196
 }
-[; ;noolite.c: 196: }
-[; ;noolite.c: 197: } else {
+[; ;noolite.c: 195: }
+[; ;noolite.c: 196: } else {
 [e $U 341  ]
 [e :U 338 ]
 {
-[; ;noolite.c: 198: startpos = 6;
-"198
+[; ;noolite.c: 197: startpos = 6;
+"197
 [e = _startpos -> -> 6 `i `uc ]
-[; ;noolite.c: 199: noo_send_buffer[0] = (1 << 6);
-"199
+[; ;noolite.c: 198: noo_send_buffer[0] = (1 << 6);
+"198
 [e = *U + &U _noo_send_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> << -> 1 `i -> 6 `i `uc ]
-[; ;noolite.c: 200: if (((tx_status & (1<<1)) != 0)) {
-"200
+[; ;noolite.c: 199: if (((tx_status & (1<<1)) != 0)) {
+"199
 [e $ ! != & -> _tx_status `i << -> 1 `i -> 1 `i -> 0 `i 342  ]
 {
-[; ;noolite.c: 201: noo_send_buffer[0] |= (1<<7);
-"201
+[; ;noolite.c: 200: noo_send_buffer[0] |= (1<<7);
+"200
 [e =| *U + &U _noo_send_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> << -> 1 `i -> 7 `i `uc ]
-"202
+"201
 }
-[; ;noolite.c: 202: } else {
+[; ;noolite.c: 201: } else {
 [e $U 343  ]
 [e :U 342 ]
 {
-[; ;noolite.c: 203: noo_send_buffer[0] &= (~(1<<7));
-"203
+[; ;noolite.c: 202: noo_send_buffer[0] &= (~(1<<7));
+"202
 [e =& *U + &U _noo_send_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> ~ << -> 1 `i -> 7 `i `uc ]
-"204
+"203
 }
 [e :U 343 ]
-[; ;noolite.c: 204: };
-[; ;noolite.c: 205: noo_send_buffer[1] = noo_send_command;
-"205
+[; ;noolite.c: 203: };
+[; ;noolite.c: 204: noo_send_buffer[1] = noo_send_command;
+"204
 [e = *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux _noo_send_command ]
-[; ;noolite.c: 206: noo_send_format = noo_send_format | 4;
-"206
+[; ;noolite.c: 205: noo_send_format = noo_send_format | 4;
+"205
 [e = _noo_send_format -> | -> _noo_send_format `i -> 4 `i `uc ]
-"207
+"206
 }
 [e :U 341 ]
-[; ;noolite.c: 207: }
-[; ;noolite.c: 208: endpos = 2;
-"208
+[; ;noolite.c: 206: }
+[; ;noolite.c: 207: endpos = 2;
+"207
 [e = _endpos -> -> 2 `i `uc ]
-[; ;noolite.c: 209: temp_send = noo_send_format & 3;
-"209
+[; ;noolite.c: 208: temp_send = noo_send_format & 3;
+"208
 [e = _temp_send -> & -> _noo_send_format `i -> 3 `i `uc ]
-[; ;noolite.c: 210: if (temp_send == 1) {
-"210
+[; ;noolite.c: 209: if (temp_send == 1) {
+"209
 [e $ ! == -> _temp_send `i -> 1 `i 344  ]
 {
-[; ;noolite.c: 212: noo_send_buffer[2] = data[0];
-"212
+[; ;noolite.c: 211: noo_send_buffer[2] = data[0];
+"211
 [e = *U + &U _noo_send_buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x ]
-[; ;noolite.c: 213: endpos++;
-"213
+[; ;noolite.c: 212: endpos++;
+"212
 [e ++ _endpos -> -> 1 `i `uc ]
-"214
+"213
 }
-[; ;noolite.c: 214: } else if (temp_send == 3) {
+[; ;noolite.c: 213: } else if (temp_send == 3) {
 [e $U 345  ]
 [e :U 344 ]
 [e $ ! == -> _temp_send `i -> 3 `i 346  ]
 {
-[; ;noolite.c: 219: noo_send_buffer[2] = data[0];
-"219
+[; ;noolite.c: 218: noo_send_buffer[2] = data[0];
+"218
 [e = *U + &U _noo_send_buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x ]
-[; ;noolite.c: 220: noo_send_buffer[3] = data[1];
-"220
+[; ;noolite.c: 219: noo_send_buffer[3] = data[1];
+"219
 [e = *U + &U _noo_send_buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux *U + _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
-[; ;noolite.c: 221: noo_send_buffer[4] = data[2];
-"221
+[; ;noolite.c: 220: noo_send_buffer[4] = data[2];
+"220
 [e = *U + &U _noo_send_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux *U + _data * -> -> 2 `i `x -> -> # *U _data `i `x ]
-[; ;noolite.c: 222: noo_send_buffer[5] = data[3];
-"222
+[; ;noolite.c: 221: noo_send_buffer[5] = data[3];
+"221
 [e = *U + &U _noo_send_buffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux *U + _data * -> -> 3 `i `x -> -> # *U _data `i `x ]
-[; ;noolite.c: 223: endpos += 4;
-"223
+[; ;noolite.c: 222: endpos += 4;
+"222
 [e =+ _endpos -> -> 4 `i `uc ]
-"224
+"223
 }
 [e :U 346 ]
-"225
+"224
 [e :U 345 ]
-[; ;noolite.c: 224: }
-[; ;noolite.c: 225: if (noo_address_type != 0) {
+[; ;noolite.c: 223: }
+[; ;noolite.c: 224: if (noo_address_type != 0) {
 [e $ ! != -> _noo_address_type `i -> 0 `i 347  ]
 {
-[; ;noolite.c: 226: noo_send_format = noo_send_format | 0x10;
-"226
+[; ;noolite.c: 225: noo_send_format = noo_send_format | 0x10;
+"225
 [e = _noo_send_format -> | -> _noo_send_format `i -> 16 `i `uc ]
-[; ;noolite.c: 227: noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
-"227
+[; ;noolite.c: 226: noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
+"226
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> + _startaddress -> _chn `ul `uc ]
-[; ;noolite.c: 228: endpos++;
+[; ;noolite.c: 227: endpos++;
+"227
+[e ++ _endpos -> -> 1 `i `uc ]
+[; ;noolite.c: 228: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 8);
 "228
-[e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 229: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 8);
-"229
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> >> + _startaddress -> _chn `ul -> 8 `i `uc ]
-[; ;noolite.c: 230: endpos++;
+[; ;noolite.c: 229: endpos++;
+"229
+[e ++ _endpos -> -> 1 `i `uc ]
+[; ;noolite.c: 230: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 16);
 "230
-[e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 231: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 16);
-"231
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> >> + _startaddress -> _chn `ul -> 16 `i `uc ]
-[; ;noolite.c: 232: endpos++;
+[; ;noolite.c: 231: endpos++;
+"231
+[e ++ _endpos -> -> 1 `i `uc ]
+[; ;noolite.c: 232: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 24);
 "232
-[e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 233: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 24);
-"233
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> >> + _startaddress -> _chn `ul -> 24 `i `uc ]
-[; ;noolite.c: 234: endpos++;
-"234
+[; ;noolite.c: 233: endpos++;
+"233
 [e ++ _endpos -> -> 1 `i `uc ]
-"235
+"234
 }
-[; ;noolite.c: 235: } else {
+[; ;noolite.c: 234: } else {
 [e $U 348  ]
 [e :U 347 ]
 {
-[; ;noolite.c: 236: noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
-"236
+[; ;noolite.c: 235: noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
+"235
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> + _startaddress -> _chn `ul `uc ]
-[; ;noolite.c: 237: endpos++;
+[; ;noolite.c: 236: endpos++;
+"236
+[e ++ _endpos -> -> 1 `i `uc ]
+[; ;noolite.c: 237: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 8);
 "237
-[e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 238: noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 8);
-"238
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux -> >> + _startaddress -> _chn `ul -> 8 `i `uc ]
-[; ;noolite.c: 239: endpos++;
-"239
+[; ;noolite.c: 238: endpos++;
+"238
 [e ++ _endpos -> -> 1 `i `uc ]
-"240
+"239
 }
 [e :U 348 ]
-[; ;noolite.c: 240: }
-[; ;noolite.c: 241: noo_send_buffer[endpos] = noo_send_format;
-"241
+[; ;noolite.c: 239: }
+[; ;noolite.c: 240: noo_send_buffer[endpos] = noo_send_format;
+"240
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux _noo_send_format ]
-[; ;noolite.c: 242: endpos++;
-"242
+[; ;noolite.c: 241: endpos++;
+"241
 [e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 243: temp_send = 0;
-"243
+[; ;noolite.c: 242: temp_send = 0;
+"242
 [e = _temp_send -> -> 0 `i `uc ]
-[; ;noolite.c: 244: countbit = (unsigned char) (endpos * 8);
-"244
+[; ;noolite.c: 243: countbit = (unsigned char) (endpos * 8);
+"243
 [e = _countbit -> * -> _endpos `i -> 8 `i `uc ]
-[; ;noolite.c: 245: countsend = startpos + 1;
-"245
+[; ;noolite.c: 244: countsend = startpos + 1;
+"244
 [e = _countsend -> + -> _startpos `i -> 1 `i `uc ]
-[; ;noolite.c: 246: while (countsend < countbit) {
-"246
+[; ;noolite.c: 245: while (countsend < countbit) {
+"245
 [e $U 349  ]
 [e :U 350 ]
 {
-[; ;noolite.c: 247: if (((noo_send_buffer[(countsend / 8)] & (1<<(countsend % 8))) != 0)) {
-"247
+[; ;noolite.c: 246: if (((noo_send_buffer[(countsend / 8)] & (1<<(countsend % 8))) != 0)) {
+"246
 [e $ ! != & -> *U + &U _noo_send_buffer * -> -> / -> _countsend `i -> 8 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux `i << -> 1 `i % -> _countsend `i -> 8 `i -> 0 `i 352  ]
 {
-[; ;noolite.c: 248: temp_send = temp_send^0x01;
-"248
+[; ;noolite.c: 247: temp_send = temp_send^0x01;
+"247
 [e = _temp_send -> ^ -> _temp_send `i -> 1 `i `uc ]
-"249
+"248
 }
 [e :U 352 ]
-[; ;noolite.c: 249: }
-[; ;noolite.c: 250: tx_status &= (~(1<<4));
-"250
+[; ;noolite.c: 248: }
+[; ;noolite.c: 249: tx_status &= (~(1<<4));
+"249
 [e =& _tx_status -> ~ << -> 1 `i -> 4 `i `uc ]
-[; ;noolite.c: 251: if (((temp_send & (1<<0)) != 0)) {
-"251
+[; ;noolite.c: 250: if (((temp_send & (1<<0)) != 0)) {
+"250
 [e $ ! != & -> _temp_send `i << -> 1 `i -> 0 `i -> 0 `i 353  ]
 {
-[; ;noolite.c: 252: temp_send = temp_send^0x18;
-"252
+[; ;noolite.c: 251: temp_send = temp_send^0x18;
+"251
 [e = _temp_send -> ^ -> _temp_send `i -> 24 `i `uc ]
-[; ;noolite.c: 253: tx_status |= (1<<4);
-"253
+[; ;noolite.c: 252: tx_status |= (1<<4);
+"252
 [e =| _tx_status -> << -> 1 `i -> 4 `i `uc ]
-"254
+"253
 }
 [e :U 353 ]
-[; ;noolite.c: 254: }
-[; ;noolite.c: 255: temp_send = temp_send >> 1;
-"255
+[; ;noolite.c: 253: }
+[; ;noolite.c: 254: temp_send = temp_send >> 1;
+"254
 [e = _temp_send -> >> -> _temp_send `i -> 1 `i `uc ]
-[; ;noolite.c: 256: temp_send &= (~(1<<7));
-"256
+[; ;noolite.c: 255: temp_send &= (~(1<<7));
+"255
 [e =& _temp_send -> ~ << -> 1 `i -> 7 `i `uc ]
-[; ;noolite.c: 257: if (((tx_status & (1<<4)) != 0)) {
-"257
+[; ;noolite.c: 256: if (((tx_status & (1<<4)) != 0)) {
+"256
 [e $ ! != & -> _tx_status `i << -> 1 `i -> 4 `i -> 0 `i 354  ]
 {
-[; ;noolite.c: 258: temp_send |= (1<<7);
-"258
+[; ;noolite.c: 257: temp_send |= (1<<7);
+"257
 [e =| _temp_send -> << -> 1 `i -> 7 `i `uc ]
-"259
+"258
 }
 [e :U 354 ]
-[; ;noolite.c: 259: }
-[; ;noolite.c: 260: countsend++;
-"260
+[; ;noolite.c: 258: }
+[; ;noolite.c: 259: countsend++;
+"259
 [e ++ _countsend -> -> 1 `i `uc ]
-[; ;noolite.c: 261: asm("clrwdt");
-"261
+[; ;noolite.c: 260: asm("clrwdt");
+"260
 [; <" clrwdt ;# ">
-"262
+"261
 }
 [e :U 349 ]
-"246
+"245
 [e $ < -> _countsend `i -> _countbit `i 350  ]
 [e :U 351 ]
-[; ;noolite.c: 262: }
-[; ;noolite.c: 263: noo_send_buffer[endpos] = temp_send;
-"263
+[; ;noolite.c: 261: }
+[; ;noolite.c: 262: noo_send_buffer[endpos] = temp_send;
+"262
 [e = *U + &U _noo_send_buffer * -> _endpos `ux -> -> # *U &U _noo_send_buffer `ui `ux _temp_send ]
-[; ;noolite.c: 264: endpos++;
-"264
+[; ;noolite.c: 263: endpos++;
+"263
 [e ++ _endpos -> -> 1 `i `uc ]
-[; ;noolite.c: 265: OPTION_REG &= 0b11000000; OPTION_REG |= 0b00000011;
-"265
+[; ;noolite.c: 264: OPTION_REG &= 0b11000000; OPTION_REG |= 0b00000011;
+"264
 [e =& _OPTION_REG -> -> 192 `i `uc ]
 [e =| _OPTION_REG -> -> 3 `i `uc ]
-[; ;noolite.c: 266: temp_send = 3;
-"266
+[; ;noolite.c: 265: temp_send = 3;
+"265
 [e = _temp_send -> -> 3 `i `uc ]
-[; ;noolite.c: 267: tx_status &= (~(1<<2));
-"267
+[; ;noolite.c: 266: tx_status &= (~(1<<2));
+"266
 [e =& _tx_status -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;noolite.c: 268: tx_status &= (~(1<<3));
-"268
+[; ;noolite.c: 267: tx_status &= (~(1<<3));
+"267
 [e =& _tx_status -> ~ << -> 1 `i -> 3 `i `uc ]
-[; ;noolite.c: 269: tx_status |= (1<<0);
-"269
+[; ;noolite.c: 268: tx_status |= (1<<0);
+"268
 [e =| _tx_status -> << -> 1 `i -> 0 `i `uc ]
-[; ;noolite.c: 270: tx_status |= (1<<5);
-"270
+[; ;noolite.c: 269: tx_status |= (1<<5);
+"269
 [e =| _tx_status -> << -> 1 `i -> 5 `i `uc ]
-[; ;noolite.c: 271: countsend = 0;
-"271
+[; ;noolite.c: 270: countsend = 0;
+"270
 [e = _countsend -> -> 0 `i `uc ]
-[; ;noolite.c: 272: countbit = 38;
-"272
+[; ;noolite.c: 271: countbit = 38;
+"271
 [e = _countbit -> -> 38 `i `uc ]
-[; ;noolite.c: 273: asm("clrwdt");
-"273
+[; ;noolite.c: 272: asm("clrwdt");
+"272
 [; <" clrwdt ;# ">
-[; ;noolite.c: 274: LATCbits.LATC3 = 1;
-"274
+[; ;noolite.c: 273: LATCbits.LATC3 = 1;
+"273
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;noolite.c: 275: _delay((unsigned long)((15)*(8000000/4000.0)));
-"275
+[; ;noolite.c: 274: _delay((unsigned long)((15)*(8000000/4000.0)));
+"274
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;noolite.c: 276: LATCbits.LATC3 = 0;
-"276
+[; ;noolite.c: 275: LATCbits.LATC3 = 0;
+"275
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;noolite.c: 277: TMR0 = 196;
-"277
+[; ;noolite.c: 276: TMR0 = 196;
+"276
 [e = _TMR0 -> -> 196 `i `uc ]
-[; ;noolite.c: 278: TMR0IF = 0;
-"278
+[; ;noolite.c: 277: TMR0IF = 0;
+"277
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;noolite.c: 279: TMR0IE = 0;
-"279
+[; ;noolite.c: 278: TMR0IE = 0;
+"278
 [e = _TMR0IE -> -> 0 `i `b ]
-[; ;noolite.c: 280: while (((tx_status & (1<<3)) == 0)) {
-"280
+[; ;noolite.c: 279: while (((tx_status & (1<<3)) == 0)) {
+"279
 [e $U 355  ]
 [e :U 356 ]
 {
-[; ;noolite.c: 281: if (TMR0IF) {
-"281
+[; ;noolite.c: 280: if (TMR0IF) {
+"280
 [e $ ! _TMR0IF 358  ]
 {
-[; ;noolite.c: 282: __nop();
-"282
+[; ;noolite.c: 281: __nop();
+"281
 [e ( ___nop ..  ]
-[; ;noolite.c: 283: if (countsend < countbit) {
-"283
+[; ;noolite.c: 282: if (countsend < countbit) {
+"282
 [e $ ! < -> _countsend `i -> _countbit `i 359  ]
 {
-[; ;noolite.c: 284: if (((tx_status & (1<<2)) == 0)) {
-"284
+[; ;noolite.c: 283: if (((tx_status & (1<<2)) == 0)) {
+"283
 [e $ ! == & -> _tx_status `i << -> 1 `i -> 2 `i -> 0 `i 360  ]
 {
-[; ;noolite.c: 285: if (((tx_status & (1<<0)) == 0)) {
-"285
+[; ;noolite.c: 284: if (((tx_status & (1<<0)) == 0)) {
+"284
 [e $ ! == & -> _tx_status `i << -> 1 `i -> 0 `i -> 0 `i 361  ]
 {
-[; ;noolite.c: 286: LATAbits.LATA5 = 1;
-"286
+[; ;noolite.c: 285: LATAbits.LATA5 = 1;
+"285
 [e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
-"287
+"286
 }
-[; ;noolite.c: 287: } else {
+[; ;noolite.c: 286: } else {
 [e $U 362  ]
 [e :U 361 ]
 {
-[; ;noolite.c: 288: LATAbits.LATA5 = 0;
-"288
+[; ;noolite.c: 287: LATAbits.LATA5 = 0;
+"287
 [e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
-"289
+"288
 }
 [e :U 362 ]
-[; ;noolite.c: 289: }
-[; ;noolite.c: 290: TMR0 = 196;
-"290
+[; ;noolite.c: 288: }
+[; ;noolite.c: 289: TMR0 = 196;
+"289
 [e = _TMR0 -> -> 196 `i `uc ]
-[; ;noolite.c: 291: tx_status |= (1<<2);
-"291
+[; ;noolite.c: 290: tx_status |= (1<<2);
+"290
 [e =| _tx_status -> << -> 1 `i -> 2 `i `uc ]
-"292
+"291
 }
-[; ;noolite.c: 292: } else {
+[; ;noolite.c: 291: } else {
 [e $U 363  ]
 [e :U 360 ]
 {
-[; ;noolite.c: 293: LATA ^= (1<<5);
-"293
+[; ;noolite.c: 292: LATA ^= (1<<5);
+"292
 [e =^ _LATA -> << -> 1 `i -> 5 `i `uc ]
-[; ;noolite.c: 294: TMR0 = 196;
-"294
+[; ;noolite.c: 293: TMR0 = 196;
+"293
 [e = _TMR0 -> -> 196 `i `uc ]
-[; ;noolite.c: 295: tx_status &= (~(1<<2));
-"295
+[; ;noolite.c: 294: tx_status &= (~(1<<2));
+"294
 [e =& _tx_status -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;noolite.c: 296: countsend++;
-"296
+[; ;noolite.c: 295: countsend++;
+"295
 [e ++ _countsend -> -> 1 `i `uc ]
-"297
+"296
 }
 [e :U 363 ]
-"298
+"297
 }
-[; ;noolite.c: 297: }
-[; ;noolite.c: 298: } else {
+[; ;noolite.c: 296: }
+[; ;noolite.c: 297: } else {
 [e $U 364  ]
 [e :U 359 ]
 {
-[; ;noolite.c: 299: LATAbits.LATA5 = 0;
-"299
+[; ;noolite.c: 298: LATAbits.LATA5 = 0;
+"298
 [e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
-[; ;noolite.c: 300: OPTION_REG &= 0b11000000; OPTION_REG |= 0b00000011;
-"300
+[; ;noolite.c: 299: OPTION_REG &= 0b11000000; OPTION_REG |= 0b00000011;
+"299
 [e =& _OPTION_REG -> -> 192 `i `uc ]
 [e =| _OPTION_REG -> -> 3 `i `uc ]
-[; ;noolite.c: 301: TMR0 = 67;
-"301
+[; ;noolite.c: 300: TMR0 = 67;
+"300
 [e = _TMR0 -> -> 67 `i `uc ]
-[; ;noolite.c: 302: asm("clrwdt");
-"302
+[; ;noolite.c: 301: asm("clrwdt");
+"301
 [; <" clrwdt ;# ">
-[; ;noolite.c: 303: tx_status &= (~(1<<5));
-"303
+[; ;noolite.c: 302: tx_status &= (~(1<<5));
+"302
 [e =& _tx_status -> ~ << -> 1 `i -> 5 `i `uc ]
-[; ;noolite.c: 304: countsend = startpos;
-"304
+[; ;noolite.c: 303: countsend = startpos;
+"303
 [e = _countsend _startpos ]
-[; ;noolite.c: 305: countbit = endpos * 8;
-"305
+[; ;noolite.c: 304: countbit = endpos * 8;
+"304
 [e = _countbit -> * -> _endpos `i -> 8 `i `uc ]
-[; ;noolite.c: 306: if (temp_send != 0) {
-"306
+[; ;noolite.c: 305: if (temp_send != 0) {
+"305
 [e $ ! != -> _temp_send `i -> 0 `i 365  ]
 {
-[; ;noolite.c: 307: temp_send--;
-"307
+[; ;noolite.c: 306: temp_send--;
+"306
 [e -- _temp_send -> -> 1 `i `uc ]
-"308
+"307
 }
-[; ;noolite.c: 308: } else {
+[; ;noolite.c: 307: } else {
 [e $U 366  ]
 [e :U 365 ]
 {
-[; ;noolite.c: 309: TMR0 = 0;
-"309
+[; ;noolite.c: 308: TMR0 = 0;
+"308
 [e = _TMR0 -> -> 0 `i `uc ]
-[; ;noolite.c: 310: tx_status |= (1<<3);
-"310
+[; ;noolite.c: 309: tx_status |= (1<<3);
+"309
 [e =| _tx_status -> << -> 1 `i -> 3 `i `uc ]
-[; ;noolite.c: 311: break;
-"311
+[; ;noolite.c: 310: break;
+"310
 [e $U 357  ]
-"312
+"311
 }
 [e :U 366 ]
-"313
+"312
 }
 [e :U 364 ]
+[; ;noolite.c: 311: }
 [; ;noolite.c: 312: }
-[; ;noolite.c: 313: }
-[; ;noolite.c: 314: if (((tx_status & (1<<5)) == 0)) {
-"314
+[; ;noolite.c: 313: if (((tx_status & (1<<5)) == 0)) {
+"313
 [e $ ! == & -> _tx_status `i << -> 1 `i -> 5 `i -> 0 `i 367  ]
 {
-[; ;noolite.c: 315: if (((noo_send_buffer[(countsend / 8)] & (1<<(countsend % 8))) != 0)) {
-"315
+[; ;noolite.c: 314: if (((noo_send_buffer[(countsend / 8)] & (1<<(countsend % 8))) != 0)) {
+"314
 [e $ ! != & -> *U + &U _noo_send_buffer * -> -> / -> _countsend `i -> 8 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux `i << -> 1 `i % -> _countsend `i -> 8 `i -> 0 `i 368  ]
 {
-[; ;noolite.c: 316: tx_status |= (1<<0);
-"316
+[; ;noolite.c: 315: tx_status |= (1<<0);
+"315
 [e =| _tx_status -> << -> 1 `i -> 0 `i `uc ]
-"317
+"316
 }
-[; ;noolite.c: 317: } else {
+[; ;noolite.c: 316: } else {
 [e $U 369  ]
 [e :U 368 ]
 {
-[; ;noolite.c: 318: tx_status &= (~(1<<0));
-"318
+[; ;noolite.c: 317: tx_status &= (~(1<<0));
+"317
 [e =& _tx_status -> ~ << -> 1 `i -> 0 `i `uc ]
-"319
+"318
 }
 [e :U 369 ]
-"320
+"319
 }
 [e :U 367 ]
+[; ;noolite.c: 318: }
 [; ;noolite.c: 319: }
-[; ;noolite.c: 320: }
-[; ;noolite.c: 321: TMR0IF = 0;
-"321
+[; ;noolite.c: 320: TMR0IF = 0;
+"320
 [e = _TMR0IF -> -> 0 `i `b ]
-"322
+"321
 }
 [e :U 358 ]
-"323
+"322
 }
 [e :U 355 ]
-"280
+"279
 [e $ == & -> _tx_status `i << -> 1 `i -> 3 `i -> 0 `i 356  ]
 [e :U 357 ]
+[; ;noolite.c: 321: }
 [; ;noolite.c: 322: }
-[; ;noolite.c: 323: }
-[; ;noolite.c: 324: TMR0IF = 0;
-"324
+[; ;noolite.c: 323: TMR0IF = 0;
+"323
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;noolite.c: 325: LATAbits.LATA5 = 0;
-"325
+[; ;noolite.c: 324: LATAbits.LATA5 = 0;
+"324
 [e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
-[; ;noolite.c: 327: }
-"327
+[; ;noolite.c: 326: }
+"326
 [e :UE 337 ]
 }
