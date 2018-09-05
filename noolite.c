@@ -187,7 +187,7 @@ void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format
     //проверка типа команды по значению (без учета формата)
     if (noo_send_command < 16) {//4 битные команды
         startpos = 10; //бит, с которого начинать передавать
-        noo_send_buffer[1] = (noo_send_command << 4) | (1 << 2); //стартовый бит и команда
+        noo_send_buffer[1] = (uint8_t) ((noo_send_command << 4) | (1 << 2)); //стартовый бит и команда
         if (toglbit) {//бит togl
             setbit(noo_send_buffer[1], 3);
         } else {
@@ -202,10 +202,10 @@ void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format
             clearbit(noo_send_buffer[0], 7);
         };
         noo_send_buffer[1] = noo_send_command; //целая 8 битная команда
-        noo_send_format = noo_send_format | 4;
+        noo_send_format = (uint8_t) (noo_send_format | 4);
     }
     endpos = 2; //начало остальных данных
-    temp_send = noo_send_format & 3;
+    temp_send = (uint8_t) (noo_send_format & 3);
     if (temp_send == 1) {//1 байт данных
         //noo_send_buffer[2] = noo_send_data0;
         noo_send_buffer[2] = data[0];
@@ -222,7 +222,7 @@ void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format
         endpos += 4;
     }
     if (noo_address_type != 0) {//32 битный адрес
-        noo_send_format = noo_send_format | 0x10;
+        noo_send_format = (uint8_t) (noo_send_format | 0x10);
         noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
         endpos++;
         noo_send_buffer[endpos] = (unsigned char) ((startaddress + chn) >> 8);
@@ -241,17 +241,17 @@ void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format
     endpos++;
     temp_send = 0; //crc byte
     countbit = (unsigned char) (endpos * 8);
-    countsend = startpos + 1;
+    countsend = (uint8_t) (startpos + 1);
     while (countsend < countbit) {
         if (testbit(noo_send_buffer[(countsend / 8)], (countsend % 8))) {
-            temp_send = temp_send^0x01;
+            temp_send = (uint8_t) (temp_send^0x01);
         }
         tmpCRC_0;
         if (testbit(temp_send, 0)) {
-            temp_send = temp_send^0x18;
+            temp_send = (uint8_t) (temp_send^0x18);
             tmpCRC_1;
         }
-        temp_send = temp_send >> 1;
+        temp_send = (uint8_t) (temp_send >> 1);
         clearbit(temp_send, 7);
         if (tmpCRC) {
             setbit(temp_send, 7);
@@ -301,7 +301,7 @@ void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format
                 SEND_CLRWDT;
                 send_pre_0; //снять флаг передачи преамбулы
                 countsend = startpos;
-                countbit = endpos * 8;
+                countbit = (uint8_t) (endpos * 8);
                 if (temp_send != 0) {//передача данных
                     temp_send--;
                 } else {//передача завершена

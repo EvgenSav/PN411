@@ -4,31 +4,21 @@
  *
  * Created on 31 августа 2017 г., 12:27
  */
-//команды
-#define CMD_OFF                  0 ///используетс€
+//comands
+#define CMD_OFF                  0 
 #define CMD_Bright_Down          1 
-#define CMD_ON                   2 ///используетс€
+#define CMD_ON                   2 
 #define CMD_Bright_Up            3 
 #define CMD_Switch               4 
 #define CMD_Bright_Back          5 
-#define CMD_Set_Brightness       6 
 #define CMD_Load_Preset          7 
 #define CMD_Save_Preset          8 
-#define CMD_Unbind               9 ///используетс€
+#define CMD_Unbind               9 
 #define CMD_Stop_Reg            10 
-#define CMD_Bright_Step_Down    11
-#define CMD_Bright_Step_Up      12
-#define CMD_Bright_Reg          13 
-#define CMD_Reserved            14
-#define CMD_Bind                15 ///используетс€, расширение 8 бит - тип датчика 1 - температура/2 - влажность
-#define CMD_Roll_Color          16 
-#define CMD_Switch_Color        17 
-#define CMD_Switch_Mode         18 
-#define CMD_Speed_Mode_Back     19
-#define CMD_Battery_Low         20 //используетс€, передаетс€ 4 раза в сутки
-#define CMD_Send_Temp_Humi      21 //ѕередача температуры/влажности - расширение 32 бита, 3-не используетс€, 2 - влажность,  1.0 - температура/параметры датчика
-#define CMD_Test_Result         22 //ѕередача тестовой информации
-#define CMD_Temporary_On        25 //¬ключить свет на заданное врем€. ¬рем€ в 5-секундных тактах передаетс€ в расширении 
+#define CMD_Bind                15 
+#define CMD_Battery_Low         20
+#define CMD_Test_Result         22 
+
 
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection Bits (INTOSC oscillator: I/O function on CLKIN pin)
@@ -58,9 +48,8 @@
 #include <stdint.h>
 #define _XTAL_FREQ 8000000
 
-
 //CONFIG-------------------------------------------------------------------------------------------------------------------
-#define  AlarmBatteryVoltage 2.5    //значение напр€жени€ батареи ниже которого происходит сигнализаци€
+#define  AlarmBatteryVoltage 2.5  //Volts
 const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / AlarmBatteryVoltage * 1023); //419
 //--------------------------------------------------------------------------------------------------------------------------
 
@@ -76,13 +65,12 @@ enum {
 
 
 //modes of operation
+//Rf--------------------------------------------------------------------------------
+extern unsigned char tx_status; //transmit status byte
+unsigned char noo_send_data[4] = {0, 0, 0, 0}; //data to transmit 4 bytes (d0,d1,d2,d3)
 
-//–адиоканал--------------------------------------------------------------------------------
-extern unsigned char tx_status; //переменна€ статуса дл€ передачи
-unsigned char noo_send_data[4] = {0, 0, 0, 0}; //массив с передаваемыми данными по – 
 
-uint8_t BattLowSent = 0; //команда разр€да батареи отправлена
-uint8_t BattLow = 0;
+
 
 uint8_t LedPulseTick_100ms = 0;
 
@@ -128,58 +116,11 @@ void Init_IO() {
     LATC = 0x00;
 }
 
-void Init_ADC() {
-    FVRCON = 0;
-    //ADCON0bits.CHS = 0b11101;     //ADC channel is temp. sensor
-    ADCON1bits.ADFM = 1; //0;            //левое выравнивание(читаем ADRESH)
-    ADCON1bits.ADCS = 0b001; //000;
-    //ADCS=0b000;    //Fcy = Fosc/2 = 2us    
-    //ADCS=0b110;    //Fcy = Fosc/64
-    ADCON1bits.ADPREF = 0b00;
-
-    ADCON0bits.ADON = 0; //disable ADC
-}
 
 
-
-//ADC channels
-#define Battery         31
-
-unsigned int GetAdcValue(uint8_t channel) {
-    ADCON0bits.CHS = (uint8_t) (channel & 0x1F); //установка канала ANx дл€ измерени€ 
-
-    if (channel == Battery) {
-        FVRCONbits.FVREN = 1;
-        FVRCONbits.ADFVR = 0b01; //ADC = 1.024 / Vdd
-    }
-
-    ADCON0bits.ADON = 1;
-    __delay_us(55);
-
-    ADCON0bits.GO_nDONE = 1; //start conversion
-    while (ADCON0bits.GO_nDONE) {
-    } //wait for conv. complete
-
-    //10 bit res
-    unsigned int result;
-    result = (uint16_t) ((ADRESH << 8) | ADRESL);
-
-    //8 bit res
-    //unsigned char result;
-    //result = ADRESH;
-
-    ADCON0bits.ADON = 0;
-    FVRCON = 0;
-    PIR1bits.ADIF = 0;
-
-    return result;
-}
-
-
-uint8_t mode = 0;
 
 uint8_t tick3_100ms = 0;
-uint8_t BattLowTransmitCount = 0;
+
 
 enum {
     A_Pressed = 0x02,
@@ -228,7 +169,7 @@ KeyState Keys[5];
 
 uint8_t SkipHandling = 0;
 
-uint8_t Init_TypeFromFlash() {
+ uint8_t Init_TypeFromFlash() {
     if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
         return (Type[0] & 0xFF);
     } else {
@@ -264,20 +205,7 @@ uint8_t Init_TxStatusFromFlash() {
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
     if (key->State == 0) {
         if (key->Tick100ms < 10) { //key pressed SHORT
-            switch (cmd) {
-                case CMD_OFF:
-                    noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
-                    break;
-                case CMD_ON:
-                    noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
-                    break;
-                case CMD_Switch:
-                    noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                    break;
-                default:
-                    noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
-                    break;
-            }
+            noolite_send(chn, cmd, 0, &noo_send_data[0]);
         } else { //key pressed LONG
             noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
             __delay_ms(15);
@@ -289,19 +217,28 @@ void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
     }
 }
 
-uint16_t battery_value = 0;
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
+    if (key->State != 0) {
+        if (key->Tick100ms > ticksToTrigger) { //долгое нажатие
+            if (key->FirstCmdSent == 0) { //передача начальной команды
+                noolite_send(chn, cmd, 0, &noo_send_data[0]);
+                key->FirstCmdSent = 1;
+            }
+        }
+        key->Tick100ms++;
+    } else {
+        key->Tick100ms = 0;
+    }
+}
 
 void main() {
     Init_IO();
     Init_CLK();
-
-    Init_ADC();
     RF_Init();
 
     VddLatch = 1;
     DevType = Init_TypeFromFlash();
     tx_status = Init_TxStatusFromFlash();
-
 
     INTCONbits.PEIE = 1; //enable peripheral interrupts
     INTCONbits.GIE = 1; //enable interrupt
@@ -371,7 +308,7 @@ void main() {
                 SkipHandling--;
             }
         } else {
-            if ((DevMode & BIND_ACTIVE) != 0) { //–ежим прив€зки---------------------------------
+            if ((DevMode & BIND_ACTIVE) != 0) { 
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
@@ -381,7 +318,7 @@ void main() {
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
                 }
-            } else if ((DevMode & UNBIND_ACTIVE) != 0) {
+            } else if ((DevMode & UNBIND_ACTIVE) != 0) { 
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
@@ -396,16 +333,10 @@ void main() {
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
-                            noo_send_data[0] = Type[0] >> 8;
-                            noo_send_data[1] = Type[0];
-                            noo_send_data[2] = DevType;
-                            noolite_send(chn, CMD_Test_Result, 7, &noo_send_data[0]);
-                            __delay_ms(500);
-                            CLRWDT();
                             LED = ON;
-                            FlashEraseRow(0x7C0);
-                            CLRWDT();
                             __delay_ms(500);
+                            CLRWDT();
+                            FlashEraseRow(0x7C0);
                             CLRWDT();
                             FlashWrite(0x7C0, chn);
                             FlashWrite(0x7C1, 0x5A);
@@ -413,55 +344,22 @@ void main() {
                             DevType = Init_TypeFromFlash();
                             DevMode &= ~MODE_CHANGE_ACTIVE;
                             LED = OFF;
-                            noo_send_data[0] = Type[0] >> 8;
-                            noo_send_data[1] = Type[0];
-                            noo_send_data[2] = DevType;
-                            noolite_send(chn, CMD_Test_Result, 7, &noo_send_data[0]);
                         }
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
                 }
-            } else { //нормальный режим---------------------------------------------
-                //KEYS ACTION----------
+            } else { //key handling
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         switch (DevType) {
                             case 0:
                                 KeyOffHandler(&Keys[chn], chn, CMD_Switch);
-                                //                                if (Keys[chn].State == 0) {
-                                //                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                //                                        noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                //                                    } else { //key pressed LONG
-                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                //                                        __delay_ms(15);
-                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                //                                        __delay_ms(15);
-                                //                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                //                                        Keys[chn].FirstCmdSent = 0;
-                                //                                    }
-                                //                                }
                                 break;
                             case 1:
-                                if (Keys[chn].State == 0) {
-                                    if ((chn == 0) || (chn == 2)) {
-                                            KeyOffHandler(&Keys[chn], chn, CMD_OFF);
-                                        } else {
-                                            KeyOffHandler(&Keys[chn], chn, CMD_ON);
-                                        }
-//                                    if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-//                                        if ((chn == 0) || (chn == 2)) {
-//                                            noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
-//                                        } else {
-//                                            noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
-//                                        }
-//                                    } else { //key pressed LONG
-//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-//                                        __delay_ms(15);
-//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-//                                        __delay_ms(15);
-//                                        noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-//                                        Keys[chn].FirstCmdSent = 0;
-//                                    }
+                                if ((chn == 0) || (chn == 2)) {
+                                    KeyOffHandler(&Keys[chn], chn, CMD_OFF);
+                                } else {
+                                    KeyOffHandler(&Keys[chn], chn, CMD_ON);
                                 }
                                 break;
                             case 2:
@@ -475,18 +373,6 @@ void main() {
                                     }
                                 } else {
                                     KeyOffHandler(&Keys[chn], chn, CMD_Switch);
-                                    //                                    if (Keys[chn].State == 0) {
-                                    //                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                    //                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                    //                                        } else { //key pressed LONG
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            __delay_ms(15);
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            __delay_ms(15);
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            Keys[chn].FirstCmdSent = 0;
-                                    //                                        }
-                                    //                                    }
                                 }
                                 break;
                             case 3:
@@ -498,95 +384,33 @@ void main() {
                                     }
                                 } else {
                                     KeyOffHandler(&Keys[chn], chn, CMD_Switch);
-                                    //                                    if (Keys[chn].State == 0) {
-                                    //                                        if (Keys[chn].Tick100ms < 10) { //key pressed SHORT
-                                    //                                            noolite_send(chn, CMD_Switch, 0, &noo_send_data[0]);
-                                    //                                        } else { //key pressed LONG
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            __delay_ms(15);
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            __delay_ms(15);
-                                    //                                            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-                                    //                                            Keys[chn].FirstCmdSent = 0;
-                                    //                                        }
-                                    //                                    }
                                 }
                                 break;
                         }
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
-                    //передача начальной команды при длительном удержании
+                    //sending 1st comand if key pressed long
                     switch (DevType) {
                         case 0:
-                            if (Keys[chn].State != 0) {
-                                if (Keys[chn].Tick100ms > 9) { //долгое нажатие
-                                    if (Keys[chn].FirstCmdSent == 0) { //передача начальной команды
-                                        noolite_send(chn, CMD_Bright_Back, 0, &noo_send_data[0]);
-                                        Keys[chn].FirstCmdSent = 1;
-                                    }
-                                }
-                                Keys[chn].Tick100ms++;
-                            } else {
-                                Keys[chn].Tick100ms = 0;
-                            }
+                            KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
                             break;
                         case 1:
-                            if (Keys[chn].State != 0) {
-                                if (Keys[chn].Tick100ms > 9) { //долгое нажатие
-                                    if (Keys[chn].FirstCmdSent == 0) { //передача начальной команды
-                                        if (chn == 0 || chn == 2) {
-                                            noolite_send(chn, CMD_Bright_Down, 0, &noo_send_data[0]);
-                                        } else {
-                                            noolite_send(chn, CMD_Bright_Up, 0, &noo_send_data[0]);
-                                        }
-                                        Keys[chn].FirstCmdSent = 1;
-                                    }
-                                }
-                                Keys[chn].Tick100ms++;
+                            if (chn == 0 || chn == 2) {
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9);
                             } else {
-                                Keys[chn].Tick100ms = 0;
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9);
                             }
                             break;
                         case 2:
                             if (chn < 2) {
-                                if (Keys[chn].State != 0) {
-                                    if (Keys[chn].Tick100ms > 9) { //долгое нажатие
-                                        if (Keys[chn].FirstCmdSent == 0) { //передача начальной команды
-                                            noolite_send(chn, CMD_Bright_Back, 0, &noo_send_data[0]);
-                                            Keys[chn].FirstCmdSent = 1;
-                                        }
-                                    }
-                                    Keys[chn].Tick100ms++;
-                                } else {
-                                    Keys[chn].Tick100ms = 0;
-                                }
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
                             } else {
-                                if (Keys[chn].State != 0) {
-                                    if (Keys[chn].Tick100ms > 49) { //долгое нажатие
-                                        if (Keys[chn].FirstCmdSent == 0) { //передача начальной команды
-                                            noolite_send(chn, CMD_Save_Preset, 0, &noo_send_data[0]);
-                                            Keys[chn].FirstCmdSent = 1;
-                                        }
-                                    }
-                                    Keys[chn].Tick100ms++;
-                                } else {
-                                    Keys[chn].Tick100ms = 0;
-                                }
+                                KeyLongHandler(&Keys[chn], chn, CMD_Save_Preset, 49);
                             }
                             break;
                         case 3:
                             if (chn < 2) {
-                                if (Keys[chn].State != 0) {
-                                    if (Keys[chn].Tick100ms > 9) { //долгое нажатие
-                                        if (Keys[chn].FirstCmdSent == 0) { //передача начальной команды
-                                            noolite_send(chn, CMD_Bright_Back, 0, &noo_send_data[0]);
-                                            Keys[chn].FirstCmdSent = 1;
-                                        }
-                                    }
-                                    Keys[chn].Tick100ms++;
-                                } else {
-                                    Keys[chn].Tick100ms = 0;
-                                }
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
                             }
                             break;
                     }
@@ -595,26 +419,7 @@ void main() {
             }
         }
 
-        //        if (tick2_100ms++ > 25) {
-        //            
-        //            tick2_100ms = 0;
-        //        }
-
-
-
-
-
-        //передача команды разр€да батареи------------------
-        if (BattLow && !BattLowSent) {
-            for (uint8_t chn = 0; chn < 4; chn++) {
-                noolite_send(chn, CMD_Battery_Low, 4, &noo_send_data[0]);
-                CLRWDT();
-                __delay_ms(50);
-                CLRWDT();
-            }
-            BattLowSent = 1;
-        }
-        //переход в Sleep на ~100мс
+        
         if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
             for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
                 uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
@@ -632,19 +437,9 @@ void main() {
                     }
                 }
             }
-            //            noo_send_data[0] = TxStatus[0];
-            //            noo_send_data[1] = TxStatus[1];
-            //            noo_send_data[2] = TxStatus[2];
-            //            noo_send_data[3] = TxStatus[3];
-            //            noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
-            //            noo_send_data[0] = TxStatus[4];
-            //            noo_send_data[1] = TxStatus[5];
-            //            noo_send_data[2] = TxStatus[6];
-            //            noo_send_data[3] = TxStatus[7];
-            //            noolite_send(0, CMD_Test_Result, 7, &noo_send_data[0]);
             VddLatch = 0;
             __delay_ms(100);
-        } else {
+        } else {//go to Sleep for ~100ms
             WDTCONbits.WDTPS = 0b00110; //1:2048 (Interval 64 ms nominal)
             NOP();
             SLEEP();

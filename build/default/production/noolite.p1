@@ -2968,7 +2968,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 189: startpos = 10;
 "189
 [e = _startpos -> -> 10 `i `uc ]
-[; ;noolite.c: 190: noo_send_buffer[1] = (noo_send_command << 4) | (1 << 2);
+[; ;noolite.c: 190: noo_send_buffer[1] = (uint8_t) ((noo_send_command << 4) | (1 << 2));
 "190
 [e = *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux -> | << -> _noo_send_command `i -> 4 `i << -> 1 `i -> 2 `i `uc ]
 [; ;noolite.c: 191: if (((tx_status & (1<<1)) != 0)) {
@@ -3026,7 +3026,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 204: noo_send_buffer[1] = noo_send_command;
 "204
 [e = *U + &U _noo_send_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux _noo_send_command ]
-[; ;noolite.c: 205: noo_send_format = noo_send_format | 4;
+[; ;noolite.c: 205: noo_send_format = (uint8_t) (noo_send_format | 4);
 "205
 [e = _noo_send_format -> | -> _noo_send_format `i -> 4 `i `uc ]
 "206
@@ -3036,7 +3036,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 207: endpos = 2;
 "207
 [e = _endpos -> -> 2 `i `uc ]
-[; ;noolite.c: 208: temp_send = noo_send_format & 3;
+[; ;noolite.c: 208: temp_send = (uint8_t) (noo_send_format & 3);
 "208
 [e = _temp_send -> & -> _noo_send_format `i -> 3 `i `uc ]
 [; ;noolite.c: 209: if (temp_send == 1) {
@@ -3080,7 +3080,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 224: if (noo_address_type != 0) {
 [e $ ! != -> _noo_address_type `i -> 0 `i 347  ]
 {
-[; ;noolite.c: 225: noo_send_format = noo_send_format | 0x10;
+[; ;noolite.c: 225: noo_send_format = (uint8_t) (noo_send_format | 0x10);
 "225
 [e = _noo_send_format -> | -> _noo_send_format `i -> 16 `i `uc ]
 [; ;noolite.c: 226: noo_send_buffer[endpos] = (unsigned char) (startaddress + chn);
@@ -3141,7 +3141,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 243: countbit = (unsigned char) (endpos * 8);
 "243
 [e = _countbit -> * -> _endpos `i -> 8 `i `uc ]
-[; ;noolite.c: 244: countsend = startpos + 1;
+[; ;noolite.c: 244: countsend = (uint8_t) (startpos + 1);
 "244
 [e = _countsend -> + -> _startpos `i -> 1 `i `uc ]
 [; ;noolite.c: 245: while (countsend < countbit) {
@@ -3153,7 +3153,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "246
 [e $ ! != & -> *U + &U _noo_send_buffer * -> -> / -> _countsend `i -> 8 `i `ui `ux -> -> # *U &U _noo_send_buffer `ui `ux `i << -> 1 `i % -> _countsend `i -> 8 `i -> 0 `i 352  ]
 {
-[; ;noolite.c: 247: temp_send = temp_send^0x01;
+[; ;noolite.c: 247: temp_send = (uint8_t) (temp_send^0x01);
 "247
 [e = _temp_send -> ^ -> _temp_send `i -> 1 `i `uc ]
 "248
@@ -3167,7 +3167,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "250
 [e $ ! != & -> _temp_send `i << -> 1 `i -> 0 `i -> 0 `i 353  ]
 {
-[; ;noolite.c: 251: temp_send = temp_send^0x18;
+[; ;noolite.c: 251: temp_send = (uint8_t) (temp_send^0x18);
 "251
 [e = _temp_send -> ^ -> _temp_send `i -> 24 `i `uc ]
 [; ;noolite.c: 252: tx_status |= (1<<4);
@@ -3177,7 +3177,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 353 ]
 [; ;noolite.c: 253: }
-[; ;noolite.c: 254: temp_send = temp_send >> 1;
+[; ;noolite.c: 254: temp_send = (uint8_t) (temp_send >> 1);
 "254
 [e = _temp_send -> >> -> _temp_send `i -> 1 `i `uc ]
 [; ;noolite.c: 255: temp_send &= (~(1<<7));
@@ -3352,7 +3352,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;noolite.c: 303: countsend = startpos;
 "303
 [e = _countsend _startpos ]
-[; ;noolite.c: 304: countbit = endpos * 8;
+[; ;noolite.c: 304: countbit = (uint8_t) (endpos * 8);
 "304
 [e = _countbit -> * -> _endpos `i -> 8 `i `uc ]
 [; ;noolite.c: 305: if (temp_send != 0) {
