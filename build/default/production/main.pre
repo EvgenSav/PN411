@@ -4077,6 +4077,20 @@ key->FirstCmdSent = 0;
 }
 }
 
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
+if (key->State != 0) {
+if (key->Tick100ms > ticksToTrigger) {
+if (key->FirstCmdSent == 0) {
+noolite_send(chn, cmd, 0, &noo_send_data[0]);
+key->FirstCmdSent = 1;
+}
+}
+key->Tick100ms++;
+} else {
+key->Tick100ms = 0;
+}
+}
+
 uint16_t battery_value = 0;
 
 void main() {
@@ -4216,8 +4230,6 @@ if (Keys[chn].State != Keys[chn].StateTemp) {
 switch (DevType) {
 case 0:
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 443
 break;
 case 1:
 if (Keys[chn].State == 0) {
@@ -4226,8 +4238,6 @@ KeyOffHandler(&Keys[chn], chn, 0);
 } else {
 KeyOffHandler(&Keys[chn], chn, 2);
 }
-
-# 465
 }
 break;
 case 2:
@@ -4241,8 +4251,6 @@ noolite_send(chn, 7, 0, &noo_send_data[0]);
 }
 } else {
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 490
 }
 break;
 case 3:
@@ -4254,8 +4262,6 @@ noolite_send(chn, 0, 0, &noo_send_data[0]);
 }
 } else {
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 513
 }
 break;
 }
@@ -4264,75 +4270,25 @@ Keys[chn].StateTemp = Keys[chn].State;
 
 switch (DevType) {
 case 0:
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 break;
 case 1:
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
 if (chn == 0 || chn == 2) {
-noolite_send(chn, 1, 0, &noo_send_data[0]);
+KeyLongHandler(&Keys[chn], chn, 1, 9);
 } else {
-noolite_send(chn, 3, 0, &noo_send_data[0]);
-}
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
+KeyLongHandler(&Keys[chn], chn, 3, 9);
 }
 break;
 case 2:
 if (chn < 2) {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 } else {
-Keys[chn].Tick100ms = 0;
-}
-} else {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 49) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 8, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 8, 49);
 }
 break;
 case 3:
 if (chn < 2) {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 }
 break;
 }
@@ -4341,7 +4297,6 @@ break;
 }
 }
 
-# 608
 if (BattLow && !BattLowSent) {
 for (uint8_t chn = 0; chn < 4; chn++) {
 noolite_send(chn, 20, 4, &noo_send_data[0]);
@@ -4370,7 +4325,7 @@ FlashWrite(0x7D1, 0x5A);
 }
 }
 
-# 645
+# 549
 LATCbits.LATC5 = 0;
 _delay((unsigned long)((100)*(8000000/4000.0)));
 } else {

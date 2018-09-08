@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\PN411.X.production.hex">
+  <executable name="dist/default/production\PN411.production.hex">
     <memory name="program">
       <units>words</units>
       <length>2048</length>
-      <used>1819</used>
-      <free>229</free>
+      <used>1815</used>
+      <free>233</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

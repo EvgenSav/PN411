@@ -1,0 +1,954 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production\PN411.production.obj
+cinit CODE 0 7E0 7E0 8 2
+text1 CODE 0 25F 25F 8B 2
+text2 CODE 0 179 179 5F 2
+text3 CODE 0 14C 14C 2D 2
+text4 CODE 0 2EA 2EA 19A 2
+text5 CODE 0 138 138 14 2
+text6 CODE 0 1D8 1D8 87 2
+text7 CODE 0 115 115 10 2
+text8 CODE 0 108 108 D 2
+text9 CODE 0 EF EF C 2
+text10 CODE 0 125 125 13 2
+text11 CODE 0 FB FB D 2
+text12 CODE 0 E9 E9 6 2
+_system_settings_text CODE 0 7EE 7EE 11 2
+_Type_text CODE 0 7C0 7C0 10 2
+maintext CODE 0 484 484 33C 2
+cstackCOMMON COMMON 1 70 70 E 1
+cstackBANK0 BANK0 1 44 44 1F 1
+_TxStatus_text CODE 0 7D0 7D0 10 2
+bssBANK0 BANK0 1 20 20 24 1
+clrtext CODE 0 7E8 7E8 6 2
+$D:\TEMP\s1e0.obj
+idloc IDLOC 0 8000 8000 4 2
+reset_vec CODE 0 0 0 1 2
+end_init CODE 0 1 1 1 2
+config CONFIG 0 8007 8007 2 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 63-6F 1
+RAM A0-BF 1
+BANK0 63-6F 1
+BANK1 A0-BF 1
+CONST 2-E8 2
+CONST 7FF-7FF 2
+ENTRY 2-E8 2
+ENTRY 7FF-7FF 2
+SFR10 500-56F 1
+SFR11 580-5EF 1
+SFR12 600-66F 1
+SFR13 680-6EF 1
+SFR14 700-76F 1
+SFR15 780-7EF 1
+SFR16 800-86F 1
+SFR17 880-8EF 1
+SFR18 900-96F 1
+SFR19 980-9EF 1
+SFR20 A00-A6F 1
+SFR21 A80-AEF 1
+SFR22 B00-B6F 1
+SFR23 B80-BEF 1
+SFR24 C00-C6F 1
+SFR25 C80-CEF 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+STACK 2043-206F 1
+CODE 2-E8 2
+CODE 7FF-7FF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-16F 1
+SFR3 180-1EF 1
+SFR4 200-26F 1
+SFR5 280-2EF 1
+SFR6 300-36F 1
+SFR7 380-3EF 1
+SFR8 400-46F 1
+SFR9 480-4EF 1
+BIGRAM 2000-206F 1
+STRCODE 2-E8 2
+STRCODE 7FF-7FF 2
+STRING 2-E8 2
+STRING 7FF-7FF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\PN411.production.obj
+7E0 cinit CODE >1110:D:\TEMP\s1e0.
+7E0 cinit CODE >1113:D:\TEMP\s1e0.
+7E0 cinit CODE >1167:D:\TEMP\s1e0.
+7E1 cinit CODE >1168:D:\TEMP\s1e0.
+7E2 cinit CODE >1169:D:\TEMP\s1e0.
+7E3 cinit CODE >1170:D:\TEMP\s1e0.
+7E4 cinit CODE >1171:D:\TEMP\s1e0.
+7E5 cinit CODE >1172:D:\TEMP\s1e0.
+7E6 cinit CODE >1178:D:\TEMP\s1e0.
+7E6 cinit CODE >1180:D:\TEMP\s1e0.
+7E7 cinit CODE >1181:D:\TEMP\s1e0.
+E9 text12 CODE >23:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+E9 text12 CODE >24:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+EB text12 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+ED text12 CODE >26:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+EE text12 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FB text11 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FB text11 CODE >30:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FD text11 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FF text11 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+101 text11 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+102 text11 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+103 text11 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+104 text11 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+105 text11 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+106 text11 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+107 text11 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+125 text10 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+125 text10 CODE >42:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+127 text10 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+129 text10 CODE >44:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+12B text10 CODE >45:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+12C text10 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+12D text10 CODE >47:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+12E text10 CODE >48:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+130 text10 CODE >49:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+132 text10 CODE >50:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+133 text10 CODE >51:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+134 text10 CODE >52:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+135 text10 CODE >53:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+136 text10 CODE >54:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+137 text10 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+EF text9 CODE >131:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+EF text9 CODE >132:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+F1 text9 CODE >134:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+F3 text9 CODE >135:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+F7 text9 CODE >138:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+F9 text9 CODE >140:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+FA text9 CODE >141:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+108 text8 CODE >89:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+108 text8 CODE >92:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+10D text8 CODE >108:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+111 text8 CODE >115:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+112 text8 CODE >116:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+112 text8 CODE >117:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+115 text7 CODE >120:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+115 text7 CODE >121:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+117 text7 CODE >122:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+119 text7 CODE >123:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+11B text7 CODE >124:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+11E text7 CODE >126:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+120 text7 CODE >127:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+122 text7 CODE >128:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+124 text7 CODE >129:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1D8 text6 CODE >239:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1D8 text6 CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1D9 text6 CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1EC text6 CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1EF text6 CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+215 text6 CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+222 text6 CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+226 text6 CODE >253:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+24C text6 CODE >254:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+259 text6 CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+138 text5 CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+138 text5 CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+14A text5 CODE >233:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+2EA text4 CODE >174:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2EC text4 CODE >181:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2ED text4 CODE >185:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2F0 text4 CODE >188:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2F4 text4 CODE >189:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2F6 text4 CODE >190:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2FA text4 CODE >191:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2FC text4 CODE >192:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2FD text4 CODE >193:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2FE text4 CODE >194:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+300 text4 CODE >197:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+302 text4 CODE >198:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+304 text4 CODE >199:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+306 text4 CODE >200:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+307 text4 CODE >201:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+308 text4 CODE >202:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+309 text4 CODE >204:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+30B text4 CODE >205:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+30C text4 CODE >206:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+30C text4 CODE >207:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+30E text4 CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+312 text4 CODE >209:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+314 text4 CODE >211:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+319 text4 CODE >212:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+31A text4 CODE >213:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+31F text4 CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+324 text4 CODE >219:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+328 text4 CODE >220:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+32C text4 CODE >221:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+330 text4 CODE >222:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+332 text4 CODE >224:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+335 text4 CODE >225:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+336 text4 CODE >226:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+33D text4 CODE >227:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+33E text4 CODE >228:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35E text4 CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35F text4 CODE >230:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+37E text4 CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+37F text4 CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+39C text4 CODE >235:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3A3 text4 CODE >236:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3A4 text4 CODE >237:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3C4 text4 CODE >238:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3C5 text4 CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3CB text4 CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3CC text4 CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3CD text4 CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3D2 text4 CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3D5 text4 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3DA text4 CODE >246:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F0 text4 CODE >247:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F2 text4 CODE >249:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F3 text4 CODE >250:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F5 text4 CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F7 text4 CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F8 text4 CODE >254:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3F9 text4 CODE >255:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FA text4 CODE >256:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FB text4 CODE >257:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FC text4 CODE >259:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FD text4 CODE >260:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FE text4 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FF text4 CODE >262:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+405 text4 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+406 text4 CODE >263:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+407 text4 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+40B text4 CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+40D text4 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+40E text4 CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+40F text4 CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+410 text4 CODE >268:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+411 text4 CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+412 text4 CODE >270:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+413 text4 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+414 text4 CODE >272:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+415 text4 CODE >273:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+417 text4 CODE >274:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+41F text4 CODE >275:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+421 text4 CODE >276:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+424 text4 CODE >277:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+425 text4 CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+426 text4 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+426 text4 CODE >322:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+428 text4 CODE >280:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+42A text4 CODE >281:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+42B text4 CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+430 text4 CODE >283:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+432 text4 CODE >284:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+434 text4 CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+436 text4 CODE >286:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+437 text4 CODE >287:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+439 text4 CODE >289:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+43C text4 CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+43D text4 CODE >291:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+43E text4 CODE >292:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+441 text4 CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+444 text4 CODE >294:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+445 text4 CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+447 text4 CODE >297:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+447 text4 CODE >298:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+449 text4 CODE >299:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+44E text4 CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+451 text4 CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+452 text4 CODE >302:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+454 text4 CODE >303:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+456 text4 CODE >304:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45B text4 CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45E text4 CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45F text4 CODE >307:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+460 text4 CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+461 text4 CODE >309:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+462 text4 CODE >310:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+463 text4 CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+463 text4 CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+465 text4 CODE >314:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47B text4 CODE >315:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47C text4 CODE >316:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47D text4 CODE >317:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47E text4 CODE >319:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47E text4 CODE >320:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+47F text4 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+480 text4 CODE >323:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+481 text4 CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+483 text4 CODE >326:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+14C text3 CODE >292:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+14D text3 CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+152 text3 CODE >294:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+157 text3 CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+158 text3 CODE >294:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+15A text3 CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+15F text3 CODE >296:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+166 text3 CODE >297:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+16D text3 CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+172 text3 CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+173 text3 CODE >302:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+178 text3 CODE >304:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+179 text2 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+17A text2 CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+17F text2 CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+187 text2 CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+18D text2 CODE >272:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+194 text2 CODE >275:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+19B text2 CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1A1 text2 CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1AC text2 CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1B3 text2 CODE >283:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1BB text2 CODE >284:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1C2 text2 CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1CA text2 CODE >286:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1D1 text2 CODE >287:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+1D7 text2 CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+25F text1 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+25F text1 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+260 text1 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+261 text1 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+265 text1 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+27B text1 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+289 text1 CODE >30:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+296 text1 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+297 text1 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+298 text1 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+299 text1 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+29D text1 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2AD text1 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2C2 text1 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2D8 text1 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2E6 text1 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2E8 text1 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2E8 text1 CODE >40:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2E9 text1 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+484 maintext CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+484 maintext CODE >309:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+485 maintext CODE >310:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+486 maintext CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+487 maintext CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+488 maintext CODE >315:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+48A maintext CODE >316:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+48D maintext CODE >317:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+48F maintext CODE >320:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+490 maintext CODE >321:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+491 maintext CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+496 maintext CODE >325:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+49A maintext CODE >326:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+49E maintext CODE >327:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4A2 maintext CODE >328:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4A6 maintext CODE >329:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4A9 maintext CODE >330:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4AB maintext CODE >331:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4AF maintext CODE >332:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4B1 maintext CODE >333:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4B2 maintext CODE >335:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4BB maintext CODE >336:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4BC maintext CODE >337:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4C5 maintext CODE >338:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4C7 maintext CODE >339:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4C9 maintext CODE >341:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4D1 maintext CODE >342:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4D2 maintext CODE >343:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4D7 maintext CODE >344:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4D9 maintext CODE >345:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4DA maintext CODE >334:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4DC maintext CODE >348:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4DD maintext CODE >350:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4DE maintext CODE >351:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4DF maintext CODE >352:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E0 maintext CODE >353:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E1 maintext CODE >356:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E4 maintext CODE >357:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E5 maintext CODE >358:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E6 maintext CODE >359:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E6 maintext CODE >360:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E8 maintext CODE >361:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E9 maintext CODE >363:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F0 maintext CODE >364:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F3 maintext CODE >365:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F6 maintext CODE >369:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4FA maintext CODE >370:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4FB maintext CODE >374:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4FC maintext CODE >358:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+510 maintext CODE >379:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+512 maintext CODE >380:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+514 maintext CODE >381:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+514 maintext CODE >383:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+518 maintext CODE >384:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51B maintext CODE >385:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51D maintext CODE >387:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51D maintext CODE >388:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51F maintext CODE >389:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+520 maintext CODE >390:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+530 maintext CODE >391:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+538 maintext CODE >392:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+53F maintext CODE >393:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+541 maintext CODE >395:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54F maintext CODE >389:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+555 maintext CODE >398:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+557 maintext CODE >399:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+55C maintext CODE >400:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+56C maintext CODE >401:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+574 maintext CODE >402:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57B maintext CODE >403:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57D maintext CODE >404:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57F maintext CODE >406:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+58E maintext CODE >399:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+590 maintext CODE >409:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+592 maintext CODE >410:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+597 maintext CODE >411:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5A7 maintext CODE >412:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5AF maintext CODE >413:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5B5 maintext CODE >414:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5B9 maintext CODE >415:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5BB maintext CODE >416:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5C3 maintext CODE >417:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D0 maintext CODE >418:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D1 maintext CODE >419:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D3 maintext CODE >420:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D8 maintext CODE >421:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D9 maintext CODE >422:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5E6 maintext CODE >423:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5E7 maintext CODE >424:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5F0 maintext CODE >425:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5F8 maintext CODE >426:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5F9 maintext CODE >427:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5FC maintext CODE >428:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5FD maintext CODE >429:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5FF maintext CODE >430:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+606 maintext CODE >431:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+60A maintext CODE >432:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+60C maintext CODE >433:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+614 maintext CODE >435:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+623 maintext CODE >410:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+625 maintext CODE >440:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+62A maintext CODE >441:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+63B maintext CODE >444:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+644 maintext CODE >445:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+645 maintext CODE >447:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+64E maintext CODE >448:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+655 maintext CODE >449:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+65D maintext CODE >450:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+65E maintext CODE >451:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+667 maintext CODE >454:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+668 maintext CODE >456:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+66A maintext CODE >457:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+66B maintext CODE >456:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+66D maintext CODE >457:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+675 maintext CODE >458:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+67E maintext CODE >459:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+682 maintext CODE >460:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+68A maintext CODE >465:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+693 maintext CODE >469:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+695 maintext CODE >470:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+696 maintext CODE >469:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+698 maintext CODE >470:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6A0 maintext CODE >471:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6A7 maintext CODE >472:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6A8 maintext CODE >473:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6AF maintext CODE >476:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6B8 maintext CODE >442:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6C6 maintext CODE >480:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6D6 maintext CODE >485:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6E1 maintext CODE >486:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6E2 maintext CODE >488:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6E9 maintext CODE >489:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6F4 maintext CODE >490:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6F5 maintext CODE >491:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+701 maintext CODE >495:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+703 maintext CODE >496:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+705 maintext CODE >495:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+707 maintext CODE >496:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+710 maintext CODE >497:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+711 maintext CODE >498:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+71B maintext CODE >502:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+71F maintext CODE >503:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+72B maintext CODE >483:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+739 maintext CODE >440:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+73B maintext CODE >522:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+743 maintext CODE >523:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+744 maintext CODE >530:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+745 maintext CODE >532:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+749 maintext CODE >533:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+74E maintext CODE >534:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+758 maintext CODE >535:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+760 maintext CODE >523:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+766 maintext CODE >524:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+76F maintext CODE >525:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+782 maintext CODE >526:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+78B maintext CODE >527:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+796 maintext CODE >528:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+797 maintext CODE >529:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+798 maintext CODE >523:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+798 maintext CODE >549:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+79A maintext CODE >550:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7A7 maintext CODE >551:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7A8 maintext CODE >552:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AD maintext CODE >553:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AE maintext CODE >554:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AF maintext CODE >555:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B0 maintext CODE >556:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B5 maintext CODE >557:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B6 maintext CODE >558:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B7 maintext CODE >559:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B8 maintext CODE >560:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7BD maintext CODE >561:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7BE maintext CODE >562:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7E8 clrtext CODE >1156:D:\TEMP\s1e0.
+7E8 clrtext CODE >1157:D:\TEMP\s1e0.
+7E9 clrtext CODE >1158:D:\TEMP\s1e0.
+7E9 clrtext CODE >1159:D:\TEMP\s1e0.
+7EA clrtext CODE >1160:D:\TEMP\s1e0.
+7EB clrtext CODE >1161:D:\TEMP\s1e0.
+7EC clrtext CODE >1162:D:\TEMP\s1e0.
+7ED clrtext CODE >1163:D:\TEMP\s1e0.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___latbits 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hspace_0 10008 0 ABS 0 - -
+__Hspace_1 10008 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 8004 0 ABS 0 - -
+_KeyLongHandler 298 0 CODE 0 text3 dist/default/production\PN411.production.obj
+_PMCON1bits 195 0 ABS 0 - dist/default/production\PN411.production.obj
+__size_of_Init_TxStatusFromFlash 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_FlashUnlock 1D2 0 CODE 0 text12 dist/default/production\PN411.production.obj
+main@adrToWrite 5B 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__Heeprom_data 10008 0 EEDATA 3 eeprom_data -
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
+noolite_send@data 72 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__Hstrings 10008 0 ABS 0 strings -
+_LATA 10C 0 ABS 0 - dist/default/production\PN411.production.obj
+_LATC 10E 0 ABS 0 - dist/default/production\PN411.production.obj
+_Keys 2C 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+_TMR0 15 0 ABS 0 - dist/default/production\PN411.production.obj
+_Type F80 0 CODE 0 _Type_text dist/default/production\PN411.production.obj
+_WPUA 20C 0 ABS 0 - dist/default/production\PN411.production.obj
+___sp 0 0 STACK 2 stack D:\TEMP\s1e0.obj
+_main 908 0 CODE 0 maintext dist/default/production\PN411.production.obj
+btemp 7E 0 ABS 0 - dist/default/production\PN411.production.obj
+start 2 0 CODE 0 init D:\TEMP\s1e0.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_OPTION_REGbits 95 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hpowerup 0 0 CODE 0 powerup -
+_noo_address_type 24 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__end_of_RF_Init 5D4 0 CODE 0 text1 dist/default/production\PN411.production.obj
+__size_of_FlashEraseRow 0 0 ABS 0 - dist/default/production\PN411.production.obj
+intlevel0 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+intlevel1 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+intlevel2 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+intlevel3 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+intlevel4 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+intlevel5 0 0 ENTRY 0 functab D:\TEMP\s1e0.obj
+_WDTCONbits 97 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_KeyLongHandler 2F2 0 CODE 0 text3 dist/default/production\PN411.production.obj
+_Init_IO 22A 0 CODE 0 text7 dist/default/production\PN411.production.obj
+_OSCCONbits 99 0 ABS 0 - dist/default/production\PN411.production.obj
+wtemp0 7E 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hfunctab 0 0 ENTRY 0 functab -
+_BattLowSent 2A 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__Hclrtext 10008 0 ABS 0 clrtext -
+__size_of_FlashWrite 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__size_of_KeyOffHandler 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_ANSELA 18C 0 ABS 0 - dist/default/production\PN411.production.obj
+_ANSELC 18E 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_FlashEraseRow 210 0 CODE 0 text11 dist/default/production\PN411.production.obj
+main@cellNum 5E 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+noolite_send@countsend 53 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__CFG_CP$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
+main@chn 5F 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__Lmaintext 10008 0 ABS 0 maintext -
+main@chn_436 60 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn_437 61 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn_438 62 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+_FVRCON 117 0 ABS 0 - dist/default/production\PN411.production.obj
+_noo_send_data 40 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__L_system_settings_text FDC 0 CODE 0 _system_settings_text -
+__end_of_KeyOffHandler 3B0 0 CODE 0 text2 dist/default/production\PN411.production.obj
+_OPTION_REG 95 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_Init_TypeFromFlash 298 0 CODE 0 text5 dist/default/production\PN411.production.obj
+start_initialization FC0 0 CODE 0 cinit dist/default/production\PN411.production.obj
+_PMADRH 192 0 ABS 0 - dist/default/production\PN411.production.obj
+_PMADRL 191 0 ABS 0 - dist/default/production\PN411.production.obj
+_PMCON2 196 0 ABS 0 - dist/default/production\PN411.production.obj
+_PMDATH 194 0 ABS 0 - dist/default/production\PN411.production.obj
+_PMDATL 193 0 ABS 0 - dist/default/production\PN411.production.obj
+noolite_send@temp_send 54 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+clear_ram0 FD0 0 CODE 0 clrtext dist/default/production\PN411.production.obj
+__pcstackBANK0 44 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+_noolite_send 5D4 0 CODE 0 text4 dist/default/production\PN411.production.obj
+_TMR0IE 5D 0 ABS 0 - dist/default/production\PN411.production.obj
+_TMR0IF 5A 0 ABS 0 - dist/default/production\PN411.production.obj
+__p_system_settings_text FDC 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
+_Init_TypeFromFlash 270 0 CODE 0 text5 dist/default/production\PN411.production.obj
+KeyLongHandler@ticksToTrigger 7D 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+___int_sp 0 0 STACK 2 stack D:\TEMP\s1e0.obj
+_Init_TxStatusFromFlash 3B0 0 CODE 0 text6 dist/default/production\PN411.production.obj
+__p_Type_text F80 0 CODE 0 _Type_text dist/default/production\PN411.production.obj
+__Hbank0 10008 0 ABS 0 bank0 -
+__Hbank1 10008 0 ABS 0 bank1 -
+__Hbank2 10008 0 BANK2 1 bank2 -
+__Hbank3 10008 0 BANK3 1 bank3 -
+__Hbank4 10008 0 BANK4 1 bank4 -
+__Hbank5 10008 0 BANK5 1 bank5 -
+__Hbank6 10008 0 BANK6 1 bank6 -
+__Hbank7 10008 0 BANK7 1 bank7 -
+__Hbank8 10008 0 BANK8 1 bank8 -
+__Hbank9 10008 0 BANK9 1 bank9 -
+__Hcinit FD0 0 CODE 0 cinit -
+__Hidloc 10008 0 IDLOC 0 idloc -
+__Hsfr10 10008 0 ABS 0 sfr10 -
+__Hsfr11 10008 0 ABS 0 sfr11 -
+__Hsfr12 10008 0 ABS 0 sfr12 -
+__Hsfr13 10008 0 ABS 0 sfr13 -
+__Hsfr14 10008 0 ABS 0 sfr14 -
+__Hsfr15 10008 0 ABS 0 sfr15 -
+__Hsfr16 10008 0 ABS 0 sfr16 -
+__Hsfr17 10008 0 ABS 0 sfr17 -
+__Hsfr18 10008 0 ABS 0 sfr18 -
+__Hsfr19 10008 0 ABS 0 sfr19 -
+__Hsfr20 10008 0 ABS 0 sfr20 -
+__Hsfr21 10008 0 ABS 0 sfr21 -
+__Hsfr22 10008 0 ABS 0 sfr22 -
+__Hsfr23 10008 0 ABS 0 sfr23 -
+__Hsfr24 10008 0 ABS 0 sfr24 -
+__Hsfr25 10008 0 ABS 0 sfr25 -
+__Hsfr26 10008 0 ABS 0 sfr26 -
+__Hsfr27 10008 0 ABS 0 sfr27 -
+__Hsfr28 10008 0 ABS 0 sfr28 -
+__Hsfr29 10008 0 ABS 0 sfr29 -
+__Hsfr30 10008 0 ABS 0 sfr30 -
+__Hsfr31 10008 0 ABS 0 sfr31 -
+__Hstack 0 0 STACK 2 stack -
+__Hbank10 10008 0 BANK10 1 bank10 -
+__Hbank11 10008 0 BANK11 1 bank11 -
+__Hbank12 10008 0 BANK12 1 bank12 -
+__Hbank13 10008 0 BANK13 1 bank13 -
+__Hbank14 10008 0 BANK14 1 bank14 -
+__Hbank15 10008 0 BANK15 1 bank15 -
+__Hbank16 10008 0 BANK16 1 bank16 -
+__Hbank17 10008 0 BANK17 1 bank17 -
+__Hbank18 10008 0 BANK18 1 bank18 -
+__Hbank19 10008 0 BANK19 1 bank19 -
+__Hbank20 10008 0 BANK20 1 bank20 -
+__Hbank21 10008 0 BANK21 1 bank21 -
+__Hbank22 10008 0 BANK22 1 bank22 -
+__Hbank23 10008 0 BANK23 1 bank23 -
+__Hbank24 10008 0 BANK24 1 bank24 -
+__Hbank25 10008 0 BANK25 1 bank25 -
+__Hbank26 10008 0 BANK26 1 bank26 -
+__Hbank27 10008 0 BANK27 1 bank27 -
+__Hbank28 10008 0 BANK28 1 bank28 -
+__Hbank29 10008 0 BANK29 1 bank29 -
+__Hbank30 10008 0 BANK30 1 bank30 -
+__Hbank31 10008 0 BANK31 1 bank31 -
+__Hbigram 10008 0 ABS 0 bigram -
+__Hmaintext 10008 0 ABS 0 maintext -
+__p_TxStatus_text FA0 0 CODE 0 _TxStatus_text dist/default/production\PN411.production.obj
+__end_of_FlashUnlock 1DE 0 CODE 0 text12 dist/default/production\PN411.production.obj
+__CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hcommon 10008 0 ABS 0 common -
+__Hconfig 10012 0 CONFIG 0 config -
+__Lbank0 10008 0 ABS 0 bank0 -
+__Lbank1 10008 0 ABS 0 bank1 -
+__Lbank2 10008 0 BANK2 1 bank2 -
+__Lbank3 10008 0 BANK3 1 bank3 -
+__Lbank4 10008 0 BANK4 1 bank4 -
+__Lbank5 10008 0 BANK5 1 bank5 -
+__Lbank6 10008 0 BANK6 1 bank6 -
+__Lbank7 10008 0 BANK7 1 bank7 -
+__Lbank8 10008 0 BANK8 1 bank8 -
+__Lbank9 10008 0 BANK9 1 bank9 -
+__Lcinit FC0 0 CODE 0 cinit -
+__Lidloc 10000 0 IDLOC 0 idloc -
+__Lsfr10 10008 0 ABS 0 sfr10 -
+__Lsfr11 10008 0 ABS 0 sfr11 -
+__Lsfr12 10008 0 ABS 0 sfr12 -
+__Lsfr13 10008 0 ABS 0 sfr13 -
+__Lsfr14 10008 0 ABS 0 sfr14 -
+__Lsfr15 10008 0 ABS 0 sfr15 -
+__Lsfr16 10008 0 ABS 0 sfr16 -
+__Lsfr17 10008 0 ABS 0 sfr17 -
+__Lsfr18 10008 0 ABS 0 sfr18 -
+__Lsfr19 10008 0 ABS 0 sfr19 -
+__Lsfr20 10008 0 ABS 0 sfr20 -
+__Lsfr21 10008 0 ABS 0 sfr21 -
+__Lsfr22 10008 0 ABS 0 sfr22 -
+__Lsfr23 10008 0 ABS 0 sfr23 -
+__Lsfr24 10008 0 ABS 0 sfr24 -
+__Lsfr25 10008 0 ABS 0 sfr25 -
+__Lsfr26 10008 0 ABS 0 sfr26 -
+__Lsfr27 10008 0 ABS 0 sfr27 -
+__Lsfr28 10008 0 ABS 0 sfr28 -
+__Lsfr29 10008 0 ABS 0 sfr29 -
+__Lsfr30 10008 0 ABS 0 sfr30 -
+__Lsfr31 10008 0 ABS 0 sfr31 -
+__Lstack 0 0 STACK 2 stack -
+FlashWrite@addr 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__H_system_settings_text FFE 0 CODE 0 _system_settings_text -
+__L_TxStatus_text FA0 0 CODE 0 _TxStatus_text -
+__size_of_noolite_send 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_INTCONbits B 0 ABS 0 - dist/default/production\PN411.production.obj
+__Habs1 10008 0 ABS 0 abs1 -
+__Hcode 10008 0 ABS 0 code -
+__Hinit 2 0 CODE 0 init -
+__Hsfr0 10008 0 ABS 0 sfr0 -
+__Hsfr1 10008 0 ABS 0 sfr1 -
+__Hsfr2 10008 0 ABS 0 sfr2 -
+__Hsfr3 10008 0 ABS 0 sfr3 -
+__Hsfr4 10008 0 ABS 0 sfr4 -
+__Hsfr5 10008 0 ABS 0 sfr5 -
+__Hsfr6 10008 0 ABS 0 sfr6 -
+__Hsfr7 10008 0 ABS 0 sfr7 -
+__Hsfr8 10008 0 ABS 0 sfr8 -
+__Hsfr9 10008 0 ABS 0 sfr9 -
+__Htext 10008 0 ABS 0 text -
+__Labs1 10008 0 ABS 0 abs1 -
+__Lcode 10008 0 ABS 0 code -
+__Linit 2 0 CODE 0 init -
+_Type_absaddr 7C0 0 ABS 0 - dist/default/production\PN411.production.obj
+__Lsfr0 10008 0 ABS 0 sfr0 -
+__Lsfr1 10008 0 ABS 0 sfr1 -
+__Lsfr2 10008 0 ABS 0 sfr2 -
+__Lsfr3 10008 0 ABS 0 sfr3 -
+__Lsfr4 10008 0 ABS 0 sfr4 -
+__Lsfr5 10008 0 ABS 0 sfr5 -
+__Lsfr6 10008 0 ABS 0 sfr6 -
+__Lsfr7 10008 0 ABS 0 sfr7 -
+__Lsfr8 10008 0 ABS 0 sfr8 -
+__Lsfr9 10008 0 ABS 0 sfr9 -
+__Ltext 10008 0 ABS 0 text -
+__LcstackBANK0 10008 0 ABS 0 cstackBANK0 -
+_RF_Init 4BE 0 CODE 0 text1 dist/default/production\PN411.production.obj
+__HcstackCOMMON 10008 0 ABS 0 cstackCOMMON -
+__size_of_Init_ADC 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__size_of_Init_CLK 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__S0 8009 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__end_of_system_settings FFE 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
+__CFG_WDTE$SWDTEN 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_noolite_send 908 0 CODE 0 text4 dist/default/production\PN411.production.obj
+__Lintentry 2 0 CODE 0 intentry -
+_DevMode 26 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+_DevType 27 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+reset_vec 0 0 CODE 0 reset_vec D:\TEMP\s1e0.obj
+_TxStatus FA0 0 CODE 0 _TxStatus_text dist/default/production\PN411.production.obj
+__H_Type_text FA0 0 CODE 0 _Type_text -
+__size_of_KeyLongHandler 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__LbssBANK0 10008 0 ABS 0 bssBANK0 -
+Init_TxStatusFromFlash@cellNum 74 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+noolite_send@endpos 55 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__size_of_Init_IO 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_TxStatus FC0 0 CODE 0 _TxStatus_text dist/default/production\PN411.production.obj
+_TxStatus_absaddr 7D0 0 ABS 0 - dist/default/production\PN411.production.obj
+KeyLongHandler@chn 7B 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+KeyLongHandler@cmd 7C 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+KeyLongHandler@key 56 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+noolite_send@noo_send_command 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+_Init_ADC 1DE 0 CODE 0 text9 dist/default/production\PN411.production.obj
+_Init_CLK 210 0 CODE 0 text8 dist/default/production\PN411.production.obj
+_tick3_100ms 28 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__ptext10 24A 0 CODE 0 text10 dist/default/production\PN411.production.obj
+__ptext11 1F6 0 CODE 0 text11 dist/default/production\PN411.production.obj
+__ptext12 1D2 0 CODE 0 text12 dist/default/production\PN411.production.obj
+_system_settings FDC 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
+__Lbank10 10008 0 BANK10 1 bank10 -
+__Lbank11 10008 0 BANK11 1 bank11 -
+__Lbank12 10008 0 BANK12 1 bank12 -
+__Lbank13 10008 0 BANK13 1 bank13 -
+__Lbank14 10008 0 BANK14 1 bank14 -
+__Lbank15 10008 0 BANK15 1 bank15 -
+__Lbank16 10008 0 BANK16 1 bank16 -
+__Lbank17 10008 0 BANK17 1 bank17 -
+__Lbank18 10008 0 BANK18 1 bank18 -
+__Lbank19 10008 0 BANK19 1 bank19 -
+__Lbank20 10008 0 BANK20 1 bank20 -
+__Lbank21 10008 0 BANK21 1 bank21 -
+__Lbank22 10008 0 BANK22 1 bank22 -
+__Lbank23 10008 0 BANK23 1 bank23 -
+__Lbank24 10008 0 BANK24 1 bank24 -
+__Lbank25 10008 0 BANK25 1 bank25 -
+__Lbank26 10008 0 BANK26 1 bank26 -
+__Lbank27 10008 0 BANK27 1 bank27 -
+__Lbank28 10008 0 BANK28 1 bank28 -
+__Lbank29 10008 0 BANK29 1 bank29 -
+__Lbank30 10008 0 BANK30 1 bank30 -
+__Lbank31 10008 0 BANK31 1 bank31 -
+__pmaintext 908 0 CODE 0 maintext dist/default/production\PN411.production.obj
+__Lbigram 10008 0 ABS 0 bigram -
+__CFG_BORV$LO 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__CFG_IDLOC0$ 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__CFG_IDLOC1$ 7 0 ABS 0 - dist/default/production\PN411.production.obj
+__CFG_IDLOC2$ 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__CFG_IDLOC3$ 7 0 ABS 0 - dist/default/production\PN411.production.obj
+__Lcommon 10008 0 ABS 0 common -
+__Lconfig 1000E 0 CONFIG 0 config -
+__end_of_Init_ADC 1F6 0 CODE 0 text9 dist/default/production\PN411.production.obj
+__end_of_Init_CLK 22A 0 CODE 0 text8 dist/default/production\PN411.production.obj
+_LATAbits 10C 0 ABS 0 - dist/default/production\PN411.production.obj
+_LATCbits 10E 0 ABS 0 - dist/default/production\PN411.production.obj
+__L_Type_text F80 0 CODE 0 _Type_text -
+_system_settings_absaddr 7EE 0 ABS 0 - dist/default/production\PN411.production.obj
+stackhi 206F 0 ABS 0 - D:\TEMP\s1e0.obj
+stacklo 2043 0 ABS 0 - D:\TEMP\s1e0.obj
+_ADCON0bits 9D 0 ABS 0 - dist/default/production\PN411.production.obj
+_ADCON1bits 9E 0 ABS 0 - dist/default/production\PN411.production.obj
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__size_of_FlashUnlock 0 0 ABS 0 - dist/default/production\PN411.production.obj
+KeyOffHandler@chn 7B 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+KeyOffHandler@cmd 7C 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+KeyOffHandler@key 56 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__end_of_Init_TxStatusFromFlash 4BE 0 CODE 0 text6 dist/default/production\PN411.production.obj
+FlashEraseRow@rowAddr 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__HcstackBANK0 10008 0 ABS 0 cstackBANK0 -
+__Lend_init 2 0 CODE 0 end_init -
+__LcstackCOMMON 10008 0 ABS 0 cstackCOMMON -
+_FlashWrite 24A 0 CODE 0 text10 dist/default/production\PN411.production.obj
+end_of_initialization FCC 0 CODE 0 cinit dist/default/production\PN411.production.obj
+__size_of_Init_TypeFromFlash 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hintentry 2 0 CODE 0 intentry -
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__Lstrings 10008 0 ABS 0 strings -
+__Hreset_vec 2 0 CODE 0 reset_vec -
+_SkipHandling 25 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__HbssBANK0 10008 0 ABS 0 bssBANK0 -
+__ptext1 4BE 0 CODE 0 text1 dist/default/production\PN411.production.obj
+__ptext2 2F2 0 CODE 0 text2 dist/default/production\PN411.production.obj
+__ptext3 298 0 CODE 0 text3 dist/default/production\PN411.production.obj
+__ptext4 5D4 0 CODE 0 text4 dist/default/production\PN411.production.obj
+__ptext5 270 0 CODE 0 text5 dist/default/production\PN411.production.obj
+__ptext6 3B0 0 CODE 0 text6 dist/default/production\PN411.production.obj
+__ptext7 22A 0 CODE 0 text7 dist/default/production\PN411.production.obj
+__ptext8 210 0 CODE 0 text8 dist/default/production\PN411.production.obj
+__ptext9 1DE 0 CODE 0 text9 dist/default/production\PN411.production.obj
+__end_of_Init_IO 24A 0 CODE 0 text7 dist/default/production\PN411.production.obj
+__Lpowerup 0 0 CODE 0 powerup -
+__Leeprom_data 10008 0 EEDATA 3 eeprom_data -
+__Lreset_vec 0 0 CODE 0 reset_vec -
+noolite_send@chn 52 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+noolite_send@countbit 51 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of__initialization FCC 0 CODE 0 cinit dist/default/production\PN411.production.obj
+__Lfunctab 0 0 ENTRY 0 functab -
+__Lclrtext 10008 0 ABS 0 clrtext -
+__end_of_FlashWrite 270 0 CODE 0 text10 dist/default/production\PN411.production.obj
+_startaddress 20 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+_tx_status 2B 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+FlashWrite@flash_data 72 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__Hend_init 4 0 CODE 0 end_init -
+__end_of_Type FA0 0 CODE 0 _Type_text dist/default/production\PN411.production.obj
+__end_of_main F80 0 CODE 0 maintext dist/default/production\PN411.production.obj
+__H_TxStatus_text FC0 0 CODE 0 _TxStatus_text -
+noolite_send@startpos 50 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+_PORTA C 0 ABS 0 - dist/default/production\PN411.production.obj
+_TRISA 8C 0 ABS 0 - dist/default/production\PN411.production.obj
+_TRISC 8E 0 ABS 0 - dist/default/production\PN411.production.obj
+__Hram 10008 0 ABS 0 ram -
+__Lram 10008 0 ABS 0 ram -
+__size_of_RF_Init 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_FlashEraseRow 1F6 0 CODE 0 text11 dist/default/production\PN411.production.obj
+__CFG_LPBOR$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
+_LedPulseTick_100ms 29 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+_OSCSTATbits 9A 0 ABS 0 - dist/default/production\PN411.production.obj
+noolite_send@noo_send_buffer 44 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__initialization FC0 0 CODE 0 cinit dist/default/production\PN411.production.obj
+__CFG_BOREN$NSLEEP 0 0 ABS 0 - dist/default/production\PN411.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
+noolite_send@noo_send_format 71 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+_KeyOffHandler 2F2 0 CODE 0 text2 dist/default/production\PN411.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+idloc 0 8000 10000 4 2
+text1 0 25F 4BE 8B 2
+text2 0 179 2F2 5F 2
+text3 0 14C 298 2D 2
+text4 0 2EA 5D4 19A 2
+text5 0 138 270 14 2
+text6 0 1D8 3B0 87 2
+text7 0 115 22A 10 2
+text8 0 108 210 D 2
+text9 0 EF 1DE C 2
+text10 0 125 24A 13 2
+text11 0 FB 1F6 D 2
+text12 0 E9 1D2 6 2
+_system_settings_text 0 7EE FDC 11 2
+_Type_text 0 7C0 F80 10 2
+maintext 0 484 908 33C 2
+cstackCOMMON 1 70 70 E 1
+_TxStatus_text 0 7D0 FA0 1E 2
+reset_vec 0 0 0 2 2
+bssBANK0 1 20 20 43 1
+config 0 8007 1000E 2 2
