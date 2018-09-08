@@ -1,5 +1,5 @@
 
-# 1 "FLASH.c"
+# 1 "periph_config.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3760,6 +3760,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
+# 2 "periph_config.h"
+void Init_CLK();
+void Init_IO();
+void Init_ADC();
+
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
 typedef signed char int8_t;
 
@@ -3850,53 +3855,40 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 4 "FLASH.h"
-unsigned int FlashRead(unsigned int addr);
-void FlashUnlock(void);
-void FlashEraseRow(uint16_t rowAddr);
-void FlashWrite(unsigned int addr, unsigned int flash_data);
+# 15 "periph_config.c"
+void Init_CLK() {
 
-# 16 "FLASH.c"
-unsigned int FlashRead(unsigned int addr) {
-PMCON1bits.CFGS = 0;
-PMADRH = (unsigned char) (addr >> 8);
-PMADRL = (unsigned char) (addr);
-PMCON1bits.RD = 1;
 
-return ((uint16_t) PMDATH << 8 | PMDATL);
+OSCCONbits.IRCF = 0b1110;
+
+# 34
+WDTCONbits.WDTPS = 0b01011;
+
+# 41
+WDTCONbits.SWDTEN = 1;
+while (!OSCSTATbits.HFIOFR) {
+}
 }
 
-void FlashUnlock(void) {
-PMCON2 = 0x55;
-PMCON2 = 0xAA;
-PMCON1bits.WR = 1;
+void Init_IO() {
+OPTION_REGbits.nWPUEN = 0;
+TRISA = 0x1F;
+ANSELA = 0;
+WPUA = 0x08;
+
+TRISC = 0x00;
+ANSELC = 0;
+LATC = 0x00;
 }
 
-void FlashEraseRow(uint16_t rowAddr) {
-PMCON1bits.CFGS = 0;
-PMADRH = (uint8_t) (rowAddr >> 8);
-PMADRL = (uint8_t) (rowAddr);
-PMCON1bits.FREE = 1;
-PMCON1bits.WREN = 1;
-INTCONbits.GIE = 0;
-FlashUnlock();
-INTCONbits.GIE = 1;
-PMCON1bits.WREN = 0;
-}
+void Init_ADC() {
+FVRCON = 0;
 
-void FlashWrite(unsigned int addr, unsigned int flash_data) {
-PMCON1bits.CFGS = 0;
-PMADRH = (unsigned char) (addr >> 8);
-PMADRL = (unsigned char) (addr);
-PMCON1bits.FREE = 0;
-PMCON1bits.LWLO = 1;
-PMCON1bits.WREN = 1;
-PMDATH = (unsigned char) (flash_data >> 8);
-PMDATL = (unsigned char) flash_data;
-PMCON1bits.LWLO = 0;
-INTCONbits.GIE = 0;
-FlashUnlock();
-INTCONbits.GIE = 1;
-PMCON1bits.WREN = 0;
-}
+ADCON1bits.ADFM = 1;
+ADCON1bits.ADCS = 0b001;
 
+
+ADCON1bits.ADPREF = 0b00;
+
+ADCON0bits.ADON = 0;
+}

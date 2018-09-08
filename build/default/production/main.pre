@@ -2,7 +2,7 @@
 # 1 "main.c"
 
 
-# 34
+# 9
 #pragma config FOSC = INTOSC
 #pragma config WDTE = SWDTEN
 #pragma config PWRTE = ON
@@ -3782,6 +3782,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
+# 2 "periph_config.h"
+void Init_CLK();
+void Init_IO();
+void Init_ADC();
+
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
 typedef signed char int8_t;
 
@@ -3872,106 +3877,39 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
+# 4 "FLASH.h"
+unsigned int FlashRead(unsigned int addr);
+void FlashUnlock(void);
+void FlashEraseRow(uint16_t rowAddr);
+void FlashWrite(unsigned int addr, unsigned int flash_data);
+
 # 8 "noolite.h"
 void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data);
 void RF_Init();
 
-# 43 "FLASH.h"
-unsigned int FlashRead(unsigned int addr);
-void FlashUnlock(void);
-void FlashEraseRow(unsigned int addr);
-void FlashWrite(unsigned int addr, unsigned int flash_data);
-void ClearDevMemory(void);
-void test_memory_full(void);
+# 4 "user_functions.h"
+struct {
+uint8_t State;
+uint8_t StateTemp;
+uint8_t Tick100ms;
+uint8_t FirstCmdSent;
+} typedef KeyState;
 
-# 64 "main.c"
-const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / 2.5 * 1023);
+uint8_t Init_TypeFromFlash(const uint16_t* type);
+uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
+void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
 
-# 72
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+
+# 40 "main.c"
 enum {
-OFF = 0,
-ON = 1
+CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
+CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
+CMD_Load_Preset = 7, CMD_Save_Preset = 8, CMD_Unbind = 9,
+CMD_Stop_Reg = 10, CMD_Bind = 15, CMD_Test_Result = 22
 };
 
-# 81
-extern unsigned char tx_status;
-unsigned char noo_send_data[4] = {0, 0, 0, 0};
 
-uint8_t BattLowSent = 0;
-uint8_t BattLow = 0;
-
-uint8_t LedPulseTick_100ms = 0;
-
-void Init_CLK() {
-
-
-OSCCONbits.IRCF = 0b1110;
-
-# 108
-WDTCONbits.WDTPS = 0b01011;
-
-# 115
-WDTCONbits.SWDTEN = 1;
-while (!OSCSTATbits.HFIOFR) {
-}
-}
-
-void Init_IO() {
-OPTION_REGbits.nWPUEN = 0;
-TRISA = 0x1F;
-ANSELA = 0;
-WPUA = 0x08;
-
-TRISC = 0x00;
-ANSELC = 0;
-LATC = 0x00;
-}
-
-void Init_ADC() {
-FVRCON = 0;
-
-ADCON1bits.ADFM = 1;
-ADCON1bits.ADCS = 0b001;
-
-
-ADCON1bits.ADPREF = 0b00;
-
-ADCON0bits.ADON = 0;
-}
-
-# 148
-unsigned int GetAdcValue(uint8_t channel) {
-ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
-
-if (channel == 31) {
-FVRCONbits.FVREN = 1;
-FVRCONbits.ADFVR = 0b01;
-}
-
-ADCON0bits.ADON = 1;
-_delay((unsigned long)((55)*(8000000/4000000.0)));
-
-ADCON0bits.GO_nDONE = 1;
-while (ADCON0bits.GO_nDONE) {
-}
-
-
-unsigned int result;
-result = (uint16_t) ((ADRESH << 8) | ADRESL);
-
-# 171
-ADCON0bits.ADON = 0;
-FVRCON = 0;
-PIR1bits.ADIF = 0;
-
-return result;
-}
-
-
-uint8_t mode = 0;
-
-uint8_t tick3_100ms = 0;
-uint8_t BattLowTransmitCount = 0;
 
 enum {
 A_Pressed = 0x02,
@@ -3984,6 +3922,8 @@ enum {
 All_Pressed = 0x17
 };
 
+
+
 enum {
 BIND_ACTIVE = 0x01,
 UNBIND_ACTIVE = 0x02,
@@ -3991,19 +3931,48 @@ MODE_CHANGE_ACTIVE = 0x04,
 GO_OFF = 0x08
 };
 
-struct {
-uint8_t State;
-uint8_t StateTemp;
-uint8_t Tick100ms;
-uint8_t FirstCmdSent;
-} typedef KeyState;
+enum {
+OFF = 0,
+ON = 1
+};
 
-const uint16_t Type[] @ 0x7C0 = {
+
+
+enum {
+A = 0, B = 1, C = 2, D = 3, CD = 4
+};
+
+
+
+enum {
+Battery = 31
+};
+
+
+
+const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / 2.5 * 1023);
+
+# 96
+extern unsigned char tx_status;
+unsigned char noo_send_data[4] = {0, 0, 0, 0};
+
+
+uint8_t LedPulseTick_100ms = 0;
+
+
+uint8_t tick3_100ms = 0;
+
+
+enum {
+TYPE_ADR = 0x7C0,
+TX_STATUS_ADR = 0x7D0
+};
+const uint16_t Type[] @ TYPE_ADR = {
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
 
-const uint16_t TxStatus[] @ 0x7D0 = {
+const uint16_t TxStatus[] @ TX_STATUS_ADR = {
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
@@ -4013,132 +3982,52 @@ uint8_t DevMode = 0;
 
 KeyState Keys[5];
 
-# 229
 uint8_t SkipHandling = 0;
-
-uint8_t Init_TypeFromFlash() {
-if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
-return (Type[0] & 0xFF);
-} else {
-return 0;
-}
-}
-
-uint8_t Init_TxStatusFromFlash() {
-for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-if (TxStatus[cellNum] == 0xFFFF) {
-if (cellNum > 0) {
-if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
-return TxStatus[cellNum - 1];
-} else {
-return 0;
-}
-} else {
-return 0;
-}
-} else {
-if (cellNum == 7) {
-if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
-return TxStatus[cellNum];
-} else {
-return 0;
-}
-}
-}
-}
-return 0;
-}
-
-void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
-if (key->State == 0) {
-if (key->Tick100ms < 10) {
-switch (cmd) {
-case 0:
-noolite_send(chn, 0, 0, &noo_send_data[0]);
-break;
-case 2:
-noolite_send(chn, 2, 0, &noo_send_data[0]);
-break;
-case 4:
-noolite_send(chn, 4, 0, &noo_send_data[0]);
-break;
-default:
-noolite_send(chn, 0, 0, &noo_send_data[0]);
-break;
-}
-} else {
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-_delay((unsigned long)((15)*(8000000/4000.0)));
-noolite_send(chn, 10, 0, &noo_send_data[0]);
-key->FirstCmdSent = 0;
-}
-}
-}
-
-void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
-if (key->State != 0) {
-if (key->Tick100ms > ticksToTrigger) {
-if (key->FirstCmdSent == 0) {
-noolite_send(chn, cmd, 0, &noo_send_data[0]);
-key->FirstCmdSent = 1;
-}
-}
-key->Tick100ms++;
-} else {
-key->Tick100ms = 0;
-}
-}
-
-uint16_t battery_value = 0;
 
 void main() {
 Init_IO();
 Init_CLK();
-
 Init_ADC();
 RF_Init();
 
 LATCbits.LATC5 = 1;
-DevType = Init_TypeFromFlash();
-tx_status = Init_TxStatusFromFlash();
-
+DevType = Init_TypeFromFlash(&Type[0]);
+tx_status = Init_TxStatusFromFlash(&TxStatus[0]);
 
 INTCONbits.PEIE = 1;
 INTCONbits.GIE = 1;
 while (1) {
 
-Keys[0].State = (uint8_t) (PORTA & A_Pressed);
-Keys[1].State = (uint8_t) (PORTA & B_Pressed);
-Keys[2].State = (uint8_t) (PORTA & C_Pressed);
-Keys[3].State = (uint8_t) (PORTA & D_Pressed);
-Keys[4].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
-if (Keys[4].State == (C_Pressed | D_Pressed)) {
-SkipHandling = 10;
-if (Keys[4].Tick100ms < 15) {
+Keys[A].State = (uint8_t) (PORTA & A_Pressed);
+Keys[B].State = (uint8_t) (PORTA & B_Pressed);
+Keys[C].State = (uint8_t) (PORTA & C_Pressed);
+Keys[D].State = (uint8_t) (PORTA & D_Pressed);
+Keys[CD].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
+if (Keys[CD].State == (C_Pressed | D_Pressed)) {
+SkipHandling = 5;
+if (Keys[CD].Tick100ms < 15) {
 DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
 DevMode |= BIND_ACTIVE;
 tick3_100ms = 100;
-} else if ((Keys[4].Tick100ms >= 35) && (Keys[4].Tick100ms < 49)) {
+} else if ((Keys[CD].Tick100ms >= 35) && (Keys[CD].Tick100ms < 49)) {
 DevMode &= ~BIND_ACTIVE;
-} else if ((Keys[4].Tick100ms >= 50) && (Keys[4].Tick100ms < 85)) {
+} else if ((Keys[CD].Tick100ms >= 50) && (Keys[CD].Tick100ms < 85)) {
 DevMode &= ~(BIND_ACTIVE | MODE_CHANGE_ACTIVE);
 DevMode |= UNBIND_ACTIVE;
 tick3_100ms = 100;
-} else if ((Keys[4].Tick100ms >= 85) && (Keys[4].Tick100ms < 99)) {
+} else if ((Keys[CD].Tick100ms >= 85) && (Keys[CD].Tick100ms < 99)) {
 DevMode &= ~UNBIND_ACTIVE;
-} else if (Keys[4].Tick100ms >= 100) {
+} else if (Keys[CD].Tick100ms >= 100) {
 DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE);
 DevMode |= MODE_CHANGE_ACTIVE;
 tick3_100ms = 100;
 }
-Keys[4].Tick100ms++;
+Keys[CD].Tick100ms++;
 
-Keys[2].StateTemp = 0;
-Keys[3].StateTemp = 0;
+Keys[C].StateTemp = 0;
+Keys[D].StateTemp = 0;
 } else {
-Keys[4].Tick100ms = 0;
+Keys[CD].Tick100ms = 0;
 }
 
 if (tick3_100ms != 0) {
@@ -4169,7 +4058,7 @@ LATCbits.LATC3 = OFF;
 }
 
 if (SkipHandling != 0) {
-if (Keys[4].State == 0) {
+if (Keys[CD].State == 0) {
 SkipHandling--;
 }
 } else {
@@ -4177,7 +4066,7 @@ if ((DevMode & BIND_ACTIVE) != 0) {
 for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 if (Keys[chn].State == 0) {
-noolite_send(chn, 15, 0, &noo_send_data[0]);
+noolite_send(chn, CMD_Bind, 0, &noo_send_data[0]);
 DevMode &= ~BIND_ACTIVE;
 }
 Keys[chn].StateTemp = Keys[chn].State;
@@ -4187,7 +4076,7 @@ Keys[chn].StateTemp = Keys[chn].State;
 for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 if (Keys[chn].State == 0) {
-noolite_send(chn, 9, 0, &noo_send_data[0]);
+noolite_send(chn, CMD_Unbind, 0, &noo_send_data[0]);
 DevMode &= ~UNBIND_ACTIVE;
 LATCbits.LATC3 = OFF;
 }
@@ -4198,27 +4087,19 @@ Keys[chn].StateTemp = Keys[chn].State;
 for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 if (Keys[chn].State == 0) {
-noo_send_data[0] = Type[0] >> 8;
-noo_send_data[1] = Type[0];
-noo_send_data[2] = DevType;
-noolite_send(chn, 22, 7, &noo_send_data[0]);
-_delay((unsigned long)((500)*(8000000/4000.0)));
 asm("clrwdt");
 LATCbits.LATC3 = ON;
-FlashEraseRow(0x7C0);
+FlashEraseRow(TYPE_ADR);
+asm("clrwdt");
+FlashWrite(TYPE_ADR, chn);
+asm("clrwdt");
+FlashWrite(TYPE_ADR + 1, 0x5A);
 asm("clrwdt");
 _delay((unsigned long)((500)*(8000000/4000.0)));
 asm("clrwdt");
-FlashWrite(0x7C0, chn);
-FlashWrite(0x7C1, 0x5A);
-asm("clrwdt");
-DevType = Init_TypeFromFlash();
+DevType = Init_TypeFromFlash(&Type[0]);
 DevMode &= ~MODE_CHANGE_ACTIVE;
 LATCbits.LATC3 = OFF;
-noo_send_data[0] = Type[0] >> 8;
-noo_send_data[1] = Type[0];
-noo_send_data[2] = DevType;
-noolite_send(chn, 22, 7, &noo_send_data[0]);
 }
 Keys[chn].StateTemp = Keys[chn].State;
 }
@@ -4229,15 +4110,13 @@ for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 switch (DevType) {
 case 0:
-KeyOffHandler(&Keys[chn], chn, 4);
+KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 break;
 case 1:
-if (Keys[chn].State == 0) {
 if ((chn == 0) || (chn == 2)) {
-KeyOffHandler(&Keys[chn], chn, 0);
+KeyOffHandler(&Keys[chn], chn, CMD_OFF, &noo_send_data[0]);
 } else {
-KeyOffHandler(&Keys[chn], chn, 2);
-}
+KeyOffHandler(&Keys[chn], chn, CMD_ON, &noo_send_data[0]);
 }
 break;
 case 2:
@@ -4245,23 +4124,23 @@ if (chn > 1) {
 if (Keys[chn].State == 0) {
 if (Keys[chn].Tick100ms < 10) {
 if (chn > 1) {
-noolite_send(chn, 7, 0, &noo_send_data[0]);
+noolite_send(chn, CMD_Load_Preset, 0, &noo_send_data[0]);
 }
 }
 }
 } else {
-KeyOffHandler(&Keys[chn], chn, 4);
+KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 }
 break;
 case 3:
 if (chn > 1) {
 if (Keys[chn].State) {
-noolite_send(chn, 2, 0, &noo_send_data[0]);
+noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
 } else {
-noolite_send(chn, 0, 0, &noo_send_data[0]);
+noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
 }
 } else {
-KeyOffHandler(&Keys[chn], chn, 4);
+KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 }
 break;
 }
@@ -4270,25 +4149,25 @@ Keys[chn].StateTemp = Keys[chn].State;
 
 switch (DevType) {
 case 0:
-KeyLongHandler(&Keys[chn], chn, 5, 9);
+KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 break;
 case 1:
 if (chn == 0 || chn == 2) {
-KeyLongHandler(&Keys[chn], chn, 1, 9);
+KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9, &noo_send_data[0]);
 } else {
-KeyLongHandler(&Keys[chn], chn, 3, 9);
+KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9, &noo_send_data[0]);
 }
 break;
 case 2:
 if (chn < 2) {
-KeyLongHandler(&Keys[chn], chn, 5, 9);
+KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 } else {
-KeyLongHandler(&Keys[chn], chn, 8, 49);
+KeyLongHandler(&Keys[chn], chn, CMD_Save_Preset, 49, &noo_send_data[0]);
 }
 break;
 case 3:
 if (chn < 2) {
-KeyLongHandler(&Keys[chn], chn, 5, 9);
+KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 }
 break;
 }
@@ -4297,19 +4176,10 @@ break;
 }
 }
 
-if (BattLow && !BattLowSent) {
-for (uint8_t chn = 0; chn < 4; chn++) {
-noolite_send(chn, 20, 4, &noo_send_data[0]);
-asm("clrwdt");
-_delay((unsigned long)((50)*(8000000/4000.0)));
-asm("clrwdt");
-}
-BattLowSent = 1;
-}
 
 if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
 for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
+uint16_t adrToWrite = (TX_STATUS_ADR + (cellNum * 2));
 if (TxStatus[cellNum] == 0xFFFF) {
 FlashWrite(adrToWrite, tx_status & 0x02);
 FlashWrite((adrToWrite + 1), 0x5A);
@@ -4318,14 +4188,12 @@ asm("clrwdt");
 break;
 } else {
 if (cellNum == 7) {
-FlashEraseRow(0x7D0);
-FlashWrite(0x7D0, tx_status & 0x02);
-FlashWrite(0x7D1, 0x5A);
+FlashEraseRow(TX_STATUS_ADR);
+FlashWrite(TX_STATUS_ADR, tx_status & 0x02);
+FlashWrite(TX_STATUS_ADR + 1, 0x5A);
 }
 }
 }
-
-# 549
 LATCbits.LATC5 = 0;
 _delay((unsigned long)((100)*(8000000/4000.0)));
 } else {

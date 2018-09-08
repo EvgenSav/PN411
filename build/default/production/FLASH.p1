@@ -2805,12 +2805,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;FLASH.h: 43: unsigned int FlashRead(unsigned int addr);
-[; ;FLASH.h: 44: void FlashUnlock(void);
-[; ;FLASH.h: 45: void FlashEraseRow(unsigned int addr);
-[; ;FLASH.h: 46: void FlashWrite(unsigned int addr, unsigned int flash_data);
-[; ;FLASH.h: 47: void ClearDevMemory(void);
-[; ;FLASH.h: 48: void test_memory_full(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2839,138 +2833,142 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-"14 FLASH.c
+[; ;FLASH.h: 4: unsigned int FlashRead(unsigned int addr);
+[; ;FLASH.h: 5: void FlashUnlock(void);
+[; ;FLASH.h: 6: void FlashEraseRow(uint16_t rowAddr);
+[; ;FLASH.h: 7: void FlashWrite(unsigned int addr, unsigned int flash_data);
+"16 FLASH.c
 [v _FlashRead `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;FLASH.c: 14: unsigned int FlashRead(unsigned int addr) {
+[; ;FLASH.c: 16: unsigned int FlashRead(unsigned int addr) {
 [e :U _FlashRead ]
 [v _addr `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;FLASH.c: 15: PMCON1bits.CFGS = 0;
-"15
-[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
-[; ;FLASH.c: 16: PMADRH = (unsigned char) (addr >> 8);
-"16
-[e = _PMADRH -> >> _addr -> 8 `i `uc ]
-[; ;FLASH.c: 17: PMADRL = (unsigned char) (addr);
+[; ;FLASH.c: 17: PMCON1bits.CFGS = 0;
 "17
-[e = _PMADRL -> _addr `uc ]
-[; ;FLASH.c: 18: PMCON1bits.RD = 1;
+[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
+[; ;FLASH.c: 18: PMADRH = (unsigned char) (addr >> 8);
 "18
-[e = . . _PMCON1bits 0 0 -> -> 1 `i `uc ]
-[; ;FLASH.c: 20: return ((uint16_t) PMDATH << 8 | PMDATL);
+[e = _PMADRH -> >> _addr -> 8 `i `uc ]
+[; ;FLASH.c: 19: PMADRL = (unsigned char) (addr);
+"19
+[e = _PMADRL -> _addr `uc ]
+[; ;FLASH.c: 20: PMCON1bits.RD = 1;
 "20
+[e = . . _PMCON1bits 0 0 -> -> 1 `i `uc ]
+[; ;FLASH.c: 22: return ((uint16_t) PMDATH << 8 | PMDATL);
+"22
 [e ) | << -> _PMDATH `ui -> 8 `i -> _PMDATL `ui ]
 [e $UE 334  ]
-[; ;FLASH.c: 21: }
-"21
+[; ;FLASH.c: 23: }
+"23
 [e :UE 334 ]
 }
-"23
+"25
 [v _FlashUnlock `(v ~T0 @X0 1 ef ]
 {
-[; ;FLASH.c: 23: void FlashUnlock(void) {
+[; ;FLASH.c: 25: void FlashUnlock(void) {
 [e :U _FlashUnlock ]
 [f ]
-[; ;FLASH.c: 24: PMCON2 = 0x55;
-"24
-[e = _PMCON2 -> -> 85 `i `uc ]
-[; ;FLASH.c: 25: PMCON2 = 0xAA;
-"25
-[e = _PMCON2 -> -> 170 `i `uc ]
-[; ;FLASH.c: 26: PMCON1bits.WR = 1;
+[; ;FLASH.c: 26: PMCON2 = 0x55;
 "26
-[e = . . _PMCON1bits 0 1 -> -> 1 `i `uc ]
-[; ;FLASH.c: 27: }
+[e = _PMCON2 -> -> 85 `i `uc ]
+[; ;FLASH.c: 27: PMCON2 = 0xAA;
 "27
+[e = _PMCON2 -> -> 170 `i `uc ]
+[; ;FLASH.c: 28: PMCON1bits.WR = 1;
+"28
+[e = . . _PMCON1bits 0 1 -> -> 1 `i `uc ]
+[; ;FLASH.c: 29: }
+"29
 [e :UE 335 ]
 }
-"29
+"31
 [v _FlashEraseRow `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;FLASH.c: 29: void FlashEraseRow(unsigned int rowAddr) {
+[; ;FLASH.c: 31: void FlashEraseRow(uint16_t rowAddr) {
 [e :U _FlashEraseRow ]
 [v _rowAddr `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;FLASH.c: 30: PMCON1bits.CFGS = 0;
-"30
-[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
-[; ;FLASH.c: 31: PMADRH = (unsigned char) (rowAddr >> 8);
-"31
-[e = _PMADRH -> >> _rowAddr -> 8 `i `uc ]
-[; ;FLASH.c: 32: PMADRL = (unsigned char) (rowAddr);
+[; ;FLASH.c: 32: PMCON1bits.CFGS = 0;
 "32
-[e = _PMADRL -> _rowAddr `uc ]
-[; ;FLASH.c: 33: PMCON1bits.FREE = 1;
+[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
+[; ;FLASH.c: 33: PMADRH = (uint8_t) (rowAddr >> 8);
 "33
-[e = . . _PMCON1bits 0 4 -> -> 1 `i `uc ]
-[; ;FLASH.c: 34: PMCON1bits.WREN = 1;
+[e = _PMADRH -> >> _rowAddr -> 8 `i `uc ]
+[; ;FLASH.c: 34: PMADRL = (uint8_t) (rowAddr);
 "34
-[e = . . _PMCON1bits 0 2 -> -> 1 `i `uc ]
-[; ;FLASH.c: 35: INTCONbits.GIE = 0;
+[e = _PMADRL -> _rowAddr `uc ]
+[; ;FLASH.c: 35: PMCON1bits.FREE = 1;
 "35
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-[; ;FLASH.c: 36: FlashUnlock();
+[e = . . _PMCON1bits 0 4 -> -> 1 `i `uc ]
+[; ;FLASH.c: 36: PMCON1bits.WREN = 1;
 "36
-[e ( _FlashUnlock ..  ]
-[; ;FLASH.c: 37: INTCONbits.GIE = 1;
+[e = . . _PMCON1bits 0 2 -> -> 1 `i `uc ]
+[; ;FLASH.c: 37: INTCONbits.GIE = 0;
 "37
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;FLASH.c: 38: PMCON1bits.WREN = 0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+[; ;FLASH.c: 38: FlashUnlock();
 "38
-[e = . . _PMCON1bits 0 2 -> -> 0 `i `uc ]
-[; ;FLASH.c: 39: }
+[e ( _FlashUnlock ..  ]
+[; ;FLASH.c: 39: INTCONbits.GIE = 1;
 "39
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;FLASH.c: 40: PMCON1bits.WREN = 0;
+"40
+[e = . . _PMCON1bits 0 2 -> -> 0 `i `uc ]
+[; ;FLASH.c: 41: }
+"41
 [e :UE 336 ]
 }
-"41
+"43
 [v _FlashWrite `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;FLASH.c: 41: void FlashWrite(unsigned int addr, unsigned int flash_data) {
+[; ;FLASH.c: 43: void FlashWrite(unsigned int addr, unsigned int flash_data) {
 [e :U _FlashWrite ]
 [v _addr `ui ~T0 @X0 1 r1 ]
 [v _flash_data `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;FLASH.c: 42: PMCON1bits.CFGS = 0;
-"42
-[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
-[; ;FLASH.c: 43: PMADRH = (unsigned char) (addr >> 8);
-"43
-[e = _PMADRH -> >> _addr -> 8 `i `uc ]
-[; ;FLASH.c: 44: PMADRL = (unsigned char) (addr);
+[; ;FLASH.c: 44: PMCON1bits.CFGS = 0;
 "44
-[e = _PMADRL -> _addr `uc ]
-[; ;FLASH.c: 45: PMCON1bits.FREE = 0;
+[e = . . _PMCON1bits 0 6 -> -> 0 `i `uc ]
+[; ;FLASH.c: 45: PMADRH = (unsigned char) (addr >> 8);
 "45
-[e = . . _PMCON1bits 0 4 -> -> 0 `i `uc ]
-[; ;FLASH.c: 46: PMCON1bits.LWLO = 1;
+[e = _PMADRH -> >> _addr -> 8 `i `uc ]
+[; ;FLASH.c: 46: PMADRL = (unsigned char) (addr);
 "46
-[e = . . _PMCON1bits 0 5 -> -> 1 `i `uc ]
-[; ;FLASH.c: 47: PMCON1bits.WREN = 1;
+[e = _PMADRL -> _addr `uc ]
+[; ;FLASH.c: 47: PMCON1bits.FREE = 0;
 "47
-[e = . . _PMCON1bits 0 2 -> -> 1 `i `uc ]
-[; ;FLASH.c: 48: PMDATH = (unsigned char) (flash_data >> 8);
+[e = . . _PMCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;FLASH.c: 48: PMCON1bits.LWLO = 1;
 "48
-[e = _PMDATH -> >> _flash_data -> 8 `i `uc ]
-[; ;FLASH.c: 49: PMDATL = (unsigned char) flash_data;
+[e = . . _PMCON1bits 0 5 -> -> 1 `i `uc ]
+[; ;FLASH.c: 49: PMCON1bits.WREN = 1;
 "49
-[e = _PMDATL -> _flash_data `uc ]
-[; ;FLASH.c: 50: PMCON1bits.LWLO = 0;
+[e = . . _PMCON1bits 0 2 -> -> 1 `i `uc ]
+[; ;FLASH.c: 50: PMDATH = (unsigned char) (flash_data >> 8);
 "50
-[e = . . _PMCON1bits 0 5 -> -> 0 `i `uc ]
-[; ;FLASH.c: 51: INTCONbits.GIE = 0;
+[e = _PMDATH -> >> _flash_data -> 8 `i `uc ]
+[; ;FLASH.c: 51: PMDATL = (unsigned char) flash_data;
 "51
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-[; ;FLASH.c: 52: FlashUnlock();
+[e = _PMDATL -> _flash_data `uc ]
+[; ;FLASH.c: 52: PMCON1bits.LWLO = 0;
 "52
-[e ( _FlashUnlock ..  ]
-[; ;FLASH.c: 53: INTCONbits.GIE = 1;
+[e = . . _PMCON1bits 0 5 -> -> 0 `i `uc ]
+[; ;FLASH.c: 53: INTCONbits.GIE = 0;
 "53
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;FLASH.c: 54: PMCON1bits.WREN = 0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+[; ;FLASH.c: 54: FlashUnlock();
 "54
-[e = . . _PMCON1bits 0 2 -> -> 0 `i `uc ]
-[; ;FLASH.c: 55: }
+[e ( _FlashUnlock ..  ]
+[; ;FLASH.c: 55: INTCONbits.GIE = 1;
 "55
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;FLASH.c: 56: PMCON1bits.WREN = 0;
+"56
+[e = . . _PMCON1bits 0 2 -> -> 0 `i `uc ]
+[; ;FLASH.c: 57: }
+"57
 [e :UE 337 ]
 }

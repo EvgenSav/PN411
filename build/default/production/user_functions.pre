@@ -1,5 +1,5 @@
 
-# 1 "FLASH.c"
+# 1 "user_functions.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3850,53 +3850,123 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 4 "FLASH.h"
-unsigned int FlashRead(unsigned int addr);
-void FlashUnlock(void);
-void FlashEraseRow(uint16_t rowAddr);
-void FlashWrite(unsigned int addr, unsigned int flash_data);
+# 4 "user_functions.h"
+struct {
+uint8_t State;
+uint8_t StateTemp;
+uint8_t Tick100ms;
+uint8_t FirstCmdSent;
+} typedef KeyState;
 
-# 16 "FLASH.c"
-unsigned int FlashRead(unsigned int addr) {
-PMCON1bits.CFGS = 0;
-PMADRH = (unsigned char) (addr >> 8);
-PMADRL = (unsigned char) (addr);
-PMCON1bits.RD = 1;
+uint8_t Init_TypeFromFlash(const uint16_t* type);
+uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
+void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
 
-return ((uint16_t) PMDATH << 8 | PMDATL);
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+
+# 8 "noolite.h"
+void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data);
+void RF_Init();
+
+# 9 "user_functions.c"
+enum {
+CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
+CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
+CMD_Load_Preset = 7, CMD_Save_Preset = 8, CMD_Unbind = 9,
+CMD_Stop_Reg = 10, CMD_Bind = 15, CMD_Test_Result = 22
+};
+
+
+
+enum {
+Battery = 31
+};
+
+uint8_t Init_TypeFromFlash(const uint16_t* type) {
+if (((type[0] >> 8) == 0x5A) && ((type[0] & 0xFF) < 4)) {
+return (type[0] & 0xFF);
+} else {
+return 0;
+}
 }
 
-void FlashUnlock(void) {
-PMCON2 = 0x55;
-PMCON2 = 0xAA;
-PMCON1bits.WR = 1;
+uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus) {
+for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+if (txStatus[cellNum] == 0xFFFF) {
+if (cellNum > 0) {
+if (((txStatus[cellNum - 1] >> 8) == 0x5A) && ((txStatus[cellNum - 1] & 0xFF) < 3)) {
+return txStatus[cellNum - 1];
+} else {
+return 0;
+}
+} else {
+return 0;
+}
+} else {
+if (cellNum == 7) {
+if (((txStatus[cellNum] >> 8) == 0x5A) && ((txStatus[cellNum] & 0xFF) < 3)) {
+return txStatus[cellNum];
+} else {
+return 0;
+}
+}
+}
+}
+return 0;
 }
 
-void FlashEraseRow(uint16_t rowAddr) {
-PMCON1bits.CFGS = 0;
-PMADRH = (uint8_t) (rowAddr >> 8);
-PMADRL = (uint8_t) (rowAddr);
-PMCON1bits.FREE = 1;
-PMCON1bits.WREN = 1;
-INTCONbits.GIE = 0;
-FlashUnlock();
-INTCONbits.GIE = 1;
-PMCON1bits.WREN = 0;
+void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {
+if (key->State == 0) {
+if (key->Tick100ms < 10) {
+noolite_send(chn, cmd, 0, &nooData[0]);
+} else {
+noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+_delay((unsigned long)((15)*(8000000/4000.0)));
+noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+_delay((unsigned long)((15)*(8000000/4000.0)));
+noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+key->FirstCmdSent = 0;
+}
+}
 }
 
-void FlashWrite(unsigned int addr, unsigned int flash_data) {
-PMCON1bits.CFGS = 0;
-PMADRH = (unsigned char) (addr >> 8);
-PMADRL = (unsigned char) (addr);
-PMCON1bits.FREE = 0;
-PMCON1bits.LWLO = 1;
-PMCON1bits.WREN = 1;
-PMDATH = (unsigned char) (flash_data >> 8);
-PMDATL = (unsigned char) flash_data;
-PMCON1bits.LWLO = 0;
-INTCONbits.GIE = 0;
-FlashUnlock();
-INTCONbits.GIE = 1;
-PMCON1bits.WREN = 0;
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData) {
+if (key->State != 0) {
+if (key->Tick100ms > ticksToTrigger) {
+if (key->FirstCmdSent == 0) {
+noolite_send(chn, cmd, 0, &nooData[0]);
+key->FirstCmdSent = 1;
+}
+}
+key->Tick100ms++;
+} else {
+key->Tick100ms = 0;
+}
 }
 
+unsigned int GetAdcValue(uint8_t channel) {
+ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
+
+if (channel == Battery) {
+FVRCONbits.FVREN = 1;
+FVRCONbits.ADFVR = 0b01;
+}
+
+ADCON0bits.ADON = 1;
+_delay((unsigned long)((55)*(8000000/4000000.0)));
+
+ADCON0bits.GO_nDONE = 1;
+while (ADCON0bits.GO_nDONE) {
+}
+
+
+unsigned int result;
+result = (uint16_t) ((ADRESH << 8) | ADRESL);
+
+# 107
+ADCON0bits.ADON = 0;
+FVRCON = 0;
+PIR1bits.ADIF = 0;
+
+return result;
+}
