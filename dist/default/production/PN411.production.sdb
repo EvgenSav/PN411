@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16LF1503 ]
 [d frameptr 6 ]
-"141 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+"143 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
 [e E2977 . `uc
 A 0
 B 1
@@ -17,19 +17,19 @@ B_Pressed 1
 C_Pressed 4
 D_Pressed 16
 ]
-"149
+"151
 [e E2969 . `uc
 BIND_ACTIVE 1
 UNBIND_ACTIVE 2
 MODE_CHANGE_ACTIVE 4
 GO_OFF 8
 ]
-"177
+"179
 [e E2974 . `uc
 OFF 0
 ON 1
 ]
-"209
+"211
 [e E2949 . `uc
 CMD_OFF 0
 CMD_Bright_Down 1
@@ -44,12 +44,12 @@ CMD_Stop_Reg 10
 CMD_Bind 15
 CMD_Test_Result 22
 ]
-"232
+"234
 [e E2991 . `ui
 TYPE_ADR 1984
 TX_STATUS_ADR 2000
 ]
-"320
+"327
 [e E2967 . `uc
 All_Pressed 23
 ]
@@ -82,7 +82,7 @@ Battery 31
 [v _FlashEraseRow FlashEraseRow `(v  1 e 1 0 ]
 "43
 [v _FlashWrite FlashWrite `(v  1 e 1 0 ]
-"127 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+"129 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
 [v _main main `(v  1 e 1 0 ]
 "25 D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
 [v _RF_Init RF_Init `(v  1 e 1 0 ]
@@ -129,7 +129,7 @@ Battery 31
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
 "1171
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S419 . 1 `uc 1 PS 1 0 :3:0 
+[s S420 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
 `uc 1 TMR0CS 1 0 :1:5 
@@ -137,15 +137,15 @@ Battery 31
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1194
-[s S426 . 1 `uc 1 PS0 1 0 :1:0 
+[s S427 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S433 . 1 `S419 1 . 1 0 `S426 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES433  1 e 1 @149 ]
+[u S434 . 1 `S420 1 . 1 0 `S427 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES434  1 e 1 @149 ]
 [s S184 . 1 `uc 1 SWDTEN 1 0 :1:0 
 `uc 1 WDTPS 1 0 :5:1 
 ]
@@ -159,12 +159,12 @@ Battery 31
 ]
 [u S194 . 1 `S184 1 . 1 0 `S187 1 . 1 0 ]
 [v _WDTCONbits WDTCONbits `VES194  1 e 1 @151 ]
-[s S364 . 1 `uc 1 SCS 1 0 :2:0 
+[s S365 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
 "1391
-[s S368 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S369 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -172,22 +172,22 @@ Battery 31
 `uc 1 IRCF2 1 0 :1:5 
 `uc 1 IRCF3 1 0 :1:6 
 ]
-[u S376 . 1 `S364 1 . 1 0 `S368 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES376  1 e 1 @153 ]
-[s S406 . 1 `uc 1 HFIOFS 1 0 :1:0 
+[u S377 . 1 `S365 1 . 1 0 `S369 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES377  1 e 1 @153 ]
+[s S407 . 1 `uc 1 HFIOFS 1 0 :1:0 
 `uc 1 LFIOFR 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 HFIOFR 1 0 :1:4 
 ]
 "1449
-[u S411 . 1 `S406 1 . 1 0 ]
-[v _OSCSTATbits OSCSTATbits `VES411  1 e 1 @154 ]
-[s S478 . 1 `uc 1 ADON 1 0 :1:0 
+[u S412 . 1 `S407 1 . 1 0 ]
+[v _OSCSTATbits OSCSTATbits `VES412  1 e 1 @154 ]
+[s S479 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "1541
-[s S482 . 1 `uc 1 . 1 0 :1:0 
+[s S483 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -195,25 +195,25 @@ Battery 31
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S490 . 1 `uc 1 . 1 0 :1:0 
+[s S491 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S493 . 1 `S478 1 . 1 0 `S482 1 . 1 0 `S490 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES493  1 e 1 @157 ]
-[s S458 . 1 `uc 1 ADPREF 1 0 :2:0 
+[u S494 . 1 `S479 1 . 1 0 `S483 1 . 1 0 `S491 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES494  1 e 1 @157 ]
+[s S459 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "1613
-[s S463 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[s S464 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 ]
-[u S466 . 1 `S458 1 . 1 0 `S463 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES466  1 e 1 @158 ]
+[u S467 . 1 `S459 1 . 1 0 `S464 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES467  1 e 1 @158 ]
 "1691
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S266 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S267 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -221,8 +221,8 @@ Battery 31
 `uc 1 LATA5 1 0 :1:5 
 ]
 "1706
-[u S273 . 1 `S266 1 . 1 0 ]
-[v _LATAbits LATAbits `VES273  1 e 1 @268 ]
+[u S274 . 1 `S267 1 . 1 0 ]
+[v _LATAbits LATAbits `VES274  1 e 1 @268 ]
 "1736
 [v _LATC LATC `VEuc  1 e 1 @270 ]
 [s S40 . 1 `uc 1 LATC0 1 0 :1:0 
@@ -249,7 +249,7 @@ Battery 31
 [v _PMDATL PMDATL `VEuc  1 e 1 @403 ]
 "2484
 [v _PMDATH PMDATH `VEuc  1 e 1 @404 ]
-[s S306 . 1 `uc 1 RD 1 0 :1:0 
+[s S307 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -258,8 +258,8 @@ Battery 31
 `uc 1 CFGS 1 0 :1:6 
 ]
 "2520
-[u S314 . 1 `S306 1 . 1 0 ]
-[v _PMCON1bits PMCON1bits `VES314  1 e 1 @405 ]
+[u S315 . 1 `S307 1 . 1 0 ]
+[v _PMCON1bits PMCON1bits `VES315  1 e 1 @405 ]
 "2560
 [v _PMCON2 PMCON2 `VEuc  1 e 1 @406 ]
 "2580
@@ -274,19 +274,21 @@ Battery 31
 [v _LedPulseTick_100ms LedPulseTick_100ms `uc  1 e 1 0 ]
 "103
 [v _tick3_100ms tick3_100ms `uc  1 e 1 0 ]
-"110
+"111
 [v _Type Type `DC[8]ui  1 e 16 @1984 ]
-"115
+"116
 [v _TxStatus TxStatus `DC[8]ui  1 e 16 @2000 ]
-"120
-[v _DevType DevType `uc  1 e 1 0 ]
 "121
+[v _DevType DevType `uc  1 e 1 0 ]
+"122
 [v _DevMode DevMode `uc  1 e 1 0 ]
 [s S19 . 4 `uc 1 State 1 0 `uc 1 StateTemp 1 1 `uc 1 Tick100ms 1 2 `uc 1 FirstCmdSent 1 3 ]
-"123
+"124
 [v _Keys Keys `[5]S19  1 e 20 0 ]
-"125
+"126
 [v _SkipHandling SkipHandling `uc  1 e 1 0 ]
+"127
+[v _OffDelayTicks_100ms OffDelayTicks_100ms `uc  1 e 1 0 ]
 "19 D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
 [v _system_settings system_settings `DC[17]uc  1 e 17 @2030 ]
 "21
@@ -295,22 +297,22 @@ Battery 31
 [v _tx_status tx_status `uc  1 e 1 0 ]
 "23
 [v _startaddress startaddress `ul  1 e 4 0 ]
-"127 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+"129 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"322
+"329
 [v main@adrToWrite adrToWrite `ui  1 a 2 26 ]
-"249
-[v main@chn_244 chn `uc  1 a 1 32 ]
-"227
-[v main@chn_243 chn `uc  1 a 1 31 ]
-"216
-[v main@chn_242 chn `uc  1 a 1 30 ]
-"206
+"251
+[v main@chn_245 chn `uc  1 a 1 32 ]
+"229
+[v main@chn_244 chn `uc  1 a 1 31 ]
+"218
+[v main@chn_243 chn `uc  1 a 1 30 ]
+"208
 [v main@chn chn `uc  1 a 1 29 ]
-"321
+"328
 [v main@cellNum cellNum `uc  1 a 1 28 ]
-"354
+"361
 } 0
 "25 D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
 [v _RF_Init RF_Init `(v  1 e 1 0 ]

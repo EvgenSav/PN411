@@ -103,6 +103,7 @@ uint8_t LedPulseTick_100ms = 0;
 uint8_t tick3_100ms = 0;
 
 //vars in FLASH adr
+
 enum {
     TYPE_ADR = 0x7C0,
     TX_STATUS_ADR = 0x7D0
@@ -123,6 +124,7 @@ uint8_t DevMode = 0;
 KeyState Keys[5];
 
 uint8_t SkipHandling = 0;
+uint8_t OffDelayTicks_100ms = 0;
 
 void main() {
     Init_IO();
@@ -284,6 +286,7 @@ void main() {
                                 }
                                 break;
                         }
+                        OffDelayTicks_100ms = 3;
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
                     //передача начальной команды при длительном удержании
@@ -315,9 +318,13 @@ void main() {
                 }
             }
         }
-
+        if (OffDelayTicks_100ms != 0) {
+            OffDelayTicks_100ms--;
+        } else {
+            DevMode |= GO_OFF;
+        }
         //переход в Sleep на ~100мс
-        if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
+        if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0) && ((DevMode & GO_OFF) != 0)) {
             for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
                 uint16_t adrToWrite = (TX_STATUS_ADR + (cellNum * 2));
                 if (TxStatus[cellNum] == 0xFFFF) {
@@ -335,7 +342,7 @@ void main() {
                 }
             }
             VddLatch = 0;
-            __delay_ms(100);
+            __delay_ms(15);
         } else {
             WDTCONbits.WDTPS = 0b00110; //1:2048 (Interval 64 ms nominal)
             NOP();

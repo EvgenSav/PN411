@@ -52,6 +52,10 @@ uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus) {
     return 0;
 }
 
+void SaveTxStatusToFlash() {
+    
+}
+
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {
     if (key->State == 0) {
         if (key->Tick100ms < 10) { //key pressed SHORT
