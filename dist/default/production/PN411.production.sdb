@@ -4,33 +4,33 @@
 [d chip 16LF1503 ]
 [d frameptr 6 ]
 "143 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-[e E2977 . `uc
+[e E2981 . `uc
 A 0
 B 1
 C 2
 D 3
 CD 4
 ]
-[e E2962 . `uc
+[e E2966 . `uc
 A_Pressed 2
 B_Pressed 1
 C_Pressed 4
 D_Pressed 16
 ]
 "151
-[e E2969 . `uc
+[e E2973 . `uc
 BIND_ACTIVE 1
 UNBIND_ACTIVE 2
 MODE_CHANGE_ACTIVE 4
 GO_OFF 8
 ]
 "179
-[e E2974 . `uc
+[e E2978 . `uc
 OFF 0
 ON 1
 ]
 "211
-[e E2949 . `uc
+[e E2953 . `uc
 CMD_OFF 0
 CMD_Bright_Down 1
 CMD_ON 2
@@ -45,16 +45,16 @@ CMD_Bind 15
 CMD_Test_Result 22
 ]
 "234
-[e E2991 . `ui
+[e E2995 . `ui
 TYPE_ADR 1984
 TX_STATUS_ADR 2000
 ]
 "327
-[e E2967 . `uc
+[e E2971 . `uc
 All_Pressed 23
 ]
-"60 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-[e E2937 . `uc
+"80 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+[e E2950 . `uc
 CMD_OFF 0
 CMD_Bright_Down 1
 CMD_ON 2
@@ -68,8 +68,8 @@ CMD_Stop_Reg 10
 CMD_Bind 15
 CMD_Test_Result 22
 ]
-"87
-[e E2950 . `uc
+"107
+[e E2963 . `uc
 Battery 31
 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
@@ -94,13 +94,15 @@ Battery 31
 [v _Init_IO Init_IO `(v  1 e 1 0 ]
 "57
 [v _Init_ADC Init_ADC `(v  1 e 1 0 ]
-"22 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+"23 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
 [v _Init_TypeFromFlash Init_TypeFromFlash `(uc  1 e 1 0 ]
-"30
+"31
 [v _Init_TxStatusFromFlash Init_TxStatusFromFlash `(uc  1 e 1 0 ]
-"55
+"56
+[v _SaveTxStatusToFlash SaveTxStatusToFlash `(v  1 e 1 0 ]
+"75
 [v _KeyOffHandler KeyOffHandler `(v  1 e 1 0 ]
-"70
+"90
 [v _KeyLongHandler KeyLongHandler `(v  1 e 1 0 ]
 [s S68 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -129,7 +131,7 @@ Battery 31
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
 "1171
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S420 . 1 `uc 1 PS 1 0 :3:0 
+[s S425 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
 `uc 1 TMR0CS 1 0 :1:5 
@@ -137,34 +139,34 @@ Battery 31
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1194
-[s S427 . 1 `uc 1 PS0 1 0 :1:0 
+[s S432 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S434 . 1 `S420 1 . 1 0 `S427 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES434  1 e 1 @149 ]
-[s S184 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[u S439 . 1 `S425 1 . 1 0 `S432 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES439  1 e 1 @149 ]
+[s S187 . 1 `uc 1 SWDTEN 1 0 :1:0 
 `uc 1 WDTPS 1 0 :5:1 
 ]
 "1330
-[s S187 . 1 `uc 1 . 1 0 :1:0 
+[s S190 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 WDTPS0 1 0 :1:1 
 `uc 1 WDTPS1 1 0 :1:2 
 `uc 1 WDTPS2 1 0 :1:3 
 `uc 1 WDTPS3 1 0 :1:4 
 `uc 1 WDTPS4 1 0 :1:5 
 ]
-[u S194 . 1 `S184 1 . 1 0 `S187 1 . 1 0 ]
-[v _WDTCONbits WDTCONbits `VES194  1 e 1 @151 ]
-[s S365 . 1 `uc 1 SCS 1 0 :2:0 
+[u S197 . 1 `S187 1 . 1 0 `S190 1 . 1 0 ]
+[v _WDTCONbits WDTCONbits `VES197  1 e 1 @151 ]
+[s S370 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
 "1391
-[s S369 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S374 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -172,22 +174,22 @@ Battery 31
 `uc 1 IRCF2 1 0 :1:5 
 `uc 1 IRCF3 1 0 :1:6 
 ]
-[u S377 . 1 `S365 1 . 1 0 `S369 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES377  1 e 1 @153 ]
-[s S407 . 1 `uc 1 HFIOFS 1 0 :1:0 
+[u S382 . 1 `S370 1 . 1 0 `S374 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES382  1 e 1 @153 ]
+[s S412 . 1 `uc 1 HFIOFS 1 0 :1:0 
 `uc 1 LFIOFR 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 HFIOFR 1 0 :1:4 
 ]
 "1449
-[u S412 . 1 `S407 1 . 1 0 ]
-[v _OSCSTATbits OSCSTATbits `VES412  1 e 1 @154 ]
-[s S479 . 1 `uc 1 ADON 1 0 :1:0 
+[u S417 . 1 `S412 1 . 1 0 ]
+[v _OSCSTATbits OSCSTATbits `VES417  1 e 1 @154 ]
+[s S484 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "1541
-[s S483 . 1 `uc 1 . 1 0 :1:0 
+[s S488 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -195,25 +197,25 @@ Battery 31
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S491 . 1 `uc 1 . 1 0 :1:0 
+[s S496 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S494 . 1 `S479 1 . 1 0 `S483 1 . 1 0 `S491 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES494  1 e 1 @157 ]
-[s S459 . 1 `uc 1 ADPREF 1 0 :2:0 
+[u S499 . 1 `S484 1 . 1 0 `S488 1 . 1 0 `S496 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES499  1 e 1 @157 ]
+[s S464 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "1613
-[s S464 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[s S469 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 ]
-[u S467 . 1 `S459 1 . 1 0 `S464 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES467  1 e 1 @158 ]
+[u S472 . 1 `S464 1 . 1 0 `S469 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES472  1 e 1 @158 ]
 "1691
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S267 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S272 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -221,8 +223,8 @@ Battery 31
 `uc 1 LATA5 1 0 :1:5 
 ]
 "1706
-[u S274 . 1 `S267 1 . 1 0 ]
-[v _LATAbits LATAbits `VES274  1 e 1 @268 ]
+[u S279 . 1 `S272 1 . 1 0 ]
+[v _LATAbits LATAbits `VES279  1 e 1 @268 ]
 "1736
 [v _LATC LATC `VEuc  1 e 1 @270 ]
 [s S40 . 1 `uc 1 LATC0 1 0 :1:0 
@@ -249,7 +251,7 @@ Battery 31
 [v _PMDATL PMDATL `VEuc  1 e 1 @403 ]
 "2484
 [v _PMDATH PMDATH `VEuc  1 e 1 @404 ]
-[s S307 . 1 `uc 1 RD 1 0 :1:0 
+[s S312 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -258,8 +260,8 @@ Battery 31
 `uc 1 CFGS 1 0 :1:6 
 ]
 "2520
-[u S315 . 1 `S307 1 . 1 0 ]
-[v _PMCON1bits PMCON1bits `VES315  1 e 1 @405 ]
+[u S320 . 1 `S312 1 . 1 0 ]
+[v _PMCON1bits PMCON1bits `VES320  1 e 1 @405 ]
 "2560
 [v _PMCON2 PMCON2 `VEuc  1 e 1 @406 ]
 "2580
@@ -300,26 +302,53 @@ Battery 31
 "129 D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"329
-[v main@adrToWrite adrToWrite `ui  1 a 2 26 ]
 "251
-[v main@chn_245 chn `uc  1 a 1 32 ]
+[v main@chn_252 chn `uc  1 a 1 27 ]
 "229
-[v main@chn_244 chn `uc  1 a 1 31 ]
+[v main@chn_251 chn `uc  1 a 1 26 ]
 "218
-[v main@chn_243 chn `uc  1 a 1 30 ]
+[v main@chn_250 chn `uc  1 a 1 25 ]
 "208
-[v main@chn chn `uc  1 a 1 29 ]
-"328
-[v main@cellNum cellNum `uc  1 a 1 28 ]
-"361
+[v main@chn chn `uc  1 a 1 24 ]
+"346
+} 0
+"56 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+[v _SaveTxStatusToFlash SaveTxStatusToFlash `(v  1 e 1 0 ]
+{
+"58
+[v SaveTxStatusToFlash@adrToWrite adrToWrite `ui  1 a 2 0 ]
+"57
+[v SaveTxStatusToFlash@cellNum cellNum `uc  1 a 1 2 ]
+"56
+[v SaveTxStatusToFlash@txStatusArray txStatusArray `*.25DCui  1 p 2 4 ]
+[v SaveTxStatusToFlash@txStatusAdr txStatusAdr `ui  1 p 2 6 ]
+[v SaveTxStatusToFlash@txStatusVal txStatusVal `uc  1 p 1 8 ]
+"73
+} 0
+"43 D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+[v _FlashWrite FlashWrite `(v  1 e 1 0 ]
+{
+[v FlashWrite@addr addr `ui  1 p 2 0 ]
+[v FlashWrite@flash_data flash_data `ui  1 p 2 2 ]
+"57
+} 0
+"31
+[v _FlashEraseRow FlashEraseRow `(v  1 e 1 0 ]
+{
+[v FlashEraseRow@rowAddr rowAddr `ui  1 p 2 0 ]
+"41
+} 0
+"25
+[v _FlashUnlock FlashUnlock `(v  1 e 1 0 ]
+{
+"29
 } 0
 "25 D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
 [v _RF_Init RF_Init `(v  1 e 1 0 ]
 {
 "41
 } 0
-"55 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+"75 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
 [v _KeyOffHandler KeyOffHandler `(v  1 e 1 0 ]
 {
 [s S19 . 4 `uc 1 State 1 0 `uc 1 StateTemp 1 1 `uc 1 Tick100ms 1 2 `uc 1 FirstCmdSent 1 3 ]
@@ -329,9 +358,9 @@ Battery 31
 [v KeyOffHandler@cmd cmd `uc  1 p 1 12 ]
 [v KeyOffHandler@nooData nooData `*.4uc  1 p 1 13 ]
 [v KeyOffHandler@key key `*.4S19  1 a 1 19 ]
-"68
+"88
 } 0
-"70
+"90
 [v _KeyLongHandler KeyLongHandler `(v  1 e 1 0 ]
 {
 [s S19 . 4 `uc 1 State 1 0 `uc 1 StateTemp 1 1 `uc 1 Tick100ms 1 2 `uc 1 FirstCmdSent 1 3 ]
@@ -342,7 +371,7 @@ Battery 31
 [v KeyLongHandler@ticksToTrigger ticksToTrigger `uc  1 p 1 20 ]
 [v KeyLongHandler@nooData nooData `*.4uc  1 p 1 21 ]
 [v KeyLongHandler@key key `*.4S19  1 a 1 11 ]
-"82
+"102
 } 0
 "174 D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
 [v _noolite_send noolite_send `(v  1 e 1 0 ]
@@ -369,20 +398,20 @@ Battery 31
 [v noolite_send@chn chn `uc  1 a 1 14 ]
 "326
 } 0
-"22 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+"23 D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
 [v _Init_TypeFromFlash Init_TypeFromFlash `(uc  1 e 1 0 ]
 {
 [v Init_TypeFromFlash@type type `*.25DCui  1 p 2 0 ]
-"28
+"29
 } 0
-"30
+"31
 [v _Init_TxStatusFromFlash Init_TxStatusFromFlash `(uc  1 e 1 0 ]
 {
-"31
+"32
 [v Init_TxStatusFromFlash@cellNum cellNum `uc  1 a 1 8 ]
-"30
+"31
 [v Init_TxStatusFromFlash@txStatus txStatus `*.25DCui  1 p 2 0 ]
-"53
+"54
 } 0
 "46 D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
 [v _Init_IO Init_IO `(v  1 e 1 0 ]
@@ -398,22 +427,4 @@ Battery 31
 [v _Init_ADC Init_ADC `(v  1 e 1 0 ]
 {
 "67
-} 0
-"43 D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-[v _FlashWrite FlashWrite `(v  1 e 1 0 ]
-{
-[v FlashWrite@addr addr `ui  1 p 2 0 ]
-[v FlashWrite@flash_data flash_data `ui  1 p 2 2 ]
-"57
-} 0
-"31
-[v _FlashEraseRow FlashEraseRow `(v  1 e 1 0 ]
-{
-[v FlashEraseRow@rowAddr rowAddr `ui  1 p 2 0 ]
-"41
-} 0
-"25
-[v _FlashUnlock FlashUnlock `(v  1 e 1 0 ]
-{
-"29
 } 0

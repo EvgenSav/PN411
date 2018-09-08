@@ -3,6 +3,7 @@
 #include <pic16lf1503.h>
 #include <stdint.h>
 #include "user_functions.h"
+#include "FLASH.h"
 #include "noolite.h"
 #define _XTAL_FREQ 8000000
 
@@ -52,8 +53,23 @@ uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus) {
     return 0;
 }
 
-void SaveTxStatusToFlash() {
-    
+void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal) {
+    for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+        uint16_t adrToWrite = (txStatusAdr + (cellNum * 2));
+        if (txStatusArray[cellNum] == 0xFFFF) {
+            FlashWrite(adrToWrite, txStatusVal & 0x02);
+            FlashWrite((adrToWrite + 1), 0x5A);
+            NOP();
+            CLRWDT();
+            break;
+        } else {
+            if (cellNum == 7) {
+                FlashEraseRow(txStatusAdr);
+                FlashWrite(txStatusAdr, txStatusVal & 0x02);
+                FlashWrite(txStatusAdr + 1, 0x5A);
+            }
+        }
+    }
 }
 
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {

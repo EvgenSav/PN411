@@ -325,22 +325,7 @@ void main() {
         }
         //переход в Sleep на ~100мс
         if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0) && ((DevMode & GO_OFF) != 0)) {
-            for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-                uint16_t adrToWrite = (TX_STATUS_ADR + (cellNum * 2));
-                if (TxStatus[cellNum] == 0xFFFF) {
-                    FlashWrite(adrToWrite, tx_status & 0x02);
-                    FlashWrite((adrToWrite + 1), 0x5A);
-                    NOP();
-                    CLRWDT();
-                    break;
-                } else {
-                    if (cellNum == 7) {
-                        FlashEraseRow(TX_STATUS_ADR);
-                        FlashWrite(TX_STATUS_ADR, tx_status & 0x02);
-                        FlashWrite(TX_STATUS_ADR + 1, 0x5A);
-                    }
-                }
-            }
+            SaveTxStatusToFlash(&TxStatus[0], TX_STATUS_ADR, tx_status);
             VddLatch = 0;
             __delay_ms(15);
         } else {

@@ -1,12 +1,19 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"7 FLASH.h
+[v _FlashWrite `(v ~T0 @X0 0 ef2`ui`ui ]
+"29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"6 FLASH.h
+[v _FlashEraseRow `(v ~T0 @X0 0 ef1`ui ]
 "4 user_functions.h
 [s S334 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S334 . State StateTemp Tick100ms FirstCmdSent ]
 "8 noolite.h
 [v _noolite_send `(v ~T0 @X0 0 ef4`uc`uc`uc`*uc ]
-"60 user_functions.c
-[c E2937 0 1 2 3 4 5 7 8 9 10 15 22 .. ]
-[n E2937 . CMD_OFF CMD_Bright_Down CMD_ON CMD_Bright_Up CMD_Switch CMD_Bright_Back CMD_Load_Preset CMD_Save_Preset CMD_Unbind CMD_Stop_Reg CMD_Bind CMD_Test_Result  ]
+"80 user_functions.c
+[c E2950 0 1 2 3 4 5 7 8 9 10 15 22 .. ]
+[n E2950 . CMD_OFF CMD_Bright_Down CMD_ON CMD_Bright_Up CMD_Switch CMD_Bright_Back CMD_Load_Preset CMD_Save_Preset CMD_Unbind CMD_Stop_Reg CMD_Bind CMD_Test_Result  ]
 [v F2872 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF2872 ~T0 @X0 0 e ]
@@ -25,9 +32,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S84 . . . . ]
 "1541
 [v _ADCON0bits `VS84 ~T0 @X0 0 e@157 ]
-"87 user_functions.c
-[c E2950 31 .. ]
-[n E2950 . Battery  ]
+"107 user_functions.c
+[c E2963 31 .. ]
+[n E2963 . Battery  ]
 "2109 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [s S113 :2 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S113 . ADFVR CDAFVR TSRNG TSEN FVRRDY FVREN ]
@@ -2866,61 +2873,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user_functions.h: 9: } typedef KeyState;
 [; ;user_functions.h: 11: uint8_t Init_TypeFromFlash(const uint16_t* type);
 [; ;user_functions.h: 12: uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
-[; ;user_functions.h: 13: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
-[; ;user_functions.h: 15: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+[; ;user_functions.h: 13: void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal);
+[; ;user_functions.h: 14: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
+[; ;user_functions.h: 16: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+[; ;FLASH.h: 4: unsigned int FlashRead(unsigned int addr);
+[; ;FLASH.h: 5: void FlashUnlock(void);
+[; ;FLASH.h: 6: void FlashEraseRow(uint16_t rowAddr);
+[; ;FLASH.h: 7: void FlashWrite(unsigned int addr, unsigned int flash_data);
 [; ;noolite.h: 8: void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data);
 [; ;noolite.h: 9: void RF_Init();
-[; ;user_functions.c: 9: enum {
-[; ;user_functions.c: 10: CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
-[; ;user_functions.c: 11: CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
-[; ;user_functions.c: 12: CMD_Load_Preset = 7, CMD_Save_Preset = 8, CMD_Unbind = 9,
-[; ;user_functions.c: 13: CMD_Stop_Reg = 10, CMD_Bind = 15, CMD_Test_Result = 22
-[; ;user_functions.c: 14: };
-[; ;user_functions.c: 18: enum {
-[; ;user_functions.c: 19: Battery = 31
-[; ;user_functions.c: 20: };
-"22 user_functions.c
+[; ;user_functions.c: 10: enum {
+[; ;user_functions.c: 11: CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
+[; ;user_functions.c: 12: CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
+[; ;user_functions.c: 13: CMD_Load_Preset = 7, CMD_Save_Preset = 8, CMD_Unbind = 9,
+[; ;user_functions.c: 14: CMD_Stop_Reg = 10, CMD_Bind = 15, CMD_Test_Result = 22
+[; ;user_functions.c: 15: };
+[; ;user_functions.c: 19: enum {
+[; ;user_functions.c: 20: Battery = 31
+[; ;user_functions.c: 21: };
+"23 user_functions.c
 [v _Init_TypeFromFlash `(uc ~T0 @X0 1 ef1`*Cui ]
 {
-[; ;user_functions.c: 22: uint8_t Init_TypeFromFlash(const uint16_t* type) {
+[; ;user_functions.c: 23: uint8_t Init_TypeFromFlash(const uint16_t* type) {
 [e :U _Init_TypeFromFlash ]
 [v _type `*Cui ~T0 @X0 1 r1 ]
 [f ]
-[; ;user_functions.c: 23: if (((type[0] >> 8) == 0x5A) && ((type[0] & 0xFF) < 4)) {
-"23
+[; ;user_functions.c: 24: if (((type[0] >> 8) == 0x5A) && ((type[0] & 0xFF) < 4)) {
+"24
 [e $ ! && == >> *U + _type * -> -> 0 `i `x -> -> # *U _type `i `x -> 8 `i -> -> 90 `i `ui < & *U + _type * -> -> 0 `i `x -> -> # *U _type `i `x -> -> 255 `i `ui -> -> 4 `i `ui 336  ]
 {
-[; ;user_functions.c: 24: return (type[0] & 0xFF);
-"24
+[; ;user_functions.c: 25: return (type[0] & 0xFF);
+"25
 [e ) -> & *U + _type * -> -> 0 `i `x -> -> # *U _type `i `x -> -> 255 `i `ui `uc ]
 [e $UE 335  ]
-"25
+"26
 }
-[; ;user_functions.c: 25: } else {
+[; ;user_functions.c: 26: } else {
 [e $U 337  ]
 [e :U 336 ]
 {
-[; ;user_functions.c: 26: return 0;
-"26
+[; ;user_functions.c: 27: return 0;
+"27
 [e ) -> -> 0 `i `uc ]
 [e $UE 335  ]
-"27
+"28
 }
 [e :U 337 ]
-[; ;user_functions.c: 27: }
 [; ;user_functions.c: 28: }
-"28
+[; ;user_functions.c: 29: }
+"29
 [e :UE 335 ]
 }
-"30
+"31
 [v _Init_TxStatusFromFlash `(uc ~T0 @X0 1 ef1`*Cui ]
 {
-[; ;user_functions.c: 30: uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus) {
+[; ;user_functions.c: 31: uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus) {
 [e :U _Init_TxStatusFromFlash ]
 [v _txStatus `*Cui ~T0 @X0 1 r1 ]
 [f ]
-[; ;user_functions.c: 31: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-"31
+[; ;user_functions.c: 32: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+"32
 {
 [v _cellNum `uc ~T0 @X0 1 a ]
 [e = _cellNum -> -> 0 `i `uc ]
@@ -2928,168 +2940,249 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 340  ]
 [e :U 339 ]
 {
-[; ;user_functions.c: 32: if (txStatus[cellNum] == 0xFFFF) {
-"32
+[; ;user_functions.c: 33: if (txStatus[cellNum] == 0xFFFF) {
+"33
 [e $ ! == *U + _txStatus * -> _cellNum `ux -> -> # *U _txStatus `ui `ux -> 65535 `ui 342  ]
 {
-[; ;user_functions.c: 33: if (cellNum > 0) {
-"33
+[; ;user_functions.c: 34: if (cellNum > 0) {
+"34
 [e $ ! > -> _cellNum `i -> 0 `i 343  ]
 {
-[; ;user_functions.c: 34: if (((txStatus[cellNum - 1] >> 8) == 0x5A) && ((txStatus[cellNum - 1] & 0xFF) < 3)) {
-"34
+[; ;user_functions.c: 35: if (((txStatus[cellNum - 1] >> 8) == 0x5A) && ((txStatus[cellNum - 1] & 0xFF) < 3)) {
+"35
 [e $ ! && == >> *U + _txStatus * -> - -> _cellNum `i -> 1 `i `x -> -> # *U _txStatus `i `x -> 8 `i -> -> 90 `i `ui < & *U + _txStatus * -> - -> _cellNum `i -> 1 `i `x -> -> # *U _txStatus `i `x -> -> 255 `i `ui -> -> 3 `i `ui 344  ]
 {
-[; ;user_functions.c: 35: return txStatus[cellNum - 1];
-"35
+[; ;user_functions.c: 36: return txStatus[cellNum - 1];
+"36
 [e ) -> *U + _txStatus * -> - -> _cellNum `i -> 1 `i `x -> -> # *U _txStatus `i `x `uc ]
 [e $UE 338  ]
-"36
+"37
 }
-[; ;user_functions.c: 36: } else {
+[; ;user_functions.c: 37: } else {
 [e $U 345  ]
 [e :U 344 ]
 {
-[; ;user_functions.c: 37: return 0;
-"37
+[; ;user_functions.c: 38: return 0;
+"38
 [e ) -> -> 0 `i `uc ]
 [e $UE 338  ]
-"38
-}
-[e :U 345 ]
 "39
 }
-[; ;user_functions.c: 38: }
-[; ;user_functions.c: 39: } else {
+[e :U 345 ]
+"40
+}
+[; ;user_functions.c: 39: }
+[; ;user_functions.c: 40: } else {
 [e $U 346  ]
 [e :U 343 ]
 {
-[; ;user_functions.c: 40: return 0;
-"40
+[; ;user_functions.c: 41: return 0;
+"41
 [e ) -> -> 0 `i `uc ]
 [e $UE 338  ]
-"41
-}
-[e :U 346 ]
 "42
 }
-[; ;user_functions.c: 41: }
-[; ;user_functions.c: 42: } else {
+[e :U 346 ]
+"43
+}
+[; ;user_functions.c: 42: }
+[; ;user_functions.c: 43: } else {
 [e $U 347  ]
 [e :U 342 ]
 {
-[; ;user_functions.c: 43: if (cellNum == 7) {
-"43
+[; ;user_functions.c: 44: if (cellNum == 7) {
+"44
 [e $ ! == -> _cellNum `i -> 7 `i 348  ]
 {
-[; ;user_functions.c: 44: if (((txStatus[cellNum] >> 8) == 0x5A) && ((txStatus[cellNum] & 0xFF) < 3)) {
-"44
+[; ;user_functions.c: 45: if (((txStatus[cellNum] >> 8) == 0x5A) && ((txStatus[cellNum] & 0xFF) < 3)) {
+"45
 [e $ ! && == >> *U + _txStatus * -> _cellNum `ux -> -> # *U _txStatus `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + _txStatus * -> _cellNum `ux -> -> # *U _txStatus `ui `ux -> -> 255 `i `ui -> -> 3 `i `ui 349  ]
 {
-[; ;user_functions.c: 45: return txStatus[cellNum];
-"45
+[; ;user_functions.c: 46: return txStatus[cellNum];
+"46
 [e ) -> *U + _txStatus * -> _cellNum `ux -> -> # *U _txStatus `ui `ux `uc ]
 [e $UE 338  ]
-"46
+"47
 }
-[; ;user_functions.c: 46: } else {
+[; ;user_functions.c: 47: } else {
 [e $U 350  ]
 [e :U 349 ]
 {
-[; ;user_functions.c: 47: return 0;
-"47
+[; ;user_functions.c: 48: return 0;
+"48
 [e ) -> -> 0 `i `uc ]
 [e $UE 338  ]
-"48
-}
-[e :U 350 ]
 "49
 }
-[e :U 348 ]
+[e :U 350 ]
 "50
 }
-[e :U 347 ]
+[e :U 348 ]
 "51
 }
-"31
+[e :U 347 ]
+"52
+}
+"32
 [e ++ _cellNum -> -> 1 `i `uc ]
 [e $ < -> _cellNum `i -> 8 `i 339  ]
 [e :U 340 ]
-"51
+"52
 }
-[; ;user_functions.c: 48: }
 [; ;user_functions.c: 49: }
 [; ;user_functions.c: 50: }
 [; ;user_functions.c: 51: }
-[; ;user_functions.c: 52: return 0;
-"52
+[; ;user_functions.c: 52: }
+[; ;user_functions.c: 53: return 0;
+"53
 [e ) -> -> 0 `i `uc ]
 [e $UE 338  ]
-[; ;user_functions.c: 53: }
-"53
+[; ;user_functions.c: 54: }
+"54
 [e :UE 338 ]
 }
-"55
+"56
+[v _SaveTxStatusToFlash `(v ~T0 @X0 1 ef3`*Cui`ui`uc ]
+{
+[; ;user_functions.c: 56: void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal) {
+[e :U _SaveTxStatusToFlash ]
+[v _txStatusArray `*Cui ~T0 @X0 1 r1 ]
+[v _txStatusAdr `ui ~T0 @X0 1 r2 ]
+[v _txStatusVal `uc ~T0 @X0 1 r3 ]
+[f ]
+[; ;user_functions.c: 57: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+"57
+{
+[v _cellNum `uc ~T0 @X0 1 a ]
+[e = _cellNum -> -> 0 `i `uc ]
+[e $ < -> _cellNum `i -> 8 `i 352  ]
+[e $U 353  ]
+[e :U 352 ]
+{
+"58
+[v _adrToWrite `ui ~T0 @X0 1 a ]
+[; ;user_functions.c: 58: uint16_t adrToWrite = (txStatusAdr + (cellNum * 2));
+[e = _adrToWrite + _txStatusAdr -> * -> _cellNum `i -> 2 `i `ui ]
+[; ;user_functions.c: 59: if (txStatusArray[cellNum] == 0xFFFF) {
+"59
+[e $ ! == *U + _txStatusArray * -> _cellNum `ux -> -> # *U _txStatusArray `ui `ux -> 65535 `ui 355  ]
+{
+[; ;user_functions.c: 60: FlashWrite(adrToWrite, txStatusVal & 0x02);
+"60
+[e ( _FlashWrite (2 , _adrToWrite -> & -> _txStatusVal `i -> 2 `i `ui ]
+[; ;user_functions.c: 61: FlashWrite((adrToWrite + 1), 0x5A);
+"61
+[e ( _FlashWrite (2 , + _adrToWrite -> -> 1 `i `ui -> -> 90 `i `ui ]
+[; ;user_functions.c: 62: __nop();
+"62
+[e ( ___nop ..  ]
+[; ;user_functions.c: 63: asm("clrwdt");
+"63
+[; <" clrwdt ;# ">
+[; ;user_functions.c: 64: break;
+"64
+[e $U 353  ]
+"65
+}
+[; ;user_functions.c: 65: } else {
+[e $U 356  ]
+[e :U 355 ]
+{
+[; ;user_functions.c: 66: if (cellNum == 7) {
+"66
+[e $ ! == -> _cellNum `i -> 7 `i 357  ]
+{
+[; ;user_functions.c: 67: FlashEraseRow(txStatusAdr);
+"67
+[e ( _FlashEraseRow (1 _txStatusAdr ]
+[; ;user_functions.c: 68: FlashWrite(txStatusAdr, txStatusVal & 0x02);
+"68
+[e ( _FlashWrite (2 , _txStatusAdr -> & -> _txStatusVal `i -> 2 `i `ui ]
+[; ;user_functions.c: 69: FlashWrite(txStatusAdr + 1, 0x5A);
+"69
+[e ( _FlashWrite (2 , + _txStatusAdr -> -> 1 `i `ui -> -> 90 `i `ui ]
+"70
+}
+[e :U 357 ]
+"71
+}
+[e :U 356 ]
+"72
+}
+"57
+[e ++ _cellNum -> -> 1 `i `uc ]
+[e $ < -> _cellNum `i -> 8 `i 352  ]
+[e :U 353 ]
+"72
+}
+[; ;user_functions.c: 70: }
+[; ;user_functions.c: 71: }
+[; ;user_functions.c: 72: }
+[; ;user_functions.c: 73: }
+"73
+[e :UE 351 ]
+}
+"75
 [v _KeyOffHandler `(v ~T0 @X0 1 ef4`*S334`uc`uc`*uc ]
 {
-[; ;user_functions.c: 55: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {
+[; ;user_functions.c: 75: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {
 [e :U _KeyOffHandler ]
 [v _key `*S334 ~T0 @X0 1 r1 ]
 [v _chn `uc ~T0 @X0 1 r2 ]
 [v _cmd `uc ~T0 @X0 1 r3 ]
 [v _nooData `*uc ~T0 @X0 1 r4 ]
 [f ]
-[; ;user_functions.c: 56: if (key->State == 0) {
-"56
-[e $ ! == -> . *U _key 0 `i -> 0 `i 352  ]
+[; ;user_functions.c: 76: if (key->State == 0) {
+"76
+[e $ ! == -> . *U _key 0 `i -> 0 `i 359  ]
 {
-[; ;user_functions.c: 57: if (key->Tick100ms < 10) {
-"57
-[e $ ! < -> . *U _key 2 `i -> 10 `i 353  ]
+[; ;user_functions.c: 77: if (key->Tick100ms < 10) {
+"77
+[e $ ! < -> . *U _key 2 `i -> 10 `i 360  ]
 {
-[; ;user_functions.c: 58: noolite_send(chn, cmd, 0, &nooData[0]);
-"58
+[; ;user_functions.c: 78: noolite_send(chn, cmd, 0, &nooData[0]);
+"78
 [e ( _noolite_send (4 , , , _chn _cmd -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
-"59
+"79
 }
-[; ;user_functions.c: 59: } else {
-[e $U 354  ]
-[e :U 353 ]
+[; ;user_functions.c: 79: } else {
+[e $U 361  ]
+[e :U 360 ]
 {
-[; ;user_functions.c: 60: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
-"60
-[e ( _noolite_send (4 , , , _chn -> . `E2937 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
-[; ;user_functions.c: 61: _delay((unsigned long)((15)*(8000000/4000.0)));
-"61
+[; ;user_functions.c: 80: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+"80
+[e ( _noolite_send (4 , , , _chn -> . `E2950 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
+[; ;user_functions.c: 81: _delay((unsigned long)((15)*(8000000/4000.0)));
+"81
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;user_functions.c: 62: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
-"62
-[e ( _noolite_send (4 , , , _chn -> . `E2937 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
-[; ;user_functions.c: 63: _delay((unsigned long)((15)*(8000000/4000.0)));
-"63
+[; ;user_functions.c: 82: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+"82
+[e ( _noolite_send (4 , , , _chn -> . `E2950 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
+[; ;user_functions.c: 83: _delay((unsigned long)((15)*(8000000/4000.0)));
+"83
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;user_functions.c: 64: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
-"64
-[e ( _noolite_send (4 , , , _chn -> . `E2937 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
-[; ;user_functions.c: 65: key->FirstCmdSent = 0;
-"65
+[; ;user_functions.c: 84: noolite_send(chn, CMD_Stop_Reg, 0, &nooData[0]);
+"84
+[e ( _noolite_send (4 , , , _chn -> . `E2950 9 `uc -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
+[; ;user_functions.c: 85: key->FirstCmdSent = 0;
+"85
 [e = . *U _key 3 -> -> 0 `i `uc ]
-"66
+"86
 }
-[e :U 354 ]
-"67
+[e :U 361 ]
+"87
 }
-[e :U 352 ]
-[; ;user_functions.c: 66: }
-[; ;user_functions.c: 67: }
-[; ;user_functions.c: 68: }
-"68
-[e :UE 351 ]
+[e :U 359 ]
+[; ;user_functions.c: 86: }
+[; ;user_functions.c: 87: }
+[; ;user_functions.c: 88: }
+"88
+[e :UE 358 ]
 }
-"70
+"90
 [v _KeyLongHandler `(v ~T0 @X0 1 ef5`*S334`uc`uc`uc`*uc ]
 {
-[; ;user_functions.c: 70: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData) {
+[; ;user_functions.c: 90: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData) {
 [e :U _KeyLongHandler ]
 [v _key `*S334 ~T0 @X0 1 r1 ]
 [v _chn `uc ~T0 @X0 1 r2 ]
@@ -3097,117 +3190,117 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ticksToTrigger `uc ~T0 @X0 1 r4 ]
 [v _nooData `*uc ~T0 @X0 1 r5 ]
 [f ]
-[; ;user_functions.c: 71: if (key->State != 0) {
-"71
-[e $ ! != -> . *U _key 0 `i -> 0 `i 356  ]
+[; ;user_functions.c: 91: if (key->State != 0) {
+"91
+[e $ ! != -> . *U _key 0 `i -> 0 `i 363  ]
 {
-[; ;user_functions.c: 72: if (key->Tick100ms > ticksToTrigger) {
-"72
-[e $ ! > -> . *U _key 2 `i -> _ticksToTrigger `i 357  ]
+[; ;user_functions.c: 92: if (key->Tick100ms > ticksToTrigger) {
+"92
+[e $ ! > -> . *U _key 2 `i -> _ticksToTrigger `i 364  ]
 {
-[; ;user_functions.c: 73: if (key->FirstCmdSent == 0) {
-"73
-[e $ ! == -> . *U _key 3 `i -> 0 `i 358  ]
+[; ;user_functions.c: 93: if (key->FirstCmdSent == 0) {
+"93
+[e $ ! == -> . *U _key 3 `i -> 0 `i 365  ]
 {
-[; ;user_functions.c: 74: noolite_send(chn, cmd, 0, &nooData[0]);
-"74
+[; ;user_functions.c: 94: noolite_send(chn, cmd, 0, &nooData[0]);
+"94
 [e ( _noolite_send (4 , , , _chn _cmd -> -> 0 `i `uc &U *U + _nooData * -> -> 0 `i `x -> -> # *U _nooData `i `x ]
-[; ;user_functions.c: 75: key->FirstCmdSent = 1;
-"75
+[; ;user_functions.c: 95: key->FirstCmdSent = 1;
+"95
 [e = . *U _key 3 -> -> 1 `i `uc ]
-"76
+"96
 }
-[e :U 358 ]
-"77
+[e :U 365 ]
+"97
 }
-[e :U 357 ]
-[; ;user_functions.c: 76: }
-[; ;user_functions.c: 77: }
-[; ;user_functions.c: 78: key->Tick100ms++;
-"78
+[e :U 364 ]
+[; ;user_functions.c: 96: }
+[; ;user_functions.c: 97: }
+[; ;user_functions.c: 98: key->Tick100ms++;
+"98
 [e ++ . *U _key 2 -> -> 1 `i `uc ]
-"79
+"99
 }
-[; ;user_functions.c: 79: } else {
-[e $U 359  ]
-[e :U 356 ]
+[; ;user_functions.c: 99: } else {
+[e $U 366  ]
+[e :U 363 ]
 {
-[; ;user_functions.c: 80: key->Tick100ms = 0;
-"80
+[; ;user_functions.c: 100: key->Tick100ms = 0;
+"100
 [e = . *U _key 2 -> -> 0 `i `uc ]
-"81
+"101
 }
-[e :U 359 ]
-[; ;user_functions.c: 81: }
-[; ;user_functions.c: 82: }
-"82
-[e :UE 355 ]
+[e :U 366 ]
+[; ;user_functions.c: 101: }
+[; ;user_functions.c: 102: }
+"102
+[e :UE 362 ]
 }
-"84
+"104
 [v _GetAdcValue `(ui ~T0 @X0 1 ef1`uc ]
 {
-[; ;user_functions.c: 84: unsigned int GetAdcValue(uint8_t channel) {
+[; ;user_functions.c: 104: unsigned int GetAdcValue(uint8_t channel) {
 [e :U _GetAdcValue ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;user_functions.c: 85: ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
-"85
+[; ;user_functions.c: 105: ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
+"105
 [e = . . _ADCON0bits 0 2 -> & -> _channel `i -> 31 `i `uc ]
-[; ;user_functions.c: 87: if (channel == Battery) {
-"87
-[e $ ! == -> _channel `i -> . `E2950 0 `i 361  ]
-{
-[; ;user_functions.c: 88: FVRCONbits.FVREN = 1;
-"88
-[e = . . _FVRCONbits 0 5 -> -> 1 `i `uc ]
-[; ;user_functions.c: 89: FVRCONbits.ADFVR = 0b01;
-"89
-[e = . . _FVRCONbits 0 0 -> -> 1 `i `uc ]
-"90
-}
-[e :U 361 ]
-[; ;user_functions.c: 90: }
-[; ;user_functions.c: 92: ADCON0bits.ADON = 1;
-"92
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-[; ;user_functions.c: 93: _delay((unsigned long)((55)*(8000000/4000000.0)));
-"93
-[e ( __delay (1 -> * -> -> 55 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;user_functions.c: 95: ADCON0bits.GO_nDONE = 1;
-"95
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-[; ;user_functions.c: 96: while (ADCON0bits.GO_nDONE) {
-"96
-[e $U 362  ]
-[e :U 363 ]
-{
-"97
-}
-[e :U 362 ]
-"96
-[e $ != -> . . _ADCON0bits 0 1 `i -> -> -> 0 `i `Vuc `i 363  ]
-[e :U 364 ]
-"100
-[v _result `ui ~T0 @X0 1 a ]
-[; ;user_functions.c: 97: }
-[; ;user_functions.c: 100: unsigned int result;
-[; ;user_functions.c: 101: result = (uint16_t) ((ADRESH << 8) | ADRESL);
-"101
-[e = _result -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-[; ;user_functions.c: 107: ADCON0bits.ADON = 0;
+[; ;user_functions.c: 107: if (channel == Battery) {
 "107
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-[; ;user_functions.c: 108: FVRCON = 0;
+[e $ ! == -> _channel `i -> . `E2963 0 `i 368  ]
+{
+[; ;user_functions.c: 108: FVRCONbits.FVREN = 1;
 "108
-[e = _FVRCON -> -> 0 `i `uc ]
-[; ;user_functions.c: 109: PIR1bits.ADIF = 0;
+[e = . . _FVRCONbits 0 5 -> -> 1 `i `uc ]
+[; ;user_functions.c: 109: FVRCONbits.ADFVR = 0b01;
 "109
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-[; ;user_functions.c: 111: return result;
-"111
-[e ) _result ]
-[e $UE 360  ]
-[; ;user_functions.c: 112: }
+[e = . . _FVRCONbits 0 0 -> -> 1 `i `uc ]
+"110
+}
+[e :U 368 ]
+[; ;user_functions.c: 110: }
+[; ;user_functions.c: 112: ADCON0bits.ADON = 1;
 "112
-[e :UE 360 ]
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;user_functions.c: 113: _delay((unsigned long)((55)*(8000000/4000000.0)));
+"113
+[e ( __delay (1 -> * -> -> 55 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;user_functions.c: 115: ADCON0bits.GO_nDONE = 1;
+"115
+[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
+[; ;user_functions.c: 116: while (ADCON0bits.GO_nDONE) {
+"116
+[e $U 369  ]
+[e :U 370 ]
+{
+"117
+}
+[e :U 369 ]
+"116
+[e $ != -> . . _ADCON0bits 0 1 `i -> -> -> 0 `i `Vuc `i 370  ]
+[e :U 371 ]
+"120
+[v _result `ui ~T0 @X0 1 a ]
+[; ;user_functions.c: 117: }
+[; ;user_functions.c: 120: unsigned int result;
+[; ;user_functions.c: 121: result = (uint16_t) ((ADRESH << 8) | ADRESL);
+"121
+[e = _result -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
+[; ;user_functions.c: 127: ADCON0bits.ADON = 0;
+"127
+[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
+[; ;user_functions.c: 128: FVRCON = 0;
+"128
+[e = _FVRCON -> -> 0 `i `uc ]
+[; ;user_functions.c: 129: PIR1bits.ADIF = 0;
+"129
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+[; ;user_functions.c: 131: return result;
+"131
+[e ) _result ]
+[e $UE 367  ]
+[; ;user_functions.c: 132: }
+"132
+[e :UE 367 ]
 }

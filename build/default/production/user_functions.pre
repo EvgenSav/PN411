@@ -3860,15 +3860,22 @@ uint8_t FirstCmdSent;
 
 uint8_t Init_TypeFromFlash(const uint16_t* type);
 uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
+void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal);
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
 
 void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+
+# 4 "FLASH.h"
+unsigned int FlashRead(unsigned int addr);
+void FlashUnlock(void);
+void FlashEraseRow(uint16_t rowAddr);
+void FlashWrite(unsigned int addr, unsigned int flash_data);
 
 # 8 "noolite.h"
 void noolite_send(uint8_t chn, uint8_t noo_send_command, uint8_t noo_send_format, uint8_t* data);
 void RF_Init();
 
-# 9 "user_functions.c"
+# 10 "user_functions.c"
 enum {
 CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
 CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
@@ -3913,6 +3920,25 @@ return 0;
 }
 }
 return 0;
+}
+
+void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal) {
+for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+uint16_t adrToWrite = (txStatusAdr + (cellNum * 2));
+if (txStatusArray[cellNum] == 0xFFFF) {
+FlashWrite(adrToWrite, txStatusVal & 0x02);
+FlashWrite((adrToWrite + 1), 0x5A);
+__nop();
+asm("clrwdt");
+break;
+} else {
+if (cellNum == 7) {
+FlashEraseRow(txStatusAdr);
+FlashWrite(txStatusAdr, txStatusVal & 0x02);
+FlashWrite(txStatusAdr + 1, 0x5A);
+}
+}
+}
 }
 
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData) {
@@ -3963,7 +3989,7 @@ while (ADCON0bits.GO_nDONE) {
 unsigned int result;
 result = (uint16_t) ((ADRESH << 8) | ADRESL);
 
-# 107
+# 127
 ADCON0bits.ADON = 0;
 FVRCON = 0;
 PIR1bits.ADIF = 0;

@@ -10,6 +10,7 @@ struct {
 
 uint8_t Init_TypeFromFlash(const uint16_t* type);
 uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
+void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal);
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
 
 void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);

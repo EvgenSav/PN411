@@ -13,27 +13,28 @@
 %PSECTS
 $dist/default/production\PN411.production.obj
 cinit CODE 0 7E0 7E0 8 2
-text1 CODE 0 1DD 1DD 8B 2
-text2 CODE 0 19D 19D 40 2
-text3 CODE 0 171 171 2C 2
-text4 CODE 0 301 301 19A 2
-text5 CODE 0 153 153 1E 2
-text6 CODE 0 268 268 99 2
-text7 CODE 0 130 130 10 2
-text8 CODE 0 123 123 D 2
-text9 CODE 0 10A 10A C 2
-text10 CODE 0 140 140 13 2
-text11 CODE 0 116 116 D 2
-text12 CODE 0 104 104 6 2
+text1 CODE 0 1D0 1D0 57 2
+text2 CODE 0 133 133 13 2
+text3 CODE 0 116 116 D 2
+text4 CODE 0 F7 F7 6 2
+text5 CODE 0 227 227 8B 2
+text6 CODE 0 190 190 40 2
+text7 CODE 0 164 164 2C 2
+text8 CODE 0 34B 34B 19A 2
+text9 CODE 0 146 146 1E 2
+text10 CODE 0 2B2 2B2 99 2
+text11 CODE 0 123 123 10 2
+text12 CODE 0 109 109 D 2
+text13 CODE 0 FD FD C 2
 _system_settings_text CODE 0 7EE 7EE 11 2
 _Type_text CODE 0 7C0 7C0 10 2
-maintext CODE 0 49B 49B 325 2
+maintext CODE 0 4E5 4E5 2DB 2
 cstackCOMMON COMMON 1 70 70 E 1
-cstackBANK0 BANK0 1 44 44 21 1
+cstackBANK0 BANK0 1 44 44 1C 1
 _TxStatus_text CODE 0 7D0 7D0 10 2
 bssBANK0 BANK0 1 20 20 24 1
 clrtext CODE 0 7E8 7E8 6 2
-$D:\TEMP\s5go.obj
+$D:\TEMP\s3sg.obj
 idloc IDLOC 0 8000 8000 4 2
 reset_vec CODE 0 0 0 1 2
 end_init CODE 0 1 1 1 2
@@ -44,13 +45,13 @@ config CONFIG 0 8007 8007 2 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 65-6F 1
+RAM 60-6F 1
 RAM A0-BF 1
-BANK0 65-6F 1
+BANK0 60-6F 1
 BANK1 A0-BF 1
-CONST 2-103 2
+CONST 2-F6 2
 CONST 7FF-7FF 2
-ENTRY 2-103 2
+ENTRY 2-F6 2
 ENTRY 7FF-7FF 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
@@ -74,8 +75,8 @@ SFR28 E00-E6F 1
 SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
-STACK 2045-206F 1
-CODE 2-103 2
+STACK 2040-206F 1
+CODE 2-F6 2
 CODE 7FF-7FF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -88,9 +89,9 @@ SFR7 380-3EF 1
 SFR8 400-46F 1
 SFR9 480-4EF 1
 BIGRAM 2000-206F 1
-STRCODE 2-103 2
+STRCODE 2-F6 2
 STRCODE 7FF-7FF 2
-STRING 2-103 2
+STRING 2-F6 2
 STRING 7FF-7FF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -106,426 +107,427 @@ STRING 7FF-7FF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\PN411.production.obj
-7E0 cinit CODE >1682:D:\TEMP\s5go.
-7E0 cinit CODE >1685:D:\TEMP\s5go.
-7E0 cinit CODE >1739:D:\TEMP\s5go.
-7E1 cinit CODE >1740:D:\TEMP\s5go.
-7E2 cinit CODE >1741:D:\TEMP\s5go.
-7E3 cinit CODE >1742:D:\TEMP\s5go.
-7E4 cinit CODE >1743:D:\TEMP\s5go.
-7E5 cinit CODE >1744:D:\TEMP\s5go.
-7E6 cinit CODE >1750:D:\TEMP\s5go.
-7E6 cinit CODE >1752:D:\TEMP\s5go.
-7E7 cinit CODE >1753:D:\TEMP\s5go.
-104 text12 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-104 text12 CODE >26:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-106 text12 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-108 text12 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-109 text12 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-116 text11 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-116 text11 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-118 text11 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-11A text11 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-11C text11 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-11D text11 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-11E text11 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-11F text11 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-120 text11 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-121 text11 CODE >40:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-122 text11 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-140 text10 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-140 text10 CODE >44:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-142 text10 CODE >45:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-144 text10 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-146 text10 CODE >47:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-147 text10 CODE >48:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-148 text10 CODE >49:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-149 text10 CODE >50:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-14B text10 CODE >51:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-14D text10 CODE >52:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-14E text10 CODE >53:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-14F text10 CODE >54:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-150 text10 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-151 text10 CODE >56:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-152 text10 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
-10A text9 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-10A text9 CODE >58:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-10C text9 CODE >60:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-10E text9 CODE >61:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-112 text9 CODE >64:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-114 text9 CODE >66:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-115 text9 CODE >67:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-123 text8 CODE >15:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-123 text8 CODE >18:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-128 text8 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-12C text8 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-12D text8 CODE >42:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-12D text8 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-130 text7 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-130 text7 CODE >47:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-132 text7 CODE >48:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-134 text7 CODE >49:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-136 text7 CODE >50:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-139 text7 CODE >52:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-13B text7 CODE >53:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-13D text7 CODE >54:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-13F text7 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
-268 text6 CODE >30:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-268 text6 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-269 text6 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-27C text6 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-27F text6 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-2B1 text6 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-2C4 text6 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-2C8 text6 CODE >44:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-2EE text6 CODE >45:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-2FB text6 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-153 text5 CODE >22:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-153 text5 CODE >23:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-16B text5 CODE >24:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-301 text4 CODE >174:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-303 text4 CODE >181:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-304 text4 CODE >185:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-307 text4 CODE >188:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-30B text4 CODE >189:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-30D text4 CODE >190:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-311 text4 CODE >191:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-313 text4 CODE >192:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-314 text4 CODE >193:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-315 text4 CODE >194:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-317 text4 CODE >197:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-319 text4 CODE >198:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-31B text4 CODE >199:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-31D text4 CODE >200:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-31E text4 CODE >201:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-31F text4 CODE >202:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-320 text4 CODE >204:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-322 text4 CODE >205:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-323 text4 CODE >206:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-323 text4 CODE >207:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-325 text4 CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-329 text4 CODE >209:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-32B text4 CODE >211:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-330 text4 CODE >212:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-331 text4 CODE >213:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-336 text4 CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-33B text4 CODE >219:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-33F text4 CODE >220:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-343 text4 CODE >221:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-347 text4 CODE >222:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-349 text4 CODE >224:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-34C text4 CODE >225:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-34D text4 CODE >226:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-354 text4 CODE >227:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-355 text4 CODE >228:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-375 text4 CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-376 text4 CODE >230:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-395 text4 CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-396 text4 CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3B3 text4 CODE >235:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3BA text4 CODE >236:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3BB text4 CODE >237:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3DB text4 CODE >238:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3DC text4 CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3E2 text4 CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3E3 text4 CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3E4 text4 CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3E9 text4 CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3EC text4 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-3F1 text4 CODE >246:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-407 text4 CODE >247:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-409 text4 CODE >249:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-40A text4 CODE >250:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-40C text4 CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-40E text4 CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-40F text4 CODE >254:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-410 text4 CODE >255:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-411 text4 CODE >256:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-412 text4 CODE >257:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-413 text4 CODE >259:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-414 text4 CODE >260:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-415 text4 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-416 text4 CODE >262:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-41C text4 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-41D text4 CODE >263:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-41E text4 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-422 text4 CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-424 text4 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-425 text4 CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-426 text4 CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-427 text4 CODE >268:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-428 text4 CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-429 text4 CODE >270:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-42A text4 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-42B text4 CODE >272:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-42C text4 CODE >273:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-42E text4 CODE >274:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-436 text4 CODE >275:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-438 text4 CODE >276:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-43B text4 CODE >277:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-43C text4 CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-43D text4 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-43D text4 CODE >322:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-43F text4 CODE >280:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-441 text4 CODE >281:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-442 text4 CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-447 text4 CODE >283:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-449 text4 CODE >284:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-44B text4 CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-44D text4 CODE >286:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-44E text4 CODE >287:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-450 text4 CODE >289:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-453 text4 CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-454 text4 CODE >291:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-455 text4 CODE >292:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-458 text4 CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-45B text4 CODE >294:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-45C text4 CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-45E text4 CODE >297:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-45E text4 CODE >298:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-460 text4 CODE >299:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-465 text4 CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-468 text4 CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-469 text4 CODE >302:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-46B text4 CODE >303:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-46D text4 CODE >304:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-472 text4 CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-475 text4 CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-476 text4 CODE >307:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-477 text4 CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-478 text4 CODE >309:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-479 text4 CODE >310:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-47A text4 CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-47A text4 CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-47C text4 CODE >314:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-492 text4 CODE >315:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-493 text4 CODE >316:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-494 text4 CODE >317:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-495 text4 CODE >319:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-495 text4 CODE >320:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-496 text4 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-497 text4 CODE >323:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-498 text4 CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-49A text4 CODE >326:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-171 text3 CODE >70:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-172 text3 CODE >71:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-177 text3 CODE >72:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-17C text3 CODE >73:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-17D text3 CODE >72:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-17F text3 CODE >73:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-184 text3 CODE >74:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-18B text3 CODE >75:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-191 text3 CODE >78:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-196 text3 CODE >79:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-197 text3 CODE >80:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-19C text3 CODE >82:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-19D text2 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-19E text2 CODE >56:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1A3 text2 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1AA text2 CODE >58:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1B1 text2 CODE >60:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1B8 text2 CODE >61:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1C0 text2 CODE >62:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1C7 text2 CODE >63:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1CF text2 CODE >64:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1D6 text2 CODE >65:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1DC text2 CODE >68:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
-1DD text1 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-1DD text1 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-1DE text1 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-1DF text1 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-1E3 text1 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-1F9 text1 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-207 text1 CODE >30:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-214 text1 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-215 text1 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-216 text1 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-217 text1 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-21B text1 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-22B text1 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-240 text1 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-256 text1 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-264 text1 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-266 text1 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-266 text1 CODE >40:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-267 text1 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
-49B maintext CODE >129:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-49B maintext CODE >130:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-49C maintext CODE >131:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-49D maintext CODE >132:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-49E maintext CODE >133:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-49F maintext CODE >135:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4A1 maintext CODE >136:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4A8 maintext CODE >137:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4AE maintext CODE >139:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4AF maintext CODE >140:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4B0 maintext CODE >143:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4B5 maintext CODE >144:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4B9 maintext CODE >145:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4BD maintext CODE >146:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4C1 maintext CODE >147:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4C5 maintext CODE >148:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4C8 maintext CODE >149:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4CA maintext CODE >150:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4CE maintext CODE >151:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4D0 maintext CODE >152:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4D1 maintext CODE >154:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4DA maintext CODE >155:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4DB maintext CODE >156:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4E4 maintext CODE >157:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4E6 maintext CODE >158:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4E8 maintext CODE >160:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4F0 maintext CODE >161:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4F1 maintext CODE >162:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4F6 maintext CODE >163:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4F8 maintext CODE >164:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4F9 maintext CODE >153:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4FB maintext CODE >167:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4FC maintext CODE >169:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4FD maintext CODE >170:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4FE maintext CODE >171:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-4FF maintext CODE >172:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-500 maintext CODE >175:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-503 maintext CODE >176:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-504 maintext CODE >177:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-505 maintext CODE >178:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-505 maintext CODE >179:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-507 maintext CODE >180:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-508 maintext CODE >182:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-50F maintext CODE >183:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-512 maintext CODE >184:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-515 maintext CODE >188:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-519 maintext CODE >189:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-51A maintext CODE >193:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-51B maintext CODE >177:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-52F maintext CODE >198:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-531 maintext CODE >199:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-533 maintext CODE >200:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-533 maintext CODE >202:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-537 maintext CODE >203:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-53A maintext CODE >204:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-53C maintext CODE >206:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-53C maintext CODE >207:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-53E maintext CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-53F maintext CODE >209:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-54F maintext CODE >210:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-557 maintext CODE >211:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-55E maintext CODE >212:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-560 maintext CODE >214:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-56E maintext CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-574 maintext CODE >217:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-576 maintext CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-57B maintext CODE >219:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-58B maintext CODE >220:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-593 maintext CODE >221:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-59A maintext CODE >222:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-59C maintext CODE >223:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-59E maintext CODE >225:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5AD maintext CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5AF maintext CODE >228:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5B1 maintext CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5B6 maintext CODE >230:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5C6 maintext CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5CE maintext CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5CF maintext CODE >233:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5D1 maintext CODE >234:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5D6 maintext CODE >235:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5D7 maintext CODE >236:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5E0 maintext CODE >237:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5E1 maintext CODE >238:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5E9 maintext CODE >239:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5EA maintext CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5F7 maintext CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5F8 maintext CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-5FF maintext CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-600 maintext CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-602 maintext CODE >246:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-611 maintext CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-613 maintext CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-618 maintext CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-629 maintext CODE >255:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-634 maintext CODE >256:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-635 maintext CODE >258:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-63C maintext CODE >259:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-646 maintext CODE >260:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-647 maintext CODE >261:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-652 maintext CODE >263:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-653 maintext CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-655 maintext CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-656 maintext CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-658 maintext CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-660 maintext CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-669 maintext CODE >268:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-66D maintext CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-675 maintext CODE >274:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-680 maintext CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-682 maintext CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-683 maintext CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-685 maintext CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-68D maintext CODE >280:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-694 maintext CODE >281:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-695 maintext CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-69C maintext CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6A7 maintext CODE >253:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6B5 maintext CODE >289:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6B8 maintext CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6C7 maintext CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6D4 maintext CODE >296:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6D5 maintext CODE >298:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6DC maintext CODE >299:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6E9 maintext CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6EA maintext CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6F8 maintext CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6FA maintext CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6FC maintext CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-6FE maintext CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-709 maintext CODE >307:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-70A maintext CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-716 maintext CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-71A maintext CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-728 maintext CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-736 maintext CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-739 maintext CODE >321:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-73C maintext CODE >322:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-73D maintext CODE >323:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-73E maintext CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-73F maintext CODE >327:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-748 maintext CODE >328:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-749 maintext CODE >335:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-74A maintext CODE >337:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-74E maintext CODE >338:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-753 maintext CODE >339:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-75D maintext CODE >340:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-765 maintext CODE >328:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-76B maintext CODE >329:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-774 maintext CODE >330:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-787 maintext CODE >331:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-790 maintext CODE >332:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-79B maintext CODE >333:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-79C maintext CODE >334:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-79D maintext CODE >328:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-79D maintext CODE >344:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-79F maintext CODE >345:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7A7 maintext CODE >346:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7A8 maintext CODE >347:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7AD maintext CODE >348:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7AE maintext CODE >349:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7AF maintext CODE >350:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7B0 maintext CODE >351:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7B5 maintext CODE >352:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7B6 maintext CODE >353:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7B7 maintext CODE >354:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7B8 maintext CODE >355:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7BD maintext CODE >356:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7BE maintext CODE >357:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
-7E8 clrtext CODE >1728:D:\TEMP\s5go.
-7E8 clrtext CODE >1729:D:\TEMP\s5go.
-7E9 clrtext CODE >1730:D:\TEMP\s5go.
-7E9 clrtext CODE >1731:D:\TEMP\s5go.
-7EA clrtext CODE >1732:D:\TEMP\s5go.
-7EB clrtext CODE >1733:D:\TEMP\s5go.
-7EC clrtext CODE >1734:D:\TEMP\s5go.
-7ED clrtext CODE >1735:D:\TEMP\s5go.
+7E0 cinit CODE >1685:D:\TEMP\s3sg.
+7E0 cinit CODE >1688:D:\TEMP\s3sg.
+7E0 cinit CODE >1742:D:\TEMP\s3sg.
+7E1 cinit CODE >1743:D:\TEMP\s3sg.
+7E2 cinit CODE >1744:D:\TEMP\s3sg.
+7E3 cinit CODE >1745:D:\TEMP\s3sg.
+7E4 cinit CODE >1746:D:\TEMP\s3sg.
+7E5 cinit CODE >1747:D:\TEMP\s3sg.
+7E6 cinit CODE >1753:D:\TEMP\s3sg.
+7E6 cinit CODE >1755:D:\TEMP\s3sg.
+7E7 cinit CODE >1756:D:\TEMP\s3sg.
+FD text13 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+FD text13 CODE >58:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+FF text13 CODE >60:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+101 text13 CODE >61:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+105 text13 CODE >64:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+107 text13 CODE >66:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+108 text13 CODE >67:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+109 text12 CODE >15:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+109 text12 CODE >18:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+10E text12 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+112 text12 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+113 text12 CODE >42:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+113 text12 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+123 text11 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+123 text11 CODE >47:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+125 text11 CODE >48:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+127 text11 CODE >49:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+129 text11 CODE >50:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+12C text11 CODE >52:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+12E text11 CODE >53:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+130 text11 CODE >54:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+132 text11 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\periph_config.c
+2B2 text10 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+2B2 text10 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+2B3 text10 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+2C6 text10 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+2C9 text10 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+2FB text10 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+30E text10 CODE >44:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+312 text10 CODE >45:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+338 text10 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+345 text10 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+146 text9 CODE >23:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+146 text9 CODE >24:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+15E text9 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+34B text8 CODE >174:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+34D text8 CODE >181:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+34E text8 CODE >185:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+351 text8 CODE >188:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+355 text8 CODE >189:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+357 text8 CODE >190:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35B text8 CODE >191:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35D text8 CODE >192:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35E text8 CODE >193:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+35F text8 CODE >194:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+361 text8 CODE >197:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+363 text8 CODE >198:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+365 text8 CODE >199:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+367 text8 CODE >200:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+368 text8 CODE >201:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+369 text8 CODE >202:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+36A text8 CODE >204:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+36C text8 CODE >205:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+36D text8 CODE >206:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+36D text8 CODE >207:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+36F text8 CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+373 text8 CODE >209:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+375 text8 CODE >211:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+37A text8 CODE >212:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+37B text8 CODE >213:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+380 text8 CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+385 text8 CODE >219:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+389 text8 CODE >220:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+38D text8 CODE >221:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+391 text8 CODE >222:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+393 text8 CODE >224:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+396 text8 CODE >225:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+397 text8 CODE >226:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+39E text8 CODE >227:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+39F text8 CODE >228:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3BF text8 CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3C0 text8 CODE >230:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3DF text8 CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3E0 text8 CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+3FD text8 CODE >235:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+404 text8 CODE >236:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+405 text8 CODE >237:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+425 text8 CODE >238:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+426 text8 CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+42C text8 CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+42D text8 CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+42E text8 CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+433 text8 CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+436 text8 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+43B text8 CODE >246:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+451 text8 CODE >247:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+453 text8 CODE >249:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+454 text8 CODE >250:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+456 text8 CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+458 text8 CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+459 text8 CODE >254:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45A text8 CODE >255:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45B text8 CODE >256:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45C text8 CODE >257:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45D text8 CODE >259:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45E text8 CODE >260:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+45F text8 CODE >245:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+460 text8 CODE >262:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+466 text8 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+467 text8 CODE >263:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+468 text8 CODE >264:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+46C text8 CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+46E text8 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+46F text8 CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+470 text8 CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+471 text8 CODE >268:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+472 text8 CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+473 text8 CODE >270:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+474 text8 CODE >271:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+475 text8 CODE >272:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+476 text8 CODE >273:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+478 text8 CODE >274:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+480 text8 CODE >275:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+482 text8 CODE >276:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+485 text8 CODE >277:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+486 text8 CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+487 text8 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+487 text8 CODE >322:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+489 text8 CODE >280:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+48B text8 CODE >281:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+48C text8 CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+491 text8 CODE >283:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+493 text8 CODE >284:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+495 text8 CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+497 text8 CODE >286:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+498 text8 CODE >287:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+49A text8 CODE >289:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+49D text8 CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+49E text8 CODE >291:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+49F text8 CODE >292:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4A2 text8 CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4A5 text8 CODE >294:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4A6 text8 CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4A8 text8 CODE >297:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4A8 text8 CODE >298:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4AA text8 CODE >299:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4AF text8 CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4B2 text8 CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4B3 text8 CODE >302:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4B5 text8 CODE >303:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4B7 text8 CODE >304:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4BC text8 CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4BF text8 CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C0 text8 CODE >307:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C1 text8 CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C2 text8 CODE >309:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C3 text8 CODE >310:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C4 text8 CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C4 text8 CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4C6 text8 CODE >314:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4DC text8 CODE >315:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4DD text8 CODE >316:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4DE text8 CODE >317:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4DF text8 CODE >319:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4DF text8 CODE >320:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4E0 text8 CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4E1 text8 CODE >323:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4E2 text8 CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+4E4 text8 CODE >326:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+164 text7 CODE >90:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+165 text7 CODE >91:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+16A text7 CODE >92:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+16F text7 CODE >93:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+170 text7 CODE >92:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+172 text7 CODE >93:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+177 text7 CODE >94:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+17E text7 CODE >95:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+184 text7 CODE >98:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+189 text7 CODE >99:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+18A text7 CODE >100:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+18F text7 CODE >102:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+190 text6 CODE >75:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+191 text6 CODE >76:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+196 text6 CODE >77:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+19D text6 CODE >78:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1A4 text6 CODE >80:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1AB text6 CODE >81:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1B3 text6 CODE >82:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1BA text6 CODE >83:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1C2 text6 CODE >84:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1C9 text6 CODE >85:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1CF text6 CODE >88:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+227 text5 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+227 text5 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+228 text5 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+229 text5 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+22D text5 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+243 text5 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+251 text5 CODE >30:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+25E text5 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+25F text5 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+260 text5 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+261 text5 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+265 text5 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+275 text5 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+28A text5 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2A0 text5 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2AE text5 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2B0 text5 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2B0 text5 CODE >40:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+2B1 text5 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\noolite.c
+F7 text4 CODE >25:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+F7 text4 CODE >26:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+F9 text4 CODE >27:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FB text4 CODE >28:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+FC text4 CODE >29:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+116 text3 CODE >31:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+116 text3 CODE >32:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+118 text3 CODE >33:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+11A text3 CODE >34:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+11C text3 CODE >35:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+11D text3 CODE >36:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+11E text3 CODE >37:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+11F text3 CODE >38:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+120 text3 CODE >39:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+121 text3 CODE >40:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+122 text3 CODE >41:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+133 text2 CODE >43:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+133 text2 CODE >44:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+135 text2 CODE >45:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+137 text2 CODE >46:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+139 text2 CODE >47:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+13A text2 CODE >48:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+13B text2 CODE >49:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+13C text2 CODE >50:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+13E text2 CODE >51:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+140 text2 CODE >52:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+141 text2 CODE >53:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+142 text2 CODE >54:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+143 text2 CODE >55:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+144 text2 CODE >56:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+145 text2 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\FLASH.c
+1D0 text1 CODE >56:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1D0 text1 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1D1 text1 CODE >58:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1DA text1 CODE >59:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1ED text1 CODE >60:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+1F6 text1 CODE >61:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+201 text1 CODE >62:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+202 text1 CODE >63:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+203 text1 CODE >64:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+204 text1 CODE >66:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+208 text1 CODE >67:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+20D text1 CODE >68:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+216 text1 CODE >69:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+220 text1 CODE >57:D:\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
+4E5 maintext CODE >129:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E5 maintext CODE >130:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E6 maintext CODE >131:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E7 maintext CODE >132:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E8 maintext CODE >133:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4E9 maintext CODE >135:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4EB maintext CODE >136:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F2 maintext CODE >137:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F8 maintext CODE >139:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4F9 maintext CODE >140:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4FA maintext CODE >143:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+4FF maintext CODE >144:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+503 maintext CODE >145:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+507 maintext CODE >146:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+50B maintext CODE >147:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+50F maintext CODE >148:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+512 maintext CODE >149:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+514 maintext CODE >150:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+518 maintext CODE >151:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51A maintext CODE >152:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+51B maintext CODE >154:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+524 maintext CODE >155:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+525 maintext CODE >156:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+52E maintext CODE >157:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+530 maintext CODE >158:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+532 maintext CODE >160:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+53A maintext CODE >161:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+53B maintext CODE >162:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+540 maintext CODE >163:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+542 maintext CODE >164:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+543 maintext CODE >153:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+545 maintext CODE >167:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+546 maintext CODE >169:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+547 maintext CODE >170:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+548 maintext CODE >171:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+549 maintext CODE >172:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54A maintext CODE >175:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54D maintext CODE >176:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54E maintext CODE >177:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54F maintext CODE >178:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+54F maintext CODE >179:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+551 maintext CODE >180:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+552 maintext CODE >182:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+559 maintext CODE >183:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+55C maintext CODE >184:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+55F maintext CODE >188:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+563 maintext CODE >189:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+564 maintext CODE >193:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+565 maintext CODE >177:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+579 maintext CODE >198:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57B maintext CODE >199:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57D maintext CODE >200:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+57D maintext CODE >202:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+581 maintext CODE >203:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+584 maintext CODE >204:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+586 maintext CODE >206:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+586 maintext CODE >207:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+588 maintext CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+589 maintext CODE >209:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+599 maintext CODE >210:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5A1 maintext CODE >211:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5A8 maintext CODE >212:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5AA maintext CODE >214:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5B8 maintext CODE >208:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5BE maintext CODE >217:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5C0 maintext CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5C5 maintext CODE >219:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5D5 maintext CODE >220:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5DD maintext CODE >221:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5E4 maintext CODE >222:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5E6 maintext CODE >223:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5E8 maintext CODE >225:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5F7 maintext CODE >218:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5F9 maintext CODE >228:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+5FB maintext CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+600 maintext CODE >230:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+610 maintext CODE >231:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+618 maintext CODE >232:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+619 maintext CODE >233:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+61B maintext CODE >234:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+620 maintext CODE >235:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+621 maintext CODE >236:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+62A maintext CODE >237:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+62B maintext CODE >238:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+633 maintext CODE >239:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+634 maintext CODE >240:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+641 maintext CODE >241:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+642 maintext CODE >242:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+649 maintext CODE >243:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+64A maintext CODE >244:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+64C maintext CODE >246:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+65B maintext CODE >229:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+65D maintext CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+662 maintext CODE >252:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+673 maintext CODE >255:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+67E maintext CODE >256:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+67F maintext CODE >258:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+686 maintext CODE >259:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+690 maintext CODE >260:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+691 maintext CODE >261:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+69C maintext CODE >263:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+69D maintext CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+69F maintext CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6A0 maintext CODE >265:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6A2 maintext CODE >266:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6AA maintext CODE >267:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6B3 maintext CODE >268:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6B7 maintext CODE >269:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6BF maintext CODE >274:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6CA maintext CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6CC maintext CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6CD maintext CODE >278:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6CF maintext CODE >279:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6D7 maintext CODE >280:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6DE maintext CODE >281:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6DF maintext CODE >282:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6E6 maintext CODE >285:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6F1 maintext CODE >253:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+6FF maintext CODE >289:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+702 maintext CODE >290:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+711 maintext CODE >295:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+71E maintext CODE >296:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+71F maintext CODE >298:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+726 maintext CODE >299:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+733 maintext CODE >300:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+734 maintext CODE >301:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+742 maintext CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+744 maintext CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+746 maintext CODE >305:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+748 maintext CODE >306:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+753 maintext CODE >307:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+754 maintext CODE >308:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+760 maintext CODE >312:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+764 maintext CODE >313:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+772 maintext CODE >293:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+780 maintext CODE >251:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+783 maintext CODE >321:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+786 maintext CODE >322:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+787 maintext CODE >323:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+788 maintext CODE >324:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+789 maintext CODE >327:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+792 maintext CODE >328:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+79D maintext CODE >329:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+79F maintext CODE >330:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7A7 maintext CODE >331:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7A8 maintext CODE >332:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AD maintext CODE >333:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AE maintext CODE >334:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7AF maintext CODE >335:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B0 maintext CODE >336:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B5 maintext CODE >337:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B6 maintext CODE >338:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B7 maintext CODE >339:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7B8 maintext CODE >340:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7BD maintext CODE >341:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7BE maintext CODE >342:D:\Dropbox\C_projects\MPLABProjects\PN411\main.c
+7E8 clrtext CODE >1731:D:\TEMP\s3sg.
+7E8 clrtext CODE >1732:D:\TEMP\s3sg.
+7E9 clrtext CODE >1733:D:\TEMP\s3sg.
+7E9 clrtext CODE >1734:D:\TEMP\s3sg.
+7EA clrtext CODE >1735:D:\TEMP\s3sg.
+7EB clrtext CODE >1736:D:\TEMP\s3sg.
+7EC clrtext CODE >1737:D:\TEMP\s3sg.
+7ED clrtext CODE >1738:D:\TEMP\s3sg.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -543,11 +545,10 @@ __Hspace_0 10008 0 ABS 0 - -
 __Hspace_1 10008 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 8004 0 ABS 0 - -
-_KeyLongHandler 2E2 0 CODE 0 text3 dist/default/production\PN411.production.obj
+_KeyLongHandler 2C8 0 CODE 0 text7 dist/default/production\PN411.production.obj
 _PMCON1bits 195 0 ABS 0 - dist/default/production\PN411.production.obj
 __size_of_Init_TxStatusFromFlash 0 0 ABS 0 - dist/default/production\PN411.production.obj
-_FlashUnlock 208 0 CODE 0 text12 dist/default/production\PN411.production.obj
-main@adrToWrite 5E 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+_FlashUnlock 1EE 0 CODE 0 text4 dist/default/production\PN411.production.obj
 __Heeprom_data 10008 0 EEDATA 3 eeprom_data -
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
 noolite_send@data 72 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
@@ -558,26 +559,28 @@ _Keys 2C 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 _TMR0 15 0 ABS 0 - dist/default/production\PN411.production.obj
 _Type F80 0 CODE 0 _Type_text dist/default/production\PN411.production.obj
 _WPUA 20C 0 ABS 0 - dist/default/production\PN411.production.obj
-___sp 0 0 STACK 2 stack D:\TEMP\s5go.obj
-_main 936 0 CODE 0 maintext dist/default/production\PN411.production.obj
+___sp 0 0 STACK 2 stack D:\TEMP\s3sg.obj
+_main 9CA 0 CODE 0 maintext dist/default/production\PN411.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\PN411.production.obj
-start 2 0 CODE 0 init D:\TEMP\s5go.obj
+start 2 0 CODE 0 init D:\TEMP\s3sg.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\PN411.production.obj
 _OPTION_REGbits 95 0 ABS 0 - dist/default/production\PN411.production.obj
 Init_TypeFromFlash@type 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 _noo_address_type 24 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
-__end_of_RF_Init 4D0 0 CODE 0 text1 dist/default/production\PN411.production.obj
+SaveTxStatusToFlash@txStatusAdr 76 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+SaveTxStatusToFlash@txStatusVal 78 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__end_of_RF_Init 564 0 CODE 0 text5 dist/default/production\PN411.production.obj
 __size_of_FlashEraseRow 0 0 ABS 0 - dist/default/production\PN411.production.obj
-intlevel0 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
-intlevel1 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
-intlevel2 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
-intlevel3 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
-intlevel4 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
-intlevel5 0 0 ENTRY 0 functab D:\TEMP\s5go.obj
+intlevel0 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
+intlevel1 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
+intlevel2 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
+intlevel3 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
+intlevel4 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
+intlevel5 0 0 ENTRY 0 functab D:\TEMP\s3sg.obj
 _WDTCONbits 97 0 ABS 0 - dist/default/production\PN411.production.obj
-__end_of_KeyLongHandler 33A 0 CODE 0 text3 dist/default/production\PN411.production.obj
-_Init_IO 260 0 CODE 0 text7 dist/default/production\PN411.production.obj
+__end_of_KeyLongHandler 320 0 CODE 0 text7 dist/default/production\PN411.production.obj
+_Init_IO 246 0 CODE 0 text11 dist/default/production\PN411.production.obj
 _OSCCONbits 99 0 ABS 0 - dist/default/production\PN411.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\PN411.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -586,21 +589,21 @@ __size_of_FlashWrite 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __size_of_KeyOffHandler 0 0 ABS 0 - dist/default/production\PN411.production.obj
 _ANSELA 18C 0 ABS 0 - dist/default/production\PN411.production.obj
 _ANSELC 18E 0 ABS 0 - dist/default/production\PN411.production.obj
-__end_of_FlashEraseRow 246 0 CODE 0 text11 dist/default/production\PN411.production.obj
-main@cellNum 60 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__end_of_FlashEraseRow 246 0 CODE 0 text3 dist/default/production\PN411.production.obj
 noolite_send@countsend 53 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 __CFG_CP$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
-main@chn 61 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn 5C 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 __Lmaintext 10008 0 ABS 0 maintext -
-main@chn_243 62 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
-main@chn_244 63 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
-main@chn_245 64 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn_250 5D 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn_251 5E 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+main@chn_252 5F 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 _FVRCON 117 0 ABS 0 - dist/default/production\PN411.production.obj
 _noo_send_data 40 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 __L_system_settings_text FDC 0 CODE 0 _system_settings_text -
-__end_of_KeyOffHandler 3BA 0 CODE 0 text2 dist/default/production\PN411.production.obj
+__end_of_KeyOffHandler 3A0 0 CODE 0 text6 dist/default/production\PN411.production.obj
 _OPTION_REG 95 0 ABS 0 - dist/default/production\PN411.production.obj
-__end_of_Init_TypeFromFlash 2E2 0 CODE 0 text5 dist/default/production\PN411.production.obj
+SaveTxStatusToFlash@cellNum 46 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
+__end_of_Init_TypeFromFlash 2C8 0 CODE 0 text9 dist/default/production\PN411.production.obj
 start_initialization FC0 0 CODE 0 cinit dist/default/production\PN411.production.obj
 _PMADRH 192 0 ABS 0 - dist/default/production\PN411.production.obj
 _PMADRL 191 0 ABS 0 - dist/default/production\PN411.production.obj
@@ -610,15 +613,15 @@ _PMDATL 193 0 ABS 0 - dist/default/production\PN411.production.obj
 noolite_send@temp_send 54 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 clear_ram0 FD0 0 CODE 0 clrtext dist/default/production\PN411.production.obj
 __pcstackBANK0 44 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
-_noolite_send 602 0 CODE 0 text4 dist/default/production\PN411.production.obj
+_noolite_send 696 0 CODE 0 text8 dist/default/production\PN411.production.obj
 _TMR0IE 5D 0 ABS 0 - dist/default/production\PN411.production.obj
 _TMR0IF 5A 0 ABS 0 - dist/default/production\PN411.production.obj
 __p_system_settings_text FDC 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
-_Init_TypeFromFlash 2A6 0 CODE 0 text5 dist/default/production\PN411.production.obj
+_Init_TypeFromFlash 28C 0 CODE 0 text9 dist/default/production\PN411.production.obj
 Init_TxStatusFromFlash@txStatus 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
 KeyLongHandler@ticksToTrigger 58 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
-___int_sp 0 0 STACK 2 stack D:\TEMP\s5go.obj
-_Init_TxStatusFromFlash 4D0 0 CODE 0 text6 dist/default/production\PN411.production.obj
+___int_sp 0 0 STACK 2 stack D:\TEMP\s3sg.obj
+_Init_TxStatusFromFlash 564 0 CODE 0 text10 dist/default/production\PN411.production.obj
 __p_Type_text F80 0 CODE 0 _Type_text dist/default/production\PN411.production.obj
 __Hbank0 10008 0 ABS 0 bank0 -
 __Hbank1 10008 0 ABS 0 bank1 -
@@ -680,7 +683,7 @@ __Hbank31 10008 0 BANK31 1 bank31 -
 __Hbigram 10008 0 ABS 0 bigram -
 __Hmaintext 10008 0 ABS 0 maintext -
 __p_TxStatus_text FA0 0 CODE 0 _TxStatus_text dist/default/production\PN411.production.obj
-__end_of_FlashUnlock 214 0 CODE 0 text12 dist/default/production\PN411.production.obj
+__end_of_FlashUnlock 1FA 0 CODE 0 text4 dist/default/production\PN411.production.obj
 __CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __Hcommon 10008 0 ABS 0 common -
 __Hconfig 10012 0 CONFIG 0 config -
@@ -754,7 +757,7 @@ __Lsfr8 10008 0 ABS 0 sfr8 -
 __Lsfr9 10008 0 ABS 0 sfr9 -
 __Ltext 10008 0 ABS 0 text -
 __LcstackBANK0 10008 0 ABS 0 cstackBANK0 -
-_RF_Init 3BA 0 CODE 0 text1 dist/default/production\PN411.production.obj
+_RF_Init 44E 0 CODE 0 text5 dist/default/production\PN411.production.obj
 __HcstackCOMMON 10008 0 ABS 0 cstackCOMMON -
 __size_of_Init_ADC 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __size_of_Init_CLK 0 0 ABS 0 - dist/default/production\PN411.production.obj
@@ -763,11 +766,11 @@ __S1 7E 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __end_of_system_settings FFE 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
 __CFG_WDTE$SWDTEN 0 0 ABS 0 - dist/default/production\PN411.production.obj
-__end_of_noolite_send 936 0 CODE 0 text4 dist/default/production\PN411.production.obj
+__end_of_noolite_send 9CA 0 CODE 0 text8 dist/default/production\PN411.production.obj
 __Lintentry 2 0 CODE 0 intentry -
 _DevMode 27 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 _DevType 28 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
-reset_vec 0 0 CODE 0 reset_vec D:\TEMP\s5go.obj
+reset_vec 0 0 CODE 0 reset_vec D:\TEMP\s3sg.obj
 _TxStatus FA0 0 CODE 0 _TxStatus_text dist/default/production\PN411.production.obj
 __H_Type_text FA0 0 CODE 0 _Type_text -
 __size_of_KeyLongHandler 0 0 ABS 0 - dist/default/production\PN411.production.obj
@@ -781,12 +784,13 @@ KeyLongHandler@chn 56 0 BANK0 1 cstackBANK0 dist/default/production\PN411.produc
 KeyLongHandler@cmd 57 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 KeyLongHandler@key 7B 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
 noolite_send@noo_send_command 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
-_Init_ADC 214 0 CODE 0 text9 dist/default/production\PN411.production.obj
-_Init_CLK 246 0 CODE 0 text8 dist/default/production\PN411.production.obj
+_Init_ADC 1FA 0 CODE 0 text13 dist/default/production\PN411.production.obj
+_Init_CLK 212 0 CODE 0 text12 dist/default/production\PN411.production.obj
 _tick3_100ms 29 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
-__ptext10 280 0 CODE 0 text10 dist/default/production\PN411.production.obj
-__ptext11 22C 0 CODE 0 text11 dist/default/production\PN411.production.obj
-__ptext12 208 0 CODE 0 text12 dist/default/production\PN411.production.obj
+__ptext10 564 0 CODE 0 text10 dist/default/production\PN411.production.obj
+__ptext11 246 0 CODE 0 text11 dist/default/production\PN411.production.obj
+__ptext12 212 0 CODE 0 text12 dist/default/production\PN411.production.obj
+__ptext13 1FA 0 CODE 0 text13 dist/default/production\PN411.production.obj
 KeyOffHandler@nooData 7D 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
 _system_settings FDC 0 CODE 0 _system_settings_text dist/default/production\PN411.production.obj
 __Lbank10 10008 0 BANK10 1 bank10 -
@@ -811,7 +815,7 @@ __Lbank28 10008 0 BANK28 1 bank28 -
 __Lbank29 10008 0 BANK29 1 bank29 -
 __Lbank30 10008 0 BANK30 1 bank30 -
 __Lbank31 10008 0 BANK31 1 bank31 -
-__pmaintext 936 0 CODE 0 maintext dist/default/production\PN411.production.obj
+__pmaintext 9CA 0 CODE 0 maintext dist/default/production\PN411.production.obj
 __Lbigram 10008 0 ABS 0 bigram -
 __CFG_BORV$LO 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __CFG_IDLOC0$ 0 0 ABS 0 - dist/default/production\PN411.production.obj
@@ -821,14 +825,15 @@ __CFG_IDLOC3$ 7 0 ABS 0 - dist/default/production\PN411.production.obj
 __Lcommon 10008 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
 KeyLongHandler@nooData 59 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
-__end_of_Init_ADC 22C 0 CODE 0 text9 dist/default/production\PN411.production.obj
-__end_of_Init_CLK 260 0 CODE 0 text8 dist/default/production\PN411.production.obj
+__end_of_Init_ADC 212 0 CODE 0 text13 dist/default/production\PN411.production.obj
+__end_of_Init_CLK 22C 0 CODE 0 text12 dist/default/production\PN411.production.obj
 _LATAbits 10C 0 ABS 0 - dist/default/production\PN411.production.obj
 _LATCbits 10E 0 ABS 0 - dist/default/production\PN411.production.obj
+__size_of_SaveTxStatusToFlash 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __L_Type_text F80 0 CODE 0 _Type_text -
 _system_settings_absaddr 7EE 0 ABS 0 - dist/default/production\PN411.production.obj
-stackhi 206F 0 ABS 0 - D:\TEMP\s5go.obj
-stacklo 2045 0 ABS 0 - D:\TEMP\s5go.obj
+stackhi 206F 0 ABS 0 - D:\TEMP\s3sg.obj
+stacklo 2040 0 ABS 0 - D:\TEMP\s3sg.obj
 _ADCON0bits 9D 0 ABS 0 - dist/default/production\PN411.production.obj
 _ADCON1bits 9E 0 ABS 0 - dist/default/production\PN411.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
@@ -840,30 +845,33 @@ __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__end_of_Init_TxStatusFromFlash 602 0 CODE 0 text6 dist/default/production\PN411.production.obj
+__end_of_Init_TxStatusFromFlash 696 0 CODE 0 text10 dist/default/production\PN411.production.obj
 FlashEraseRow@rowAddr 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+SaveTxStatusToFlash@adrToWrite 44 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 __HcstackBANK0 10008 0 ABS 0 cstackBANK0 -
 __Lend_init 2 0 CODE 0 end_init -
 __LcstackCOMMON 10008 0 ABS 0 cstackCOMMON -
-_FlashWrite 280 0 CODE 0 text10 dist/default/production\PN411.production.obj
+_FlashWrite 266 0 CODE 0 text2 dist/default/production\PN411.production.obj
 end_of_initialization FCC 0 CODE 0 cinit dist/default/production\PN411.production.obj
 __size_of_Init_TypeFromFlash 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __Hintentry 2 0 CODE 0 intentry -
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __Lstrings 10008 0 ABS 0 strings -
+_SaveTxStatusToFlash 3A0 0 CODE 0 text1 dist/default/production\PN411.production.obj
 __Hreset_vec 2 0 CODE 0 reset_vec -
 _SkipHandling 26 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 __HbssBANK0 10008 0 ABS 0 bssBANK0 -
-__ptext1 3BA 0 CODE 0 text1 dist/default/production\PN411.production.obj
-__ptext2 33A 0 CODE 0 text2 dist/default/production\PN411.production.obj
-__ptext3 2E2 0 CODE 0 text3 dist/default/production\PN411.production.obj
-__ptext4 602 0 CODE 0 text4 dist/default/production\PN411.production.obj
-__ptext5 2A6 0 CODE 0 text5 dist/default/production\PN411.production.obj
-__ptext6 4D0 0 CODE 0 text6 dist/default/production\PN411.production.obj
-__ptext7 260 0 CODE 0 text7 dist/default/production\PN411.production.obj
-__ptext8 246 0 CODE 0 text8 dist/default/production\PN411.production.obj
-__ptext9 214 0 CODE 0 text9 dist/default/production\PN411.production.obj
-__end_of_Init_IO 280 0 CODE 0 text7 dist/default/production\PN411.production.obj
+SaveTxStatusToFlash@txStatusArray 74 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
+__ptext1 3A0 0 CODE 0 text1 dist/default/production\PN411.production.obj
+__ptext2 266 0 CODE 0 text2 dist/default/production\PN411.production.obj
+__ptext3 22C 0 CODE 0 text3 dist/default/production\PN411.production.obj
+__ptext4 1EE 0 CODE 0 text4 dist/default/production\PN411.production.obj
+__ptext5 44E 0 CODE 0 text5 dist/default/production\PN411.production.obj
+__ptext6 320 0 CODE 0 text6 dist/default/production\PN411.production.obj
+__ptext7 2C8 0 CODE 0 text7 dist/default/production\PN411.production.obj
+__ptext8 696 0 CODE 0 text8 dist/default/production\PN411.production.obj
+__ptext9 28C 0 CODE 0 text9 dist/default/production\PN411.production.obj
+__end_of_Init_IO 266 0 CODE 0 text11 dist/default/production\PN411.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 10008 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
@@ -873,7 +881,7 @@ __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __end_of__initialization FCC 0 CODE 0 cinit dist/default/production\PN411.production.obj
 __Lfunctab 0 0 ENTRY 0 functab -
 __Lclrtext 10008 0 ABS 0 clrtext -
-__end_of_FlashWrite 2A6 0 CODE 0 text10 dist/default/production\PN411.production.obj
+__end_of_FlashWrite 28C 0 CODE 0 text2 dist/default/production\PN411.production.obj
 _startaddress 20 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
@@ -891,17 +899,18 @@ _TRISC 8E 0 ABS 0 - dist/default/production\PN411.production.obj
 __Hram 10008 0 ABS 0 ram -
 __Lram 10008 0 ABS 0 ram -
 __size_of_RF_Init 0 0 ABS 0 - dist/default/production\PN411.production.obj
-_FlashEraseRow 22C 0 CODE 0 text11 dist/default/production\PN411.production.obj
+_FlashEraseRow 22C 0 CODE 0 text3 dist/default/production\PN411.production.obj
 __CFG_LPBOR$ON 0 0 ABS 0 - dist/default/production\PN411.production.obj
 _LedPulseTick_100ms 2A 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 _OSCSTATbits 9A 0 ABS 0 - dist/default/production\PN411.production.obj
+__end_of_SaveTxStatusToFlash 44E 0 CODE 0 text1 dist/default/production\PN411.production.obj
 noolite_send@noo_send_buffer 44 0 BANK0 1 cstackBANK0 dist/default/production\PN411.production.obj
 __initialization FC0 0 CODE 0 cinit dist/default/production\PN411.production.obj
 __CFG_BOREN$NSLEEP 0 0 ABS 0 - dist/default/production\PN411.production.obj
 __pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\PN411.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\PN411.production.obj
 noolite_send@noo_send_format 71 0 COMMON 1 cstackCOMMON dist/default/production\PN411.production.obj
-_KeyOffHandler 33A 0 CODE 0 text2 dist/default/production\PN411.production.obj
+_KeyOffHandler 320 0 CODE 0 text6 dist/default/production\PN411.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -928,23 +937,24 @@ _KeyOffHandler 33A 0 CODE 0 text2 dist/default/production\PN411.production.obj
 # All other numeric quantities are in decimal.
 %SEGMENTS
 idloc 0 8000 10000 4 2
-text1 0 1DD 3BA 8B 2
-text2 0 19D 33A 40 2
-text3 0 171 2E2 2C 2
-text4 0 301 602 19A 2
-text5 0 153 2A6 1E 2
-text6 0 268 4D0 99 2
-text7 0 130 260 10 2
-text8 0 123 246 D 2
-text9 0 10A 214 C 2
-text10 0 140 280 13 2
-text11 0 116 22C D 2
-text12 0 104 208 6 2
+text1 0 1D0 3A0 57 2
+text2 0 133 266 13 2
+text3 0 116 22C D 2
+text4 0 F7 1EE 6 2
+text5 0 227 44E 8B 2
+text6 0 190 320 40 2
+text7 0 164 2C8 2C 2
+text8 0 34B 696 19A 2
+text9 0 146 28C 1E 2
+text10 0 2B2 564 99 2
+text11 0 123 246 10 2
+text12 0 109 212 D 2
+text13 0 FD 1FA C 2
 _system_settings_text 0 7EE FDC 11 2
 _Type_text 0 7C0 F80 10 2
-maintext 0 49B 936 325 2
+maintext 0 4E5 9CA 2DB 2
 cstackCOMMON 1 70 70 E 1
 _TxStatus_text 0 7D0 FA0 1E 2
 reset_vec 0 0 0 2 2
-bssBANK0 1 20 20 45 1
+bssBANK0 1 20 20 40 1
 config 0 8007 1000E 2 2

@@ -37,45 +37,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 "372
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
 "143 main.c
-[c E2977 0 1 2 3 4 .. ]
-[n E2977 . A B C D CD  ]
+[c E2981 0 1 2 3 4 .. ]
+[n E2981 . A B C D CD  ]
 "427 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [v _PORTA `Vuc ~T0 @X0 0 e@12 ]
 "143 main.c
-[c E2962 2 1 4 16 .. ]
-[n E2962 . A_Pressed B_Pressed C_Pressed D_Pressed  ]
+[c E2966 2 1 4 16 .. ]
+[n E2966 . A_Pressed B_Pressed C_Pressed D_Pressed  ]
 "151
-[c E2969 1 2 4 8 .. ]
-[n E2969 . BIND_ACTIVE UNBIND_ACTIVE MODE_CHANGE_ACTIVE GO_OFF  ]
+[c E2973 1 2 4 8 .. ]
+[n E2973 . BIND_ACTIVE UNBIND_ACTIVE MODE_CHANGE_ACTIVE GO_OFF  ]
 "179
-[c E2974 0 1 .. ]
-[n E2974 . OFF ON  ]
+[c E2978 0 1 .. ]
+[n E2978 . OFF ON  ]
 "8 noolite.h
 [v _noolite_send `(v ~T0 @X0 0 ef4`uc`uc`uc`*uc ]
 "211 main.c
-[c E2949 0 1 2 3 4 5 7 8 9 10 15 22 .. ]
-[n E2949 . CMD_OFF CMD_Bright_Down CMD_ON CMD_Bright_Up CMD_Switch CMD_Bright_Back CMD_Load_Preset CMD_Save_Preset CMD_Unbind CMD_Stop_Reg CMD_Bind CMD_Test_Result  ]
+[c E2953 0 1 2 3 4 5 7 8 9 10 15 22 .. ]
+[n E2953 . CMD_OFF CMD_Bright_Down CMD_ON CMD_Bright_Up CMD_Switch CMD_Bright_Back CMD_Load_Preset CMD_Save_Preset CMD_Unbind CMD_Stop_Reg CMD_Bind CMD_Test_Result  ]
 "6 FLASH.h
 [v _FlashEraseRow `(v ~T0 @X0 0 ef1`ui ]
 "234 main.c
-[c E2991 1984 2000 .. ]
-[n E2991 . TYPE_ADR TX_STATUS_ADR  ]
+[c E2995 1984 2000 .. ]
+[n E2995 . TYPE_ADR TX_STATUS_ADR  ]
 "7 FLASH.h
 [v _FlashWrite `(v ~T0 @X0 0 ef2`ui`ui ]
 [v F2872 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF2872 ~T0 @X0 0 e ]
 [p i __delay ]
-"13 user_functions.h
+"14 user_functions.h
 [v _KeyOffHandler `(v ~T0 @X0 0 ef4`*S334`uc`uc`*uc ]
-"15
+"16
 [v _KeyLongHandler `(v ~T0 @X0 0 ef5`*S334`uc`uc`uc`*uc ]
 "327 main.c
-[c E2967 23 .. ]
-[n E2967 . All_Pressed  ]
-"29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+[c E2971 23 .. ]
+[n E2971 . All_Pressed  ]
+"13 user_functions.h
+[v _SaveTxStatusToFlash `(v ~T0 @X0 0 ef3`*Cui`ui`uc ]
 "1317 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [s S73 :1 `uc 1 :5 `uc 1 ]
 [n S73 . SWDTEN WDTPS ]
@@ -87,6 +86,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S72 . . . ]
 "1330
 [v _WDTCONbits `VS72 ~T0 @X0 0 e@151 ]
+"29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
 "9 main.c
 [p x FOSC=INTOSC ]
 "10
@@ -2941,8 +2943,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user_functions.h: 9: } typedef KeyState;
 [; ;user_functions.h: 11: uint8_t Init_TypeFromFlash(const uint16_t* type);
 [; ;user_functions.h: 12: uint8_t Init_TxStatusFromFlash(const uint16_t* txStatus);
-[; ;user_functions.h: 13: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
-[; ;user_functions.h: 15: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
+[; ;user_functions.h: 13: void SaveTxStatusToFlash(const uint16_t* txStatusArray, uint16_t txStatusAdr, uint8_t txStatusVal);
+[; ;user_functions.h: 14: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t* nooData);
+[; ;user_functions.h: 16: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger, uint8_t* nooData);
 [; ;main.c: 40: enum {
 [; ;main.c: 41: CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
 [; ;main.c: 42: CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
@@ -3117,36 +3120,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 143: Keys[A].State = (uint8_t) (PORTA & A_Pressed);
 "143
-[e = . *U + &U _Keys * -> . `E2977 0 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2962 0 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 0 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2966 0 `i `uc ]
 [; ;main.c: 144: Keys[B].State = (uint8_t) (PORTA & B_Pressed);
 "144
-[e = . *U + &U _Keys * -> . `E2977 1 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2962 1 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 1 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2966 1 `i `uc ]
 [; ;main.c: 145: Keys[C].State = (uint8_t) (PORTA & C_Pressed);
 "145
-[e = . *U + &U _Keys * -> . `E2977 2 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2962 2 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 2 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2966 2 `i `uc ]
 [; ;main.c: 146: Keys[D].State = (uint8_t) (PORTA & D_Pressed);
 "146
-[e = . *U + &U _Keys * -> . `E2977 3 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2962 3 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 3 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2966 3 `i `uc ]
 [; ;main.c: 147: Keys[CD].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
 "147
-[e = . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i | -> . `E2962 2 `i -> . `E2962 3 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i | -> . `E2966 2 `i -> . `E2966 3 `i `uc ]
 [; ;main.c: 148: if (Keys[CD].State == (C_Pressed | D_Pressed)) {
 "148
-[e $ ! == -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 0 `i | -> . `E2962 2 `i -> . `E2962 3 `i 339  ]
+[e $ ! == -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 0 `i | -> . `E2966 2 `i -> . `E2966 3 `i 339  ]
 {
 [; ;main.c: 149: SkipHandling = 5;
 "149
 [e = _SkipHandling -> -> 5 `i `uc ]
 [; ;main.c: 150: if (Keys[CD].Tick100ms < 15) {
 "150
-[e $ ! < -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 15 `i 340  ]
+[e $ ! < -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 15 `i 340  ]
 {
 [; ;main.c: 151: DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
 "151
-[e =& _DevMode -> ~ | -> . `E2969 1 `i -> . `E2969 2 `i `uc ]
+[e =& _DevMode -> ~ | -> . `E2973 1 `i -> . `E2973 2 `i `uc ]
 [; ;main.c: 152: DevMode |= BIND_ACTIVE;
 "152
-[e =| _DevMode -> . `E2969 0 `uc ]
+[e =| _DevMode -> . `E2973 0 `uc ]
 [; ;main.c: 153: tick3_100ms = 100;
 "153
 [e = _tick3_100ms -> -> 100 `i `uc ]
@@ -3155,24 +3158,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 154: } else if ((Keys[CD].Tick100ms >= 35) && (Keys[CD].Tick100ms < 49)) {
 [e $U 341  ]
 [e :U 340 ]
-[e $ ! && >= -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 35 `i < -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 49 `i 342  ]
+[e $ ! && >= -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 35 `i < -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 49 `i 342  ]
 {
 [; ;main.c: 155: DevMode &= ~BIND_ACTIVE;
 "155
-[e =& _DevMode -> ~ -> . `E2969 0 `i `uc ]
+[e =& _DevMode -> ~ -> . `E2973 0 `i `uc ]
 "156
 }
 [; ;main.c: 156: } else if ((Keys[CD].Tick100ms >= 50) && (Keys[CD].Tick100ms < 85)) {
 [e $U 343  ]
 [e :U 342 ]
-[e $ ! && >= -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 50 `i < -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i 344  ]
+[e $ ! && >= -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 50 `i < -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i 344  ]
 {
 [; ;main.c: 157: DevMode &= ~(BIND_ACTIVE | MODE_CHANGE_ACTIVE);
 "157
-[e =& _DevMode -> ~ | -> . `E2969 0 `i -> . `E2969 2 `i `uc ]
+[e =& _DevMode -> ~ | -> . `E2973 0 `i -> . `E2973 2 `i `uc ]
 [; ;main.c: 158: DevMode |= UNBIND_ACTIVE;
 "158
-[e =| _DevMode -> . `E2969 1 `uc ]
+[e =| _DevMode -> . `E2973 1 `uc ]
 [; ;main.c: 159: tick3_100ms = 100;
 "159
 [e = _tick3_100ms -> -> 100 `i `uc ]
@@ -3181,24 +3184,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 160: } else if ((Keys[CD].Tick100ms >= 85) && (Keys[CD].Tick100ms < 99)) {
 [e $U 345  ]
 [e :U 344 ]
-[e $ ! && >= -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i < -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 99 `i 346  ]
+[e $ ! && >= -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i < -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 99 `i 346  ]
 {
 [; ;main.c: 161: DevMode &= ~UNBIND_ACTIVE;
 "161
-[e =& _DevMode -> ~ -> . `E2969 1 `i `uc ]
+[e =& _DevMode -> ~ -> . `E2973 1 `i `uc ]
 "162
 }
 [; ;main.c: 162: } else if (Keys[CD].Tick100ms >= 100) {
 [e $U 347  ]
 [e :U 346 ]
-[e $ ! >= -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 100 `i 348  ]
+[e $ ! >= -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 100 `i 348  ]
 {
 [; ;main.c: 163: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE);
 "163
-[e =& _DevMode -> ~ | -> . `E2969 0 `i -> . `E2969 1 `i `uc ]
+[e =& _DevMode -> ~ | -> . `E2973 0 `i -> . `E2973 1 `i `uc ]
 [; ;main.c: 164: DevMode |= MODE_CHANGE_ACTIVE;
 "164
-[e =| _DevMode -> . `E2969 2 `uc ]
+[e =| _DevMode -> . `E2973 2 `uc ]
 [; ;main.c: 165: tick3_100ms = 100;
 "165
 [e = _tick3_100ms -> -> 100 `i `uc ]
@@ -3212,13 +3215,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 341 ]
 [; ;main.c: 166: }
 [; ;main.c: 167: Keys[CD].Tick100ms++;
-[e ++ . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
+[e ++ . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
 [; ;main.c: 169: Keys[C].StateTemp = 0;
 "169
-[e = . *U + &U _Keys * -> . `E2977 2 `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 2 `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
 [; ;main.c: 170: Keys[D].StateTemp = 0;
 "170
-[e = . *U + &U _Keys * -> . `E2977 3 `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 3 `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
 "171
 }
 [; ;main.c: 171: } else {
@@ -3227,7 +3230,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 172: Keys[CD].Tick100ms = 0;
 "172
-[e = . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
+[e = . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
 "173
 }
 [e :U 349 ]
@@ -3248,7 +3251,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 353 ]
 [; ;main.c: 179: LATCbits.LATC3 = ON;
 "179
-[e = . . _LATCbits 0 3 -> . `E2974 1 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 1 `uc ]
 [; ;main.c: 180: break;
 "180
 [e $U 351  ]
@@ -3297,7 +3300,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 358 ]
 [; ;main.c: 194: LATCbits.LATC3 = OFF;
 "194
-[e = . . _LATCbits 0 3 -> . `E2974 0 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 0 `uc ]
 [; ;main.c: 195: break;
 "195
 [e $U 351  ]
@@ -3307,9 +3310,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 351  ]
 "177
 [e :U 352 ]
-[e [\ & -> _DevMode `i -> 7 `i , $ -> . `E2969 0 `i 353
- , $ -> . `E2969 1 `i 354
- , $ -> . `E2969 2 `i 356
+[e [\ & -> _DevMode `i -> 7 `i , $ -> . `E2973 0 `i 353
+ , $ -> . `E2973 1 `i 354
+ , $ -> . `E2973 2 `i 356
  358 ]
 "196
 [e :U 351 ]
@@ -3321,10 +3324,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 198: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
 "198
-[e =& _DevMode -> ~ | | -> . `E2969 0 `i -> . `E2969 1 `i -> . `E2969 2 `i `uc ]
+[e =& _DevMode -> ~ | | -> . `E2973 0 `i -> . `E2973 1 `i -> . `E2973 2 `i `uc ]
 [; ;main.c: 199: LATCbits.LATC3 = OFF;
 "199
-[e = . . _LATCbits 0 3 -> . `E2974 0 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 0 `uc ]
 "200
 }
 [e :U 359 ]
@@ -3335,7 +3338,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 203: if (Keys[CD].State == 0) {
 "203
-[e $ ! == -> . *U + &U _Keys * -> . `E2977 4 `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 361  ]
+[e $ ! == -> . *U + &U _Keys * -> . `E2981 4 `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 361  ]
 {
 [; ;main.c: 204: SkipHandling--;
 "204
@@ -3352,7 +3355,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 207: if ((DevMode & BIND_ACTIVE) != 0) {
 "207
-[e $ ! != & -> _DevMode `i -> . `E2969 0 `i -> 0 `i 363  ]
+[e $ ! != & -> _DevMode `i -> . `E2973 0 `i -> 0 `i 363  ]
 {
 [; ;main.c: 208: for (uint8_t chn = 0; chn < 4; chn++) {
 "208
@@ -3373,10 +3376,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 211: noolite_send(chn, CMD_Bind, 0, &noo_send_data[0]);
 "211
-[e ( _noolite_send (4 , , , _chn -> . `E2949 10 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _noolite_send (4 , , , _chn -> . `E2953 10 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 [; ;main.c: 212: DevMode &= ~BIND_ACTIVE;
 "212
-[e =& _DevMode -> ~ -> . `E2969 0 `i `uc ]
+[e =& _DevMode -> ~ -> . `E2973 0 `i `uc ]
 "213
 }
 [e :U 368 ]
@@ -3402,7 +3405,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 217: } else if ((DevMode & UNBIND_ACTIVE) != 0) {
 [e $U 369  ]
 [e :U 363 ]
-[e $ ! != & -> _DevMode `i -> . `E2969 1 `i -> 0 `i 370  ]
+[e $ ! != & -> _DevMode `i -> . `E2973 1 `i -> 0 `i 370  ]
 {
 [; ;main.c: 218: for (uint8_t chn = 0; chn < 4; chn++) {
 "218
@@ -3423,13 +3426,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 221: noolite_send(chn, CMD_Unbind, 0, &noo_send_data[0]);
 "221
-[e ( _noolite_send (4 , , , _chn -> . `E2949 8 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _noolite_send (4 , , , _chn -> . `E2953 8 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 [; ;main.c: 222: DevMode &= ~UNBIND_ACTIVE;
 "222
-[e =& _DevMode -> ~ -> . `E2969 1 `i `uc ]
+[e =& _DevMode -> ~ -> . `E2973 1 `i `uc ]
 [; ;main.c: 223: LATCbits.LATC3 = OFF;
 "223
-[e = . . _LATCbits 0 3 -> . `E2974 0 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 0 `uc ]
 "224
 }
 [e :U 375 ]
@@ -3455,7 +3458,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 228: } else if ((DevMode & MODE_CHANGE_ACTIVE) != 0) {
 [e $U 376  ]
 [e :U 370 ]
-[e $ ! != & -> _DevMode `i -> . `E2969 2 `i -> 0 `i 377  ]
+[e $ ! != & -> _DevMode `i -> . `E2973 2 `i -> 0 `i 377  ]
 {
 [; ;main.c: 229: for (uint8_t chn = 0; chn < 4; chn++) {
 "229
@@ -3479,22 +3482,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; <" clrwdt ;# ">
 [; ;main.c: 233: LATCbits.LATC3 = ON;
 "233
-[e = . . _LATCbits 0 3 -> . `E2974 1 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 1 `uc ]
 [; ;main.c: 234: FlashEraseRow(TYPE_ADR);
 "234
-[e ( _FlashEraseRow (1 -> . `E2991 0 `ui ]
+[e ( _FlashEraseRow (1 -> . `E2995 0 `ui ]
 [; ;main.c: 235: asm("clrwdt");
 "235
 [; <" clrwdt ;# ">
 [; ;main.c: 236: FlashWrite(TYPE_ADR, chn);
 "236
-[e ( _FlashWrite (2 , -> . `E2991 0 `ui -> _chn `ui ]
+[e ( _FlashWrite (2 , -> . `E2995 0 `ui -> _chn `ui ]
 [; ;main.c: 237: asm("clrwdt");
 "237
 [; <" clrwdt ;# ">
 [; ;main.c: 238: FlashWrite(TYPE_ADR + 1, 0x5A);
 "238
-[e ( _FlashWrite (2 , -> + -> . `E2991 0 `i -> 1 `i `ui -> -> 90 `i `ui ]
+[e ( _FlashWrite (2 , -> + -> . `E2995 0 `i -> 1 `i `ui -> -> 90 `i `ui ]
 [; ;main.c: 239: asm("clrwdt");
 "239
 [; <" clrwdt ;# ">
@@ -3509,10 +3512,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _DevType ( _Init_TypeFromFlash (1 &U *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux ]
 [; ;main.c: 243: DevMode &= ~MODE_CHANGE_ACTIVE;
 "243
-[e =& _DevMode -> ~ -> . `E2969 2 `i `uc ]
+[e =& _DevMode -> ~ -> . `E2973 2 `i `uc ]
 [; ;main.c: 244: LATCbits.LATC3 = OFF;
 "244
-[e = . . _LATCbits 0 3 -> . `E2974 0 `uc ]
+[e = . . _LATCbits 0 3 -> . `E2978 0 `uc ]
 "245
 }
 [e :U 382 ]
@@ -3561,7 +3564,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 390 ]
 [; ;main.c: 255: KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 "255
-[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 [; ;main.c: 256: break;
 "256
 [e $U 388  ]
@@ -3574,7 +3577,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 259: KeyOffHandler(&Keys[chn], chn, CMD_OFF, &noo_send_data[0]);
 "259
-[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 0 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 0 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "260
 }
 [; ;main.c: 260: } else {
@@ -3583,7 +3586,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 261: KeyOffHandler(&Keys[chn], chn, CMD_ON, &noo_send_data[0]);
 "261
-[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 2 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 2 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "262
 }
 [e :U 393 ]
@@ -3612,7 +3615,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 269: noolite_send(chn, CMD_Load_Preset, 0, &noo_send_data[0]);
 "269
-[e ( _noolite_send (4 , , , _chn -> . `E2949 6 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _noolite_send (4 , , , _chn -> . `E2953 6 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "270
 }
 [e :U 398 ]
@@ -3633,7 +3636,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 274: KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 "274
-[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "275
 }
 [e :U 399 ]
@@ -3654,7 +3657,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 280: noolite_send(chn, CMD_ON, 0, &noo_send_data[0]);
 "280
-[e ( _noolite_send (4 , , , _chn -> . `E2949 2 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _noolite_send (4 , , , _chn -> . `E2953 2 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "281
 }
 [; ;main.c: 281: } else {
@@ -3663,7 +3666,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 282: noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
 "282
-[e ( _noolite_send (4 , , , _chn -> . `E2949 0 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _noolite_send (4 , , , _chn -> . `E2953 0 `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "283
 }
 [e :U 403 ]
@@ -3676,7 +3679,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 285: KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
 "285
-[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyOffHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 4 `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "286
 }
 [e :U 404 ]
@@ -3716,7 +3719,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 407 ]
 [; ;main.c: 295: KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 "295
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 [; ;main.c: 296: break;
 "296
 [e $U 405  ]
@@ -3729,7 +3732,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 299: KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9, &noo_send_data[0]);
 "299
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 1 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 1 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "300
 }
 [; ;main.c: 300: } else {
@@ -3738,7 +3741,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 301: KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9, &noo_send_data[0]);
 "301
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 3 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 3 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "302
 }
 [e :U 410 ]
@@ -3755,7 +3758,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 306: KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 "306
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "307
 }
 [; ;main.c: 307: } else {
@@ -3764,7 +3767,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 308: KeyLongHandler(&Keys[chn], chn, CMD_Save_Preset, 49, &noo_send_data[0]);
 "308
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 7 `uc -> -> 49 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 7 `uc -> -> 49 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "309
 }
 [e :U 413 ]
@@ -3781,7 +3784,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 313: KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
 "313
-[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2949 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[e ( _KeyLongHandler (4 , , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> . `E2953 5 `uc -> -> 9 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
 "314
 }
 [e :U 415 ]
@@ -3836,140 +3839,75 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 324: DevMode |= GO_OFF;
 "324
-[e =| _DevMode -> . `E2969 3 `uc ]
+[e =| _DevMode -> . `E2973 3 `uc ]
 "325
 }
 [e :U 417 ]
 [; ;main.c: 325: }
 [; ;main.c: 327: if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0) && ((DevMode & GO_OFF) != 0)) {
 "327
-[e $ ! && && == & -> _DevMode `i -> 7 `i -> 0 `i == & -> _PORTA `i -> . `E2967 0 `i -> 0 `i != & -> _DevMode `i -> . `E2969 3 `i -> 0 `i 418  ]
+[e $ ! && && == & -> _DevMode `i -> 7 `i -> 0 `i == & -> _PORTA `i -> . `E2971 0 `i -> 0 `i != & -> _DevMode `i -> . `E2973 3 `i -> 0 `i 418  ]
 {
-[; ;main.c: 328: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+[; ;main.c: 328: SaveTxStatusToFlash(&TxStatus[0], TX_STATUS_ADR, tx_status);
 "328
-{
-[v _cellNum `uc ~T0 @X0 1 a ]
-[e = _cellNum -> -> 0 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 419  ]
-[e $U 420  ]
-[e :U 419 ]
-{
+[e ( _SaveTxStatusToFlash (3 , , &U *U + &U _TxStatus * -> -> -> 0 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux -> . `E2995 1 `ui _tx_status ]
+[; ;main.c: 329: LATCbits.LATC5 = 0;
 "329
-[v _adrToWrite `ui ~T0 @X0 1 a ]
-[; ;main.c: 329: uint16_t adrToWrite = (TX_STATUS_ADR + (cellNum * 2));
-[e = _adrToWrite -> + -> . `E2991 1 `i * -> _cellNum `i -> 2 `i `ui ]
-[; ;main.c: 330: if (TxStatus[cellNum] == 0xFFFF) {
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 330: _delay((unsigned long)((15)*(8000000/4000.0)));
 "330
-[e $ ! == *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 65535 `ui 422  ]
-{
-[; ;main.c: 331: FlashWrite(adrToWrite, tx_status & 0x02);
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "331
-[e ( _FlashWrite (2 , _adrToWrite -> & -> _tx_status `i -> 2 `i `ui ]
-[; ;main.c: 332: FlashWrite((adrToWrite + 1), 0x5A);
+}
+[; ;main.c: 331: } else {
+[e $U 419  ]
+[e :U 418 ]
+{
+[; ;main.c: 332: WDTCONbits.WDTPS = 0b00110;
 "332
-[e ( _FlashWrite (2 , + _adrToWrite -> -> 1 `i `ui -> -> 90 `i `ui ]
+[e = . . _WDTCONbits 0 1 -> -> 6 `i `uc ]
 [; ;main.c: 333: __nop();
 "333
 [e ( ___nop ..  ]
-[; ;main.c: 334: asm("clrwdt");
+[; ;main.c: 334: asm("sleep");
 "334
-[; <" clrwdt ;# ">
-[; ;main.c: 335: break;
+[; <" sleep ;# ">
+[; ;main.c: 335: __nop();
 "335
-[e $U 420  ]
+[e ( ___nop ..  ]
+[; ;main.c: 336: WDTCONbits.WDTPS = 0b00101;
 "336
-}
-[; ;main.c: 336: } else {
-[e $U 423  ]
-[e :U 422 ]
-{
-[; ;main.c: 337: if (cellNum == 7) {
-"337
-[e $ ! == -> _cellNum `i -> 7 `i 424  ]
-{
-[; ;main.c: 338: FlashEraseRow(TX_STATUS_ADR);
-"338
-[e ( _FlashEraseRow (1 -> . `E2991 1 `ui ]
-[; ;main.c: 339: FlashWrite(TX_STATUS_ADR, tx_status & 0x02);
-"339
-[e ( _FlashWrite (2 , -> . `E2991 1 `ui -> & -> _tx_status `i -> 2 `i `ui ]
-[; ;main.c: 340: FlashWrite(TX_STATUS_ADR + 1, 0x5A);
-"340
-[e ( _FlashWrite (2 , -> + -> . `E2991 1 `i -> 1 `i `ui -> -> 90 `i `ui ]
-"341
-}
-[e :U 424 ]
-"342
-}
-[e :U 423 ]
-"343
-}
-"328
-[e ++ _cellNum -> -> 1 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 419  ]
-[e :U 420 ]
-"343
-}
-[; ;main.c: 341: }
-[; ;main.c: 342: }
-[; ;main.c: 343: }
-[; ;main.c: 344: LATCbits.LATC5 = 0;
-"344
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 345: _delay((unsigned long)((15)*(8000000/4000.0)));
-"345
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"346
-}
-[; ;main.c: 346: } else {
-[e $U 425  ]
-[e :U 418 ]
-{
-[; ;main.c: 347: WDTCONbits.WDTPS = 0b00110;
-"347
-[e = . . _WDTCONbits 0 1 -> -> 6 `i `uc ]
-[; ;main.c: 348: __nop();
-"348
-[e ( ___nop ..  ]
-[; ;main.c: 349: asm("sleep");
-"349
-[; <" sleep ;# ">
-[; ;main.c: 350: __nop();
-"350
-[e ( ___nop ..  ]
-[; ;main.c: 351: WDTCONbits.WDTPS = 0b00101;
-"351
 [e = . . _WDTCONbits 0 1 -> -> 5 `i `uc ]
-[; ;main.c: 352: __nop();
-"352
+[; ;main.c: 337: __nop();
+"337
 [e ( ___nop ..  ]
-[; ;main.c: 353: asm("sleep");
-"353
+[; ;main.c: 338: asm("sleep");
+"338
 [; <" sleep ;# ">
-[; ;main.c: 354: __nop();
-"354
+[; ;main.c: 339: __nop();
+"339
 [e ( ___nop ..  ]
-[; ;main.c: 355: WDTCONbits.WDTPS = 0b01011;
-"355
+[; ;main.c: 340: WDTCONbits.WDTPS = 0b01011;
+"340
 [e = . . _WDTCONbits 0 1 -> -> 11 `i `uc ]
-[; ;main.c: 356: __nop();
-"356
+[; ;main.c: 341: __nop();
+"341
 [e ( ___nop ..  ]
-[; ;main.c: 357: asm("clrwdt");
-"357
+[; ;main.c: 342: asm("clrwdt");
+"342
 [; <" clrwdt ;# ">
-"358
+"343
 }
-[e :U 425 ]
-"360
+[e :U 419 ]
+"345
 }
 [e :U 336 ]
 "141
 [e $U 337  ]
 [e :U 338 ]
-[; ;main.c: 358: }
-[; ;main.c: 360: }
-[; ;main.c: 361: }
-"361
+[; ;main.c: 343: }
+[; ;main.c: 345: }
+[; ;main.c: 346: }
+"346
 [e :UE 335 ]
 }
