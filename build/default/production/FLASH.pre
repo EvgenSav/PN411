@@ -3760,14 +3760,6 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 43 "FLASH.h"
-unsigned int FlashRead(unsigned int addr);
-void FlashUnlock(void);
-void FlashEraseRow(unsigned int addr);
-void FlashWrite(unsigned int addr, unsigned int flash_data);
-void ClearDevMemory(void);
-void test_memory_full(void);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
 typedef signed char int8_t;
 
@@ -3858,7 +3850,13 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 14 "FLASH.c"
+# 4 "FLASH.h"
+unsigned int FlashRead(unsigned int addr);
+void FlashUnlock(void);
+void FlashEraseRow(uint16_t rowAddr);
+void FlashWrite(unsigned int addr, unsigned int flash_data);
+
+# 16 "FLASH.c"
 unsigned int FlashRead(unsigned int addr) {
 PMCON1bits.CFGS = 0;
 PMADRH = (unsigned char) (addr >> 8);
@@ -3874,10 +3872,10 @@ PMCON2 = 0xAA;
 PMCON1bits.WR = 1;
 }
 
-void FlashEraseRow(unsigned int rowAddr) {
+void FlashEraseRow(uint16_t rowAddr) {
 PMCON1bits.CFGS = 0;
-PMADRH = (unsigned char) (rowAddr >> 8);
-PMADRL = (unsigned char) (rowAddr);
+PMADRH = (uint8_t) (rowAddr >> 8);
+PMADRL = (uint8_t) (rowAddr);
 PMCON1bits.FREE = 1;
 PMCON1bits.WREN = 1;
 INTCONbits.GIE = 0;
