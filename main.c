@@ -4,22 +4,6 @@
  *
  * Created on 31 августа 2017 г., 12:27
  */
-//comands
-#define CMD_OFF                  0 
-#define CMD_Bright_Down          1 
-#define CMD_ON                   2 
-#define CMD_Bright_Up            3 
-#define CMD_Switch               4 
-#define CMD_Bright_Back          5 
-#define CMD_Load_Preset          7 
-#define CMD_Save_Preset          8 
-#define CMD_Unbind               9 
-#define CMD_Stop_Reg            10 
-#define CMD_Bind                15 
-#define CMD_Battery_Low         20
-#define CMD_Test_Result         22 
-
-
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection Bits (INTOSC oscillator: I/O function on CLKIN pin)
 #pragma config WDTE = SWDTEN    // Watchdog Timer Enable (WDT controlled by the SWDTEN bit in the WDTCON register)
@@ -43,84 +27,24 @@
 
 #include <pic16lf1503.h>
 #include <xc.h>
-#include "noolite.h"
+#include "periph_config.h"
 #include "FLASH.h"
+#include "noolite.h"
+#include"user_functions.h"
 #include <stdint.h>
 #define _XTAL_FREQ 8000000
 
-//CONFIG-------------------------------------------------------------------------------------------------------------------
-#define  AlarmBatteryVoltage 2.5  //Volts
-const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / AlarmBatteryVoltage * 1023); //419
-//--------------------------------------------------------------------------------------------------------------------------
 
-
-#define LED         LATCbits.LATC3
-#define RF          LATAbits.LATA5
-#define VddLatch    LATCbits.LATC5
+//cmds
 
 enum {
-    OFF = 0,
-    ON = 1
+    CMD_OFF = 0, CMD_Bright_Down = 1, CMD_ON = 2,
+    CMD_Bright_Up = 3, CMD_Switch = 4, CMD_Bright_Back = 5,
+    CMD_Load_Preset = 7, CMD_Save_Preset = 8, CMD_Unbind = 9,
+    CMD_Stop_Reg = 10, CMD_Bind = 15, CMD_Test_Result = 22
 };
 
-
-//modes of operation
-//Rf--------------------------------------------------------------------------------
-extern unsigned char tx_status; //transmit status byte
-unsigned char noo_send_data[4] = {0, 0, 0, 0}; //data to transmit 4 bytes (d0,d1,d2,d3)
-
-
-
-
-uint8_t LedPulseTick_100ms = 0;
-
-void Init_CLK() {
-    //OSCCONbits.IRCF = 0b1101;  //4 MHz 
-    //OSCCONbits.IRCF = 0b1011; //1 MHz 
-    OSCCONbits.IRCF = 0b1110; //8MHz
-    //OSCCONbits.IRCF = 0b1111;// 16MHz
-    //0b1111 = 16MHz
-    //0b1110 = 8MHz
-    //0b1101 = 4MHz
-    //0b1100 = 2MHz
-    //0b1011 = 1MHz
-    //0b1010 = 500 kHz(1)
-    //0b1001 = 250 kHz(1)
-    //0b1000 = 125 kHz(1)
-    //0b0111 = 500 kHz (default upon Reset)
-    //0b0110 = 250 kHz
-    //0b0101 = 125 kHz
-    //0b0100 = 62.5 kHz
-    //0b001x = 31.25 kHz
-    //0b000x = 31 kHz (LFINTOSC)
-    WDTCONbits.WDTPS = 0b01011; //WDT period 2   s
-    //0b01010;                  //WDT period 1   s
-    //0b01101;                  //WDT period 8   s
-    //0b01101;                  //WDT period 8   s
-    //0b01110;                  //WDT perios 16  s 
-    //0b10000;                  //WDT perios 64  s               
-    //0b10010;                  //WDT perios 256 s 
-    WDTCONbits.SWDTEN = 1; //WDT ON at startup
-    while (!OSCSTATbits.HFIOFR) {
-    } //wait for STABLE CPU clock
-}
-
-void Init_IO() {
-    OPTION_REGbits.nWPUEN = 0; //должен быть сброшен для возможности редактирования WPUAn
-    TRISA = 0x1F; //PORTA: RA0, RA1, RA2, RA4 as INPUT (RA3 - inout only)
-    ANSELA = 0; //PORTA as dig.I/O
-    WPUA = 0x08;
-
-    TRISC = 0x00; //PORTC as OUTPUT
-    ANSELC = 0; //PORTC as dig.I/O
-    LATC = 0x00;
-}
-
-
-
-
-uint8_t tick3_100ms = 0;
-
+//keys at PORTA
 
 enum {
     A_Pressed = 0x02,
@@ -133,6 +57,8 @@ enum {
     All_Pressed = 0x17
 };
 
+//dev. service modes
+
 enum {
     BIND_ACTIVE = 0x01,
     UNBIND_ACTIVE = 0x02,
@@ -140,19 +66,52 @@ enum {
     GO_OFF = 0x08
 };
 
-struct {
-    uint8_t State;
-    uint8_t StateTemp;
-    uint8_t Tick100ms;
-    uint8_t FirstCmdSent;
-} typedef KeyState;
+enum {
+    OFF = 0,
+    ON = 1
+};
 
-const uint16_t Type[] @ 0x7C0 = {
+//channels for keys
+
+enum {
+    A = 0, B = 1, C = 2, D = 3, CD = 4
+};
+
+//ADC channels
+
+enum {
+    Battery = 31
+};
+
+//CONFIG-------------------------------------------------------------------------------------------------------------------
+#define  AlarmBatteryVoltage 2.5    //значение напряжения батареи ниже которого происходит сигнализация
+const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / AlarmBatteryVoltage * 1023); //419
+//--------------------------------------------------------------------------------------------------------------------------
+
+#define LED         LATCbits.LATC3
+#define RF          LATAbits.LATA5
+#define VddLatch    LATCbits.LATC5
+
+//Rf--------------------------------------------------------------------------------
+extern unsigned char tx_status; //переменная статуса для передачи
+unsigned char noo_send_data[4] = {0, 0, 0, 0}; //массив с передаваемыми данными по РК
+
+uint8_t LedPulseTick_100ms = 0;
+uint8_t tick3_100ms = 0;
+
+
+//vars in FLASH adr
+
+enum {
+    TYPE_ADR = 0x7C0,
+    TX_STATUS_ADR = 0x7D0
+};
+const uint16_t Type[] @ TYPE_ADR = {
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
 
-const uint16_t TxStatus[] @ 0x7D0 = {
+const uint16_t TxStatus[] @ TX_STATUS_ADR = {
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
     0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 };
@@ -161,84 +120,20 @@ uint8_t DevType = 0;
 uint8_t DevMode = 0;
 
 KeyState Keys[5];
-#define A  0
-#define B  1
-#define C  2
-#define D  3
-#define CD 4
 
 uint8_t SkipHandling = 0;
 
- uint8_t Init_TypeFromFlash() {
-    if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
-        return (Type[0] & 0xFF);
-    } else {
-        return 0;
-    }
-}
-
-uint8_t Init_TxStatusFromFlash() {
-    for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-        if (TxStatus[cellNum] == 0xFFFF) {
-            if (cellNum > 0) {
-                if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
-                    return TxStatus[cellNum - 1];
-                } else {
-                    return 0;
-                }
-            } else {
-                return 0;
-            }
-        } else {
-            if (cellNum == 7) {
-                if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
-                    return TxStatus[cellNum];
-                } else {
-                    return 0;
-                }
-            }
-        }
-    }
-    return 0;
-}
-
-void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
-    if (key->State == 0) {
-        if (key->Tick100ms < 10) { //key pressed SHORT
-            noolite_send(chn, cmd, 0, &noo_send_data[0]);
-        } else { //key pressed LONG
-            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-            __delay_ms(15);
-            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-            __delay_ms(15);
-            noolite_send(chn, CMD_Stop_Reg, 0, &noo_send_data[0]);
-            key->FirstCmdSent = 0;
-        }
-    }
-}
-
-void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
-    if (key->State != 0) {
-        if (key->Tick100ms > ticksToTrigger) { //долгое нажатие
-            if (key->FirstCmdSent == 0) { //передача начальной команды
-                noolite_send(chn, cmd, 0, &noo_send_data[0]);
-                key->FirstCmdSent = 1;
-            }
-        }
-        key->Tick100ms++;
-    } else {
-        key->Tick100ms = 0;
-    }
-}
+uint8_t OffDelayTicks_100ms = 0;
 
 void main() {
     Init_IO();
     Init_CLK();
+    Init_ADC();
     RF_Init();
 
     VddLatch = 1;
-    DevType = Init_TypeFromFlash();
-    tx_status = Init_TxStatusFromFlash();
+    DevType = Init_TypeFromFlash(&Type[0]);
+    tx_status = Init_TxStatusFromFlash(&TxStatus[0]);
 
     INTCONbits.PEIE = 1; //enable peripheral interrupts
     INTCONbits.GIE = 1; //enable interrupt
@@ -250,8 +145,8 @@ void main() {
         Keys[D].State = (uint8_t) (PORTA & D_Pressed);
         Keys[CD].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
         if (Keys[CD].State == (C_Pressed | D_Pressed)) {
-            SkipHandling = 10;
-            if (Keys[CD].Tick100ms < 15) {
+            SkipHandling = 5;
+            if (Keys[CD].Tick100ms < 35) {
                 DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
                 DevMode |= BIND_ACTIVE;
                 tick3_100ms = 100;
@@ -302,13 +197,12 @@ void main() {
             DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
             LED = OFF;
         }
-
         if (SkipHandling != 0) {
             if (Keys[CD].State == 0) {
                 SkipHandling--;
             }
         } else {
-            if ((DevMode & BIND_ACTIVE) != 0) { 
+            if ((DevMode & BIND_ACTIVE) != 0) {
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
@@ -318,7 +212,7 @@ void main() {
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
                 }
-            } else if ((DevMode & UNBIND_ACTIVE) != 0) { 
+            } else if ((DevMode & UNBIND_ACTIVE) != 0) {
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
@@ -333,15 +227,18 @@ void main() {
                 for (uint8_t chn = 0; chn < 4; chn++) {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         if (Keys[chn].State == 0) {
+                            CLRWDT();
                             LED = ON;
+                            FlashEraseRow(TYPE_ADR);
+                            CLRWDT();
+                            FlashWrite(TYPE_ADR, chn);
+                            CLRWDT();
+                            FlashWrite(TYPE_ADR + 1, 0x5A);
+
+                            CLRWDT();
                             __delay_ms(500);
                             CLRWDT();
-                            FlashEraseRow(0x7C0);
-                            CLRWDT();
-                            FlashWrite(0x7C0, chn);
-                            FlashWrite(0x7C1, 0x5A);
-                            CLRWDT();
-                            DevType = Init_TypeFromFlash();
+                            DevType = Init_TypeFromFlash(&Type[0]);
                             DevMode &= ~MODE_CHANGE_ACTIVE;
                             LED = OFF;
                         }
@@ -353,13 +250,13 @@ void main() {
                     if (Keys[chn].State != Keys[chn].StateTemp) {
                         switch (DevType) {
                             case 0:
-                                KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
                                 break;
                             case 1:
                                 if ((chn == 0) || (chn == 2)) {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_OFF);
+                                    KeyOffHandler(&Keys[chn], chn, CMD_OFF, &noo_send_data[0]);
                                 } else {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_ON);
+                                    KeyOffHandler(&Keys[chn], chn, CMD_ON, &noo_send_data[0]);
                                 }
                                 break;
                             case 2:
@@ -372,7 +269,7 @@ void main() {
                                         }
                                     }
                                 } else {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
                                 }
                                 break;
                             case 3:
@@ -383,63 +280,52 @@ void main() {
                                         noolite_send(chn, CMD_OFF, 0, &noo_send_data[0]);
                                     }
                                 } else {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch);
+                                    KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
                                 }
                                 break;
                         }
+                        OffDelayTicks_100ms = 3;
                         Keys[chn].StateTemp = Keys[chn].State;
                     }
                     //sending 1st comand if key pressed long
                     switch (DevType) {
                         case 0:
-                            KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
+                            KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
                             break;
                         case 1:
                             if (chn == 0 || chn == 2) {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9);
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9, &noo_send_data[0]);
                             } else {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9);
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9, &noo_send_data[0]);
                             }
                             break;
                         case 2:
                             if (chn < 2) {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
                             } else {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Save_Preset, 49);
+                                KeyLongHandler(&Keys[chn], chn, CMD_Save_Preset, 49, &noo_send_data[0]);
                             }
                             break;
                         case 3:
                             if (chn < 2) {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9);
+                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
                             }
                             break;
                     }
-
                 }
             }
         }
-
-        
-        if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
-            for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-                uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
-                if (TxStatus[cellNum] == 0xFFFF) {
-                    FlashWrite(adrToWrite, tx_status & 0x02);
-                    FlashWrite((adrToWrite + 1), 0x5A);
-                    NOP();
-                    CLRWDT();
-                    break;
-                } else {
-                    if (cellNum == 7) {
-                        FlashEraseRow(0x7D0);
-                        FlashWrite(0x7D0, tx_status & 0x02);
-                        FlashWrite(0x7D1, 0x5A);
-                    }
-                }
-            }
+        if (OffDelayTicks_100ms != 0) {
+            OffDelayTicks_100ms--;
+        } else {
+            DevMode |= GO_OFF;
+        }
+        //переход в Sleep на ~100мс
+        if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0) && ((DevMode & GO_OFF) != 0)) {
+            SaveTxStatusToFlash(&TxStatus[0], TX_STATUS_ADR, tx_status);
             VddLatch = 0;
-            __delay_ms(100);
-        } else {//go to Sleep for ~100ms
+            __delay_ms(15);
+        } else {
             WDTCONbits.WDTPS = 0b00110; //1:2048 (Interval 64 ms nominal)
             NOP();
             SLEEP();

@@ -7,8 +7,10 @@
 
 
 #include <xc.h>
+#include <pic16lf1503.h>
 #include "FLASH.h"
 #include <stdint.h>
+
 
 
 unsigned int FlashRead(unsigned int addr) {//good
@@ -26,10 +28,10 @@ void FlashUnlock(void) {//good
     PMCON1bits.WR = 1;
 }
 
-void FlashEraseRow(unsigned int rowAddr) {//good
+void FlashEraseRow(uint16_t rowAddr) {//good
     PMCON1bits.CFGS = 0;
-    PMADRH = (unsigned char) (rowAddr >> 8);
-    PMADRL = (unsigned char) (rowAddr);
+    PMADRH = (uint8_t) (rowAddr >> 8);
+    PMADRL = (uint8_t) (rowAddr);
     PMCON1bits.FREE = 1;
     PMCON1bits.WREN = 1;
     INTCONbits.GIE = 0;
