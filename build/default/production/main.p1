@@ -52,67 +52,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ANSELC `Vuc ~T0 @X0 0 e@398 ]
 "1736
 [v _LATC `Vuc ~T0 @X0 0 e@270 ]
-"2103
-[v _FVRCON `Vuc ~T0 @X0 0 e@279 ]
-"1602
-[s S89 :2 `uc 1 :2 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S89 . ADPREF . ADCS ADFM ]
-"1608
-[s S90 :1 `uc 1 :1 `uc 1 ]
-[n S90 . ADPREF0 ADPREF1 ]
-"1601
-[u S88 `S89 1 `S90 1 ]
-[n S88 . . . ]
-"1613
-[v _ADCON1bits `VS88 ~T0 @X0 0 e@158 ]
-"1522
-[s S85 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
-[n S85 . ADON GO_nDONE CHS ]
-"1527
-[s S86 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S86 . . ADGO CHS0 CHS1 CHS2 CHS3 CHS4 ]
-"1536
-[s S87 :1 `uc 1 :1 `uc 1 ]
-[n S87 . . GO ]
-"1521
-[u S84 `S85 1 `S86 1 `S87 1 ]
-[n S84 . . . . ]
-"1541
-[v _ADCON0bits `VS84 ~T0 @X0 0 e@157 ]
-"2109
-[s S113 :2 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S113 . ADFVR CDAFVR TSRNG TSEN FVRRDY FVREN ]
-"2117
-[s S114 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S114 . ADFVR0 ADFVR1 CDAFVR0 CDAFVR1 ]
-"2108
-[u S112 `S113 1 `S114 1 ]
-[n S112 . . . ]
-"2124
-[v _FVRCONbits `VS112 ~T0 @X0 0 e@279 ]
+"143 main.c
+[s S339 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S339 . State StateTemp Tick100ms FirstCmdSent ]
+"8 noolite.h
+[v _noolite_send `(v ~T0 @X0 0 ef4`uc`uc`uc`*uc ]
 [v F2872 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF2872 ~T0 @X0 0 e ]
 [p i __delay ]
-"1496 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
-[v _ADRESH `Vuc ~T0 @X0 0 e@156 ]
-"1476
-[v _ADRESL `Vuc ~T0 @X0 0 e@155 ]
-"533
-[s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S33 . TMR1IF TMR2IF . SSP1IF . ADIF TMR1GIF ]
-"532
-[u S32 `S33 1 ]
-[n S32 . . ]
-"543
-[v _PIR1bits `VS32 ~T0 @X0 0 e@17 ]
-"202 main.c
-[s S345 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S345 . State StateTemp Tick100ms FirstCmdSent ]
-"8 noolite.h
-[v _noolite_send `(v ~T0 @X0 0 ef4`uc`uc`uc`*uc ]
 [p mainexit ]
-"9
+"9 noolite.h
 [v _RF_Init `(v ~T0 @X0 0 ef ]
 "1742 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -122,7 +72,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S96 . . ]
 "1751
 [v _LATCbits `VS96 ~T0 @X0 0 e@270 ]
-"81 main.c
+"69 main.c
 [v _tx_status `uc ~T0 @X0 0 e ]
 "355 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
 [s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -137,56 +87,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
 "427
 [v _PORTA `Vuc ~T0 @X0 0 e@12 ]
-"310 main.c
-[c E2951 2 1 4 16 .. ]
-[n E2951 . A_Pressed B_Pressed C_Pressed D_Pressed  ]
-"318
-[c E2958 1 2 4 8 .. ]
-[n E2958 . BIND_ACTIVE UNBIND_ACTIVE MODE_CHANGE_ACTIVE GO_OFF  ]
-"346
+"247 main.c
+[c E2940 2 1 4 16 .. ]
+[n E2940 . A_Pressed B_Pressed C_Pressed D_Pressed  ]
+"255
+[c E2947 1 2 4 8 .. ]
+[n E2947 . BIND_ACTIVE UNBIND_ACTIVE MODE_CHANGE_ACTIVE GO_OFF  ]
+"283
 [c E2931 0 1 .. ]
 [n E2931 . OFF ON  ]
 "45 FLASH.h
 [v _FlashEraseRow `(v ~T0 @X0 0 ef1`ui ]
 "46
 [v _FlashWrite `(v ~T0 @X0 0 ef2`ui`ui ]
-"618 main.c
-[c E2956 23 .. ]
-[n E2956 . All_Pressed  ]
+"423 main.c
+[c E2945 23 .. ]
+[n E2945 . All_Pressed  ]
 "29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"34 main.c
+"24 main.c
 [p x FOSC=INTOSC ]
-"35
+"25
 [p x WDTE=SWDTEN ]
-"36
+"26
 [p x PWRTE=ON ]
-"37
+"27
 [p x MCLRE=ON ]
-"38
+"28
 [p x CP=ON ]
-"39
+"29
 [p x BOREN=NSLEEP ]
-"40
+"30
 [p x CLKOUTEN=OFF ]
-"43
+"33
 [p x WRT=OFF ]
-"44
+"34
 [p x STVREN=ON ]
-"45
+"35
 [p x BORV=LO ]
-"46
+"36
 [p x LPBOR=ON ]
-"47
+"37
 [p x LVP=OFF ]
-"49
+"39
 [p x IDLOC0=0x0 ]
-"50
+"40
 [p x IDLOC1=0x7 ]
-"51
+"41
 [p x IDLOC2=0x0 ]
-"52
+"42
 [p x IDLOC3=0x7 ]
 [; ;pic16lf1503.h: 50: extern volatile unsigned char INDF0 @ 0x000;
 "52 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1503.h
@@ -3001,18 +2951,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;FLASH.h: 46: void FlashWrite(unsigned int addr, unsigned int flash_data);
 [; ;FLASH.h: 47: void ClearDevMemory(void);
 [; ;FLASH.h: 48: void test_memory_full(void);
-"64 main.c
+"53 main.c
 [v _AlarmBattVoltage `Cui ~T0 @X0 1 e ]
 [i _AlarmBattVoltage
 -> * / .1.024 .2.5 -> -> 1023 `i `d `ui
 ]
-[; ;main.c: 64: const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / 2.5 * 1023);
-[; ;main.c: 72: enum {
-[; ;main.c: 73: OFF = 0,
-[; ;main.c: 74: ON = 1
-[; ;main.c: 75: };
-[; ;main.c: 81: extern unsigned char tx_status;
-"82
+[; ;main.c: 53: const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / 2.5 * 1023);
+[; ;main.c: 61: enum {
+[; ;main.c: 62: OFF = 0,
+[; ;main.c: 63: ON = 1
+[; ;main.c: 64: };
+[; ;main.c: 69: extern unsigned char tx_status;
+"70
 [v _noo_send_data `uc ~T0 @X0 -> 4 `i e ]
 [i _noo_send_data
 :U ..
@@ -3022,820 +2972,751 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-[; ;main.c: 82: unsigned char noo_send_data[4] = {0, 0, 0, 0};
-"84
-[v _BattLowSent `uc ~T0 @X0 1 e ]
-[i _BattLowSent
--> -> 0 `i `uc
-]
-[; ;main.c: 84: uint8_t BattLowSent = 0;
-"85
-[v _BattLow `uc ~T0 @X0 1 e ]
-[i _BattLow
--> -> 0 `i `uc
-]
-[; ;main.c: 85: uint8_t BattLow = 0;
-"87
+[; ;main.c: 70: unsigned char noo_send_data[4] = {0, 0, 0, 0};
+"75
 [v _LedPulseTick_100ms `uc ~T0 @X0 1 e ]
 [i _LedPulseTick_100ms
 -> -> 0 `i `uc
 ]
-[; ;main.c: 87: uint8_t LedPulseTick_100ms = 0;
-"89
+[; ;main.c: 75: uint8_t LedPulseTick_100ms = 0;
+"77
 [v _Init_CLK `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 89: void Init_CLK() {
+[; ;main.c: 77: void Init_CLK() {
 [e :U _Init_CLK ]
 [f ]
-[; ;main.c: 92: OSCCONbits.IRCF = 0b1110;
-"92
+[; ;main.c: 80: OSCCONbits.IRCF = 0b1110;
+"80
 [e = . . _OSCCONbits 0 2 -> -> 14 `i `uc ]
-[; ;main.c: 108: WDTCONbits.WDTPS = 0b01011;
-"108
+[; ;main.c: 96: WDTCONbits.WDTPS = 0b01011;
+"96
 [e = . . _WDTCONbits 0 1 -> -> 11 `i `uc ]
-[; ;main.c: 115: WDTCONbits.SWDTEN = 1;
-"115
+[; ;main.c: 103: WDTCONbits.SWDTEN = 1;
+"103
 [e = . . _WDTCONbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 116: while (!OSCSTATbits.HFIOFR) {
-"116
+[; ;main.c: 104: while (!OSCSTATbits.HFIOFR) {
+"104
 [e $U 335  ]
 [e :U 336 ]
 {
-"117
+"105
 }
 [e :U 335 ]
-"116
+"104
 [e $ ! != -> . . _OSCSTATbits 0 3 `i -> -> -> 0 `i `Vuc `i 336  ]
 [e :U 337 ]
-[; ;main.c: 117: }
-[; ;main.c: 118: }
-"118
+[; ;main.c: 105: }
+[; ;main.c: 106: }
+"106
 [e :UE 334 ]
 }
-"120
+"108
 [v _Init_IO `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 120: void Init_IO() {
+[; ;main.c: 108: void Init_IO() {
 [e :U _Init_IO ]
 [f ]
-[; ;main.c: 121: OPTION_REGbits.nWPUEN = 0;
-"121
+[; ;main.c: 109: OPTION_REGbits.nWPUEN = 0;
+"109
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 122: TRISA = 0x1F;
-"122
+[; ;main.c: 110: TRISA = 0x1F;
+"110
 [e = _TRISA -> -> 31 `i `uc ]
-[; ;main.c: 123: ANSELA = 0;
-"123
+[; ;main.c: 111: ANSELA = 0;
+"111
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;main.c: 124: WPUA = 0x08;
-"124
+[; ;main.c: 112: WPUA = 0x08;
+"112
 [e = _WPUA -> -> 8 `i `uc ]
-[; ;main.c: 126: TRISC = 0x00;
-"126
+[; ;main.c: 114: TRISC = 0x00;
+"114
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 127: ANSELC = 0;
-"127
+[; ;main.c: 115: ANSELC = 0;
+"115
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;main.c: 128: LATC = 0x00;
-"128
+[; ;main.c: 116: LATC = 0x00;
+"116
 [e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 129: }
-"129
+[; ;main.c: 117: }
+"117
 [e :UE 338 ]
 }
-"131
-[v _Init_ADC `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 131: void Init_ADC() {
-[e :U _Init_ADC ]
-[f ]
-[; ;main.c: 132: FVRCON = 0;
-"132
-[e = _FVRCON -> -> 0 `i `uc ]
-[; ;main.c: 134: ADCON1bits.ADFM = 1;
-"134
-[e = . . _ADCON1bits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 135: ADCON1bits.ADCS = 0b001;
-"135
-[e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 138: ADCON1bits.ADPREF = 0b00;
-"138
-[e = . . _ADCON1bits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 140: ADCON0bits.ADON = 0;
-"140
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 141: }
-"141
-[e :UE 339 ]
-}
-"148
-[v _GetAdcValue `(ui ~T0 @X0 1 ef1`uc ]
-{
-[; ;main.c: 148: unsigned int GetAdcValue(uint8_t channel) {
-[e :U _GetAdcValue ]
-[v _channel `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;main.c: 149: ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
-"149
-[e = . . _ADCON0bits 0 2 -> & -> _channel `i -> 31 `i `uc ]
-[; ;main.c: 151: if (channel == 31) {
-"151
-[e $ ! == -> _channel `i -> 31 `i 341  ]
-{
-[; ;main.c: 152: FVRCONbits.FVREN = 1;
-"152
-[e = . . _FVRCONbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 153: FVRCONbits.ADFVR = 0b01;
-"153
-[e = . . _FVRCONbits 0 0 -> -> 1 `i `uc ]
-"154
-}
-[e :U 341 ]
-[; ;main.c: 154: }
-[; ;main.c: 156: ADCON0bits.ADON = 1;
-"156
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 157: _delay((unsigned long)((55)*(8000000/4000000.0)));
-"157
-[e ( __delay (1 -> * -> -> 55 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 159: ADCON0bits.GO_nDONE = 1;
-"159
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 160: while (ADCON0bits.GO_nDONE) {
-"160
-[e $U 342  ]
-[e :U 343 ]
-{
-"161
-}
-[e :U 342 ]
-"160
-[e $ != -> . . _ADCON0bits 0 1 `i -> -> -> 0 `i `Vuc `i 343  ]
-[e :U 344 ]
-"164
-[v _result `ui ~T0 @X0 1 a ]
-[; ;main.c: 161: }
-[; ;main.c: 164: unsigned int result;
-[; ;main.c: 165: result = (uint16_t) ((ADRESH << 8) | ADRESL);
-"165
-[e = _result -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-[; ;main.c: 171: ADCON0bits.ADON = 0;
-"171
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 172: FVRCON = 0;
-"172
-[e = _FVRCON -> -> 0 `i `uc ]
-[; ;main.c: 173: PIR1bits.ADIF = 0;
-"173
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 175: return result;
-"175
-[e ) _result ]
-[e $UE 340  ]
-[; ;main.c: 176: }
-"176
-[e :UE 340 ]
-}
-"179
-[v _mode `uc ~T0 @X0 1 e ]
-[i _mode
--> -> 0 `i `uc
-]
-[; ;main.c: 179: uint8_t mode = 0;
-"181
+"122
 [v _tick3_100ms `uc ~T0 @X0 1 e ]
 [i _tick3_100ms
 -> -> 0 `i `uc
 ]
-[; ;main.c: 181: uint8_t tick3_100ms = 0;
-"182
-[v _BattLowTransmitCount `uc ~T0 @X0 1 e ]
-[i _BattLowTransmitCount
--> -> 0 `i `uc
-]
-[; ;main.c: 182: uint8_t BattLowTransmitCount = 0;
-[; ;main.c: 184: enum {
-[; ;main.c: 185: A_Pressed = 0x02,
-[; ;main.c: 186: B_Pressed = 0x01,
-[; ;main.c: 187: C_Pressed = 0x04,
-[; ;main.c: 188: D_Pressed = 0x10
-[; ;main.c: 189: };
-[; ;main.c: 191: enum {
-[; ;main.c: 192: All_Pressed = 0x17
-[; ;main.c: 193: };
-[; ;main.c: 195: enum {
-[; ;main.c: 196: BIND_ACTIVE = 0x01,
-[; ;main.c: 197: UNBIND_ACTIVE = 0x02,
-[; ;main.c: 198: MODE_CHANGE_ACTIVE = 0x04,
-[; ;main.c: 199: GO_OFF = 0x08
-[; ;main.c: 200: };
-[; ;main.c: 202: struct {
-[; ;main.c: 203: uint8_t State;
-[; ;main.c: 204: uint8_t StateTemp;
-[; ;main.c: 205: uint8_t Tick100ms;
-[; ;main.c: 206: uint8_t FirstCmdSent;
-[; ;main.c: 207: } typedef KeyState;
-"209
+[; ;main.c: 122: uint8_t tick3_100ms = 0;
+[; ;main.c: 125: enum {
+[; ;main.c: 126: A_Pressed = 0x02,
+[; ;main.c: 127: B_Pressed = 0x01,
+[; ;main.c: 128: C_Pressed = 0x04,
+[; ;main.c: 129: D_Pressed = 0x10
+[; ;main.c: 130: };
+[; ;main.c: 132: enum {
+[; ;main.c: 133: All_Pressed = 0x17
+[; ;main.c: 134: };
+[; ;main.c: 136: enum {
+[; ;main.c: 137: BIND_ACTIVE = 0x01,
+[; ;main.c: 138: UNBIND_ACTIVE = 0x02,
+[; ;main.c: 139: MODE_CHANGE_ACTIVE = 0x04,
+[; ;main.c: 140: GO_OFF = 0x08
+[; ;main.c: 141: };
+[; ;main.c: 143: struct {
+[; ;main.c: 144: uint8_t State;
+[; ;main.c: 145: uint8_t StateTemp;
+[; ;main.c: 146: uint8_t Tick100ms;
+[; ;main.c: 147: uint8_t FirstCmdSent;
+[; ;main.c: 148: } typedef KeyState;
+"150
 [v _Type `Cui ~T0 @X0 -> 0 `x e@1984 ]
 [i _Type
 :U ..
-"210
+"151
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
-"211
+"152
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
-"212
+"153
 -> 65535 `ui
 ..
 ]
-[; ;main.c: 209: const uint16_t Type[] @ 0x7C0 = {
-[; ;main.c: 210: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-[; ;main.c: 211: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-[; ;main.c: 212: };
-"214
+[; ;main.c: 150: const uint16_t Type[] @ 0x7C0 = {
+[; ;main.c: 151: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+[; ;main.c: 152: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+[; ;main.c: 153: };
+"155
 [v _TxStatus `Cui ~T0 @X0 -> 0 `x e@2000 ]
 [i _TxStatus
 :U ..
-"215
+"156
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
-"216
+"157
 -> 65535 `ui
 -> 65535 `ui
 -> 65535 `ui
-"217
+"158
 -> 65535 `ui
 ..
 ]
-[; ;main.c: 214: const uint16_t TxStatus[] @ 0x7D0 = {
-[; ;main.c: 215: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-[; ;main.c: 216: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-[; ;main.c: 217: };
-"219
+[; ;main.c: 155: const uint16_t TxStatus[] @ 0x7D0 = {
+[; ;main.c: 156: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+[; ;main.c: 157: 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+[; ;main.c: 158: };
+"160
 [v _DevType `uc ~T0 @X0 1 e ]
 [i _DevType
 -> -> 0 `i `uc
 ]
-[; ;main.c: 219: uint8_t DevType = 0;
-"220
+[; ;main.c: 160: uint8_t DevType = 0;
+"161
 [v _DevMode `uc ~T0 @X0 1 e ]
 [i _DevMode
 -> -> 0 `i `uc
 ]
-[; ;main.c: 220: uint8_t DevMode = 0;
-"222
-[v _Keys `S345 ~T0 @X0 -> 5 `i e ]
-[; ;main.c: 222: KeyState Keys[5];
-"229
+[; ;main.c: 161: uint8_t DevMode = 0;
+"163
+[v _Keys `S339 ~T0 @X0 -> 5 `i e ]
+[; ;main.c: 163: KeyState Keys[5];
+"170
 [v _SkipHandling `uc ~T0 @X0 1 e ]
 [i _SkipHandling
 -> -> 0 `i `uc
 ]
-[; ;main.c: 229: uint8_t SkipHandling = 0;
-"231
+[; ;main.c: 170: uint8_t SkipHandling = 0;
+"172
 [v _Init_TypeFromFlash `(uc ~T0 @X0 1 ef ]
 {
-[; ;main.c: 231: uint8_t Init_TypeFromFlash() {
+[; ;main.c: 172: uint8_t Init_TypeFromFlash() {
 [e :U _Init_TypeFromFlash ]
 [f ]
-[; ;main.c: 232: if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
-"232
-[e $ ! && == >> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> -> 255 `i `ui -> -> 4 `i `ui 347  ]
+[; ;main.c: 173: if (((Type[0] >> 8) == 0x5A) && ((Type[0] & 0xFF) < 4)) {
+"173
+[e $ ! && == >> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> -> 255 `i `ui -> -> 4 `i `ui 341  ]
 {
-[; ;main.c: 233: return (Type[0] & 0xFF);
-"233
+[; ;main.c: 174: return (Type[0] & 0xFF);
+"174
 [e ) -> & *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> -> 255 `i `ui `uc ]
-[e $UE 346  ]
-"234
+[e $UE 340  ]
+"175
 }
-[; ;main.c: 234: } else {
-[e $U 348  ]
-[e :U 347 ]
+[; ;main.c: 175: } else {
+[e $U 342  ]
+[e :U 341 ]
 {
-[; ;main.c: 235: return 0;
-"235
+[; ;main.c: 176: return 0;
+"176
 [e ) -> -> 0 `i `uc ]
-[e $UE 346  ]
-"236
+[e $UE 340  ]
+"177
 }
-[e :U 348 ]
-[; ;main.c: 236: }
-[; ;main.c: 237: }
-"237
-[e :UE 346 ]
+[e :U 342 ]
+[; ;main.c: 177: }
+[; ;main.c: 178: }
+"178
+[e :UE 340 ]
 }
-"239
+"180
 [v _Init_TxStatusFromFlash `(uc ~T0 @X0 1 ef ]
 {
-[; ;main.c: 239: uint8_t Init_TxStatusFromFlash() {
+[; ;main.c: 180: uint8_t Init_TxStatusFromFlash() {
 [e :U _Init_TxStatusFromFlash ]
 [f ]
-[; ;main.c: 240: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-"240
+[; ;main.c: 181: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+"181
 {
 [v _cellNum `uc ~T0 @X0 1 a ]
 [e = _cellNum -> -> 0 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 350  ]
-[e $U 351  ]
-[e :U 350 ]
+[e $ < -> _cellNum `i -> 8 `i 344  ]
+[e $U 345  ]
+[e :U 344 ]
 {
-[; ;main.c: 241: if (TxStatus[cellNum] == 0xFFFF) {
-"241
-[e $ ! == *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 65535 `ui 353  ]
+[; ;main.c: 182: if (TxStatus[cellNum] == 0xFFFF) {
+"182
+[e $ ! == *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 65535 `ui 347  ]
 {
-[; ;main.c: 242: if (cellNum > 0) {
-"242
-[e $ ! > -> _cellNum `i -> 0 `i 354  ]
+[; ;main.c: 183: if (cellNum > 0) {
+"183
+[e $ ! > -> _cellNum `i -> 0 `i 348  ]
 {
-[; ;main.c: 243: if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
-"243
-[e $ ! && == >> *U + &U _TxStatus * -> -> - -> _cellNum `i -> 1 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _TxStatus * -> -> - -> _cellNum `i -> 1 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux -> -> 255 `i `ui -> -> 3 `i `ui 355  ]
+[; ;main.c: 184: if (((TxStatus[cellNum - 1] >> 8) == 0x5A) && ((TxStatus[cellNum - 1] & 0xFF) < 3)) {
+"184
+[e $ ! && == >> *U + &U _TxStatus * -> -> - -> _cellNum `i -> 1 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _TxStatus * -> -> - -> _cellNum `i -> 1 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux -> -> 255 `i `ui -> -> 3 `i `ui 349  ]
 {
-[; ;main.c: 244: return TxStatus[cellNum - 1];
-"244
+[; ;main.c: 185: return TxStatus[cellNum - 1];
+"185
 [e ) -> *U + &U _TxStatus * -> -> - -> _cellNum `i -> 1 `i `ui `ux -> -> # *U &U _TxStatus `ui `ux `uc ]
-[e $UE 349  ]
-"245
+[e $UE 343  ]
+"186
 }
-[; ;main.c: 245: } else {
-[e $U 356  ]
-[e :U 355 ]
+[; ;main.c: 186: } else {
+[e $U 350  ]
+[e :U 349 ]
 {
-[; ;main.c: 246: return 0;
-"246
+[; ;main.c: 187: return 0;
+"187
 [e ) -> -> 0 `i `uc ]
-[e $UE 349  ]
-"247
+[e $UE 343  ]
+"188
 }
-[e :U 356 ]
-"248
+[e :U 350 ]
+"189
 }
-[; ;main.c: 247: }
-[; ;main.c: 248: } else {
-[e $U 357  ]
+[; ;main.c: 188: }
+[; ;main.c: 189: } else {
+[e $U 351  ]
+[e :U 348 ]
+{
+[; ;main.c: 190: return 0;
+"190
+[e ) -> -> 0 `i `uc ]
+[e $UE 343  ]
+"191
+}
+[e :U 351 ]
+"192
+}
+[; ;main.c: 191: }
+[; ;main.c: 192: } else {
+[e $U 352  ]
+[e :U 347 ]
+{
+[; ;main.c: 193: if (cellNum == 7) {
+"193
+[e $ ! == -> _cellNum `i -> 7 `i 353  ]
+{
+[; ;main.c: 194: if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
+"194
+[e $ ! && == >> *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> -> 255 `i `ui -> -> 3 `i `ui 354  ]
+{
+[; ;main.c: 195: return TxStatus[cellNum];
+"195
+[e ) -> *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux `uc ]
+[e $UE 343  ]
+"196
+}
+[; ;main.c: 196: } else {
+[e $U 355  ]
 [e :U 354 ]
 {
-[; ;main.c: 249: return 0;
-"249
+[; ;main.c: 197: return 0;
+"197
 [e ) -> -> 0 `i `uc ]
-[e $UE 349  ]
-"250
+[e $UE 343  ]
+"198
 }
-[e :U 357 ]
-"251
+[e :U 355 ]
+"199
 }
-[; ;main.c: 250: }
-[; ;main.c: 251: } else {
-[e $U 358  ]
 [e :U 353 ]
-{
-[; ;main.c: 252: if (cellNum == 7) {
-"252
-[e $ ! == -> _cellNum `i -> 7 `i 359  ]
-{
-[; ;main.c: 253: if (((TxStatus[cellNum] >> 8) == 0x5A) && ((TxStatus[cellNum] & 0xFF) < 3)) {
-"253
-[e $ ! && == >> *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 8 `i -> -> 90 `i `ui < & *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> -> 255 `i `ui -> -> 3 `i `ui 360  ]
-{
-[; ;main.c: 254: return TxStatus[cellNum];
-"254
-[e ) -> *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux `uc ]
-[e $UE 349  ]
-"255
+"200
 }
-[; ;main.c: 255: } else {
-[e $U 361  ]
-[e :U 360 ]
-{
-[; ;main.c: 256: return 0;
-"256
-[e ) -> -> 0 `i `uc ]
-[e $UE 349  ]
-"257
+[e :U 352 ]
+"201
 }
-[e :U 361 ]
-"258
-}
-[e :U 359 ]
-"259
-}
-[e :U 358 ]
-"260
-}
-"240
+"181
 [e ++ _cellNum -> -> 1 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 350  ]
-[e :U 351 ]
-"260
+[e $ < -> _cellNum `i -> 8 `i 344  ]
+[e :U 345 ]
+"201
 }
-[; ;main.c: 257: }
-[; ;main.c: 258: }
-[; ;main.c: 259: }
-[; ;main.c: 260: }
-[; ;main.c: 261: return 0;
-"261
+[; ;main.c: 198: }
+[; ;main.c: 199: }
+[; ;main.c: 200: }
+[; ;main.c: 201: }
+[; ;main.c: 202: return 0;
+"202
 [e ) -> -> 0 `i `uc ]
-[e $UE 349  ]
-[; ;main.c: 262: }
-"262
-[e :UE 349 ]
+[e $UE 343  ]
+[; ;main.c: 203: }
+"203
+[e :UE 343 ]
 }
-"264
-[v _KeyOffHandler `(v ~T0 @X0 1 ef3`*S345`uc`uc ]
+"205
+[v _KeyOffHandler `(v ~T0 @X0 1 ef3`*S339`uc`uc ]
 {
-[; ;main.c: 264: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
+[; ;main.c: 205: void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
 [e :U _KeyOffHandler ]
-[v _key `*S345 ~T0 @X0 1 r1 ]
+[v _key `*S339 ~T0 @X0 1 r1 ]
 [v _chn `uc ~T0 @X0 1 r2 ]
 [v _cmd `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;main.c: 265: if (key->State == 0) {
-"265
-[e $ ! == -> . *U _key 0 `i -> 0 `i 363  ]
+[; ;main.c: 206: if (key->State == 0) {
+"206
+[e $ ! == -> . *U _key 0 `i -> 0 `i 357  ]
 {
-[; ;main.c: 266: if (key->Tick100ms < 10) {
-"266
-[e $ ! < -> . *U _key 2 `i -> 10 `i 364  ]
+[; ;main.c: 207: if (key->Tick100ms < 10) {
+"207
+[e $ ! < -> . *U _key 2 `i -> 10 `i 358  ]
 {
-[; ;main.c: 267: switch (cmd) {
-"267
-[e $U 366  ]
-{
-[; ;main.c: 268: case 0:
-"268
-[e :U 367 ]
-[; ;main.c: 269: noolite_send(chn, 0, 0, &noo_send_data[0]);
-"269
-[e ( _noolite_send (4 , , , _chn -> -> 0 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 270: break;
-"270
-[e $U 365  ]
-[; ;main.c: 271: case 2:
-"271
-[e :U 368 ]
-[; ;main.c: 272: noolite_send(chn, 2, 0, &noo_send_data[0]);
-"272
-[e ( _noolite_send (4 , , , _chn -> -> 2 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 273: break;
-"273
-[e $U 365  ]
-[; ;main.c: 274: case 4:
-"274
-[e :U 369 ]
-[; ;main.c: 275: noolite_send(chn, 4, 0, &noo_send_data[0]);
-"275
-[e ( _noolite_send (4 , , , _chn -> -> 4 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 276: break;
-"276
-[e $U 365  ]
-[; ;main.c: 277: default:
-"277
-[e :U 370 ]
-[; ;main.c: 278: noolite_send(chn, 0, 0, &noo_send_data[0]);
-"278
-[e ( _noolite_send (4 , , , _chn -> -> 0 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 279: break;
-"279
-[e $U 365  ]
-"280
+[; ;main.c: 208: noolite_send(chn, cmd, 0, &noo_send_data[0]);
+"208
+[e ( _noolite_send (4 , , , _chn _cmd -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+"209
 }
-[; ;main.c: 280: }
-[e $U 365  ]
-"267
-[e :U 366 ]
-[e [\ _cmd , $ -> -> 0 `i `uc 367
- , $ -> -> 2 `i `uc 368
- , $ -> -> 4 `i `uc 369
- 370 ]
-"280
-[e :U 365 ]
-"281
-}
-[; ;main.c: 281: } else {
-[e $U 371  ]
-[e :U 364 ]
+[; ;main.c: 209: } else {
+[e $U 359  ]
+[e :U 358 ]
 {
-[; ;main.c: 282: noolite_send(chn, 10, 0, &noo_send_data[0]);
-"282
+[; ;main.c: 210: noolite_send(chn, 10, 0, &noo_send_data[0]);
+"210
 [e ( _noolite_send (4 , , , _chn -> -> 10 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 283: _delay((unsigned long)((15)*(8000000/4000.0)));
-"283
+[; ;main.c: 211: _delay((unsigned long)((15)*(8000000/4000.0)));
+"211
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 284: noolite_send(chn, 10, 0, &noo_send_data[0]);
-"284
+[; ;main.c: 212: noolite_send(chn, 10, 0, &noo_send_data[0]);
+"212
 [e ( _noolite_send (4 , , , _chn -> -> 10 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 285: _delay((unsigned long)((15)*(8000000/4000.0)));
-"285
+[; ;main.c: 213: _delay((unsigned long)((15)*(8000000/4000.0)));
+"213
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 286: noolite_send(chn, 10, 0, &noo_send_data[0]);
-"286
+[; ;main.c: 214: noolite_send(chn, 10, 0, &noo_send_data[0]);
+"214
 [e ( _noolite_send (4 , , , _chn -> -> 10 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 287: key->FirstCmdSent = 0;
-"287
+[; ;main.c: 215: key->FirstCmdSent = 0;
+"215
 [e = . *U _key 3 -> -> 0 `i `uc ]
-"288
+"216
 }
-[e :U 371 ]
-"289
+[e :U 359 ]
+"217
+}
+[e :U 357 ]
+[; ;main.c: 216: }
+[; ;main.c: 217: }
+[; ;main.c: 218: }
+"218
+[e :UE 356 ]
+}
+"220
+[v _KeyLongHandler `(v ~T0 @X0 1 ef4`*S339`uc`uc`uc ]
+{
+[; ;main.c: 220: void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
+[e :U _KeyLongHandler ]
+[v _key `*S339 ~T0 @X0 1 r1 ]
+[v _chn `uc ~T0 @X0 1 r2 ]
+[v _cmd `uc ~T0 @X0 1 r3 ]
+[v _ticksToTrigger `uc ~T0 @X0 1 r4 ]
+[f ]
+[; ;main.c: 221: if (key->State != 0) {
+"221
+[e $ ! != -> . *U _key 0 `i -> 0 `i 361  ]
+{
+[; ;main.c: 222: if (key->Tick100ms > ticksToTrigger) {
+"222
+[e $ ! > -> . *U _key 2 `i -> _ticksToTrigger `i 362  ]
+{
+[; ;main.c: 223: if (key->FirstCmdSent == 0) {
+"223
+[e $ ! == -> . *U _key 3 `i -> 0 `i 363  ]
+{
+[; ;main.c: 224: noolite_send(chn, cmd, 0, &noo_send_data[0]);
+"224
+[e ( _noolite_send (4 , , , _chn _cmd -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[; ;main.c: 225: key->FirstCmdSent = 1;
+"225
+[e = . *U _key 3 -> -> 1 `i `uc ]
+"226
 }
 [e :U 363 ]
-[; ;main.c: 288: }
-[; ;main.c: 289: }
-[; ;main.c: 290: }
-"290
-[e :UE 362 ]
+"227
 }
-"292
-[v _battery_value `ui ~T0 @X0 1 e ]
-[i _battery_value
--> -> 0 `i `ui
-]
-[; ;main.c: 292: uint16_t battery_value = 0;
+[e :U 362 ]
+[; ;main.c: 226: }
+[; ;main.c: 227: }
+[; ;main.c: 228: key->Tick100ms++;
+"228
+[e ++ . *U _key 2 -> -> 1 `i `uc ]
+"229
+}
+[; ;main.c: 229: } else {
+[e $U 364  ]
+[e :U 361 ]
+{
+[; ;main.c: 230: key->Tick100ms = 0;
+"230
+[e = . *U _key 2 -> -> 0 `i `uc ]
+"231
+}
+[e :U 364 ]
+[; ;main.c: 231: }
+[; ;main.c: 232: }
+"232
+[e :UE 360 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"294
+"234
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 294: void main() {
+[; ;main.c: 234: void main() {
 [e :U _main ]
 [f ]
-[; ;main.c: 295: Init_IO();
-"295
+[; ;main.c: 235: Init_IO();
+"235
 [e ( _Init_IO ..  ]
-[; ;main.c: 296: Init_CLK();
-"296
+[; ;main.c: 236: Init_CLK();
+"236
 [e ( _Init_CLK ..  ]
-[; ;main.c: 298: Init_ADC();
-"298
-[e ( _Init_ADC ..  ]
-[; ;main.c: 299: RF_Init();
-"299
+[; ;main.c: 237: RF_Init();
+"237
 [e ( _RF_Init ..  ]
-[; ;main.c: 301: LATCbits.LATC5 = 1;
-"301
+[; ;main.c: 239: LATCbits.LATC5 = 1;
+"239
 [e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 302: DevType = Init_TypeFromFlash();
-"302
+[; ;main.c: 240: DevType = Init_TypeFromFlash();
+"240
 [e = _DevType ( _Init_TypeFromFlash ..  ]
-[; ;main.c: 303: tx_status = Init_TxStatusFromFlash();
-"303
+[; ;main.c: 241: tx_status = Init_TxStatusFromFlash();
+"241
 [e = _tx_status ( _Init_TxStatusFromFlash ..  ]
-[; ;main.c: 306: INTCONbits.PEIE = 1;
-"306
+[; ;main.c: 243: INTCONbits.PEIE = 1;
+"243
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 307: INTCONbits.GIE = 1;
-"307
+[; ;main.c: 244: INTCONbits.GIE = 1;
+"244
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 308: while (1) {
-"308
-[e :U 374 ]
+[; ;main.c: 245: while (1) {
+"245
+[e :U 367 ]
 {
-[; ;main.c: 310: Keys[0].State = (uint8_t) (PORTA & A_Pressed);
-"310
-[e = . *U + &U _Keys * -> -> -> 0 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2951 0 `i `uc ]
-[; ;main.c: 311: Keys[1].State = (uint8_t) (PORTA & B_Pressed);
-"311
-[e = . *U + &U _Keys * -> -> -> 1 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2951 1 `i `uc ]
-[; ;main.c: 312: Keys[2].State = (uint8_t) (PORTA & C_Pressed);
-"312
-[e = . *U + &U _Keys * -> -> -> 2 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2951 2 `i `uc ]
-[; ;main.c: 313: Keys[3].State = (uint8_t) (PORTA & D_Pressed);
-"313
-[e = . *U + &U _Keys * -> -> -> 3 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2951 3 `i `uc ]
-[; ;main.c: 314: Keys[4].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
-"314
-[e = . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i | -> . `E2951 2 `i -> . `E2951 3 `i `uc ]
-[; ;main.c: 315: if (Keys[4].State == (C_Pressed | D_Pressed)) {
-"315
-[e $ ! == -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 `i | -> . `E2951 2 `i -> . `E2951 3 `i 376  ]
+[; ;main.c: 247: Keys[0].State = (uint8_t) (PORTA & A_Pressed);
+"247
+[e = . *U + &U _Keys * -> -> -> 0 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2940 0 `i `uc ]
+[; ;main.c: 248: Keys[1].State = (uint8_t) (PORTA & B_Pressed);
+"248
+[e = . *U + &U _Keys * -> -> -> 1 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2940 1 `i `uc ]
+[; ;main.c: 249: Keys[2].State = (uint8_t) (PORTA & C_Pressed);
+"249
+[e = . *U + &U _Keys * -> -> -> 2 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2940 2 `i `uc ]
+[; ;main.c: 250: Keys[3].State = (uint8_t) (PORTA & D_Pressed);
+"250
+[e = . *U + &U _Keys * -> -> -> 3 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i -> . `E2940 3 `i `uc ]
+[; ;main.c: 251: Keys[4].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
+"251
+[e = . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 -> & -> _PORTA `i | -> . `E2940 2 `i -> . `E2940 3 `i `uc ]
+[; ;main.c: 252: if (Keys[4].State == (C_Pressed | D_Pressed)) {
+"252
+[e $ ! == -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 `i | -> . `E2940 2 `i -> . `E2940 3 `i 369  ]
 {
-[; ;main.c: 316: SkipHandling = 10;
-"316
+[; ;main.c: 253: SkipHandling = 10;
+"253
 [e = _SkipHandling -> -> 10 `i `uc ]
-[; ;main.c: 317: if (Keys[4].Tick100ms < 15) {
-"317
-[e $ ! < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 15 `i 377  ]
+[; ;main.c: 254: if (Keys[4].Tick100ms < 15) {
+"254
+[e $ ! < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 15 `i 370  ]
 {
-[; ;main.c: 318: DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
-"318
-[e =& _DevMode -> ~ | -> . `E2958 1 `i -> . `E2958 2 `i `uc ]
-[; ;main.c: 319: DevMode |= BIND_ACTIVE;
-"319
-[e =| _DevMode -> . `E2958 0 `uc ]
-[; ;main.c: 320: tick3_100ms = 100;
-"320
+[; ;main.c: 255: DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
+"255
+[e =& _DevMode -> ~ | -> . `E2947 1 `i -> . `E2947 2 `i `uc ]
+[; ;main.c: 256: DevMode |= BIND_ACTIVE;
+"256
+[e =| _DevMode -> . `E2947 0 `uc ]
+[; ;main.c: 257: tick3_100ms = 100;
+"257
 [e = _tick3_100ms -> -> 100 `i `uc ]
-"321
+"258
 }
-[; ;main.c: 321: } else if ((Keys[4].Tick100ms >= 35) && (Keys[4].Tick100ms < 49)) {
-[e $U 378  ]
+[; ;main.c: 258: } else if ((Keys[4].Tick100ms >= 35) && (Keys[4].Tick100ms < 49)) {
+[e $U 371  ]
+[e :U 370 ]
+[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 35 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 49 `i 372  ]
+{
+[; ;main.c: 259: DevMode &= ~BIND_ACTIVE;
+"259
+[e =& _DevMode -> ~ -> . `E2947 0 `i `uc ]
+"260
+}
+[; ;main.c: 260: } else if ((Keys[4].Tick100ms >= 50) && (Keys[4].Tick100ms < 85)) {
+[e $U 373  ]
+[e :U 372 ]
+[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 50 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i 374  ]
+{
+[; ;main.c: 261: DevMode &= ~(BIND_ACTIVE | MODE_CHANGE_ACTIVE);
+"261
+[e =& _DevMode -> ~ | -> . `E2947 0 `i -> . `E2947 2 `i `uc ]
+[; ;main.c: 262: DevMode |= UNBIND_ACTIVE;
+"262
+[e =| _DevMode -> . `E2947 1 `uc ]
+[; ;main.c: 263: tick3_100ms = 100;
+"263
+[e = _tick3_100ms -> -> 100 `i `uc ]
+"264
+}
+[; ;main.c: 264: } else if ((Keys[4].Tick100ms >= 85) && (Keys[4].Tick100ms < 99)) {
+[e $U 375  ]
+[e :U 374 ]
+[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 99 `i 376  ]
+{
+[; ;main.c: 265: DevMode &= ~UNBIND_ACTIVE;
+"265
+[e =& _DevMode -> ~ -> . `E2947 1 `i `uc ]
+"266
+}
+[; ;main.c: 266: } else if (Keys[4].Tick100ms >= 100) {
+[e $U 377  ]
+[e :U 376 ]
+[e $ ! >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 100 `i 378  ]
+{
+[; ;main.c: 267: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE);
+"267
+[e =& _DevMode -> ~ | -> . `E2947 0 `i -> . `E2947 1 `i `uc ]
+[; ;main.c: 268: DevMode |= MODE_CHANGE_ACTIVE;
+"268
+[e =| _DevMode -> . `E2947 2 `uc ]
+[; ;main.c: 269: tick3_100ms = 100;
+"269
+[e = _tick3_100ms -> -> 100 `i `uc ]
+"270
+}
+[e :U 378 ]
+"271
 [e :U 377 ]
-[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 35 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 49 `i 379  ]
-{
-[; ;main.c: 322: DevMode &= ~BIND_ACTIVE;
-"322
-[e =& _DevMode -> ~ -> . `E2958 0 `i `uc ]
-"323
+[e :U 375 ]
+[e :U 373 ]
+[e :U 371 ]
+[; ;main.c: 270: }
+[; ;main.c: 271: Keys[4].Tick100ms++;
+[e ++ . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
+[; ;main.c: 273: Keys[2].StateTemp = 0;
+"273
+[e = . *U + &U _Keys * -> -> -> 2 `i `ui `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
+[; ;main.c: 274: Keys[3].StateTemp = 0;
+"274
+[e = . *U + &U _Keys * -> -> -> 3 `i `ui `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
+"275
 }
-[; ;main.c: 323: } else if ((Keys[4].Tick100ms >= 50) && (Keys[4].Tick100ms < 85)) {
-[e $U 380  ]
+[; ;main.c: 275: } else {
+[e $U 379  ]
+[e :U 369 ]
+{
+[; ;main.c: 276: Keys[4].Tick100ms = 0;
+"276
+[e = . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
+"277
+}
 [e :U 379 ]
-[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 50 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i 381  ]
+[; ;main.c: 277: }
+[; ;main.c: 279: if (tick3_100ms != 0) {
+"279
+[e $ ! != -> _tick3_100ms `i -> 0 `i 380  ]
 {
-[; ;main.c: 324: DevMode &= ~(BIND_ACTIVE | MODE_CHANGE_ACTIVE);
-"324
-[e =& _DevMode -> ~ | -> . `E2958 0 `i -> . `E2958 2 `i `uc ]
-[; ;main.c: 325: DevMode |= UNBIND_ACTIVE;
-"325
-[e =| _DevMode -> . `E2958 1 `uc ]
-[; ;main.c: 326: tick3_100ms = 100;
-"326
-[e = _tick3_100ms -> -> 100 `i `uc ]
-"327
-}
-[; ;main.c: 327: } else if ((Keys[4].Tick100ms >= 85) && (Keys[4].Tick100ms < 99)) {
+[; ;main.c: 280: tick3_100ms--;
+"280
+[e -- _tick3_100ms -> -> 1 `i `uc ]
+[; ;main.c: 281: switch (DevMode & 0x07) {
+"281
 [e $U 382  ]
-[e :U 381 ]
-[e $ ! && >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 85 `i < -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 99 `i 383  ]
 {
-[; ;main.c: 328: DevMode &= ~UNBIND_ACTIVE;
-"328
-[e =& _DevMode -> ~ -> . `E2958 1 `i `uc ]
-"329
-}
-[; ;main.c: 329: } else if (Keys[4].Tick100ms >= 100) {
-[e $U 384  ]
+[; ;main.c: 282: case BIND_ACTIVE:
+"282
 [e :U 383 ]
-[e $ ! >= -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 100 `i 385  ]
+[; ;main.c: 283: LATCbits.LATC3 = ON;
+"283
+[e = . . _LATCbits 0 3 -> . `E2931 1 `uc ]
+[; ;main.c: 284: break;
+"284
+[e $U 381  ]
+[; ;main.c: 285: case UNBIND_ACTIVE:
+"285
+[e :U 384 ]
+[; ;main.c: 286: if (LedPulseTick_100ms++ > 2) {
+"286
+[e $ ! > -> ++ _LedPulseTick_100ms -> -> 1 `i `uc `i -> 2 `i 385  ]
 {
-[; ;main.c: 330: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE);
-"330
-[e =& _DevMode -> ~ | -> . `E2958 0 `i -> . `E2958 1 `i `uc ]
-[; ;main.c: 331: DevMode |= MODE_CHANGE_ACTIVE;
-"331
-[e =| _DevMode -> . `E2958 2 `uc ]
-[; ;main.c: 332: tick3_100ms = 100;
-"332
-[e = _tick3_100ms -> -> 100 `i `uc ]
-"333
+[; ;main.c: 287: LATCbits.LATC3 = ~LATCbits.LATC3;
+"287
+[e = . . _LATCbits 0 3 -> ~ -> . . _LATCbits 0 3 `i `uc ]
+[; ;main.c: 288: LedPulseTick_100ms = 0;
+"288
+[e = _LedPulseTick_100ms -> -> 0 `i `uc ]
+"289
 }
 [e :U 385 ]
-"334
-[e :U 384 ]
-[e :U 382 ]
-[e :U 380 ]
-[e :U 378 ]
-[; ;main.c: 333: }
-[; ;main.c: 334: Keys[4].Tick100ms++;
-[e ++ . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-[; ;main.c: 336: Keys[2].StateTemp = 0;
-"336
-[e = . *U + &U _Keys * -> -> -> 2 `i `ui `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
-[; ;main.c: 337: Keys[3].StateTemp = 0;
-"337
-[e = . *U + &U _Keys * -> -> -> 3 `i `ui `ux -> -> # *U &U _Keys `ui `ux 1 -> -> 0 `i `uc ]
-"338
-}
-[; ;main.c: 338: } else {
-[e $U 386  ]
-[e :U 376 ]
-{
-[; ;main.c: 339: Keys[4].Tick100ms = 0;
-"339
-[e = . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"340
-}
+[; ;main.c: 289: }
+[; ;main.c: 290: break;
+"290
+[e $U 381  ]
+[; ;main.c: 291: case MODE_CHANGE_ACTIVE:
+"291
 [e :U 386 ]
-[; ;main.c: 340: }
-[; ;main.c: 342: if (tick3_100ms != 0) {
-"342
-[e $ ! != -> _tick3_100ms `i -> 0 `i 387  ]
+[; ;main.c: 292: if (LedPulseTick_100ms++ > 0) {
+"292
+[e $ ! > -> ++ _LedPulseTick_100ms -> -> 1 `i `uc `i -> 0 `i 387  ]
 {
-[; ;main.c: 343: tick3_100ms--;
-"343
-[e -- _tick3_100ms -> -> 1 `i `uc ]
-[; ;main.c: 344: switch (DevMode & 0x07) {
-"344
-[e $U 389  ]
-{
-[; ;main.c: 345: case BIND_ACTIVE:
-"345
-[e :U 390 ]
-[; ;main.c: 346: LATCbits.LATC3 = ON;
-"346
-[e = . . _LATCbits 0 3 -> . `E2931 1 `uc ]
-[; ;main.c: 347: break;
-"347
-[e $U 388  ]
-[; ;main.c: 348: case UNBIND_ACTIVE:
-"348
-[e :U 391 ]
-[; ;main.c: 349: if (LedPulseTick_100ms++ > 2) {
-"349
-[e $ ! > -> ++ _LedPulseTick_100ms -> -> 1 `i `uc `i -> 2 `i 392  ]
-{
-[; ;main.c: 350: LATCbits.LATC3 = ~LATCbits.LATC3;
-"350
+[; ;main.c: 293: LATCbits.LATC3 = ~LATCbits.LATC3;
+"293
 [e = . . _LATCbits 0 3 -> ~ -> . . _LATCbits 0 3 `i `uc ]
-[; ;main.c: 351: LedPulseTick_100ms = 0;
-"351
+[; ;main.c: 294: LedPulseTick_100ms = 0;
+"294
 [e = _LedPulseTick_100ms -> -> 0 `i `uc ]
-"352
+"295
 }
-[e :U 392 ]
-[; ;main.c: 352: }
-[; ;main.c: 353: break;
-"353
-[e $U 388  ]
-[; ;main.c: 354: case MODE_CHANGE_ACTIVE:
-"354
-[e :U 393 ]
-[; ;main.c: 355: if (LedPulseTick_100ms++ > 0) {
-"355
-[e $ ! > -> ++ _LedPulseTick_100ms -> -> 1 `i `uc `i -> 0 `i 394  ]
-{
-[; ;main.c: 356: LATCbits.LATC3 = ~LATCbits.LATC3;
-"356
-[e = . . _LATCbits 0 3 -> ~ -> . . _LATCbits 0 3 `i `uc ]
-[; ;main.c: 357: LedPulseTick_100ms = 0;
-"357
-[e = _LedPulseTick_100ms -> -> 0 `i `uc ]
-"358
-}
-[e :U 394 ]
-[; ;main.c: 358: }
-[; ;main.c: 359: break;
-"359
-[e $U 388  ]
-[; ;main.c: 360: default:
-"360
-[e :U 395 ]
-[; ;main.c: 361: LATCbits.LATC3 = OFF;
-"361
-[e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
-[; ;main.c: 362: break;
-"362
-[e $U 388  ]
-"363
-}
-[; ;main.c: 363: }
-[e $U 388  ]
-"344
-[e :U 389 ]
-[e [\ & -> _DevMode `i -> 7 `i , $ -> . `E2958 0 `i 390
- , $ -> . `E2958 1 `i 391
- , $ -> . `E2958 2 `i 393
- 395 ]
-"363
-[e :U 388 ]
-"364
-}
-[; ;main.c: 364: } else {
-[e $U 396  ]
 [e :U 387 ]
-{
-[; ;main.c: 365: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
-"365
-[e =& _DevMode -> ~ | | -> . `E2958 0 `i -> . `E2958 1 `i -> . `E2958 2 `i `uc ]
-[; ;main.c: 366: LATCbits.LATC3 = OFF;
-"366
+[; ;main.c: 295: }
+[; ;main.c: 296: break;
+"296
+[e $U 381  ]
+[; ;main.c: 297: default:
+"297
+[e :U 388 ]
+[; ;main.c: 298: LATCbits.LATC3 = OFF;
+"298
 [e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
-"367
+[; ;main.c: 299: break;
+"299
+[e $U 381  ]
+"300
 }
-[e :U 396 ]
-[; ;main.c: 367: }
-[; ;main.c: 369: if (SkipHandling != 0) {
-"369
-[e $ ! != -> _SkipHandling `i -> 0 `i 397  ]
+[; ;main.c: 300: }
+[e $U 381  ]
+"281
+[e :U 382 ]
+[e [\ & -> _DevMode `i -> 7 `i , $ -> . `E2947 0 `i 383
+ , $ -> . `E2947 1 `i 384
+ , $ -> . `E2947 2 `i 386
+ 388 ]
+"300
+[e :U 381 ]
+"301
+}
+[; ;main.c: 301: } else {
+[e $U 389  ]
+[e :U 380 ]
 {
-[; ;main.c: 370: if (Keys[4].State == 0) {
-"370
-[e $ ! == -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 398  ]
+[; ;main.c: 302: DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
+"302
+[e =& _DevMode -> ~ | | -> . `E2947 0 `i -> . `E2947 1 `i -> . `E2947 2 `i `uc ]
+[; ;main.c: 303: LATCbits.LATC3 = OFF;
+"303
+[e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
+"304
+}
+[e :U 389 ]
+[; ;main.c: 304: }
+[; ;main.c: 306: if (SkipHandling != 0) {
+"306
+[e $ ! != -> _SkipHandling `i -> 0 `i 390  ]
 {
-[; ;main.c: 371: SkipHandling--;
-"371
+[; ;main.c: 307: if (Keys[4].State == 0) {
+"307
+[e $ ! == -> . *U + &U _Keys * -> -> -> 4 `i `ui `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 391  ]
+{
+[; ;main.c: 308: SkipHandling--;
+"308
 [e -- _SkipHandling -> -> 1 `i `uc ]
-"372
+"309
+}
+[e :U 391 ]
+"310
+}
+[; ;main.c: 309: }
+[; ;main.c: 310: } else {
+[e $U 392  ]
+[e :U 390 ]
+{
+[; ;main.c: 311: if ((DevMode & BIND_ACTIVE) != 0) {
+"311
+[e $ ! != & -> _DevMode `i -> . `E2947 0 `i -> 0 `i 393  ]
+{
+[; ;main.c: 312: for (uint8_t chn = 0; chn < 4; chn++) {
+"312
+{
+[v _chn `uc ~T0 @X0 1 a ]
+[e = _chn -> -> 0 `i `uc ]
+[e $ < -> _chn `i -> 4 `i 394  ]
+[e $U 395  ]
+[e :U 394 ]
+{
+[; ;main.c: 313: if (Keys[chn].State != Keys[chn].StateTemp) {
+"313
+[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 397  ]
+{
+[; ;main.c: 314: if (Keys[chn].State == 0) {
+"314
+[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 398  ]
+{
+[; ;main.c: 315: noolite_send(chn, 15, 0, &noo_send_data[0]);
+"315
+[e ( _noolite_send (4 , , , _chn -> -> 15 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[; ;main.c: 316: DevMode &= ~BIND_ACTIVE;
+"316
+[e =& _DevMode -> ~ -> . `E2947 0 `i `uc ]
+"317
 }
 [e :U 398 ]
-"373
+[; ;main.c: 317: }
+[; ;main.c: 318: Keys[chn].StateTemp = Keys[chn].State;
+"318
+[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
+"319
 }
-[; ;main.c: 372: }
-[; ;main.c: 373: } else {
-[e $U 399  ]
 [e :U 397 ]
+"320
+}
+"312
+[e ++ _chn -> -> 1 `i `uc ]
+[e $ < -> _chn `i -> 4 `i 394  ]
+[e :U 395 ]
+"320
+}
+"321
+}
+[; ;main.c: 319: }
+[; ;main.c: 320: }
+[; ;main.c: 321: } else if ((DevMode & UNBIND_ACTIVE) != 0) {
+[e $U 399  ]
+[e :U 393 ]
+[e $ ! != & -> _DevMode `i -> . `E2947 1 `i -> 0 `i 400  ]
 {
-[; ;main.c: 374: if ((DevMode & BIND_ACTIVE) != 0) {
-"374
-[e $ ! != & -> _DevMode `i -> . `E2958 0 `i -> 0 `i 400  ]
-{
-[; ;main.c: 375: for (uint8_t chn = 0; chn < 4; chn++) {
-"375
+[; ;main.c: 322: for (uint8_t chn = 0; chn < 4; chn++) {
+"322
 {
 [v _chn `uc ~T0 @X0 1 a ]
 [e = _chn -> -> 0 `i `uc ]
@@ -3843,49 +3724,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 402  ]
 [e :U 401 ]
 {
-[; ;main.c: 376: if (Keys[chn].State != Keys[chn].StateTemp) {
-"376
+[; ;main.c: 323: if (Keys[chn].State != Keys[chn].StateTemp) {
+"323
 [e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 404  ]
 {
-[; ;main.c: 377: if (Keys[chn].State == 0) {
-"377
+[; ;main.c: 324: if (Keys[chn].State == 0) {
+"324
 [e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 405  ]
 {
-[; ;main.c: 378: noolite_send(chn, 15, 0, &noo_send_data[0]);
-"378
-[e ( _noolite_send (4 , , , _chn -> -> 15 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 379: DevMode &= ~BIND_ACTIVE;
-"379
-[e =& _DevMode -> ~ -> . `E2958 0 `i `uc ]
-"380
+[; ;main.c: 325: noolite_send(chn, 9, 0, &noo_send_data[0]);
+"325
+[e ( _noolite_send (4 , , , _chn -> -> 9 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+[; ;main.c: 326: DevMode &= ~UNBIND_ACTIVE;
+"326
+[e =& _DevMode -> ~ -> . `E2947 1 `i `uc ]
+[; ;main.c: 327: LATCbits.LATC3 = OFF;
+"327
+[e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
+"328
 }
 [e :U 405 ]
-[; ;main.c: 380: }
-[; ;main.c: 381: Keys[chn].StateTemp = Keys[chn].State;
-"381
+[; ;main.c: 328: }
+[; ;main.c: 329: Keys[chn].StateTemp = Keys[chn].State;
+"329
 [e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
-"382
+"330
 }
 [e :U 404 ]
-"383
+"331
 }
-"375
+"322
 [e ++ _chn -> -> 1 `i `uc ]
 [e $ < -> _chn `i -> 4 `i 401  ]
 [e :U 402 ]
-"383
+"331
 }
-"384
+"332
 }
-[; ;main.c: 382: }
-[; ;main.c: 383: }
-[; ;main.c: 384: } else if ((DevMode & UNBIND_ACTIVE) != 0) {
+[; ;main.c: 330: }
+[; ;main.c: 331: }
+[; ;main.c: 332: } else if ((DevMode & MODE_CHANGE_ACTIVE) != 0) {
 [e $U 406  ]
 [e :U 400 ]
-[e $ ! != & -> _DevMode `i -> . `E2958 1 `i -> 0 `i 407  ]
+[e $ ! != & -> _DevMode `i -> . `E2947 2 `i -> 0 `i 407  ]
 {
-[; ;main.c: 385: for (uint8_t chn = 0; chn < 4; chn++) {
-"385
+[; ;main.c: 333: for (uint8_t chn = 0; chn < 4; chn++) {
+"333
 {
 [v _chn `uc ~T0 @X0 1 a ]
 [e = _chn -> -> 0 `i `uc ]
@@ -3893,808 +3777,481 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 409  ]
 [e :U 408 ]
 {
-[; ;main.c: 386: if (Keys[chn].State != Keys[chn].StateTemp) {
-"386
+[; ;main.c: 334: if (Keys[chn].State != Keys[chn].StateTemp) {
+"334
 [e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 411  ]
 {
-[; ;main.c: 387: if (Keys[chn].State == 0) {
-"387
+[; ;main.c: 335: if (Keys[chn].State == 0) {
+"335
 [e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 412  ]
 {
-[; ;main.c: 388: noolite_send(chn, 9, 0, &noo_send_data[0]);
-"388
-[e ( _noolite_send (4 , , , _chn -> -> 9 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 389: DevMode &= ~UNBIND_ACTIVE;
-"389
-[e =& _DevMode -> ~ -> . `E2958 1 `i `uc ]
-[; ;main.c: 390: LATCbits.LATC3 = OFF;
-"390
+[; ;main.c: 336: LATCbits.LATC3 = ON;
+"336
+[e = . . _LATCbits 0 3 -> . `E2931 1 `uc ]
+[; ;main.c: 337: _delay((unsigned long)((500)*(8000000/4000.0)));
+"337
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 338: asm("clrwdt");
+"338
+[; <" clrwdt ;# ">
+[; ;main.c: 339: FlashEraseRow(0x7C0);
+"339
+[e ( _FlashEraseRow (1 -> -> 1984 `i `ui ]
+[; ;main.c: 340: asm("clrwdt");
+"340
+[; <" clrwdt ;# ">
+[; ;main.c: 341: FlashWrite(0x7C0, chn);
+"341
+[e ( _FlashWrite (2 , -> -> 1984 `i `ui -> _chn `ui ]
+[; ;main.c: 342: FlashWrite(0x7C1, 0x5A);
+"342
+[e ( _FlashWrite (2 , -> -> 1985 `i `ui -> -> 90 `i `ui ]
+[; ;main.c: 343: asm("clrwdt");
+"343
+[; <" clrwdt ;# ">
+[; ;main.c: 344: DevType = Init_TypeFromFlash();
+"344
+[e = _DevType ( _Init_TypeFromFlash ..  ]
+[; ;main.c: 345: DevMode &= ~MODE_CHANGE_ACTIVE;
+"345
+[e =& _DevMode -> ~ -> . `E2947 2 `i `uc ]
+[; ;main.c: 346: LATCbits.LATC3 = OFF;
+"346
 [e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
-"391
+"347
 }
 [e :U 412 ]
-[; ;main.c: 391: }
-[; ;main.c: 392: Keys[chn].StateTemp = Keys[chn].State;
-"392
+[; ;main.c: 347: }
+[; ;main.c: 348: Keys[chn].StateTemp = Keys[chn].State;
+"348
 [e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
-"393
+"349
 }
 [e :U 411 ]
-"394
+"350
 }
-"385
+"333
 [e ++ _chn -> -> 1 `i `uc ]
 [e $ < -> _chn `i -> 4 `i 408  ]
 [e :U 409 ]
-"394
+"350
 }
-"395
+"351
 }
-[; ;main.c: 393: }
-[; ;main.c: 394: }
-[; ;main.c: 395: } else if ((DevMode & MODE_CHANGE_ACTIVE) != 0) {
+[; ;main.c: 349: }
+[; ;main.c: 350: }
+[; ;main.c: 351: } else {
 [e $U 413  ]
 [e :U 407 ]
-[e $ ! != & -> _DevMode `i -> . `E2958 2 `i -> 0 `i 414  ]
 {
-[; ;main.c: 396: for (uint8_t chn = 0; chn < 4; chn++) {
-"396
+[; ;main.c: 352: for (uint8_t chn = 0; chn < 4; chn++) {
+"352
 {
 [v _chn `uc ~T0 @X0 1 a ]
 [e = _chn -> -> 0 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 415  ]
-[e $U 416  ]
-[e :U 415 ]
-{
-[; ;main.c: 397: if (Keys[chn].State != Keys[chn].StateTemp) {
-"397
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 418  ]
-{
-[; ;main.c: 398: if (Keys[chn].State == 0) {
-"398
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 419  ]
-{
-[; ;main.c: 399: noo_send_data[0] = Type[0] >> 8;
-"399
-[e = *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux -> >> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> 8 `i `uc ]
-[; ;main.c: 400: noo_send_data[1] = Type[0];
-"400
-[e = *U + &U _noo_send_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux -> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux `uc ]
-[; ;main.c: 401: noo_send_data[2] = DevType;
-"401
-[e = *U + &U _noo_send_data * -> -> -> 2 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux _DevType ]
-[; ;main.c: 402: noolite_send(chn, 22, 7, &noo_send_data[0]);
-"402
-[e ( _noolite_send (4 , , , _chn -> -> 22 `i `uc -> -> 7 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 403: _delay((unsigned long)((500)*(8000000/4000.0)));
-"403
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 404: asm("clrwdt");
-"404
-[; <" clrwdt ;# ">
-[; ;main.c: 405: LATCbits.LATC3 = ON;
-"405
-[e = . . _LATCbits 0 3 -> . `E2931 1 `uc ]
-[; ;main.c: 406: FlashEraseRow(0x7C0);
-"406
-[e ( _FlashEraseRow (1 -> -> 1984 `i `ui ]
-[; ;main.c: 407: asm("clrwdt");
-"407
-[; <" clrwdt ;# ">
-[; ;main.c: 408: _delay((unsigned long)((500)*(8000000/4000.0)));
-"408
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 409: asm("clrwdt");
-"409
-[; <" clrwdt ;# ">
-[; ;main.c: 410: FlashWrite(0x7C0, chn);
-"410
-[e ( _FlashWrite (2 , -> -> 1984 `i `ui -> _chn `ui ]
-[; ;main.c: 411: FlashWrite(0x7C1, 0x5A);
-"411
-[e ( _FlashWrite (2 , -> -> 1985 `i `ui -> -> 90 `i `ui ]
-[; ;main.c: 412: asm("clrwdt");
-"412
-[; <" clrwdt ;# ">
-[; ;main.c: 413: DevType = Init_TypeFromFlash();
-"413
-[e = _DevType ( _Init_TypeFromFlash ..  ]
-[; ;main.c: 414: DevMode &= ~MODE_CHANGE_ACTIVE;
-"414
-[e =& _DevMode -> ~ -> . `E2958 2 `i `uc ]
-[; ;main.c: 415: LATCbits.LATC3 = OFF;
-"415
-[e = . . _LATCbits 0 3 -> . `E2931 0 `uc ]
-[; ;main.c: 416: noo_send_data[0] = Type[0] >> 8;
-"416
-[e = *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux -> >> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux -> 8 `i `uc ]
-[; ;main.c: 417: noo_send_data[1] = Type[0];
-"417
-[e = *U + &U _noo_send_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux -> *U + &U _Type * -> -> -> 0 `i `ui `ux -> -> # *U &U _Type `ui `ux `uc ]
-[; ;main.c: 418: noo_send_data[2] = DevType;
-"418
-[e = *U + &U _noo_send_data * -> -> -> 2 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux _DevType ]
-[; ;main.c: 419: noolite_send(chn, 22, 7, &noo_send_data[0]);
-"419
-[e ( _noolite_send (4 , , , _chn -> -> 22 `i `uc -> -> 7 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"420
-}
-[e :U 419 ]
-[; ;main.c: 420: }
-[; ;main.c: 421: Keys[chn].StateTemp = Keys[chn].State;
-"421
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
-"422
-}
-[e :U 418 ]
-"423
-}
-"396
-[e ++ _chn -> -> 1 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 415  ]
-[e :U 416 ]
-"423
-}
-"424
-}
-[; ;main.c: 422: }
-[; ;main.c: 423: }
-[; ;main.c: 424: } else {
-[e $U 420  ]
+[e $ < -> _chn `i -> 4 `i 414  ]
+[e $U 415  ]
 [e :U 414 ]
 {
-[; ;main.c: 426: for (uint8_t chn = 0; chn < 4; chn++) {
-"426
+[; ;main.c: 353: if (Keys[chn].State != Keys[chn].StateTemp) {
+"353
+[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 417  ]
 {
-[v _chn `uc ~T0 @X0 1 a ]
-[e = _chn -> -> 0 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 421  ]
-[e $U 422  ]
-[e :U 421 ]
+[; ;main.c: 354: switch (DevType) {
+"354
+[e $U 419  ]
 {
-[; ;main.c: 427: if (Keys[chn].State != Keys[chn].StateTemp) {
-"427
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 `i 424  ]
-{
-[; ;main.c: 428: switch (DevType) {
-"428
-[e $U 426  ]
-{
-[; ;main.c: 429: case 0:
-"429
-[e :U 427 ]
-[; ;main.c: 430: KeyOffHandler(&Keys[chn], chn, 4);
-"430
+[; ;main.c: 355: case 0:
+"355
+[e :U 420 ]
+[; ;main.c: 356: KeyOffHandler(&Keys[chn], chn, 4);
+"356
 [e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 4 `i `uc ]
-[; ;main.c: 443: break;
-"443
-[e $U 425  ]
-[; ;main.c: 444: case 1:
-"444
-[e :U 428 ]
-[; ;main.c: 445: if (Keys[chn].State == 0) {
-"445
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 429  ]
+[; ;main.c: 357: break;
+"357
+[e $U 418  ]
+[; ;main.c: 358: case 1:
+"358
+[e :U 421 ]
+[; ;main.c: 359: if ((chn == 0) || (chn == 2)) {
+"359
+[e $ ! || == -> _chn `i -> 0 `i == -> _chn `i -> 2 `i 422  ]
 {
-[; ;main.c: 446: if ((chn == 0) || (chn == 2)) {
-"446
-[e $ ! || == -> _chn `i -> 0 `i == -> _chn `i -> 2 `i 430  ]
-{
-[; ;main.c: 447: KeyOffHandler(&Keys[chn], chn, 0);
-"447
+[; ;main.c: 360: KeyOffHandler(&Keys[chn], chn, 0);
+"360
 [e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 0 `i `uc ]
-"448
+"361
 }
-[; ;main.c: 448: } else {
-[e $U 431  ]
-[e :U 430 ]
+[; ;main.c: 361: } else {
+[e $U 423  ]
+[e :U 422 ]
 {
-[; ;main.c: 449: KeyOffHandler(&Keys[chn], chn, 2);
-"449
+[; ;main.c: 362: KeyOffHandler(&Keys[chn], chn, 2);
+"362
 [e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 2 `i `uc ]
-"450
+"363
 }
-[e :U 431 ]
-"465
+[e :U 423 ]
+[; ;main.c: 363: }
+[; ;main.c: 364: break;
+"364
+[e $U 418  ]
+[; ;main.c: 365: case 2:
+"365
+[e :U 424 ]
+[; ;main.c: 366: if (chn > 1) {
+"366
+[e $ ! > -> _chn `i -> 1 `i 425  ]
+{
+[; ;main.c: 367: if (Keys[chn].State == 0) {
+"367
+[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 426  ]
+{
+[; ;main.c: 368: if (Keys[chn].Tick100ms < 10) {
+"368
+[e $ ! < -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 10 `i 427  ]
+{
+[; ;main.c: 369: if (chn > 1) {
+"369
+[e $ ! > -> _chn `i -> 1 `i 428  ]
+{
+[; ;main.c: 370: noolite_send(chn, 7, 0, &noo_send_data[0]);
+"370
+[e ( _noolite_send (4 , , , _chn -> -> 7 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+"371
+}
+[e :U 428 ]
+"372
+}
+[e :U 427 ]
+"373
+}
+[e :U 426 ]
+"374
+}
+[; ;main.c: 371: }
+[; ;main.c: 372: }
+[; ;main.c: 373: }
+[; ;main.c: 374: } else {
+[e $U 429  ]
+[e :U 425 ]
+{
+[; ;main.c: 375: KeyOffHandler(&Keys[chn], chn, 4);
+"375
+[e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 4 `i `uc ]
+"376
 }
 [e :U 429 ]
-[; ;main.c: 450: }
-[; ;main.c: 465: }
-[; ;main.c: 466: break;
-"466
-[e $U 425  ]
-[; ;main.c: 467: case 2:
-"467
+[; ;main.c: 376: }
+[; ;main.c: 377: break;
+"377
+[e $U 418  ]
+[; ;main.c: 378: case 3:
+"378
+[e :U 430 ]
+[; ;main.c: 379: if (chn > 1) {
+"379
+[e $ ! > -> _chn `i -> 1 `i 431  ]
+{
+[; ;main.c: 380: if (Keys[chn].State) {
+"380
+[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> -> -> 0 `i `uc `i 432  ]
+{
+[; ;main.c: 381: noolite_send(chn, 2, 0, &noo_send_data[0]);
+"381
+[e ( _noolite_send (4 , , , _chn -> -> 2 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+"382
+}
+[; ;main.c: 382: } else {
+[e $U 433  ]
 [e :U 432 ]
-[; ;main.c: 468: if (chn > 1) {
-"468
-[e $ ! > -> _chn `i -> 1 `i 433  ]
 {
-[; ;main.c: 469: if (Keys[chn].State == 0) {
-"469
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 434  ]
-{
-[; ;main.c: 470: if (Keys[chn].Tick100ms < 10) {
-"470
-[e $ ! < -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 10 `i 435  ]
-{
-[; ;main.c: 471: if (chn > 1) {
-"471
-[e $ ! > -> _chn `i -> 1 `i 436  ]
-{
-[; ;main.c: 472: noolite_send(chn, 7, 0, &noo_send_data[0]);
-"472
-[e ( _noolite_send (4 , , , _chn -> -> 7 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"473
+[; ;main.c: 383: noolite_send(chn, 0, 0, &noo_send_data[0]);
+"383
+[e ( _noolite_send (4 , , , _chn -> -> 0 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
+"384
 }
-[e :U 436 ]
-"474
+[e :U 433 ]
+"385
 }
-[e :U 435 ]
-"475
+[; ;main.c: 384: }
+[; ;main.c: 385: } else {
+[e $U 434  ]
+[e :U 431 ]
+{
+[; ;main.c: 386: KeyOffHandler(&Keys[chn], chn, 4);
+"386
+[e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 4 `i `uc ]
+"387
 }
 [e :U 434 ]
-"476
+[; ;main.c: 387: }
+[; ;main.c: 388: break;
+"388
+[e $U 418  ]
+"389
 }
-[; ;main.c: 473: }
-[; ;main.c: 474: }
-[; ;main.c: 475: }
-[; ;main.c: 476: } else {
-[e $U 437  ]
-[e :U 433 ]
+[; ;main.c: 389: }
+[e $U 418  ]
+"354
+[e :U 419 ]
+[e [\ _DevType , $ -> -> 0 `i `uc 420
+ , $ -> -> 1 `i `uc 421
+ , $ -> -> 2 `i `uc 424
+ , $ -> -> 3 `i `uc 430
+ 418 ]
+"389
+[e :U 418 ]
+[; ;main.c: 390: Keys[chn].StateTemp = Keys[chn].State;
+"390
+[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
+"391
+}
+[e :U 417 ]
+[; ;main.c: 391: }
+[; ;main.c: 393: switch (DevType) {
+"393
+[e $U 436  ]
 {
-[; ;main.c: 477: KeyOffHandler(&Keys[chn], chn, 4);
-"477
-[e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 4 `i `uc ]
-"490
-}
+[; ;main.c: 394: case 0:
+"394
 [e :U 437 ]
-[; ;main.c: 490: }
-[; ;main.c: 491: break;
-"491
-[e $U 425  ]
-[; ;main.c: 492: case 3:
-"492
+[; ;main.c: 395: KeyLongHandler(&Keys[chn], chn, 5, 9);
+"395
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 5 `i `uc -> -> 9 `i `uc ]
+[; ;main.c: 396: break;
+"396
+[e $U 435  ]
+[; ;main.c: 397: case 1:
+"397
 [e :U 438 ]
-[; ;main.c: 493: if (chn > 1) {
-"493
-[e $ ! > -> _chn `i -> 1 `i 439  ]
+[; ;main.c: 398: if (chn == 0 || chn == 2) {
+"398
+[e $ ! || == -> _chn `i -> 0 `i == -> _chn `i -> 2 `i 439  ]
 {
-[; ;main.c: 494: if (Keys[chn].State) {
-"494
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> -> -> 0 `i `uc `i 440  ]
-{
-[; ;main.c: 495: noolite_send(chn, 2, 0, &noo_send_data[0]);
-"495
-[e ( _noolite_send (4 , , , _chn -> -> 2 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"496
+[; ;main.c: 399: KeyLongHandler(&Keys[chn], chn, 1, 9);
+"399
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 1 `i `uc -> -> 9 `i `uc ]
+"400
 }
-[; ;main.c: 496: } else {
-[e $U 441  ]
-[e :U 440 ]
-{
-[; ;main.c: 497: noolite_send(chn, 0, 0, &noo_send_data[0]);
-"497
-[e ( _noolite_send (4 , , , _chn -> -> 0 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"498
-}
-[e :U 441 ]
-"499
-}
-[; ;main.c: 498: }
-[; ;main.c: 499: } else {
-[e $U 442  ]
+[; ;main.c: 400: } else {
+[e $U 440  ]
 [e :U 439 ]
 {
-[; ;main.c: 500: KeyOffHandler(&Keys[chn], chn, 4);
-"500
-[e ( _KeyOffHandler (3 , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 4 `i `uc ]
-"513
+[; ;main.c: 401: KeyLongHandler(&Keys[chn], chn, 3, 9);
+"401
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 3 `i `uc -> -> 9 `i `uc ]
+"402
 }
+[e :U 440 ]
+[; ;main.c: 402: }
+[; ;main.c: 403: break;
+"403
+[e $U 435  ]
+[; ;main.c: 404: case 2:
+"404
+[e :U 441 ]
+[; ;main.c: 405: if (chn < 2) {
+"405
+[e $ ! < -> _chn `i -> 2 `i 442  ]
+{
+[; ;main.c: 406: KeyLongHandler(&Keys[chn], chn, 5, 9);
+"406
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 5 `i `uc -> -> 9 `i `uc ]
+"407
+}
+[; ;main.c: 407: } else {
+[e $U 443  ]
 [e :U 442 ]
-[; ;main.c: 513: }
-[; ;main.c: 514: break;
-"514
-[e $U 425  ]
-"515
-}
-[; ;main.c: 515: }
-[e $U 425  ]
-"428
-[e :U 426 ]
-[e [\ _DevType , $ -> -> 0 `i `uc 427
- , $ -> -> 1 `i `uc 428
- , $ -> -> 2 `i `uc 432
- , $ -> -> 3 `i `uc 438
- 425 ]
-"515
-[e :U 425 ]
-[; ;main.c: 516: Keys[chn].StateTemp = Keys[chn].State;
-"516
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 1 . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 ]
-"517
-}
-[e :U 424 ]
-[; ;main.c: 517: }
-[; ;main.c: 519: switch (DevType) {
-"519
-[e $U 444  ]
 {
-[; ;main.c: 520: case 0:
-"520
-[e :U 445 ]
-[; ;main.c: 521: if (Keys[chn].State != 0) {
-"521
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 446  ]
-{
-[; ;main.c: 522: if (Keys[chn].Tick100ms > 9) {
-"522
-[e $ ! > -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 9 `i 447  ]
-{
-[; ;main.c: 523: if (Keys[chn].FirstCmdSent == 0) {
-"523
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 `i -> 0 `i 448  ]
-{
-[; ;main.c: 524: noolite_send(chn, 5, 0, &noo_send_data[0]);
-"524
-[e ( _noolite_send (4 , , , _chn -> -> 5 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 525: Keys[chn].FirstCmdSent = 1;
-"525
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 -> -> 1 `i `uc ]
-"526
+[; ;main.c: 408: KeyLongHandler(&Keys[chn], chn, 8, 49);
+"408
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 8 `i `uc -> -> 49 `i `uc ]
+"409
 }
-[e :U 448 ]
-"527
-}
-[e :U 447 ]
-[; ;main.c: 526: }
-[; ;main.c: 527: }
-[; ;main.c: 528: Keys[chn].Tick100ms++;
-"528
-[e ++ . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-"529
-}
-[; ;main.c: 529: } else {
-[e $U 449  ]
-[e :U 446 ]
-{
-[; ;main.c: 530: Keys[chn].Tick100ms = 0;
-"530
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"531
-}
-[e :U 449 ]
-[; ;main.c: 531: }
-[; ;main.c: 532: break;
-"532
-[e $U 443  ]
-[; ;main.c: 533: case 1:
-"533
-[e :U 450 ]
-[; ;main.c: 534: if (Keys[chn].State != 0) {
-"534
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 451  ]
-{
-[; ;main.c: 535: if (Keys[chn].Tick100ms > 9) {
-"535
-[e $ ! > -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 9 `i 452  ]
-{
-[; ;main.c: 536: if (Keys[chn].FirstCmdSent == 0) {
-"536
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 `i -> 0 `i 453  ]
-{
-[; ;main.c: 537: if (chn == 0 || chn == 2) {
-"537
-[e $ ! || == -> _chn `i -> 0 `i == -> _chn `i -> 2 `i 454  ]
-{
-[; ;main.c: 538: noolite_send(chn, 1, 0, &noo_send_data[0]);
-"538
-[e ( _noolite_send (4 , , , _chn -> -> 1 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"539
-}
-[; ;main.c: 539: } else {
-[e $U 455  ]
-[e :U 454 ]
-{
-[; ;main.c: 540: noolite_send(chn, 3, 0, &noo_send_data[0]);
-"540
-[e ( _noolite_send (4 , , , _chn -> -> 3 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-"541
-}
-[e :U 455 ]
-[; ;main.c: 541: }
-[; ;main.c: 542: Keys[chn].FirstCmdSent = 1;
-"542
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 -> -> 1 `i `uc ]
-"543
-}
-[e :U 453 ]
-"544
-}
-[e :U 452 ]
-[; ;main.c: 543: }
-[; ;main.c: 544: }
-[; ;main.c: 545: Keys[chn].Tick100ms++;
-"545
-[e ++ . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-"546
-}
-[; ;main.c: 546: } else {
-[e $U 456  ]
-[e :U 451 ]
-{
-[; ;main.c: 547: Keys[chn].Tick100ms = 0;
-"547
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"548
-}
-[e :U 456 ]
-[; ;main.c: 548: }
-[; ;main.c: 549: break;
-"549
-[e $U 443  ]
-[; ;main.c: 550: case 2:
-"550
-[e :U 457 ]
-[; ;main.c: 551: if (chn < 2) {
-"551
-[e $ ! < -> _chn `i -> 2 `i 458  ]
-{
-[; ;main.c: 552: if (Keys[chn].State != 0) {
-"552
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 459  ]
-{
-[; ;main.c: 553: if (Keys[chn].Tick100ms > 9) {
-"553
-[e $ ! > -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 9 `i 460  ]
-{
-[; ;main.c: 554: if (Keys[chn].FirstCmdSent == 0) {
-"554
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 `i -> 0 `i 461  ]
-{
-[; ;main.c: 555: noolite_send(chn, 5, 0, &noo_send_data[0]);
-"555
-[e ( _noolite_send (4 , , , _chn -> -> 5 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 556: Keys[chn].FirstCmdSent = 1;
-"556
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 -> -> 1 `i `uc ]
-"557
-}
-[e :U 461 ]
-"558
-}
-[e :U 460 ]
-[; ;main.c: 557: }
-[; ;main.c: 558: }
-[; ;main.c: 559: Keys[chn].Tick100ms++;
-"559
-[e ++ . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-"560
-}
-[; ;main.c: 560: } else {
-[e $U 462  ]
-[e :U 459 ]
-{
-[; ;main.c: 561: Keys[chn].Tick100ms = 0;
-"561
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"562
-}
-[e :U 462 ]
-"563
-}
-[; ;main.c: 562: }
-[; ;main.c: 563: } else {
-[e $U 463  ]
-[e :U 458 ]
-{
-[; ;main.c: 564: if (Keys[chn].State != 0) {
-"564
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 464  ]
-{
-[; ;main.c: 565: if (Keys[chn].Tick100ms > 49) {
-"565
-[e $ ! > -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 49 `i 465  ]
-{
-[; ;main.c: 566: if (Keys[chn].FirstCmdSent == 0) {
-"566
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 `i -> 0 `i 466  ]
-{
-[; ;main.c: 567: noolite_send(chn, 8, 0, &noo_send_data[0]);
-"567
-[e ( _noolite_send (4 , , , _chn -> -> 8 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 568: Keys[chn].FirstCmdSent = 1;
-"568
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 -> -> 1 `i `uc ]
-"569
-}
-[e :U 466 ]
-"570
-}
-[e :U 465 ]
-[; ;main.c: 569: }
-[; ;main.c: 570: }
-[; ;main.c: 571: Keys[chn].Tick100ms++;
-"571
-[e ++ . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-"572
-}
-[; ;main.c: 572: } else {
-[e $U 467  ]
-[e :U 464 ]
-{
-[; ;main.c: 573: Keys[chn].Tick100ms = 0;
-"573
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"574
-}
-[e :U 467 ]
-"575
-}
-[e :U 463 ]
-[; ;main.c: 574: }
-[; ;main.c: 575: }
-[; ;main.c: 576: break;
-"576
-[e $U 443  ]
-[; ;main.c: 577: case 3:
-"577
-[e :U 468 ]
-[; ;main.c: 578: if (chn < 2) {
-"578
-[e $ ! < -> _chn `i -> 2 `i 469  ]
-{
-[; ;main.c: 579: if (Keys[chn].State != 0) {
-"579
-[e $ ! != -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 0 `i -> 0 `i 470  ]
-{
-[; ;main.c: 580: if (Keys[chn].Tick100ms > 9) {
-"580
-[e $ ! > -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 `i -> 9 `i 471  ]
-{
-[; ;main.c: 581: if (Keys[chn].FirstCmdSent == 0) {
-"581
-[e $ ! == -> . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 `i -> 0 `i 472  ]
-{
-[; ;main.c: 582: noolite_send(chn, 5, 0, &noo_send_data[0]);
-"582
-[e ( _noolite_send (4 , , , _chn -> -> 5 `i `uc -> -> 0 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 583: Keys[chn].FirstCmdSent = 1;
-"583
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 3 -> -> 1 `i `uc ]
-"584
-}
-[e :U 472 ]
-"585
-}
-[e :U 471 ]
-[; ;main.c: 584: }
-[; ;main.c: 585: }
-[; ;main.c: 586: Keys[chn].Tick100ms++;
-"586
-[e ++ . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 1 `i `uc ]
-"587
-}
-[; ;main.c: 587: } else {
-[e $U 473  ]
-[e :U 470 ]
-{
-[; ;main.c: 588: Keys[chn].Tick100ms = 0;
-"588
-[e = . *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux 2 -> -> 0 `i `uc ]
-"589
-}
-[e :U 473 ]
-"590
-}
-[e :U 469 ]
-[; ;main.c: 589: }
-[; ;main.c: 590: }
-[; ;main.c: 591: break;
-"591
-[e $U 443  ]
-"592
-}
-[; ;main.c: 592: }
-[e $U 443  ]
-"519
-[e :U 444 ]
-[e [\ _DevType , $ -> -> 0 `i `uc 445
- , $ -> -> 1 `i `uc 450
- , $ -> -> 2 `i `uc 457
- , $ -> -> 3 `i `uc 468
- 443 ]
-"592
 [e :U 443 ]
-"594
+[; ;main.c: 409: }
+[; ;main.c: 410: break;
+"410
+[e $U 435  ]
+[; ;main.c: 411: case 3:
+"411
+[e :U 444 ]
+[; ;main.c: 412: if (chn < 2) {
+"412
+[e $ ! < -> _chn `i -> 2 `i 445  ]
+{
+[; ;main.c: 413: KeyLongHandler(&Keys[chn], chn, 5, 9);
+"413
+[e ( _KeyLongHandler (4 , , , &U *U + &U _Keys * -> _chn `ux -> -> # *U &U _Keys `ui `ux _chn -> -> 5 `i `uc -> -> 9 `i `uc ]
+"414
 }
-"426
+[e :U 445 ]
+[; ;main.c: 414: }
+[; ;main.c: 415: break;
+"415
+[e $U 435  ]
+"416
+}
+[; ;main.c: 416: }
+[e $U 435  ]
+"393
+[e :U 436 ]
+[e [\ _DevType , $ -> -> 0 `i `uc 437
+ , $ -> -> 1 `i `uc 438
+ , $ -> -> 2 `i `uc 441
+ , $ -> -> 3 `i `uc 444
+ 435 ]
+"416
+[e :U 435 ]
+"418
+}
+"352
 [e ++ _chn -> -> 1 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 421  ]
-[e :U 422 ]
-"594
+[e $ < -> _chn `i -> 4 `i 414  ]
+[e :U 415 ]
+"418
 }
-"595
+"419
 }
-[e :U 420 ]
 [e :U 413 ]
 [e :U 406 ]
-"596
-}
 [e :U 399 ]
-[; ;main.c: 594: }
-[; ;main.c: 595: }
-[; ;main.c: 596: }
-[; ;main.c: 608: if (BattLow && !BattLowSent) {
-"608
-[e $ ! && != -> _BattLow `i -> -> -> 0 `i `uc `i ! != -> _BattLowSent `i -> -> -> 0 `i `uc `i 474  ]
-{
-[; ;main.c: 609: for (uint8_t chn = 0; chn < 4; chn++) {
-"609
-{
-[v _chn `uc ~T0 @X0 1 a ]
-[e = _chn -> -> 0 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 475  ]
-[e $U 476  ]
-[e :U 475 ]
-{
-[; ;main.c: 610: noolite_send(chn, 20, 4, &noo_send_data[0]);
-"610
-[e ( _noolite_send (4 , , , _chn -> -> 20 `i `uc -> -> 4 `i `uc &U *U + &U _noo_send_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _noo_send_data `ui `ux ]
-[; ;main.c: 611: asm("clrwdt");
-"611
-[; <" clrwdt ;# ">
-[; ;main.c: 612: _delay((unsigned long)((50)*(8000000/4000.0)));
-"612
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 613: asm("clrwdt");
-"613
-[; <" clrwdt ;# ">
-"614
+"420
 }
-"609
-[e ++ _chn -> -> 1 `i `uc ]
-[e $ < -> _chn `i -> 4 `i 475  ]
-[e :U 476 ]
-"614
-}
-[; ;main.c: 614: }
-[; ;main.c: 615: BattLowSent = 1;
-"615
-[e = _BattLowSent -> -> 1 `i `uc ]
-"616
-}
-[e :U 474 ]
-[; ;main.c: 616: }
-[; ;main.c: 618: if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
-"618
-[e $ ! && == & -> _DevMode `i -> 7 `i -> 0 `i == & -> _PORTA `i -> . `E2956 0 `i -> 0 `i 478  ]
+[e :U 392 ]
+[; ;main.c: 418: }
+[; ;main.c: 419: }
+[; ;main.c: 420: }
+[; ;main.c: 423: if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
+"423
+[e $ ! && == & -> _DevMode `i -> 7 `i -> 0 `i == & -> _PORTA `i -> . `E2945 0 `i -> 0 `i 446  ]
 {
-[; ;main.c: 619: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
-"619
+[; ;main.c: 424: for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
+"424
 {
 [v _cellNum `uc ~T0 @X0 1 a ]
 [e = _cellNum -> -> 0 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 479  ]
-[e $U 480  ]
-[e :U 479 ]
+[e $ < -> _cellNum `i -> 8 `i 447  ]
+[e $U 448  ]
+[e :U 447 ]
 {
-"620
+"425
 [v _adrToWrite `ui ~T0 @X0 1 a ]
-[; ;main.c: 620: uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
+[; ;main.c: 425: uint16_t adrToWrite = (0x7D0 + (cellNum * 2));
 [e = _adrToWrite -> + -> 2000 `i * -> _cellNum `i -> 2 `i `ui ]
-[; ;main.c: 621: if (TxStatus[cellNum] == 0xFFFF) {
-"621
-[e $ ! == *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 65535 `ui 482  ]
+[; ;main.c: 426: if (TxStatus[cellNum] == 0xFFFF) {
+"426
+[e $ ! == *U + &U _TxStatus * -> _cellNum `ux -> -> # *U &U _TxStatus `ui `ux -> 65535 `ui 450  ]
 {
-[; ;main.c: 622: FlashWrite(adrToWrite, tx_status & 0x02);
-"622
+[; ;main.c: 427: FlashWrite(adrToWrite, tx_status & 0x02);
+"427
 [e ( _FlashWrite (2 , _adrToWrite -> & -> _tx_status `i -> 2 `i `ui ]
-[; ;main.c: 623: FlashWrite((adrToWrite + 1), 0x5A);
-"623
+[; ;main.c: 428: FlashWrite((adrToWrite + 1), 0x5A);
+"428
 [e ( _FlashWrite (2 , + _adrToWrite -> -> 1 `i `ui -> -> 90 `i `ui ]
-[; ;main.c: 624: __nop();
-"624
+[; ;main.c: 429: __nop();
+"429
 [e ( ___nop ..  ]
-[; ;main.c: 625: asm("clrwdt");
-"625
+[; ;main.c: 430: asm("clrwdt");
+"430
 [; <" clrwdt ;# ">
-[; ;main.c: 626: break;
-"626
-[e $U 480  ]
-"627
+[; ;main.c: 431: break;
+"431
+[e $U 448  ]
+"432
 }
-[; ;main.c: 627: } else {
-[e $U 483  ]
-[e :U 482 ]
+[; ;main.c: 432: } else {
+[e $U 451  ]
+[e :U 450 ]
 {
-[; ;main.c: 628: if (cellNum == 7) {
-"628
-[e $ ! == -> _cellNum `i -> 7 `i 484  ]
+[; ;main.c: 433: if (cellNum == 7) {
+"433
+[e $ ! == -> _cellNum `i -> 7 `i 452  ]
 {
-[; ;main.c: 629: FlashEraseRow(0x7D0);
-"629
+[; ;main.c: 434: FlashEraseRow(0x7D0);
+"434
 [e ( _FlashEraseRow (1 -> -> 2000 `i `ui ]
-[; ;main.c: 630: FlashWrite(0x7D0, tx_status & 0x02);
-"630
+[; ;main.c: 435: FlashWrite(0x7D0, tx_status & 0x02);
+"435
 [e ( _FlashWrite (2 , -> -> 2000 `i `ui -> & -> _tx_status `i -> 2 `i `ui ]
-[; ;main.c: 631: FlashWrite(0x7D1, 0x5A);
-"631
+[; ;main.c: 436: FlashWrite(0x7D1, 0x5A);
+"436
 [e ( _FlashWrite (2 , -> -> 2001 `i `ui -> -> 90 `i `ui ]
-"632
+"437
 }
-[e :U 484 ]
-"633
+[e :U 452 ]
+"438
 }
-[e :U 483 ]
-"634
+[e :U 451 ]
+"439
 }
-"619
+"424
 [e ++ _cellNum -> -> 1 `i `uc ]
-[e $ < -> _cellNum `i -> 8 `i 479  ]
-[e :U 480 ]
-"634
+[e $ < -> _cellNum `i -> 8 `i 447  ]
+[e :U 448 ]
+"439
 }
-[; ;main.c: 632: }
-[; ;main.c: 633: }
-[; ;main.c: 634: }
-[; ;main.c: 645: LATCbits.LATC5 = 0;
-"645
+[; ;main.c: 437: }
+[; ;main.c: 438: }
+[; ;main.c: 439: }
+[; ;main.c: 440: LATCbits.LATC5 = 0;
+"440
 [e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 646: _delay((unsigned long)((100)*(8000000/4000.0)));
-"646
+[; ;main.c: 441: _delay((unsigned long)((100)*(8000000/4000.0)));
+"441
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"647
+"442
 }
-[; ;main.c: 647: } else {
-[e $U 485  ]
-[e :U 478 ]
+[; ;main.c: 442: } else {
+[e $U 453  ]
+[e :U 446 ]
 {
-[; ;main.c: 648: WDTCONbits.WDTPS = 0b00110;
-"648
+[; ;main.c: 443: WDTCONbits.WDTPS = 0b00110;
+"443
 [e = . . _WDTCONbits 0 1 -> -> 6 `i `uc ]
-[; ;main.c: 649: __nop();
-"649
+[; ;main.c: 444: __nop();
+"444
 [e ( ___nop ..  ]
-[; ;main.c: 650: asm("sleep");
-"650
+[; ;main.c: 445: asm("sleep");
+"445
 [; <" sleep ;# ">
-[; ;main.c: 651: __nop();
-"651
+[; ;main.c: 446: __nop();
+"446
 [e ( ___nop ..  ]
-[; ;main.c: 652: WDTCONbits.WDTPS = 0b00101;
-"652
+[; ;main.c: 447: WDTCONbits.WDTPS = 0b00101;
+"447
 [e = . . _WDTCONbits 0 1 -> -> 5 `i `uc ]
-[; ;main.c: 653: __nop();
-"653
+[; ;main.c: 448: __nop();
+"448
 [e ( ___nop ..  ]
-[; ;main.c: 654: asm("sleep");
-"654
+[; ;main.c: 449: asm("sleep");
+"449
 [; <" sleep ;# ">
-[; ;main.c: 655: __nop();
-"655
+[; ;main.c: 450: __nop();
+"450
 [e ( ___nop ..  ]
-[; ;main.c: 656: WDTCONbits.WDTPS = 0b01011;
-"656
+[; ;main.c: 451: WDTCONbits.WDTPS = 0b01011;
+"451
 [e = . . _WDTCONbits 0 1 -> -> 11 `i `uc ]
-[; ;main.c: 657: __nop();
-"657
+[; ;main.c: 452: __nop();
+"452
 [e ( ___nop ..  ]
-[; ;main.c: 658: asm("clrwdt");
-"658
+[; ;main.c: 453: asm("clrwdt");
+"453
 [; <" clrwdt ;# ">
-"659
+"454
 }
-[e :U 485 ]
-"661
+[e :U 453 ]
+"456
 }
-[e :U 373 ]
-"308
-[e $U 374  ]
-[e :U 375 ]
-[; ;main.c: 659: }
-[; ;main.c: 661: }
-[; ;main.c: 662: }
-"662
-[e :UE 372 ]
+[e :U 366 ]
+"245
+[e $U 367  ]
+[e :U 368 ]
+[; ;main.c: 454: }
+[; ;main.c: 456: }
+[; ;main.c: 457: }
+"457
+[e :UE 365 ]
 }

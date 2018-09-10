@@ -2,7 +2,7 @@
 # 1 "main.c"
 
 
-# 34
+# 24
 #pragma config FOSC = INTOSC
 #pragma config WDTE = SWDTEN
 #pragma config PWRTE = ON
@@ -3884,21 +3884,23 @@ void FlashWrite(unsigned int addr, unsigned int flash_data);
 void ClearDevMemory(void);
 void test_memory_full(void);
 
-# 64 "main.c"
+# 53 "main.c"
 const uint16_t AlarmBattVoltage = (unsigned int) (1.024 / 2.5 * 1023);
 
-# 72
+# 61
 enum {
 OFF = 0,
 ON = 1
 };
 
-# 81
+
+
+
 extern unsigned char tx_status;
 unsigned char noo_send_data[4] = {0, 0, 0, 0};
 
-uint8_t BattLowSent = 0;
-uint8_t BattLow = 0;
+
+
 
 uint8_t LedPulseTick_100ms = 0;
 
@@ -3907,10 +3909,10 @@ void Init_CLK() {
 
 OSCCONbits.IRCF = 0b1110;
 
-# 108
+# 96
 WDTCONbits.WDTPS = 0b01011;
 
-# 115
+# 103
 WDTCONbits.SWDTEN = 1;
 while (!OSCSTATbits.HFIOFR) {
 }
@@ -3927,51 +3929,11 @@ ANSELC = 0;
 LATC = 0x00;
 }
 
-void Init_ADC() {
-FVRCON = 0;
-
-ADCON1bits.ADFM = 1;
-ADCON1bits.ADCS = 0b001;
 
 
-ADCON1bits.ADPREF = 0b00;
-
-ADCON0bits.ADON = 0;
-}
-
-# 148
-unsigned int GetAdcValue(uint8_t channel) {
-ADCON0bits.CHS = (uint8_t) (channel & 0x1F);
-
-if (channel == 31) {
-FVRCONbits.FVREN = 1;
-FVRCONbits.ADFVR = 0b01;
-}
-
-ADCON0bits.ADON = 1;
-_delay((unsigned long)((55)*(8000000/4000000.0)));
-
-ADCON0bits.GO_nDONE = 1;
-while (ADCON0bits.GO_nDONE) {
-}
-
-
-unsigned int result;
-result = (uint16_t) ((ADRESH << 8) | ADRESL);
-
-# 171
-ADCON0bits.ADON = 0;
-FVRCON = 0;
-PIR1bits.ADIF = 0;
-
-return result;
-}
-
-
-uint8_t mode = 0;
 
 uint8_t tick3_100ms = 0;
-uint8_t BattLowTransmitCount = 0;
+
 
 enum {
 A_Pressed = 0x02,
@@ -4013,7 +3975,7 @@ uint8_t DevMode = 0;
 
 KeyState Keys[5];
 
-# 229
+# 170
 uint8_t SkipHandling = 0;
 
 uint8_t Init_TypeFromFlash() {
@@ -4052,20 +4014,7 @@ return 0;
 void KeyOffHandler(KeyState* key, uint8_t chn, uint8_t cmd) {
 if (key->State == 0) {
 if (key->Tick100ms < 10) {
-switch (cmd) {
-case 0:
-noolite_send(chn, 0, 0, &noo_send_data[0]);
-break;
-case 2:
-noolite_send(chn, 2, 0, &noo_send_data[0]);
-break;
-case 4:
-noolite_send(chn, 4, 0, &noo_send_data[0]);
-break;
-default:
-noolite_send(chn, 0, 0, &noo_send_data[0]);
-break;
-}
+noolite_send(chn, cmd, 0, &noo_send_data[0]);
 } else {
 noolite_send(chn, 10, 0, &noo_send_data[0]);
 _delay((unsigned long)((15)*(8000000/4000.0)));
@@ -4077,19 +4026,28 @@ key->FirstCmdSent = 0;
 }
 }
 
-uint16_t battery_value = 0;
+void KeyLongHandler(KeyState* key, uint8_t chn, uint8_t cmd, uint8_t ticksToTrigger) {
+if (key->State != 0) {
+if (key->Tick100ms > ticksToTrigger) {
+if (key->FirstCmdSent == 0) {
+noolite_send(chn, cmd, 0, &noo_send_data[0]);
+key->FirstCmdSent = 1;
+}
+}
+key->Tick100ms++;
+} else {
+key->Tick100ms = 0;
+}
+}
 
 void main() {
 Init_IO();
 Init_CLK();
-
-Init_ADC();
 RF_Init();
 
 LATCbits.LATC5 = 1;
 DevType = Init_TypeFromFlash();
 tx_status = Init_TxStatusFromFlash();
-
 
 INTCONbits.PEIE = 1;
 INTCONbits.GIE = 1;
@@ -4184,16 +4142,10 @@ Keys[chn].StateTemp = Keys[chn].State;
 for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 if (Keys[chn].State == 0) {
-noo_send_data[0] = Type[0] >> 8;
-noo_send_data[1] = Type[0];
-noo_send_data[2] = DevType;
-noolite_send(chn, 22, 7, &noo_send_data[0]);
-_delay((unsigned long)((500)*(8000000/4000.0)));
-asm("clrwdt");
 LATCbits.LATC3 = ON;
-FlashEraseRow(0x7C0);
-asm("clrwdt");
 _delay((unsigned long)((500)*(8000000/4000.0)));
+asm("clrwdt");
+FlashEraseRow(0x7C0);
 asm("clrwdt");
 FlashWrite(0x7C0, chn);
 FlashWrite(0x7C1, 0x5A);
@@ -4201,33 +4153,22 @@ asm("clrwdt");
 DevType = Init_TypeFromFlash();
 DevMode &= ~MODE_CHANGE_ACTIVE;
 LATCbits.LATC3 = OFF;
-noo_send_data[0] = Type[0] >> 8;
-noo_send_data[1] = Type[0];
-noo_send_data[2] = DevType;
-noolite_send(chn, 22, 7, &noo_send_data[0]);
 }
 Keys[chn].StateTemp = Keys[chn].State;
 }
 }
 } else {
-
 for (uint8_t chn = 0; chn < 4; chn++) {
 if (Keys[chn].State != Keys[chn].StateTemp) {
 switch (DevType) {
 case 0:
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 443
 break;
 case 1:
-if (Keys[chn].State == 0) {
 if ((chn == 0) || (chn == 2)) {
 KeyOffHandler(&Keys[chn], chn, 0);
 } else {
 KeyOffHandler(&Keys[chn], chn, 2);
-}
-
-# 465
 }
 break;
 case 2:
@@ -4241,8 +4182,6 @@ noolite_send(chn, 7, 0, &noo_send_data[0]);
 }
 } else {
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 490
 }
 break;
 case 3:
@@ -4254,8 +4193,6 @@ noolite_send(chn, 0, 0, &noo_send_data[0]);
 }
 } else {
 KeyOffHandler(&Keys[chn], chn, 4);
-
-# 513
 }
 break;
 }
@@ -4264,75 +4201,25 @@ Keys[chn].StateTemp = Keys[chn].State;
 
 switch (DevType) {
 case 0:
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 break;
 case 1:
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
 if (chn == 0 || chn == 2) {
-noolite_send(chn, 1, 0, &noo_send_data[0]);
+KeyLongHandler(&Keys[chn], chn, 1, 9);
 } else {
-noolite_send(chn, 3, 0, &noo_send_data[0]);
-}
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
+KeyLongHandler(&Keys[chn], chn, 3, 9);
 }
 break;
 case 2:
 if (chn < 2) {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 } else {
-Keys[chn].Tick100ms = 0;
-}
-} else {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 49) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 8, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 8, 49);
 }
 break;
 case 3:
 if (chn < 2) {
-if (Keys[chn].State != 0) {
-if (Keys[chn].Tick100ms > 9) {
-if (Keys[chn].FirstCmdSent == 0) {
-noolite_send(chn, 5, 0, &noo_send_data[0]);
-Keys[chn].FirstCmdSent = 1;
-}
-}
-Keys[chn].Tick100ms++;
-} else {
-Keys[chn].Tick100ms = 0;
-}
+KeyLongHandler(&Keys[chn], chn, 5, 9);
 }
 break;
 }
@@ -4341,16 +4228,6 @@ break;
 }
 }
 
-# 608
-if (BattLow && !BattLowSent) {
-for (uint8_t chn = 0; chn < 4; chn++) {
-noolite_send(chn, 20, 4, &noo_send_data[0]);
-asm("clrwdt");
-_delay((unsigned long)((50)*(8000000/4000.0)));
-asm("clrwdt");
-}
-BattLowSent = 1;
-}
 
 if (((DevMode & 0x07) == 0) && ((PORTA & All_Pressed) == 0)) {
 for (uint8_t cellNum = 0; cellNum < 8; cellNum++) {
@@ -4369,8 +4246,6 @@ FlashWrite(0x7D1, 0x5A);
 }
 }
 }
-
-# 645
 LATCbits.LATC5 = 0;
 _delay((unsigned long)((100)*(8000000/4000.0)));
 } else {
