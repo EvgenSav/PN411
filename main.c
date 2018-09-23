@@ -253,12 +253,23 @@ void main() {
                                 KeyOffHandler(&Keys[chn], chn, CMD_Switch, &noo_send_data[0]);
                                 break;
                             case 1:
-                                if ((chn == 0) || (chn == 2)) {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_OFF, &noo_send_data[0]);
-                                } else {
-                                    KeyOffHandler(&Keys[chn], chn, CMD_ON, &noo_send_data[0]);
+                            {
+                                switch (chn) {
+                                    case 0:
+                                        KeyOffHandler(&Keys[chn], 0, CMD_OFF, &noo_send_data[0]);
+                                        break;
+                                    case 1:
+                                        KeyOffHandler(&Keys[chn], 0, CMD_ON, &noo_send_data[0]);
+                                        break;
+                                    case 2:
+                                        KeyOffHandler(&Keys[chn], 1, CMD_OFF, &noo_send_data[0]);
+                                        break;
+                                    case 3:
+                                        KeyOffHandler(&Keys[chn], 1, CMD_ON, &noo_send_data[0]);
+                                        break;
                                 }
                                 break;
+                            }
                             case 2:
                                 if (chn > 1) {
                                     if (Keys[chn].State == 0) {
@@ -293,12 +304,23 @@ void main() {
                             KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);
                             break;
                         case 1:
-                            if (chn == 0 || chn == 2) {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Down, 9, &noo_send_data[0]);
-                            } else {
-                                KeyLongHandler(&Keys[chn], chn, CMD_Bright_Up, 9, &noo_send_data[0]);
+                        {
+                            switch (chn) {
+                                case 0:
+                                    KeyLongHandler(&Keys[chn], 0, CMD_Bright_Down, 9, &noo_send_data[0]);
+                                    break;
+                                case 1:
+                                    KeyLongHandler(&Keys[chn], 0, CMD_Bright_Up, 9, &noo_send_data[0]);
+                                    break;
+                                case 2:
+                                    KeyLongHandler(&Keys[chn], 1, CMD_Bright_Down, 9, &noo_send_data[0]);
+                                    break;
+                                case 3:
+                                    KeyLongHandler(&Keys[chn], 1, CMD_Bright_Up, 9, &noo_send_data[0]);
+                                    break;
                             }
                             break;
+                        }
                         case 2:
                             if (chn < 2) {
                                 KeyLongHandler(&Keys[chn], chn, CMD_Bright_Back, 9, &noo_send_data[0]);

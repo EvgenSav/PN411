@@ -49,7 +49,7 @@ CMD_Test_Result 22
 TYPE_ADR 1984
 TX_STATUS_ADR 2000
 ]
-"324
+"346
 [e E2971 . `uc
 All_Pressed 23
 ]
@@ -310,7 +310,7 @@ Battery 31
 [v main@chn_250 chn `uc  1 a 1 25 ]
 "206
 [v main@chn chn `uc  1 a 1 24 ]
-"343
+"365
 } 0
 "56 C:\Users\Evgen\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
 [v _SaveTxStatusToFlash SaveTxStatusToFlash `(v  1 e 1 0 ]
