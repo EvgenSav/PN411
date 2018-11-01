@@ -24,12 +24,12 @@ UNBIND_ACTIVE 2
 MODE_CHANGE_ACTIVE 4
 GO_OFF 8
 ]
-"178
+"155
 [e E2978 . `uc
 OFF 0
 ON 1
 ]
-"209
+"208
 [e E2953 . `uc
 CMD_OFF 0
 CMD_Bright_Down 1
@@ -44,12 +44,12 @@ CMD_Stop_Reg 10
 CMD_Bind 15
 CMD_Test_Result 22
 ]
-"232
+"231
 [e E2995 . `ui
 TYPE_ADR 1984
 TX_STATUS_ADR 2000
 ]
-"346
+"345
 [e E2971 . `uc
 All_Pressed 23
 ]
@@ -302,15 +302,15 @@ Battery 31
 "128 C:\Users\Evgen\Dropbox\C_projects\MPLABProjects\PN411\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"249
+"248
 [v main@chn_252 chn `uc  1 a 1 27 ]
-"227
+"226
 [v main@chn_251 chn `uc  1 a 1 26 ]
-"216
+"215
 [v main@chn_250 chn `uc  1 a 1 25 ]
-"206
+"205
 [v main@chn chn `uc  1 a 1 24 ]
-"365
+"364
 } 0
 "56 C:\Users\Evgen\Dropbox\C_projects\MPLABProjects\PN411\user_functions.c
 [v _SaveTxStatusToFlash SaveTxStatusToFlash `(v  1 e 1 0 ]

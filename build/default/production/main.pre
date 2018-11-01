@@ -4007,18 +4007,17 @@ Keys[D].State = (uint8_t) (PORTA & D_Pressed);
 Keys[CD].State = (uint8_t) (PORTA & (C_Pressed | D_Pressed));
 if (Keys[CD].State == (C_Pressed | D_Pressed)) {
 SkipHandling = 5;
-if (Keys[CD].Tick100ms < 35) {
+if (Keys[CD].Tick100ms < 50) {
 DevMode &= ~(UNBIND_ACTIVE | MODE_CHANGE_ACTIVE);
 DevMode |= BIND_ACTIVE;
 tick3_100ms = 100;
-} else if ((Keys[CD].Tick100ms >= 35) && (Keys[CD].Tick100ms < 49)) {
-DevMode &= ~BIND_ACTIVE;
-} else if ((Keys[CD].Tick100ms >= 50) && (Keys[CD].Tick100ms < 85)) {
+} else if ((Keys[CD].Tick100ms >= 50) && (Keys[CD].Tick100ms < 100)) {
+if ((DevMode & UNBIND_ACTIVE) == 0) {
+LATCbits.LATC3 = OFF;
+}
 DevMode &= ~(BIND_ACTIVE | MODE_CHANGE_ACTIVE);
 DevMode |= UNBIND_ACTIVE;
 tick3_100ms = 100;
-} else if ((Keys[CD].Tick100ms >= 85) && (Keys[CD].Tick100ms < 99)) {
-DevMode &= ~UNBIND_ACTIVE;
 } else if (Keys[CD].Tick100ms >= 100) {
 DevMode &= ~(BIND_ACTIVE | UNBIND_ACTIVE);
 DevMode |= MODE_CHANGE_ACTIVE;
